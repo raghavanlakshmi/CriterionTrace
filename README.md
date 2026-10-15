@@ -35,7 +35,8 @@ synthetic patient SYN-001:
 
 The rule baseline is deliberately conservative: it leaves anything it can't prove as `UNKNOWN`. The LLM
 assessor resolves most of those correctly without ever clearing a patient the evidence doesn't support.
-Held-out check — 21 labels from 4 trials never used while building the safety guards, committed before the run. First run: 9/10 decidable correct, 1 unsafe clearance (organ function marked met without liver tests). That failure became a new guard; the re-run scored 10/10 with 0 unsafe, but that figure is no longer held-out.
+
+**Held-out check** — 21 labels from 4 trials never used while building the safety guards, committed before the run. First run: 9/10 decidable correct, 1 unsafe clearance (organ function marked met without liver tests). That failure became a new guard; the re-run scored 10/10 with 0 unsafe, but that figure is no longer held-out.
 
 **Trial retrieval** — Recall@5 on the 16 gold cases that have a relevant trial:
 
