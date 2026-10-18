@@ -45,7 +45,9 @@ def test_dated_administration_needs_actual_study_reference(anchor):
 
 def test_documented_study_reference_and_dated_event_are_not_blocked():
     item = evidence().model_copy(update={'evidence_text': 'Treatment administered 2026-01-05; first study dose: 2026-01-10'})
-    result, flags = review_assessments([decision([item], text='Therapy within 4 weeks before first study dose')])
+    reference = evidence('planned_study_event', date='2026-01-10').model_copy(update={'evidence_text': 'First study dose scheduled for 2026-01-10.'})
+    selected = decision([item, reference], text='Therapy within 4 weeks before first study dose').model_copy(update={'window_evidence_index': 0})
+    result, flags = review_assessments([selected])
     assert result[0].status == 'DOES_NOT_MEET'
     assert any('code-computed interval 5 days' in f for f in flags)
 

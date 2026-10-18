@@ -290,46 +290,32 @@ NUMBER_WORDS = dict(zip("one two three four five six seven eight nine ten eleven
 
 
 def computed_study_window(item: CriterionAssessment) -> tuple[str, str] | None:
-    """Compute a recent-therapy window from cited actual and planned events only."""
+    """The model selects a cited event; code validates dates and computes its window."""
     if item.criterion_type != "exclusion" or item.status == "POTENTIAL_CONFLICT":
         return None
     window = re.search(r"\bwithin\s+(\d+|" + "|".join(NUMBER_WORDS) + r")\s*[- ]?\s*(days?|weeks?|months?|years?)\b", item.criterion_text, re.I)
     if not window or not STUDY_REFERENCE.search(item.criterion_text):
         return None
-    # Only broad treatment windows; a specific drug or modality requires a
-    # clinically matched administration, which this arithmetic guard cannot infer.
-    treatment_scope = re.search(r"\b(?:anti[- ]?cancer (?:therapy|treatment)|systemic (?:therapy|treatment)|chemotherapy|therapy)\b", item.criterion_text, re.I)
-    if not treatment_scope:
-        return None
-    scope_text = re.sub(r"\([^)]*\)", "", item.criterion_text).split(";")[0]
-    if re.search(r"\b(?:radiation|radiotherapy|targeted|inhibitor|immunotherapy|antibod\w*)\b", scope_text, re.I):
-        return None
+    prefix = "Computed time-window guard: "
+    index = item.window_evidence_index
+    if index is None or index >= len(item.patient_evidence):
+        return "UNKNOWN", prefix + "missing selected dated event citation (missing dated administration or planned first-dose reference date)."
+    selected = item.patient_evidence[index]
+    if not selected.quote_verified or not selected.date or selected.date not in selected.evidence_text:
+        return "UNKNOWN", prefix + "selected event has no verified event date in its quote."
+    if selected.source_kind == "medication_list" or selected.category == "planned_study_event":
+        return "UNKNOWN", prefix + "selected record is a snapshot or planned event, not an actual dated event."
     cited = [e for e in item.patient_evidence if e.quote_verified]
-    references, events = [], []
-    for e in cited:
-        # Legacy evidence may contain an explicitly dated study-dose anchor in
-        # the same verified quote as the administration. Preserve that support.
-        for anchor in re.finditer("(?:" + STUDY_REFERENCE.pattern + r")\s*(?:date)?\s*(?:is|was|on|scheduled for|planned for|:|=)?\s*(\d{4}-\d{2}-\d{2})\b", e.evidence_text, re.I):
-            try:
-                references.append(date.fromisoformat(anchor.group(anchor.re.groups)))
-            except ValueError:
-                pass
-        if not e.date or e.date not in e.evidence_text:
-            continue
-        try:
-            day = date.fromisoformat(e.date)
-        except ValueError:
-            continue
-        if e.category == "planned_study_event" and re.search(r"first[ -]+(?:study[ -]+|trial[ -]+)?dose|cycle\s+1\s+day\s+1", e.evidence_text, re.I):
-            references.append(day)
-        elif e.category == "prior_treatment" and e.source_kind != "medication_list" and not MEDICATION_LIST.search(e.source_file):
-            if re.search(r"\b(?:administered|given|received|infused|last dose|stopped|discontinued)\b", e.evidence_text, re.I) and not re.search(r"\b(?:not|never)\s+(?:administered|given|received)|\b(?:planned|scheduled|discussed)\b", e.evidence_text, re.I):
-                events.append(day)
-    if not references or not events:
-        return "UNKNOWN", "Computed time-window guard: missing dated administration or planned first-dose reference date."
-    if len(set(references)) != 1:
-        return "UNKNOWN", "Computed time-window guard: conflicting planned first-dose reference dates; reviewer must reconcile them."
-    reference = references[0]
+    try:
+        event = date.fromisoformat(selected.date)
+        references = {date.fromisoformat(e.date) for e in cited if e.category == "planned_study_event" and e.date and e.date in e.evidence_text}
+    except ValueError:
+        return "UNKNOWN", prefix + "event or reference date is not a complete calendar date."
+    if not references:
+        return "UNKNOWN", prefix + "missing dated administration or planned first-dose reference date."
+    if len(references) != 1:
+        return "UNKNOWN", prefix + "conflicting planned first-dose reference dates; reviewer must reconcile them."
+    reference = next(iter(references))
     amount = int(window[1]) if window[1].isdigit() else NUMBER_WORDS[window[1].lower()]
     unit = window[2].lower()
     if unit.startswith(('day', 'week')):
@@ -338,16 +324,15 @@ def computed_study_window(item: CriterionAssessment) -> tuple[str, str] | None:
         months = amount * (12 if unit.startswith('year') else 1)
         year, month = divmod(reference.year * 12 + reference.month - 1 - months, 12)
         if year < 1:
-            return "UNKNOWN", "Computed time-window guard: unsupported calendar boundary."
+            return "UNKNOWN", prefix + "unsupported calendar boundary."
         month += 1
         lower = date(year, month, min(reference.day, calendar.monthrange(year, month)[1]))
-    inside = [day for day in events if lower <= day <= reference]
-    event = max(inside or events)
     interval = (reference - event).days
-    detail = f"Computed time-window guard: administration {event.isoformat()}, planned first dose {reference.isoformat()}; code-computed interval {interval} days; window {amount} {unit} (starts {lower.isoformat()})."
-    if inside:
-        return "DOES_NOT_MEET", detail + " Documented administration is inside the window; the exclusion appears to apply. Planned dates require human verification."
-    return "UNKNOWN", detail + " No cited administration is inside the window; absence of later therapy is not established."
+    detail = f"{prefix}selected event {event.isoformat()}, planned first dose {reference.isoformat()}; code-computed interval {interval} days; window {amount} {unit} (starts {lower.isoformat()})."
+    if lower <= event <= reference:
+        return "DOES_NOT_MEET", detail + " Documented event is inside the window; the exclusion appears to apply. Planned dates require human verification."
+    return "UNKNOWN", detail + " Outside the window; absence of later events is not established."
+
 
 def has_biomarker_treatment_reasoning(explanation: str) -> bool:
     """Flag inference language linking a test finding to treatment, not citations."""

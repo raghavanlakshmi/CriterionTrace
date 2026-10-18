@@ -13,7 +13,7 @@ def event(category, day, quote):
 def assess(events, text='Anti-cancer therapy within 4 weeks before first study dose'):
     return review_assessments([CriterionAssessment(criterion_id='EXC-01', criterion_type='exclusion',
         criterion_text=text, status='UNKNOWN', method='llm', patient_evidence=events,
-        explanation='Dates need review.')])
+        explanation='Dates need review.', window_evidence_index=0)])
 
 
 @pytest.mark.parametrize('day,expected,interval', [('2026-04-08', 'DOES_NOT_MEET', 12),
@@ -34,7 +34,7 @@ def test_missing_reference_is_unknown_and_flagged():
 
 
 def test_medication_snapshot_is_not_an_administration():
-    medication = event('current_medication', '2026-04-08', 'Drug listed 2026-04-08.')
+    medication = event('current_medication', '2026-04-08', 'Drug listed 2026-04-08.').model_copy(update={'source_kind': 'medication_list'})
     reviewed, _ = assess([medication, event('planned_study_event', '2026-04-20', 'First study dose scheduled 2026-04-20.')])
     assert reviewed[0].status == 'UNKNOWN'
 
@@ -88,13 +88,17 @@ def test_actual_administration_mistagged_as_plan_is_not_verified_as_plan():
     assert not verify_quotes([event('planned_study_event', '2026-06-01', quote)], [page])[0].quote_verified
 
 
-def test_computable_window_bypasses_model_and_retains_both_sources():
+def test_model_selects_window_record_and_retains_both_sources():
     from src.eligibility import assess_free_text_criterion
     from src.schemas import TrialCriterion
     facts = [event('prior_treatment', '2026-06-01', 'Chemotherapy administered 2026-06-01.'),
         event('planned_study_event', '2026-06-15', 'First study dose scheduled for 2026-06-15.')]
+    from types import SimpleNamespace
+    from src.eligibility import _LLMAssessment
+    client = SimpleNamespace(responses=SimpleNamespace(parse=lambda **kw: SimpleNamespace(output=[], output_parsed=_LLMAssessment(status="APPLIES",evidence_indices=[0,1],window_evidence_index=0,explanation="The exclusion applies."))))
     result = assess_free_text_criterion(TrialCriterion(criterion_id='EXC-01', type='exclusion',
-        text='Anti-cancer therapy within 4 weeks before first study dose'), facts, [], client=None)
-    assert result.status == 'DOES_NOT_MEET' and result.method == 'rule'
+        text='Anti-cancer therapy within 4 weeks before first study dose'), facts, [], client=client)
+    assert result.status == 'DOES_NOT_MEET' and result.method == 'llm'
     assert result.patient_evidence == facts
-    assert 'code-computed interval 14 days' in result.explanation
+    reviewed, flags = review_assessments([result])
+    assert 'code-computed interval 14 days' in reviewed[0].explanation
