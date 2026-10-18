@@ -35,7 +35,7 @@ criteria. Do not make recommendations or clinical eligibility decisions.
 Each fact requires its exact source_file, one-based source_page, and an exact
 evidence_text quote copied from that page, not a paraphrase. Use the filenames
 and page numbers supplied in the input. Keep value close to the explicit source
-wording. normalized_value is optional; it must not add information. Preserve
+wording. Include the complete supporting source sentence as the quote when a fact is in narrative text; retain its context and negations. normalized_value is optional; it must not add information. Preserve
 the fact date when documented, otherwise the document date when present; copy
 the date as written. If neither is available, date must be null.
 
@@ -292,7 +292,7 @@ def _request_evidence(client: OpenAI, model: str, pages: list[DocumentPage]) -> 
             # Unsupported metadata must not become a made-up date.
             item.date = None
             LOGGER.warning("Undocumented date removed: %s, page %d", item.source_file, item.source_page)
-    return verify_quotes(items, pages)
+    return complete_quote_context(verify_quotes(items, pages), pages)
 
 
 def extract_evidence(
@@ -355,25 +355,77 @@ ADMINISTRATIVE_LINE = re.compile(
 )
 
 
+def content_sentences(page: DocumentPage) -> list[tuple[int, str]]:
+    """Join PDF wraps while keeping labelled fields and page boundaries intact."""
+    sentences = []
+    pending = []
+    first_line = 1
+    def flush():
+        if pending:
+            text = " ".join(pending)
+            for sentence in re.split(r"(?<=[.!?])\s+(?=[A-Z0-9])", text):
+                if sentence.strip():
+                    sentences.append((first_line, sentence.strip()))
+            pending.clear()
+    for number, raw in enumerate(page.text.splitlines(), 1):
+        line = raw.strip()
+        if not line:
+            flush()
+            continue
+        heading = (len(line.split()) <= 8 and not re.search(r"[.!?:;\d]", line)
+                   and (line.istitle() or bool(re.search(
+                       r"\b(?:summary|history|plan|findings|values|consultation|follow-up|overview|letter|results)\s*$", line, re.I))))
+        if ADMINISTRATIVE_LINE.fullmatch(line) or heading or (line.endswith(':') and len(line.split()) <= 8):
+            flush()
+            continue
+        labelled = bool(re.match(r"^[\w ()/-]{1,50}:", line))
+        if labelled:
+            flush()
+        if not pending:
+            first_line = number
+        pending.append(line)
+        if re.search(r"[.!?]$", line) or labelled:
+            flush()
+    flush()
+    return sentences
+
+
+
+def complete_quote_context(evidence: Iterable[EvidenceItem], pages: Iterable[DocumentPage]) -> list[EvidenceItem]:
+    """Keep the complete source sentence around a verified fragment quote.
+
+    Fact values stay unchanged. This is source context, not additional extracted
+    facts or a claim that every assertion within the sentence was understood.
+    """
+    page_list = list(pages)
+    sources = {(p.filename, p.page_number): p for p in page_list}
+    result = []
+    for fact in evidence:
+        page = sources.get((fact.source_file, fact.source_page))
+        if fact.quote_verified and page is not None:
+            for _, sentence in content_sentences(page):
+                if _quote_present(fact.evidence_text, sentence):
+                    fact = fact.model_copy(update={"evidence_text": sentence})
+                    break
+        result.append(fact)
+    return verify_quotes(result, page_list)
+
 def uncovered_content_lines(pages: Iterable[DocumentPage], evidence: Iterable[EvidenceItem]) -> list[dict]:
-    """Measure literal line coverage, not clinical correctness or model confidence."""
+    """Report uncovered sentences after whitespace-normalized quote coverage.
+
+    The public function name and line_number remain for saved-output compatibility;
+    line_number identifies the sentence's starting source line, not a raw-line gap.
+    """
     page_list = list(pages)
     verified = verify_quotes(evidence, page_list)
     gaps = []
     for page in page_list:
         quotes = [_normalize(e.evidence_text) for e in verified
                   if e.quote_verified and (e.source_file, e.source_page) == (page.filename, page.page_number)]
-        for number, line in enumerate(page.text.splitlines(), 1):
-            line = line.strip()
-            if not line or ADMINISTRATIVE_LINE.fullmatch(line):
-                continue
-            # A short heading ending in ':' has no fact value. Never ignore a
-            # labelled fact such as 'Diagnosis: ...' or a family-history line.
-            if line.endswith(':') and len(line.split()) <= 8:
-                continue
-            if not any(_normalize(line) in quote for quote in quotes):
+        for sentence_number, (number, sentence) in enumerate(content_sentences(page), 1):
+            if not any(_normalize(sentence) in quote for quote in quotes):
                 gaps.append({'source_file': page.filename, 'source_page': page.page_number,
-                             'line_number': number, 'text': line,
+                             'line_number': number, 'sentence_number': sentence_number, 'text': sentence,
                              'message': 'Not captured by the tool, review manually'})
     return gaps
 

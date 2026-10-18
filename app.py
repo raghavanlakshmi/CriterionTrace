@@ -241,7 +241,7 @@ def render_review_checklist(evidence: list[EvidenceItem], extraction_gaps: list[
     st.markdown("<span class='tm-muted'>Items the system will not resolve on its own. Record your decision, then download the review summary.</span>", unsafe_allow_html=True)
     notes = {}
     for gap in extraction_gaps or []:
-        st.warning(f"Not captured by the tool, review manually: {gap['source_file']} p{gap['source_page']}, line {gap['line_number']}: {gap['text']}")
+        st.warning(f"Not captured by the tool, review manually: {gap['source_file']} p{gap['source_page']}, sentence {gap.get('sentence_number', gap['line_number'])}: {gap['text']}")
     for group in groups:
         status = STATUS_UI[group.status][0] if group.status else "Unverified quote"
         with st.container(border=True):
@@ -253,7 +253,7 @@ def render_review_checklist(evidence: list[EvidenceItem], extraction_gaps: list[
                                   "sources": [f"{i.source_file} p{i.source_page}: {i.value}" for i in group.items]}
     lines = ["# CriterionTrace reviewer summary", f"Generated {datetime.now(timezone.utc):%Y-%m-%d %H:%M} UTC", "", DISCLAIMER.replace("\n", " "), ""]
     for gap in extraction_gaps or []:
-        lines.append(f"- Not captured by the tool, review manually: {gap['source_file']} p{gap['source_page']}, line {gap['line_number']}: {gap['text']}")
+        lines.append(f"- Not captured by the tool, review manually: {gap['source_file']} p{gap['source_page']}, sentence {gap.get('sentence_number', gap['line_number'])}: {gap['text']}")
     for label, record in notes.items():
         lines.append(f"## {label} {DASH} {record['status']}")
         lines.append(f"- Reviewed: {'yes' if record['reviewed'] else 'no'}")

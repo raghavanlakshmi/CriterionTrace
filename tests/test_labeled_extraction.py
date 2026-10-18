@@ -28,7 +28,7 @@ def test_existing_label_quote_is_not_duplicated_by_deterministic_reader():
 
 
 def test_missing_placeholders_and_sex_inferred_from_relatives_do_not_cover_lines():
-    page = source('Finding A\nFamily history: mother had cancer')
+    page = source('Finding A.\nFamily history: mother had cancer')
     records = [EvidenceItem(category='sex', value='Male', source_file=page.filename,
         source_page=1, evidence_text='Family history: mother had cancer'),
         EvidenceItem(category='sex', value='UNKNOWN', source_file=page.filename,
