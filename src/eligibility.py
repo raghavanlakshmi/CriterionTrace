@@ -165,6 +165,15 @@ def conservative_assessment(criterion: TrialCriterion, evidence: list[EvidenceIt
     return CriterionAssessment(criterion_id=criterion.criterion_id, criterion_text=criterion.text, criterion_type=criterion.type, status=status, method="rule", patient_evidence=selected, explanation=explanation)
 
 
+class _LLMPart(BaseModel):
+    text: str
+    status: str
+    evidence_indices: list[int] = Field(default_factory=list)
+    explanation: str
+    clearance_basis: Literal["explicit_negative", "exception_only", "absence", "other"] | None = None
+    window_evidence_index: int | None = Field(default=None, ge=0)
+
+
 class _LLMAssessment(BaseModel):
     status: str
     evidence_indices: list[int] = Field(default_factory=list)
@@ -172,6 +181,7 @@ class _LLMAssessment(BaseModel):
     final_conclusion: Literal["APPLIES", "DOES_NOT_APPLY", "MEETS", "DOES_NOT_MEET", "UNKNOWN", "POTENTIAL_CONFLICT"] | None = None
     clearance_basis: Literal["explicit_negative", "exception_only", "absence", "other"] | None = None
     window_evidence_index: int | None = Field(default=None, ge=0)
+    parts: list[_LLMPart] = Field(default_factory=list)
 
 
 
@@ -203,6 +213,7 @@ Time-window criteria such as within 4 weeks need a dated administration or stop 
 Biomarkers describe test findings, not treatments. Never infer therapy or inhibitor exposure from a mutation; cite an explicit treatment or medication record.
 Some criteria are one option in a list (for example acceptable contraception methods) or a branch that applies only under a condition (for example "No liver mets: ..."). Return UNKNOWN for these unless the record shows the option or condition applies.
 For every EXCLUSION answered DOES_NOT_APPLY, return clearance_basis: explicit_negative only for a cited negative at the full criterion scope; exception_only when only allowed facts are documented; absence when nothing relevant is documented; otherwise other. An allowed condition never clears all other conditions in an exclusion.
+For compound EXCLUSIONS joined by OR or a list, return parts for EVERY condition separately, including non-temporal conditions. Copy each part text from the criterion, retaining its time-window anchor when applicable. For each part return its status (APPLIES/DOES_NOT_APPLY/UNKNOWN/POTENTIAL_CONFLICT), evidence_indices, clearance_basis, window_evidence_index and explanation. Do not drop the non-time-window conditions. Code combines part decisions. For a simple criterion return parts=[].
 Cite facts by their "index" field in evidence_indices. Also return final_conclusion using the same criterion-type vocabulary, stating the final conclusion of your explanation separately from status. Never say the patient is eligible or ineligible."""
     # Each fact carries its own index so the model cites it instead of counting list positions.
     # Unverified records remain in the review output, but are not candidate
@@ -233,7 +244,20 @@ Cite facts by their "index" field in evidence_indices. Also return final_conclus
     cited = [evidence[index] for index in accepted]
     selected = getattr(result, "window_evidence_index", None)
     local_index = accepted.index(selected) if selected is not None and selected in accepted else None
-    assessment = CriterionAssessment(criterion_id=criterion.criterion_id, criterion_text=criterion.text, criterion_type=criterion.type, status=status, method="llm", patient_evidence=cited, explanation=result.explanation, final_conclusion=getattr(result, "final_conclusion", None), clearance_basis=getattr(result, "clearance_basis", None), window_evidence_index=local_index)
+    parts = []
+    for number, part in enumerate(getattr(result, "parts", []), 1):
+        indices = [i for i in part.evidence_indices if 0 <= i < len(evidence) and evidence[i].quote_verified]
+        selected = part.window_evidence_index
+        part_status = _project_status(criterion.type, part.status) or "UNKNOWN"
+        # Reject fabricated clauses; punctuation/whitespace alone may differ.
+        if " ".join(part.text.lower().split()) not in " ".join(criterion.text.lower().split()):
+            part_status = "UNKNOWN"
+        parts.append(CriterionAssessment(criterion_id=f"{criterion.criterion_id}/part{number}",
+            criterion_text=part.text, criterion_type=criterion.type, status=part_status,
+            method="llm", patient_evidence=[evidence[i] for i in indices], explanation=part.explanation,
+            clearance_basis=part.clearance_basis,
+            window_evidence_index=indices.index(selected) if selected is not None and selected in indices else None))
+    assessment = CriterionAssessment(criterion_id=criterion.criterion_id, criterion_text=criterion.text, criterion_type=criterion.type, status=status, method="llm", patient_evidence=cited, explanation=result.explanation, final_conclusion=getattr(result, "final_conclusion", None), clearance_basis=getattr(result, "clearance_basis", None), window_evidence_index=local_index, parts=parts)
     baseline = conservative_assessment(criterion, evidence)
     if baseline.status == "POTENTIAL_CONFLICT":
         # The existing deterministic comparator checks all verified values.
