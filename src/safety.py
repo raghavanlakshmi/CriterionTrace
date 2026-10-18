@@ -7,6 +7,7 @@ import calendar
 from datetime import date, timedelta
 
 from .schemas import CriterionAssessment
+from .date_math import date_bounds, date_in_quote, window_start
 
 
 DISCLAIMER = (
@@ -301,13 +302,16 @@ def computed_study_window(item: CriterionAssessment) -> tuple[str, str] | None:
     if index is None or index >= len(item.patient_evidence):
         return "UNKNOWN", prefix + "missing selected dated event citation (missing dated administration or planned first-dose reference date)."
     selected = item.patient_evidence[index]
-    if not selected.quote_verified or not selected.date or selected.date not in selected.evidence_text:
+    event_date = selected.end_date or selected.date or selected.start_date
+    if not selected.quote_verified or not event_date or not date_in_quote(event_date, selected.evidence_text):
         return "UNKNOWN", prefix + "selected event has no verified event date in its quote."
-    if selected.source_kind == "medication_list" or selected.category == "planned_study_event":
+    if (selected.source_kind == "medication_list" and not selected.end_date) or selected.category == "planned_study_event":
         return "UNKNOWN", prefix + "selected record is a snapshot or planned event, not an actual dated event."
     cited = [e for e in item.patient_evidence if e.quote_verified]
     try:
-        event = date.fromisoformat(selected.date)
+        bounds = date_bounds(event_date)
+        if bounds is None: raise ValueError("unsupported precision")
+        earliest, event = bounds
         references = {date.fromisoformat(e.date) for e in cited if e.category == "planned_study_event" and e.date and e.date in e.evidence_text}
     except ValueError:
         return "UNKNOWN", prefix + "event or reference date is not a complete calendar date."
@@ -318,18 +322,17 @@ def computed_study_window(item: CriterionAssessment) -> tuple[str, str] | None:
     reference = next(iter(references))
     amount = int(window[1]) if window[1].isdigit() else NUMBER_WORDS[window[1].lower()]
     unit = window[2].lower()
-    if unit.startswith(('day', 'week')):
-        lower = reference - timedelta(days=amount * (7 if unit.startswith('week') else 1))
-    else:
-        months = amount * (12 if unit.startswith('year') else 1)
-        year, month = divmod(reference.year * 12 + reference.month - 1 - months, 12)
-        if year < 1:
-            return "UNKNOWN", prefix + "unsupported calendar boundary."
-        month += 1
-        lower = date(year, month, min(reference.day, calendar.monthrange(year, month)[1]))
+    try:
+        lower = window_start(reference, amount, unit)
+    except (ValueError, OverflowError):
+        return "UNKNOWN", prefix + "unsupported calendar boundary."
     interval = (reference - event).days
     detail = f"{prefix}selected event {event.isoformat()}, planned first dose {reference.isoformat()}; code-computed interval {interval} days; window {amount} {unit} (starts {lower.isoformat()})."
-    if lower <= event <= reference:
+    if earliest != event:
+        detail += f" Source precision {event_date}; possible event range {earliest} through {event}."
+        if (lower <= earliest <= reference) != (lower <= event <= reference):
+            return "UNKNOWN", detail + " Month-only date straddles the window boundary."
+    if lower <= event <= reference and lower <= earliest <= reference:
         return "DOES_NOT_MEET", detail + " Documented event is inside the window; the exclusion appears to apply. Planned dates require human verification."
     return "UNKNOWN", detail + " Outside the window; absence of later events is not established."
 

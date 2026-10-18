@@ -52,6 +52,7 @@ FACTS_TO_LOOK_FOR = {
     "ast": "AST with units",
     "alt": "ALT with units",
     "other_labs": "All other documented laboratory results with units",
+    "treatment_courses": "Course start and end/last-dose dates at source precision, route and dosage form",
     "treatment_administrations": "Every treatment administration, cycle and administration date",
     "past_medical_history": "Past medical history, including prior cancers",
     "surgical_history": "Surgical history and procedure dates",
