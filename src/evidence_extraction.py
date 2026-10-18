@@ -22,6 +22,7 @@ from pydantic import BaseModel, ConfigDict, Field, ValidationError
 
 from .config import DEFAULT_EXTRACTION_MODEL, FACTS_TO_LOOK_FOR
 from .schemas import DocumentPage, EvidenceCategory, EvidenceItem
+from .date_math import date_in_quote
 
 
 LOGGER = logging.getLogger(__name__)
@@ -54,6 +55,7 @@ Extract every documented treatment administration separately, including drug
 or regimen, cycle when stated, and administration date. Its date must be the
 administration date, not the date of a later summary. A drug start date is not
 proof of a subsequent dose or stop date.
+For a treatment course, return start_date and end_date (last dose or completion) exactly at the precision stated. Keep date for single events. A month-only completion stays month-only; never invent a day or infer a last dose from duration alone. Preserve route, dosage form and dose in the fact value and quote. This applies to all therapies, including non-cancer medications.
 Family history describes relatives, not patient conditions; do not extract it
 as a patient fact.
 A dated medication list is a snapshot: keep the list's document date in date,
@@ -89,6 +91,8 @@ class _ExtractedFact(BaseModel):
     value: str = Field(min_length=1)
     normalized_value: str | None = None
     date: str | None = None
+    start_date: str | None = None
+    end_date: str | None = None
     source_file: str = Field(min_length=1)
     source_page: int = Field(ge=1, strict=True)
     evidence_text: str = Field(min_length=1)
@@ -236,6 +240,14 @@ def verify_quotes(
             update["date"] = dates[0] if verified and len(set(dates)) == 1 else None
             if not _is_patient_fact(item):
                 update["quote_verified"] = False
+        # Explicit numeric ranges enrich metadata, never generate new patient facts.
+        interval = re.search(r"(\d{4}-\d{2}-\d{2})\s*(?:through|to|until|[??])\s*(\d{4}-\d{2}-\d{2})", item.evidence_text, re.I)
+        if verified and interval:
+            update["start_date"], update["end_date"] = interval.groups()
+        for key in ("start_date", "end_date"):
+            value = update.get(key, getattr(item, key))
+            if value and not date_in_quote(value, item.evidence_text):
+                update[key] = None
         verified_items.append(item.model_copy(update=update))
         if not verified:
             LOGGER.warning("Unverified quote: %s, page %d", item.source_file, item.source_page)

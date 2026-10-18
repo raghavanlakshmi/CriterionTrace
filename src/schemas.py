@@ -44,6 +44,8 @@ class EvidenceItem(BaseModel):
     value: str = Field(min_length=1)
     normalized_value: str | None = None
     date: str | None = None
+    start_date: str | None = None
+    end_date: str | None = None
     source_file: str = Field(min_length=1)
     source_page: int = Field(ge=1, strict=True)
     evidence_text: str = Field(min_length=1, description="Exact quote copied from source page text")
