@@ -9,7 +9,7 @@ from typing import Literal
 
 from pydantic import ValidationError
 
-from .config import FACTS_TO_LOOK_FOR
+from .config import FACTS_TO_LOOK_FOR, REVIEW_FACT_KEYS
 from .evidence_extraction import EvidenceExtractionError, verify_quotes
 from .schemas import DocumentPage, EvidenceItem
 
@@ -110,7 +110,7 @@ def _comparison_value(key: str, item: EvidenceItem) -> str:
 
 def build_evidence_groups(evidence: Iterable[EvidenceItem]) -> list[EvidenceGroup]:
     """Include all checklist facts; missing verified support remains UNKNOWN."""
-    grouped = {key: [] for key in FACTS_TO_LOOK_FOR}
+    grouped = {key: [] for key in REVIEW_FACT_KEYS}
     for item in evidence:
         keys = _checklist_keys(item) or [_extra_key(item)]
         for key in keys:

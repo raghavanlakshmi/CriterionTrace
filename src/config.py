@@ -44,4 +44,23 @@ FACTS_TO_LOOK_FOR = {
     "prior_kras_g12c_inhibitor": "Prior KRAS G12C inhibitor",
     "ecog": "ECOG",
     "anc": "Absolute neutrophil count (ANC)",
+    "braf_status": "BRAF status",
+    "hemoglobin": "Hemoglobin with units",
+    "platelets": "Platelets with units",
+    "creatinine": "Creatinine with units",
+    "bilirubin": "Bilirubin with units",
+    "ast": "AST with units",
+    "alt": "ALT with units",
+    "other_labs": "All other documented laboratory results with units",
+    "treatment_administrations": "Every treatment administration, cycle and administration date",
+    "past_medical_history": "Past medical history, including prior cancers",
+    "surgical_history": "Surgical history and procedure dates",
+    "biopsy": "Biopsy site and findings",
 }
+
+# Keep the prepared demo's review checklist stable. Broader extraction facts
+# appear as source evidence when found; their absence is covered by line review.
+REVIEW_FACT_KEYS = (
+    "age", "sex", "diagnosis", "kras_status", "msi_status", "prior_therapies",
+    "prior_kras_g12c_inhibitor", "ecog", "anc",
+)

@@ -42,6 +42,18 @@ the date as written. If neither is available, date must be null.
 Extract age, sex, diagnosis, explicitly stated cancer stage, metastatic sites,
 biomarkers, documented prior treatment, current medications, performance
 status, labs with units, and comorbidities. Use the provided category enum.
+The checklist is a minimum, not a limit. Extract every explicitly stated
+patient fact on every page, including every laboratory result with its analyte
+and units, all biomarkers, biopsy site and findings, past medical history
+(including prior cancers), and surgical history. Use diagnosis for biopsy
+findings, prior_treatment for procedures and administrations, and comorbidity
+for past conditions; no new categories are needed.
+Extract every documented treatment administration separately, including drug
+or regimen, cycle when stated, and administration date. Its date must be the
+administration date, not the date of a later summary. A drug start date is not
+proof of a subsequent dose or stop date.
+Family history describes relatives, not patient conditions; do not extract it
+as a patient fact.
 Split separate facts into separate records. Retain all differing values for
 the same fact as separate records with their own sources and dates. Do not
 select a preferred value, merge conflicts, or infer change from date proximity.

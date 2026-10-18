@@ -6,7 +6,7 @@ from pathlib import Path
 import pytest
 from streamlit.testing.v1 import AppTest
 
-from src.config import FACTS_TO_LOOK_FOR
+from src.config import REVIEW_FACT_KEYS
 from src.evidence_view import (
     EvidenceViewError, build_evidence_groups, load_prepared_evidence, source_file_path,
 )
@@ -43,7 +43,7 @@ def test_prepared_patient_has_one_ecog_conflict_and_one_unknown_fact():
 
 def test_all_checklist_facts_remain_unknown_with_no_evidence():
     groups = by_key([])
-    assert set(groups) == set(FACTS_TO_LOOK_FOR)
+    assert set(groups) == set(REVIEW_FACT_KEYS)
     assert all(group.status == "UNKNOWN" and group.items == [] for group in groups.values())
 
 
