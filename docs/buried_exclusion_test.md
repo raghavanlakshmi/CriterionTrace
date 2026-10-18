@@ -51,6 +51,62 @@ The washout is a judgment call: the last dose was 2026-03-20, but whether that i
 **Review and sign off on the labels before the first live run, then do not change them after
 seeing results.** Record your sign-off in each file's `label_status`.
 
+## Results (first blind run and two confirmation runs)
+
+The first run found all three buried exclusions. Fresh reruns exposed a reliability gap:
+on run3, extraction missed the prostate-cancer history, so that exclusion stayed UNKNOWN.
+The two drug exclusions were detected in all three runs.
+
+Expected labels were approved in chat before run1 and were unchanged throughout. The label
+commit was made after run1 results were reviewed; its timestamp does not establish pre-run
+label freezing. Runs 2 and 3 were confirmation runs after that review, with fresh extraction
+(no `--reuse-evidence`) and no pipeline changes. An interrupted repeat was not counted.
+Extraction and assessment used `gpt-4.1-mini`.
+
+| Run | Variant | Exact labels | Accepted labels | Unsafe false clearances |
+|---|---|---|---|---|
+| 1 | Buried exclusions | 6/7 | 7/7 | 0 |
+| 1 | Control | 7/7 | 7/7 | 0 |
+| 2 | Buried exclusions | 7/7 | 7/7 | 0 |
+| 2 | Control | 6/7 | 7/7 | 0 |
+| 3 | Buried exclusions | 5/7 | 6/7 | 0 |
+| 3 | Control | 7/7 | 7/7 | 0 |
+
+These are final LLM assessments after safety review. “Accepted” includes the predefined
+washout alternative, DOES_NOT_MEET, where the primary label is UNKNOWN. Across all three
+runs, 38/42 labels matched exactly and 41/42 were accepted. Those totals do not establish
+clinical validity or sound reasoning for every accepted answer.
+
+- **Buried malignancy:** detected in 2/3 runs. Run3's miss originated in extraction;
+  the assessor lacked the prostate-cancer evidence and returned UNKNOWN.
+- **Buried drug:** sotorasib was extracted in 3/3 runs, and both associated exclusions
+  were flagged in 3/3 runs.
+- **Control:** all three corresponding exclusions stayed UNKNOWN in every run.
+  All inclusion sanity checks were MEETS across both variants and all runs.
+- **Safety review:** zero unsafe false clearances survived review. In run2's buried
+  variant, the safety guard changed an unsupported washout clearance to UNKNOWN.
+  This demonstrates a guard intervention, not consistently safe raw model reasoning.
+- **Extraction coverage:** family history was never extracted in any of the six
+  evaluations. The last chemotherapy date was extracted only in run2's control.
+  The control therefore does not establish that the assessor distinguishes family
+  history when that fact is explicitly present in extracted evidence.
+- **Washout reasoning:** remained unreliable. Some explanations assumed a study dose
+  date or substituted a note date. The record supplies no first study dose date;
+  UNKNOWN remains the supported cautious result without additional timing evidence.
+  The accepted alternative does not validate these explanations.
+
+The finding for this prototype: buried evidence can change a prescreening assessment,
+but finding it once does not establish repeatability. The next work is extraction coverage
+and temporal reasoning. This test evaluates fixed criteria, not app retrieval or ranked
+trial selection. Synthetic data only; not clinical validation.
+
+Reports, evidence, and approved labels are preserved in
+[`run1`](../data/eval/syn002_runs/run1/),
+[`run2`](../data/eval/syn002_runs/run2/), and
+[`run3`](../data/eval/syn002_runs/run3/).
+See the [comparison summary](../data/eval/syn002_runs/confirmation_summary.md) and
+[label provenance](syn002_label_provenance.md).
+
 ## Run it
 
 From the repository root, with `OPENAI_API_KEY` in `.env`:
