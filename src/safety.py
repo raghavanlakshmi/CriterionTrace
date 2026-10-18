@@ -447,6 +447,23 @@ def date_comparison_problem(item: CriterionAssessment) -> str | None:
             return "Date-comparison guard: source date precision cannot verify the explanation's comparison."
     return None
 
+
+def unsupported_category_inference(item: CriterionAssessment) -> tuple[bool, str] | None:
+    """A hedged category link is reasoning, not a source-supported diagnosis."""
+    candidates = []
+    for match in re.finditer(r"\b(?:likely|probably|suggests|consistent with|may represent)\s+(?:an?\s+)?([a-z][a-z-]*(?:\s+[a-z][a-z-]*){0,2})", item.explanation, re.I):
+        if re.search(r"\b(?:not|no)\s*$",item.explanation[max(0,match.start()-10):match.start()],re.I):
+            continue
+        phrase = re.split(r"\b(?:because|as|and|but|is|was|which|that)\b",match[1],flags=re.I)[0]
+        phrase = re.sub(r"[- ]related\b", "", phrase, flags=re.I)
+        candidates.extend(_terms(phrase))
+    unsupported = sorted({term for term in candidates if not any(
+        e.quote_verified and term in _terms(e.evidence_text) for e in item.patient_evidence)})
+    if not unsupported:
+        return None
+    depends = item.status in {"MEETS", "DOES_NOT_MEET"} and bool(set(unsupported) & _terms(item.criterion_text))
+    return depends, "Unsupported category-inference guard: hedged category link has no verified quote stating " + ", ".join(unsupported) + "."
+
 def is_compound_window(text: str) -> bool:
     # Only top-level connectors; alternatives inside an example list in
     # parentheses do not silently become separate clinical requirements.
@@ -478,6 +495,10 @@ def review_assessments(assessments: list[CriterionAssessment], *, _part: bool = 
             if reason := date_comparison_problem(item):
                 status = "UNKNOWN"
                 child_flags.append(f"{item.criterion_id}: {reason} Converted to UNKNOWN.")
+            if inference := unsupported_category_inference(item):
+                depends, reason = inference
+                if depends: status = "UNKNOWN"
+                child_flags.append(f"{item.criterion_id}: {reason}" + (" Converted to UNKNOWN." if depends else " Review reasoning."))
             if INVESTIGATOR_JUDGMENT.search(item.criterion_text):
                 status = "UNKNOWN"
                 child_flags.append(f"{item.criterion_id}: investigator-judgment criterion converted to UNKNOWN.")
@@ -541,6 +562,11 @@ def review_assessments(assessments: list[CriterionAssessment], *, _part: bool = 
             else:
                 update = {"status": "UNKNOWN", "explanation": "Biomarker-to-treatment inference has no cited treatment evidence; converted to UNKNOWN. Original reasoning: " + item.explanation}
                 flags.append(flag + "; no supported treatment citation, converted to UNKNOWN.")
+        if inference := unsupported_category_inference(item):
+            depends, reason = inference
+            if depends:
+                update = {"status": "UNKNOWN", "explanation": reason + " Converted to UNKNOWN. Original reasoning: " + item.explanation}
+            flags.append(f"{item.criterion_id}: {reason}" + (" Converted to UNKNOWN." if depends else " Review reasoning."))
         explanation = update.get('explanation', item.explanation)
         corrected = snapshot_explanation(item, explanation)
         if corrected != explanation:
