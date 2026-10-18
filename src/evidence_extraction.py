@@ -47,7 +47,9 @@ patient fact on every page, including every laboratory result with its analyte
 and units, all biomarkers, biopsy site and findings, past medical history
 (including prior cancers), and surgical history. Use diagnosis for biopsy
 findings, prior_treatment for procedures and administrations, and comorbidity
-for past conditions; no new categories are needed.
+for past conditions. Use planned_study_event for explicitly planned or scheduled
+study events, including first study dose or cycle 1 day 1. Record the scheduled
+event date in date, not the letter date, with the exact supporting quote.
 Extract every documented treatment administration separately, including drug
 or regimen, cycle when stated, and administration date. Its date must be the
 administration date, not the date of a later summary. A drug start date is not
@@ -172,6 +174,31 @@ def extract_labeled_facts(pages: Iterable[DocumentPage]) -> list[EvidenceItem]:
                 items.append(item)
     return verify_quotes(items, page_list)
 
+
+
+def extract_planned_study_events(pages: Iterable[DocumentPage]) -> list[EvidenceItem]:
+    """Retain explicit scheduled events without converting them into actual doses."""
+    page_list = list(pages)
+    items = []
+    for page in page_list:
+        if page.extraction_method == "OCR_REQUIRED":
+            continue
+        text = " ".join(line.strip() for line in page.text.splitlines() if not ADMINISTRATIVE_LINE.fullmatch(line.strip()))
+        for match in re.finditer(r"[^.!?]+[.!?]?", text):
+            quote = match.group().strip()
+            if not re.search(r"\b(?:scheduled|planned)\b", quote, re.I):
+                continue
+            if not re.search(r"\b(?:study|trial)\b", quote, re.I):
+                continue
+            if not re.search(r"first[ -]+(?:study[ -]+|trial[ -]+)?dose|cycle\s+1\s+day\s+1", quote, re.I):
+                continue
+            dates = re.findall(r"\b\d{4}-\d{2}-\d{2}\b", quote)
+            if len(dates) != 1 or "[unreadable]" in quote.casefold():
+                continue
+            items.append(EvidenceItem(category="planned_study_event", value=quote,
+                date=dates[0], source_file=page.filename, source_page=page.page_number,
+                evidence_text=quote))
+    return verify_quotes(items, page_list)
 
 def verify_quotes(
     evidence: Iterable[EvidenceItem], pages: Iterable[DocumentPage]
@@ -351,7 +378,7 @@ def complete_extraction(pages: Iterable[DocumentPage], evidence: Iterable[Eviden
     page_list = list(pages)
     items = verify_quotes((e for e in evidence if _is_patient_fact(e)), page_list)
     # Deterministic fields must be present before measuring recovery needs.
-    for explicit in extract_labeled_facts(page_list):
+    for explicit in extract_labeled_facts(page_list) + extract_planned_study_events(page_list):
         if not any(e.quote_verified and e.category == explicit.category
                    and (e.source_file, e.source_page) == (explicit.source_file, explicit.source_page)
                    and _normalize(explicit.evidence_text) == _normalize(e.evidence_text) for e in items):

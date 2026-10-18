@@ -26,6 +26,7 @@ EvidenceCategory = Literal[
     "performance_status",
     "lab",
     "comorbidity",
+    "planned_study_event",
 ]
 
 

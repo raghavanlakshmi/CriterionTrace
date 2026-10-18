@@ -47,7 +47,7 @@ def test_documented_study_reference_and_dated_event_are_not_blocked():
     item = evidence().model_copy(update={'evidence_text': 'Treatment administered 2026-01-05; first study dose: 2026-01-10'})
     result, flags = review_assessments([decision([item], text='Therapy within 4 weeks before first study dose')])
     assert result[0].status == 'DOES_NOT_MEET'
-    assert flags == []
+    assert any('code-computed interval 5 days' in f for f in flags)
 
 
 @pytest.mark.parametrize('wording', ['The patient is currently taking a targeted drug.',

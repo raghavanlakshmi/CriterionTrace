@@ -56,6 +56,7 @@ FACTS_TO_LOOK_FOR = {
     "past_medical_history": "Past medical history, including prior cancers",
     "surgical_history": "Surgical history and procedure dates",
     "biopsy": "Biopsy site and findings",
+    "planned_study_events": "Planned or scheduled study events, including first study dose or cycle 1 day 1 and its date",
 }
 
 # Keep the prepared demo's review checklist stable. Broader extraction facts
