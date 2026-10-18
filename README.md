@@ -148,4 +148,6 @@ recruitment changes. OCR and handwriting still need human review.
 
 ## Related work
 
+**[TrialGPT](https://www.nature.com/articles/s41467-024-53081-z)** (Jin et al., *Nature Communications* 15, 9074, 2024), "Matching patients to clinical trials with large language models," presents LLM-based patient-to-trial matching through trial retrieval, criterion-level assessment and trial ranking.
+
 [TrialMatchAI](https://www.nature.com/articles/s41467-026-70509-w) (Abdallah et al., *Nature Communications* 17, 4472, 2026; [research code](https://github.com/cbib/TrialMatchAI)) is a separately developed clinical trial recommendation system. CriterionTrace is an independent educational prototype for evidence-traceable prescreening using synthetic patient records; it is not affiliated with that research project. Its synthetic evaluations do not establish clinical validity or provide a direct performance comparison with the published system. This repository was previously named TrialMatch AI.
