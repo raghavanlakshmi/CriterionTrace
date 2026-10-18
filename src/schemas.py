@@ -118,6 +118,7 @@ class CriterionAssessment(BaseModel):
     patient_evidence: list[EvidenceItem]
     explanation: str = Field(min_length=1)
     final_conclusion: Literal["APPLIES", "DOES_NOT_APPLY", "MEETS", "DOES_NOT_MEET", "UNKNOWN", "POTENTIAL_CONFLICT"] | None = None
+    clearance_basis: Literal["explicit_negative", "exception_only", "absence", "other"] | None = None
 
 
 class RetrievalChunk(BaseModel):

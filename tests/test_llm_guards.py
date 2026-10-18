@@ -94,10 +94,10 @@ BRAF = ev("biomarker", "BRAF: wild type")
     ("Other severe uncontrolled disorders (e.g., frequent seizures, hepatic failure).", [ECOG1, ECOG2], "UNKNOWN"),
     ("Any illness or medical history that would impact safety or compliance with study requirements", [ECOG1], "UNKNOWN"),
     ("Active brain metastases, unless adequately treated", [LIVER], "UNKNOWN"),
-    # Clearance by a documented fact about the same thing is kept.
-    ("Patients whose cancers possess BRAF V600 mutations are excluded.", [BRAF], "MEETS"),
-    ("Patients must not have mismatch repair deficient or microsatellite instability high cancers.", [MSS], "MEETS"),
-    ("Patients aged under 18 years", [AGE], "MEETS"),
+    # Round-three: topic overlap without an explicit negative basis is insufficient.
+    ("Patients whose cancers possess BRAF V600 mutations are excluded.", [BRAF], "UNKNOWN"),
+    ("Patients must not have mismatch repair deficient or microsatellite instability high cancers.", [MSS], "UNKNOWN"),
+    ("Patients aged under 18 years", [AGE], "UNKNOWN"),
 ])
 def test_exclusion_clearance_needs_evidence_about_the_exclusion(text, evidence, expected):
     reviewed, _ = review_assessments([llm("EXC-X", text, "MEETS", evidence, kind="exclusion")])

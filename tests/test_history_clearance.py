@@ -10,7 +10,7 @@ def decision(quote=None, status='MEETS', text='Other malignancies within 5 years
         evidence_text=quote, source_file='record.txt', source_page=1, quote_verified=True)]
     return CriterionAssessment(criterion_id='EXC-01', criterion_text=text,
         criterion_type='exclusion', status=status, method='llm', patient_evidence=facts,
-        explanation='Source record reviewed.')
+        explanation='Source record reviewed.', clearance_basis='explicit_negative')
 
 
 @pytest.mark.parametrize('quote,reason', [
