@@ -36,7 +36,7 @@ def test_unverified_quote_cannot_support_conclusion():
 def _llm_exclusion(text, evidence_text, value=None):
     from src.schemas import CriterionAssessment, EvidenceItem
     item = EvidenceItem(category="prior_treatment", value=value or evidence_text, source_file="note.pdf", source_page=1, evidence_text=evidence_text, quote_verified=True)
-    return CriterionAssessment(criterion_id="EXC-02", criterion_text=text, criterion_type="exclusion", status="MEETS", method="llm", patient_evidence=[item], explanation="Clear of exclusion.")
+    return CriterionAssessment(criterion_id="EXC-02", criterion_text=text, criterion_type="exclusion", status="MEETS", method="llm", patient_evidence=[item], explanation="Clear of exclusion.", clearance_basis="explicit_negative")
 
 
 def test_treatment_list_cannot_clear_prior_exposure_exclusion():

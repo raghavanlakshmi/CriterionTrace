@@ -14,8 +14,8 @@ from .schemas import CriterionAssessment, EvidenceItem, TrialCriterion, TrialRec
 from .tools import SOURCE_EVIDENCE_TOOL, ToolContext
 
 
-OVERALL_POTENTIAL = "Potential match — needs verification"
-OVERALL_EXCLUSION = "Apparent exclusion — needs verification"
+OVERALL_POTENTIAL = "Potential match â€” needs verification"
+OVERALL_EXCLUSION = "Apparent exclusion â€” needs verification"
 OVERALL_INSUFFICIENT = "Insufficient information"
 
 
@@ -140,7 +140,7 @@ def conservative_assessment(criterion: TrialCriterion, evidence: list[EvidenceIt
         selected = [i for i in verified if i.category == "diagnosis" and any(term in i.value.casefold() for term in ("colorectal", "colon", "rectal"))]
     elif "ecog" in text:
         selected = [i for i in verified if i.category == "performance_status" and "ecog" in i.value.casefold()]
-        limit_matches = re.findall(r"(?:≤|<=)\s*(\d)|0\s*[-–]\s*(\d)", text)
+        limit_matches = re.findall(r"(?:â‰¤|<=)\s*(\d)|0\s*[-â€“]\s*(\d)", text)
         limits = [int(left or right) for left, right in limit_matches]
         limits.extend(int(value) for value in re.findall(r"\b0\s+or\s+(\d)\b", text))
         values = [_number(i) for i in selected]
@@ -170,7 +170,18 @@ class _LLMAssessment(BaseModel):
     evidence_indices: list[int] = Field(default_factory=list)
     explanation: str
     final_conclusion: Literal["APPLIES", "DOES_NOT_APPLY", "MEETS", "DOES_NOT_MEET", "UNKNOWN", "POTENTIAL_CONFLICT"] | None = None
+    clearance_basis: Literal["explicit_negative", "exception_only", "absence", "other"] | None = None
 
+
+
+class _LLMInclusionAssessment(_LLMAssessment):
+    status: Literal["MEETS", "DOES_NOT_MEET", "UNKNOWN", "POTENTIAL_CONFLICT"]
+    final_conclusion: Literal["MEETS", "DOES_NOT_MEET", "UNKNOWN", "POTENTIAL_CONFLICT"] | None = None
+
+
+class _LLMExclusionAssessment(_LLMAssessment):
+    status: Literal["APPLIES", "DOES_NOT_APPLY", "UNKNOWN", "POTENTIAL_CONFLICT"]
+    final_conclusion: Literal["APPLIES", "DOES_NOT_APPLY", "UNKNOWN", "POTENTIAL_CONFLICT"] | None = None
 
 def assess_free_text_criterion(criterion: TrialCriterion, evidence: list[EvidenceItem], pages: list, *, client, model: str = "gpt-4.1-mini") -> CriterionAssessment:
     """Assess one criterion with one bounded source-page tool available to the model."""
@@ -199,6 +210,7 @@ For a time-window criterion, cite both the actual dated administration and the p
 Time-window criteria such as within 4 weeks need a dated administration or stop date and the actual reference date (such as first study dose). A note date is not a study dose date. If either date is missing, return UNKNOWN. A medication snapshot alone cannot decide a recent time window. It can still establish prior exposure for exclusions without a recent-use window.
 Biomarkers describe test findings, not treatments. Never infer therapy or inhibitor exposure from a mutation; cite an explicit treatment or medication record.
 Some criteria are one option in a list (for example acceptable contraception methods) or a branch that applies only under a condition (for example "No liver mets: ..."). Return UNKNOWN for these unless the record shows the option or condition applies.
+For every EXCLUSION answered DOES_NOT_APPLY, return clearance_basis: explicit_negative only for a cited negative at the full criterion scope; exception_only when only allowed facts are documented; absence when nothing relevant is documented; otherwise other. An allowed condition never clears all other conditions in an exclusion.
 Cite facts by their "index" field in evidence_indices. Also return final_conclusion using the same criterion-type vocabulary, stating the final conclusion of your explanation separately from status. Never say the patient is eligible or ineligible."""
     # Each fact carries its own index so the model cites it instead of counting list positions.
     # Unverified records remain in the review output, but are not candidate
@@ -208,7 +220,8 @@ Cite facts by their "index" field in evidence_indices. Also return final_conclus
     # store=False keeps nothing on the provider side, so the conversation is carried locally:
     # each follow-up sends the original input, the model's tool calls and the tool results.
     conversation: list[dict] = [{"role": "user", "content": json.dumps(payload)}]
-    response = client.responses.parse(model=model, instructions=prompt, input=conversation, tools=[SOURCE_EVIDENCE_TOOL], text_format=_LLMAssessment, store=False)
+    response_schema = _LLMExclusionAssessment if criterion.type == "exclusion" else _LLMInclusionAssessment
+    response = client.responses.parse(model=model, instructions=prompt, input=conversation, tools=[SOURCE_EVIDENCE_TOOL], text_format=response_schema, store=False)
     # A model may inspect one or more source pages before returning its result.
     for _ in range(3):
         calls = [item for item in response.output if item.type == "function_call" and item.name == "get_source_evidence"]
@@ -219,13 +232,20 @@ Cite facts by their "index" field in evidence_indices. Also return final_conclus
             value = context.get_source_evidence(args["source_file"], args["page"])
             conversation.append({"type": "function_call", "call_id": call.call_id, "name": call.name, "arguments": call.arguments})
             conversation.append({"type": "function_call_output", "call_id": call.call_id, "output": json.dumps(value)})
-        response = client.responses.parse(model=model, instructions=prompt, input=conversation, tools=[SOURCE_EVIDENCE_TOOL], text_format=_LLMAssessment, store=False)
+        response = client.responses.parse(model=model, instructions=prompt, input=conversation, tools=[SOURCE_EVIDENCE_TOOL], text_format=response_schema, store=False)
     result = response.output_parsed
     status = _project_status(criterion.type, result.status) if result is not None else None
     if status is None:
         return conservative_assessment(criterion, evidence)
     cited = [evidence[index] for index in result.evidence_indices if 0 <= index < len(evidence) and evidence[index].quote_verified]
-    return CriterionAssessment(criterion_id=criterion.criterion_id, criterion_text=criterion.text, criterion_type=criterion.type, status=status, method="llm", patient_evidence=cited, explanation=result.explanation, final_conclusion=getattr(result, "final_conclusion", None))
+    assessment = CriterionAssessment(criterion_id=criterion.criterion_id, criterion_text=criterion.text, criterion_type=criterion.type, status=status, method="llm", patient_evidence=cited, explanation=result.explanation, final_conclusion=getattr(result, "final_conclusion", None), clearance_basis=getattr(result, "clearance_basis", None))
+    baseline = conservative_assessment(criterion, evidence)
+    if baseline.status == "POTENTIAL_CONFLICT":
+        # The existing deterministic comparator checks all verified values.
+        # A model cannot silently prefer one source or one date over another.
+        return baseline.model_copy(update={"method": "llm", "explanation": "Conflict preservation guard: differing verified values lead to different outcomes. Original reasoning: " + assessment.explanation})
+    return assessment
+
 
 
 # The model answers the natural question for each criterion type; code applies the project's

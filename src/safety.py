@@ -1,4 +1,4 @@
-﻿"""Output guardrails for research-trial prescreening."""
+"""Output guardrails for research-trial prescreening."""
 
 from __future__ import annotations
 
@@ -85,6 +85,51 @@ def history_clearance_problem(item: CriterionAssessment) -> str | None:
         return "History clearance guard: excepted condition only; the exception does not clear the whole criterion."
     return "History clearance guard: absence of explicit scope-matching negative evidence does not clear this condition history."
 
+
+
+def quote_is_negative(quote: str) -> bool:
+    """Recognize a stated negative, excluding nonassessment and uncertain negation."""
+    for clause in re.split(r"[.;!?]|\bbut\b|\bhowever\b", quote, flags=re.I):
+        if re.search(r"\b(?:not|never|no)\b.*\b(?:documented|mentioned|recorded|assessed|evaluated|information|available)\b|"
+                     r"\b(?:cannot|can't|could not|not)\s+(?:be\s+)?(?:rule[ds]? out|exclude[ds]?)|\bnot only\b", clause, re.I):
+            continue
+        if re.search(r"\b(?:no|not|negative|without|denies|denied|ruled out|absent|free of|never|naive)\b", clause, re.I):
+            return True
+    return False
+
+
+def exclusion_clearance_problem(item: CriterionAssessment) -> str | None:
+    """Every model clearance requires a declared basis AND a verified negative."""
+    if item.method != "llm" or item.criterion_type != "exclusion" or item.status != "MEETS":
+        return None
+    if reason := history_clearance_problem(item):
+        return reason
+    if item.clearance_basis == "exception_only":
+        return "Exclusion clearance guard: cleared on an allowed condition only."
+    if item.clearance_basis == "absence":
+        return "Exclusion clearance guard: cleared from absence."
+    if item.clearance_basis != "explicit_negative":
+        return "Exclusion clearance guard: no explicit-negative basis declared (basis other or missing); absence-based clearance without evidence about it."
+    if not any(e.quote_verified and quote_is_negative(e.evidence_text) for e in item.patient_evidence):
+        return "Exclusion clearance guard: no negative evidence cited; absence-based clearance without evidence about it."
+    # A named exposure's negation cannot clear every exposure in a broader class
+    # or every alternative in an OR criterion. This is structural, not a drug list.
+    main = re.split(r"\bexcept\b|\bunless\b", item.criterion_text, flags=re.I)[0]
+    if PRIOR_EXPOSURE.search(main):
+        for branch in re.split(r"\bor\b", re.sub(r"\([^)]*\)", "", main), flags=re.I):
+            terms = _terms(branch) - {"inhibition", "inhibitor", "exposure", "diagnosis", "diagnosed"}
+            if not terms:
+                continue
+            covered = False
+            for fact in item.patient_evidence:
+                if not fact.quote_verified or not quote_is_negative(fact.evidence_text):
+                    continue
+                # Allow formatting-only gaps within identifiers (AB12 vs AB 12).
+                if any(term in _terms(fact.evidence_text) or re.search(r"\b" + r"\s*".join(re.escape(c) for c in term) + r"\b", fact.evidence_text, re.I) for term in terms):
+                    covered = True
+            if not covered:
+                return "Exclusion clearance guard: narrower negation does not address the full prior-condition or exposure scope."
+    return None
 
 def is_absence_inferred_clearance(item: CriterionAssessment) -> bool:
     """An LLM 'clear of exclusion' for a prior-exposure criterion needs an explicit negative in the record.
@@ -386,12 +431,11 @@ def review_assessments(assessments: list[CriterionAssessment]) -> tuple[list[Cri
     reviewed, flags = [], []
     for item in assessments:
         update = {}
+        if item.explanation.startswith("Conflict preservation guard:"):
+            flags.append(f"{item.criterion_id}: Conflict preservation guard: all differing verified values retained.")
         if status_contradicts_explanation(item):
             update = {"status": "UNKNOWN", "explanation": "Status contradicts explanation. Converted to UNKNOWN. Original reasoning: " + item.explanation}
             flags.append(f"{item.criterion_id}: status contradicts explanation; converted to UNKNOWN.")
-        elif reason := history_clearance_problem(item):
-            update = {"status": "UNKNOWN", "explanation": f"{reason} Converted to UNKNOWN. Original reasoning: {item.explanation}"}
-            flags.append(f"{item.criterion_id}: {reason} Converted to UNKNOWN.")
         elif reason := time_window_problem(item):
             update = {"status": "UNKNOWN", "explanation": f"{reason} Converted to UNKNOWN. Original reasoning: {item.explanation}"}
             flags.append(f"{item.criterion_id}: {reason} Converted to UNKNOWN.")
@@ -401,12 +445,6 @@ def review_assessments(assessments: list[CriterionAssessment]) -> tuple[list[Cri
         elif item.status in {"MEETS", "DOES_NOT_MEET", "POTENTIAL_CONFLICT"} and not item.patient_evidence and item.method == "llm":
             update = {"status": "UNKNOWN", "explanation": "No patient evidence supports this conclusion; converted to UNKNOWN."}
             flags.append(f"{item.criterion_id}: unsupported conclusion converted to UNKNOWN.")
-        elif is_absence_inferred_clearance(item):
-            update = {"status": "UNKNOWN", "explanation": "The record does not explicitly rule out this prior exposure; absence from a treatment list is not a negative. Converted to UNKNOWN."}
-            flags.append(f"{item.criterion_id}: absence-based clearance of a prior-exposure exclusion converted to UNKNOWN.")
-        elif is_unsupported_exclusion_clearance(item):
-            update = {"status": "UNKNOWN", "explanation": f"No cited evidence addresses this exclusion; absence of a record does not clear it. Converted to UNKNOWN. Original reasoning: {item.explanation}"}
-            flags.append(f"{item.criterion_id}: exclusion cleared without evidence about it; converted to UNKNOWN.")
         elif is_unstated_line_of_therapy(item):
             update = {"status": "UNKNOWN", "explanation": f"This criterion depends on the line of therapy, which the cited record does not state; converted to UNKNOWN. Original reasoning: {item.explanation}"}
             flags.append(f"{item.criterion_id}: line of therapy not documented; converted to UNKNOWN.")
@@ -416,6 +454,10 @@ def review_assessments(assessments: list[CriterionAssessment]) -> tuple[list[Cri
         elif is_conditional_or_option_rejection(item):
             update = {"status": "UNKNOWN", "explanation": f"This item is a conditional branch or one option among alternatives, so not meeting it does not show exclusion; reviewer decides applicability. Original reasoning: {item.explanation}"}
             flags.append(f"{item.criterion_id}: conditional or option sub-item; DOES_NOT_MEET converted to UNKNOWN.")
+        if reason := exclusion_clearance_problem(item):
+            if not update:
+                update = {"status": "UNKNOWN", "explanation": f"{reason} Converted to UNKNOWN. Original reasoning: {item.explanation}"}
+            flags.append(f"{item.criterion_id}: {reason} Converted to UNKNOWN.")
         # Arithmetic replaces a model conclusion only after consistency and
         # other guards; a detected contradiction must remain UNKNOWN.
         if not status_contradicts_explanation(item) and (computed := computed_study_window(item)):
