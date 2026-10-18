@@ -182,6 +182,9 @@ Missing evidence is UNKNOWN. Absence is not a negative. Preserve conflicts unles
 A list of past treatments does not prove another treatment was never given; for prior-exposure exclusions, return DOES_NOT_APPLY only when the record explicitly rules the exposure out.
 Every requirement in the criterion must be supported by cited evidence; if any part (a lab value, central testing, documented failure or progression, absence of transfusion) is not documented, return UNKNOWN.
 Treatment order: "X, then Y" means Y was given after X; do not reassign lines of therapy.
+A dated medication list documents that the drug was listed as of that date and is evidence of past exposure only. Never describe it as currently taken or infer recent dosing from a start date.
+Time-window criteria such as within 4 weeks need a dated administration or stop date and the actual reference date (such as first study dose). A note date is not a study dose date. If either date is missing, return UNKNOWN. A medication snapshot alone cannot decide a recent time window. It can still establish prior exposure for exclusions without a recent-use window.
+Biomarkers describe test findings, not treatments. Never infer therapy or inhibitor exposure from a mutation; cite an explicit treatment or medication record.
 Some criteria are one option in a list (for example acceptable contraception methods) or a branch that applies only under a condition (for example "No liver mets: ..."). Return UNKNOWN for these unless the record shows the option or condition applies.
 Cite facts by their "index" field in evidence_indices. Never say the patient is eligible or ineligible."""
     # Each fact carries its own index so the model cites it instead of counting list positions.

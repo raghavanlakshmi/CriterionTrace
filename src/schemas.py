@@ -47,6 +47,7 @@ class EvidenceItem(BaseModel):
     source_page: int = Field(ge=1, strict=True)
     evidence_text: str = Field(min_length=1, description="Exact quote copied from source page text")
     quote_verified: bool = Field(default=False, strict=True)
+    source_kind: Literal["medication_list", "other"] = "other"
 
     @field_validator("value", "source_file", "evidence_text")
     @classmethod

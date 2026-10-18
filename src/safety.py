@@ -107,13 +107,19 @@ metastatic require required requiring use using evidence documented
 """.split())
 
 
+def _stem(word: str) -> str:
+    word = word.rstrip('s')
+    return word[:-1] if word.endswith('ed') and len(word) >= 4 else word
+
+
+GENERIC_STEMS = frozenset(_stem(word) for word in GENERIC_TERMS)
+
+
 def _terms(text: str) -> set[str]:
     terms = set()
     for word in re.findall(r"[a-z0-9]+", text.lower()):
-        word = word.rstrip("s")
-        if word.endswith("ed") and len(word) >= 4:  # aged -> age, mutated -> mutate
-            word = word[:-1]
-        if len(word) >= 3 and word not in GENERIC_TERMS:
+        word = _stem(word)
+        if len(word) >= 3 and word not in GENERIC_STEMS:
             terms.add(word)
     return terms
 
@@ -172,12 +178,43 @@ def is_conditional_or_option_rejection(item: CriterionAssessment) -> bool:
             and bool(CONDITIONAL_OR_OPTION.search(item.criterion_text)))
 
 
+TIME_WINDOW = re.compile(r"\bwithin\s+(?:\d+|one|two|three|four|five|six|seven|eight|nine|ten|twelve)\s*[- ]?\s*(?:days?|weeks?|months?|years?)\b", re.I)
+MEDICATION_LIST = re.compile(r"medication[ _-]+list|medicines[ _-]+list|medication reconciliation", re.I)
+STUDY_REFERENCE = re.compile(r"first[\s-]+(?:study[\s-]+|trial[\s-]+)?dose|study[\s-]+(?:dose|dosing|start)|randomi[sz]ation", re.I)
+DATED_REFERENCE = re.compile(
+    r"(?:first[\s-]+(?:study[\s-]+|trial[\s-]+)?dose|study[\s-]+(?:dose|dosing|start)|randomi[sz]ation)"
+    r"\s*(?:date)?\s*(?:is|was|on|scheduled for|planned for|:|=)?\s*\d{4}-\d{2}-\d{2}\b", re.I,
+)
+
+
+def time_window_problem(item: CriterionAssessment) -> str | None:
+    """Reject temporal decisions lacking dated events or an explicit study anchor.
+
+    Medication categories and source provenance remain snapshots even when a
+    model calls the drug current. No use of wall-clock time or inferred dosing.
+    """
+    if item.status not in {"MEETS", "DOES_NOT_MEET"} or not TIME_WINDOW.search(item.criterion_text):
+        return None
+    cited = [e for e in item.patient_evidence if e.quote_verified]
+    if not any(e.date and e.date.strip() for e in cited):
+        return "Time-window decision lacks dated cited evidence."
+    if all(e.source_kind == "medication_list" or e.category == "current_medication"
+           or MEDICATION_LIST.search(e.source_file + " " + e.evidence_text) for e in cited):
+        return "Time-window decision cites only medication snapshots, not administration or stop dates."
+    if STUDY_REFERENCE.search(item.criterion_text) and not DATED_REFERENCE.search(_cited_text(item)):
+        return "Time-window decision lacks an explicitly documented study reference date."
+    return None
+
+
 def review_assessments(assessments: list[CriterionAssessment]) -> tuple[list[CriterionAssessment], list[str]]:
     """Downgrade unsupported conclusions and return visible review flags."""
     reviewed, flags = [], []
     for item in assessments:
         update = {}
-        if item.status in {"MEETS", "DOES_NOT_MEET", "POTENTIAL_CONFLICT"} and INVESTIGATOR_JUDGMENT.search(item.criterion_text):
+        if reason := time_window_problem(item):
+            update = {"status": "UNKNOWN", "explanation": f"{reason} Converted to UNKNOWN. Original reasoning: {item.explanation}"}
+            flags.append(f"{item.criterion_id}: {reason} Converted to UNKNOWN.")
+        elif item.status in {"MEETS", "DOES_NOT_MEET", "POTENTIAL_CONFLICT"} and INVESTIGATOR_JUDGMENT.search(item.criterion_text):
             update = {"status": "UNKNOWN", "explanation": f"This criterion depends on investigator judgment and cannot be settled from records; converted to UNKNOWN. Original reasoning: {item.explanation}"}
             flags.append(f"{item.criterion_id}: investigator-judgment criterion converted to UNKNOWN.")
         elif item.status in {"MEETS", "DOES_NOT_MEET", "POTENTIAL_CONFLICT"} and not item.patient_evidence and item.method == "llm":

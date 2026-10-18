@@ -48,3 +48,10 @@ def test_treatment_list_cannot_clear_prior_exposure_exclusion():
 def test_explicit_negative_can_clear_prior_exposure_exclusion():
     reviewed, _ = review_assessments([_llm_exclusion("Prior KRASG12C inhibition therapy", "No prior KRAS G12C inhibitor therapy")])
     assert reviewed[0].status == "MEETS"
+
+
+def test_generic_treated_word_cannot_establish_condition_specific_clearance():
+    item = _llm_exclusion('Treated infection with specified exceptions', 'Treated unrelated condition')
+    result, flags = review_assessments([item])
+    assert result[0].status == 'UNKNOWN'
+    assert any('without evidence about it' in f for f in flags)

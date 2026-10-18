@@ -54,6 +54,11 @@ administration date, not the date of a later summary. A drug start date is not
 proof of a subsequent dose or stop date.
 Family history describes relatives, not patient conditions; do not extract it
 as a patient fact.
+A dated medication list is a snapshot: keep the list's document date in date,
+even when a drug start date also appears (retain that start date in the quote).
+Describe the drug as listed as of that date, not as currently taken. The legacy
+current_medication category does not establish present use. A list documents
+past exposure, not a recent administration or a stop date.
 Split separate facts into separate records. Retain all differing values for
 the same fact as separate records with their own sources and dates. Do not
 select a preferred value, merge conflicts, or infer change from date proximity.
@@ -189,6 +194,11 @@ def _request_evidence(client: OpenAI, model: str, pages: list[DocumentPage]) -> 
     sources = _source_pages(pages)
     for item in items:
         source = sources.get((item.source_file, item.source_page))
+        if source is not None and re.search(
+            r"medication[ _-]+list|medicines[ _-]+list|medication reconciliation",
+            source.filename + "\n" + source.text, re.I,
+        ):
+            item.source_kind = "medication_list"
         if item.date is not None and (
             source is None or not _quote_present(item.date, source.text)
         ):
