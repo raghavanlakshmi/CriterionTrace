@@ -42,6 +42,48 @@ PRIOR_EXPOSURE = re.compile(r"\b(prior|previous|previously|history of|received|t
 EXPLICIT_NEGATION = re.compile(r"\b(no prior|no previous|never (?:received|treated)|naive|not previously|none)\b", re.I)
 
 
+
+HISTORY_CONDITION = re.compile(
+    r"\b(?:history of|prior diagnosis of|previous diagnosis of)\b|"
+    r"\b(?:cancers?|malignan\w*|tumou?rs?|diseases?|conditions?)\b.*\bwithin\b", re.I,
+)
+HISTORY_NEGATION = re.compile(
+    r"\b(?:no (?:known )?(?:history of|prior diagnosis of|previous diagnosis of)|"
+    r"never (?:had|diagnosed with)|denies (?:any )?history of)\s+([^.;!?]+)", re.I,
+)
+
+
+def _history_scope(text: str) -> set[str]:
+    # Normalize a disease class, not individual cancers or patient-specific terms.
+    text = re.sub(r"\b(?:cancers?|malignanc(?:y|ies)|tumou?rs?)\b", "cancer", text, flags=re.I)
+    text = re.split(r"\bwithin\b", text, flags=re.I)[0]
+    words = set(re.findall(r"[a-z]+", text.casefold()))
+    return words - set("a an any the of no known other history prior previous diagnosis diagnosed with had has have patient patients subject subjects participant participants documented evidence for in or and".split())
+
+
+def history_clearance_problem(item: CriterionAssessment) -> str | None:
+    """Require an explicit verified negative covering the entire history scope."""
+    main, *exceptions = re.split(r"\bexcept(?:ing)?\b", item.criterion_text, maxsplit=1, flags=re.I)
+    if item.criterion_type != "exclusion" or item.status != "MEETS" or not HISTORY_CONDITION.search(main):
+        return None
+    scope = _history_scope(main)
+    cited = [e for e in item.patient_evidence if e.quote_verified]
+    narrower = False
+    for fact in cited:
+        for match in HISTORY_NEGATION.finditer(fact.evidence_text):
+            negated = _history_scope(match.group(1))
+            if scope and negated == scope:
+                return None
+            if scope & negated:
+                narrower = True
+    if narrower:
+        return "History clearance guard: narrower negation does not rule out the criterion's full condition scope."
+    exception_terms = _terms(exceptions[0]) if exceptions else set()
+    if cited and exception_terms and all(exception_terms & _terms(e.evidence_text) for e in cited):
+        return "History clearance guard: excepted condition only; the exception does not clear the whole criterion."
+    return "History clearance guard: absence of explicit scope-matching negative evidence does not clear this condition history."
+
+
 def is_absence_inferred_clearance(item: CriterionAssessment) -> bool:
     """An LLM 'clear of exclusion' for a prior-exposure criterion needs an explicit negative in the record.
 
@@ -49,6 +91,8 @@ def is_absence_inferred_clearance(item: CriterionAssessment) -> bool:
     """
     if item.method != "llm" or item.criterion_type != "exclusion" or item.status != "MEETS":
         return False
+    if HISTORY_CONDITION.search(re.split(r"\bexcept\b", item.criterion_text, flags=re.I)[0]):
+        return False  # Condition-history negatives are checked at criterion scope.
     if not PRIOR_EXPOSURE.search(item.criterion_text):
         return False
     return not any(EXPLICIT_NEGATION.search(e.evidence_text) or EXPLICIT_NEGATION.search(e.value) for e in item.patient_evidence)
@@ -133,6 +177,8 @@ def is_unsupported_exclusion_clearance(item: CriterionAssessment) -> bool:
     """
     if item.method != "llm" or item.criterion_type != "exclusion" or item.status != "MEETS":
         return False
+    if HISTORY_CONDITION.search(re.split(r"\bexcept\b", item.criterion_text, flags=re.I)[0]):
+        return history_clearance_problem(item) is not None
     if any(EXPLICIT_NEGATION.search(e.evidence_text) or EXPLICIT_NEGATION.search(e.value) for e in item.patient_evidence):
         return False
     criterion_terms = _terms(item.criterion_text)
@@ -195,6 +241,8 @@ def time_window_problem(item: CriterionAssessment) -> str | None:
     """
     if item.status not in {"MEETS", "DOES_NOT_MEET"} or not TIME_WINDOW.search(item.criterion_text):
         return None
+    if item.status == "MEETS" and HISTORY_CONDITION.search(item.criterion_text) and history_clearance_problem(item) is None:
+        return None  # A lifetime scope-matching negative does not need an event date.
     cited = [e for e in item.patient_evidence if e.quote_verified]
     if not any(e.date and e.date.strip() for e in cited):
         return "Time-window decision lacks dated cited evidence."
@@ -246,7 +294,10 @@ def review_assessments(assessments: list[CriterionAssessment]) -> tuple[list[Cri
     reviewed, flags = [], []
     for item in assessments:
         update = {}
-        if reason := time_window_problem(item):
+        if reason := history_clearance_problem(item):
+            update = {"status": "UNKNOWN", "explanation": f"{reason} Converted to UNKNOWN. Original reasoning: {item.explanation}"}
+            flags.append(f"{item.criterion_id}: {reason} Converted to UNKNOWN.")
+        elif reason := time_window_problem(item):
             update = {"status": "UNKNOWN", "explanation": f"{reason} Converted to UNKNOWN. Original reasoning: {item.explanation}"}
             flags.append(f"{item.criterion_id}: {reason} Converted to UNKNOWN.")
         elif item.status in {"MEETS", "DOES_NOT_MEET", "POTENTIAL_CONFLICT"} and INVESTIGATOR_JUDGMENT.search(item.criterion_text):
