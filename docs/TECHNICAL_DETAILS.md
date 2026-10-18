@@ -1,4 +1,4 @@
-# TrialMatch AI — Technical Details
+# CriterionTrace — Technical Details
 
 Full design, data and evaluation notes. For the overview, see the [README](../README.md).
 Turn fragmented, unstructured synthetic clinical documents into traceable patient evidence, find potentially relevant clinical trials, compare the evidence against eligibility criteria, and present an auditable prescreening summary for human review.

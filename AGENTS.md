@@ -1,4 +1,4 @@
-# TrialMatch AI project rules
+# CriterionTrace project rules
 
 ## Product
 Build a competition prototype for AI-assisted clinical-trial prescreening.

@@ -1,8 +1,8 @@
-# TrialMatch AI Code Organization Guide
+# CriterionTrace Code Organization Guide
 
 ## Overview
 
-TrialMatch AI is organized as a processing pipeline. Patient documents enter the system, clinical evidence is extracted and verified, relevant trials are retrieved, eligibility criteria are assessed, and the results pass through safety checks before appearing in the Streamlit interface.
+CriterionTrace is organized as a processing pipeline. Patient documents enter the system, clinical evidence is extracted and verified, relevant trials are retrieved, eligibility criteria are assessed, and the results pass through safety checks before appearing in the Streamlit interface.
 
 **Workflow:**
 

@@ -77,7 +77,7 @@ def write_pdf(path: Path, document: dict) -> None:
     """Keep each fact on the page specified by the build guide."""
     with pymupdf.open() as pdf:
         pdf.set_metadata(
-            {"title": document["title"], "subject": DISCLAIMER, "author": "TrialMatch AI"}
+            {"title": document["title"], "subject": DISCLAIMER, "author": "CriterionTrace"}
         )
         for page_number, (section, facts) in enumerate(document["pages"], start=1):
             page = pdf.new_page(width=612, height=792)

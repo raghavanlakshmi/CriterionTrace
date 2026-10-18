@@ -159,7 +159,7 @@ def documents(control: bool) -> dict:
 def write_pdf(path: Path, document: dict) -> None:
     fontsize = document.get("fontsize", 12)
     with pymupdf.open() as pdf:
-        pdf.set_metadata({"title": document["title"], "subject": DISCLAIMER, "author": "TrialMatch AI"})
+        pdf.set_metadata({"title": document["title"], "subject": DISCLAIMER, "author": "CriterionTrace"})
         for page_number, (section, facts) in enumerate(document["pages"], start=1):
             page = pdf.new_page(width=612, height=792)
             page.insert_text((48, 42), DISCLAIMER, fontsize=9, color=(0.45, 0.15, 0.1))

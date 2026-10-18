@@ -1,7 +1,9 @@
-# Buried-exclusion test (SYN-002)
+# CriterionTrace buried-exclusion test (SYN-002)
+
+**Clinical Trial prescreening with traceable evidence.**
 
 Suggested by BenchEval, a clinician-run clinical AI evaluation team, in response to the
-TrialMatch AI launch post: *put an exclusion in an old note, such as a prior malignancy or a
+launch post for this project (then named TrialMatch AI): *put an exclusion in an old note, such as a prior malignancy or a
 drug washout date, and check whether "potential" stays "potential".*
 
 SYN-001 tests one failure: an exclusion that is never mentioned must stay UNKNOWN, not be

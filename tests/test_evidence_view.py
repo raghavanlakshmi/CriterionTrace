@@ -127,7 +127,7 @@ def test_source_preview_cannot_escape_patient_folder(tmp_path):
 def test_streamlit_view_shows_patient_sources_conflict_and_unknown():
     app = AppTest.from_file(str(PROJECT_ROOT / "app.py")).run(timeout=15)
     assert not app.exception
-    assert app.title[0].value == "TrialMatch AI"
+    assert app.title[0].value == "CriterionTrace"
     assert [metric.value for metric in app.metric][:4] == ["16", "16/16", "1", "1"]
     assert any("Potential conflict" in warning.value for warning in app.warning)
     assert any("UNKNOWN — no supporting evidence" in info.value for info in app.info)

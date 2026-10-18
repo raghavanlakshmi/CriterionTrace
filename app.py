@@ -1,4 +1,4 @@
-"""TrialMatch AI research prescreening interface."""
+"""CriterionTrace research prescreening interface."""
 
 from __future__ import annotations
 
@@ -19,7 +19,7 @@ from src.source_viewer import build_source_view, highlight_html, pdf_page_count
 PROJECT_ROOT = Path(__file__).resolve().parent
 SAVED_RUN = PROJECT_ROOT / "data" / "sample_outputs" / "SYN-001_workflow.json"
 PATIENT_DIR = PROJECT_ROOT / "data" / "patients" / "SYN-001"
-REPO_URL = "https://github.com/raghavanlakshmi/TrialMatch_AI"
+REPO_URL = "https://github.com/raghavanlakshmi/CriterionTrace"
 DASH = "—"
 MIDDLE_DOT = "·"
 CHECK = "✓"
@@ -251,7 +251,7 @@ def render_review_checklist(evidence: list[EvidenceItem], extraction_gaps: list[
             note = st.text_input("Reviewer note", key=f"note-{group.key}", placeholder=hint)
             notes[group.label] = {"status": status, "reviewed": done, "note": note,
                                   "sources": [f"{i.source_file} p{i.source_page}: {i.value}" for i in group.items]}
-    lines = ["# TrialMatch AI reviewer summary", f"Generated {datetime.now(timezone.utc):%Y-%m-%d %H:%M} UTC", "", DISCLAIMER.replace("\n", " "), ""]
+    lines = ["# CriterionTrace reviewer summary", f"Generated {datetime.now(timezone.utc):%Y-%m-%d %H:%M} UTC", "", DISCLAIMER.replace("\n", " "), ""]
     for gap in extraction_gaps or []:
         lines.append(f"- Not captured by the tool, review manually: {gap['source_file']} p{gap['source_page']}, line {gap['line_number']}: {gap['text']}")
     for label, record in notes.items():
@@ -260,7 +260,7 @@ def render_review_checklist(evidence: list[EvidenceItem], extraction_gaps: list[
         lines.append(f"- Note: {record['note'] or '(none)'}")
         lines.extend(f"- Source: {source}" for source in record["sources"] or ["no supporting evidence"])
         lines.append("")
-    st.download_button("Download review summary", "\n".join(lines), file_name="trialmatch_review_summary.md", mime="text/markdown", icon=":material/download:")
+    st.download_button("Download review summary", "\n".join(lines), file_name="criteriontrace_review_summary.md", mime="text/markdown", icon=":material/download:")
 
 
 def render_trials_tab(run: dict | None) -> None:
@@ -351,8 +351,8 @@ def render_safety_tab(run: dict | None) -> None:
 
 def render_sidebar() -> None:
     with st.sidebar:
-        st.markdown("### TrialMatch AI")
-        st.markdown("Evidence-grounded clinical-trial **prescreening** on synthetic data. It never decides eligibility.")
+        st.markdown("### CriterionTrace")
+        st.markdown("Clinical Trial prescreening with traceable evidence. Uses synthetic data and never decides eligibility.")
         st.markdown("**How to read results**")
         for key, (text, color) in STATUS_UI.items():
             st.badge(text, color=color)
@@ -362,15 +362,15 @@ def render_sidebar() -> None:
 
 # ----------------------------------------------------------------- main ---
 def main() -> None:
-    st.set_page_config(page_title="TrialMatch AI", page_icon=":material/clinical_notes:", layout="wide")
+    st.set_page_config(page_title="CriterionTrace", page_icon=":material/clinical_notes:", layout="wide")
     st.markdown(CSS, unsafe_allow_html=True)
     if "run" not in st.session_state and SAVED_RUN.exists():
         st.session_state.run = load_saved_run()
         st.session_state.run_source = "saved"
     render_sidebar()
 
-    st.title("TrialMatch AI")
-    st.caption("Evidence-grounded research-trial prescreening for synthetic data")
+    st.title("CriterionTrace")
+    st.caption("Clinical Trial prescreening with traceable evidence.")
     st.warning(DISCLAIMER)
     run = st.session_state.get("run")
     if st.session_state.get("run_source") == "saved":

@@ -1,12 +1,14 @@
-# TrialMatch AI
+# CriterionTrace
 
-[![tests](https://github.com/raghavanlakshmi/TrialMatch_AI/actions/workflows/tests.yml/badge.svg)](https://github.com/raghavanlakshmi/TrialMatch_AI/actions/workflows/tests.yml)
+**Clinical Trial prescreening with traceable evidence.**
+
+[![tests](https://github.com/raghavanlakshmi/CriterionTrace/actions/workflows/tests.yml/badge.svg)](https://github.com/raghavanlakshmi/CriterionTrace/actions/workflows/tests.yml)
 ![python](https://img.shields.io/badge/python-3.11-blue)
 ![license](https://img.shields.io/badge/license-MIT-green)
 
 **[▶ Try the live demo](https://trialmatch-ai.streamlit.app/)** — replays a validated run on synthetic patient SYN-001; no sign-up or API key.
 
-**Evidence-grounded, AI-assisted clinical-trial prescreening.** TrialMatch AI turns a patient's scattered
+**Evidence-grounded, AI-assisted clinical-trial prescreening.** CriterionTrace turns a patient's scattered
 documents — PDFs, a scanned referral, a handwritten note — into source-verified facts, finds candidate
 trials in a frozen ClinicalTrials.gov snapshot, and checks every eligibility criterion against the
 evidence for a human reviewer.
@@ -14,7 +16,7 @@ evidence for a human reviewer.
 > It never says "this patient is eligible." It shows what appears to match, what appears not to, what is
 > unknown, and what needs verification. All patient data is synthetic.
 
-![TrialMatch AI demo: source documents, verified evidence and the reviewer checklist](docs/images/demo.gif)
+![CriterionTrace demo: source documents, verified evidence and the reviewer checklist](docs/images/demo.gif)
 
 ## The problem
 
@@ -50,7 +52,7 @@ promotes other trials that repeat the same terms. Fusing at the trial level inst
 recovers one of the two (0.94 in an offline check). With 16 cases this is a small-sample signal, and
 it is listed as the next retrieval change to test.
 
-**Tests** — 192 automated tests covering ingestion, quote verification, conflicts, missing evidence,
+**Tests** — 232 automated tests covering ingestion, quote verification, conflicts, missing evidence,
 exclusion direction, retrieval, prompt-injection defence and UI rendering. They run offline on every push.
 
 These are regression checks on synthetic data, not clinical validation.
@@ -98,8 +100,8 @@ problem framing, architecture, safety boundaries and evaluation design were mine
 ## Run it
 
 ```bash
-git clone https://github.com/raghavanlakshmi/TrialMatch_AI.git
-cd TrialMatch_AI
+git clone https://github.com/raghavanlakshmi/CriterionTrace.git
+cd CriterionTrace
 python -m venv .venv
 source .venv/bin/activate          # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
@@ -143,3 +145,7 @@ recruitment changes. OCR and handwriting still need human review.
 ## License
 
 [MIT](LICENSE)
+
+## Related work
+
+[TrialMatchAI](https://www.nature.com/articles/s41467-026-70509-w) (Abdallah et al., *Nature Communications* 17, 4472, 2026; [research code](https://github.com/cbib/TrialMatchAI)) is a separately developed clinical trial recommendation system. CriterionTrace is an independent educational prototype for evidence-traceable prescreening using synthetic patient records; it is not affiliated with that research project. Its synthetic evaluations do not establish clinical validity or provide a direct performance comparison with the published system. This repository was previously named TrialMatch AI.
