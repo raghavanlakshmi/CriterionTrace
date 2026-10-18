@@ -1,0 +1,885 @@
+{
+  "patient": "SYN-004-control",
+  "variant": "matched control: buried facts replaced by look-alike traps",
+  "label_status": "Reviewed by Lakshmi before any run on 10/18/26",
+  "extraction_model": "gpt-4.1-mini",
+  "assessment_model": "gpt-4.1-mini",
+  "extraction_check": {
+    "buried_pneumonitis_ocr": [],
+    "pneumonia_trap": [
+      {
+        "category": "diagnosis",
+        "value": "community-acquired pneumonia",
+        "source": "pulmonology_consult_2025_scanned.pdf p1",
+        "date": "2025-05-06",
+        "quote_verified": true
+      }
+    ],
+    "buried_steroid": [],
+    "steroid_last_dose": [
+      {
+        "category": "prior_treatment",
+        "value": "colchicine 0.6 mg by mouth twice daily for 5 days (2026-06-14 through 2026-06-18)",
+        "source": "ed_discharge_summary.pdf p1",
+        "date": "2026-06-14",
+        "quote_verified": true
+      }
+    ],
+    "inhaled_topical_steroid_trap": [
+      {
+        "category": "current_medication",
+        "value": "Fluticasone nasal spray 50 mcg, 2 sprays each nostril daily for Allergic rhinitis",
+        "source": "medication_reconciliation.pdf p1",
+        "date": "2026-06-05",
+        "quote_verified": true
+      },
+      {
+        "category": "current_medication",
+        "value": "Hydrocortisone 1% cream Topical, as needed for Eczema",
+        "source": "medication_reconciliation.pdf p1",
+        "date": "2026-06-05",
+        "quote_verified": true
+      },
+      {
+        "category": "current_medication",
+        "value": "Fluticasone nasal spray 50 mcg, 2 sprays each nostril daily for Allergic rhinitis Active",
+        "source": "medication_reconciliation.pdf p1",
+        "date": "2026-06-05",
+        "quote_verified": true
+      },
+      {
+        "category": "current_medication",
+        "value": "Hydrocortisone 1% cream Topical, as needed for Eczema Active",
+        "source": "medication_reconciliation.pdf p1",
+        "date": "2026-06-05",
+        "quote_verified": true
+      }
+    ],
+    "buried_tia": [],
+    "vertigo_trap": [],
+    "autoimmune_exception_trap": [
+      {
+        "category": "comorbidity",
+        "value": "Hashimoto thyroiditis on levothyroxine replacement; gout",
+        "source": "oncology_note.pdf p1",
+        "date": "2026-06-05",
+        "quote_verified": true
+      },
+      {
+        "category": "comorbidity",
+        "value": "Hashimoto thyroiditis on levothyroxine replacement",
+        "source": "oncology_note.pdf p1",
+        "date": "2026-06-05",
+        "quote_verified": true
+      },
+      {
+        "category": "comorbidity",
+        "value": "gout",
+        "source": "oncology_note.pdf p1",
+        "date": "2026-06-05",
+        "quote_verified": true
+      }
+    ],
+    "brain_mri": [],
+    "scheduled_first_dose": [
+      {
+        "category": "planned_study_event",
+        "value": "cycle 1 day 1 of study treatment is scheduled for 2026-06-22",
+        "source": "trial_screening_letter.pdf p1",
+        "date": "2026-06-22",
+        "quote_verified": true
+      }
+    ]
+  },
+  "extraction_gaps": [
+    {
+      "source_file": "ct_chest_abdomen_pelvis.pdf",
+      "source_page": 1,
+      "line_number": 7,
+      "sentence_number": 1,
+      "text": "CT chest, abdomen and pelvis with contrast",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "ct_chest_abdomen_pelvis.pdf",
+      "source_page": 1,
+      "line_number": 8,
+      "sentence_number": 2,
+      "text": "Comparison: CT dated 2026-02-27.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "ct_chest_abdomen_pelvis.pdf",
+      "source_page": 1,
+      "line_number": 9,
+      "sentence_number": 3,
+      "text": "Liver: multiple hypodense lesions; the largest, in segment VII, measures 3.4 cm (previously 2.6",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "ct_chest_abdomen_pelvis.pdf",
+      "source_page": 1,
+      "line_number": 10,
+      "sentence_number": 4,
+      "text": "cm).",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "ct_chest_abdomen_pelvis.pdf",
+      "source_page": 1,
+      "line_number": 11,
+      "sentence_number": 5,
+      "text": "Lungs: mild bibasilar dependent atelectasis.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "ct_chest_abdomen_pelvis.pdf",
+      "source_page": 1,
+      "line_number": 11,
+      "sentence_number": 6,
+      "text": "No pulmonary nodules.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "ct_chest_abdomen_pelvis.pdf",
+      "source_page": 1,
+      "line_number": 11,
+      "sentence_number": 7,
+      "text": "No pleural effusion.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "ct_chest_abdomen_pelvis.pdf",
+      "source_page": 1,
+      "line_number": 12,
+      "sentence_number": 8,
+      "text": "Impression: progression of hepatic metastases, measurable by RECIST 1.1.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "ed_discharge_summary.pdf",
+      "source_page": 1,
+      "line_number": 8,
+      "sentence_number": 1,
+      "text": "Reason for visit: acute pain and swelling of the right big toe.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "ed_discharge_summary.pdf",
+      "source_page": 1,
+      "line_number": 11,
+      "sentence_number": 5,
+      "text": "Pain improved before discharge.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "ed_discharge_summary.pdf",
+      "source_page": 1,
+      "line_number": 12,
+      "sentence_number": 6,
+      "text": "Follow-up: primary care in one week.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "medication_reconciliation.pdf",
+      "source_page": 1,
+      "line_number": 2,
+      "sentence_number": 1,
+      "text": "Medication reconciliation",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "medication_reconciliation.pdf",
+      "source_page": 1,
+      "line_number": 9,
+      "sentence_number": 2,
+      "text": "Dose and route",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "medication_reconciliation.pdf",
+      "source_page": 1,
+      "line_number": 44,
+      "sentence_number": 11,
+      "text": "Reconciled with the patient at the oncology visit.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "neurology_note_2026.pdf",
+      "source_page": 1,
+      "line_number": 7,
+      "sentence_number": 1,
+      "text": "Follow-up after emergency visit Ms.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "neurology_note_2026.pdf",
+      "source_page": 1,
+      "line_number": 7,
+      "sentence_number": 2,
+      "text": "Roe presented to the emergency department on 2026-02-09 with sudden spinning dizziness on turning her head in bed, lasting under a minute per episode.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "neurology_note_2026.pdf",
+      "source_page": 1,
+      "line_number": 7,
+      "sentence_number": 3,
+      "text": "Neurological examination was normal.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "neurology_note_2026.pdf",
+      "source_page": 1,
+      "line_number": 7,
+      "sentence_number": 4,
+      "text": "The Dix-Hallpike test was positive on the right.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "neurology_note_2026.pdf",
+      "source_page": 1,
+      "line_number": 11,
+      "sentence_number": 5,
+      "text": "MRI brain on 2026-02-10: no acute infarct, no hemorrhage, no intracranial metastases.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "neurology_note_2026.pdf",
+      "source_page": 1,
+      "line_number": 12,
+      "sentence_number": 6,
+      "text": "Assessment: benign paroxysmal positional vertigo.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "neurology_note_2026.pdf",
+      "source_page": 1,
+      "line_number": 12,
+      "sentence_number": 7,
+      "text": "Treated with a canalith repositioning maneuver;",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "neurology_note_2026.pdf",
+      "source_page": 1,
+      "line_number": 13,
+      "sentence_number": 8,
+      "text": "symptoms resolved.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "neurology_note_2026.pdf",
+      "source_page": 1,
+      "line_number": 13,
+      "sentence_number": 9,
+      "text": "Plan: vestibular exercises; return if symptoms recur.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "oncology_note.pdf",
+      "source_page": 1,
+      "line_number": 7,
+      "sentence_number": 1,
+      "text": "Clinic visit",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "oncology_note.pdf",
+      "source_page": 1,
+      "line_number": 15,
+      "sentence_number": 9,
+      "text": "Plan: referred for clinical trial screening.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "pulmonology_consult_2025_scanned.pdf",
+      "source_page": 1,
+      "line_number": 11,
+      "sentence_number": 6,
+      "text": "Repeat chest X-ray on 2025-04-15 showed resolution of the consolidation.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "pulmonology_consult_2025_scanned.pdf",
+      "source_page": 1,
+      "line_number": 11,
+      "sentence_number": 7,
+      "text": "She is now asymptomatic.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "pulmonology_consult_2025_scanned.pdf",
+      "source_page": 1,
+      "line_number": 11,
+      "sentence_number": 8,
+      "text": "Plan: no further pulmonary follow-up is needed.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "pulmonology_consult_2025_scanned.pdf",
+      "source_page": 1,
+      "line_number": 15,
+      "sentence_number": 9,
+      "text": "Page 1 of 1 (faxed copy)",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "trial_screening_letter.pdf",
+      "source_page": 1,
+      "line_number": 8,
+      "sentence_number": 1,
+      "text": "The patient has been referred for clinical trial screening.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "trial_screening_letter.pdf",
+      "source_page": 1,
+      "line_number": 10,
+      "sentence_number": 3,
+      "text": "Final eligibility will be confirmed by the study team.",
+      "message": "Not captured by the tool, review manually"
+    }
+  ],
+  "results": {
+    "rule_baseline": {
+      "labels": 7,
+      "accuracy": 0.8571,
+      "decidable_labels": 3,
+      "decided_correctly": 0.6667,
+      "unsafe_false_clearance": 0,
+      "false_exclusion": 0,
+      "unknown_to_meets": 0,
+      "confusion_matrix": {
+        "MEETS": {
+          "MEETS": 2,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 1,
+          "POTENTIAL_CONFLICT": 0
+        },
+        "DOES_NOT_MEET": {
+          "MEETS": 0,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 0,
+          "POTENTIAL_CONFLICT": 0
+        },
+        "UNKNOWN": {
+          "MEETS": 0,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 4,
+          "POTENTIAL_CONFLICT": 0
+        },
+        "POTENTIAL_CONFLICT": {
+          "MEETS": 0,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 0,
+          "POTENTIAL_CONFLICT": 0
+        }
+      },
+      "acceptable_rate": 1.0
+    },
+    "llm_assessor": {
+      "labels": 7,
+      "accuracy": 0.7143,
+      "decidable_labels": 3,
+      "decided_correctly": 0.6667,
+      "unsafe_false_clearance": 1,
+      "false_exclusion": 0,
+      "unknown_to_meets": 1,
+      "confusion_matrix": {
+        "MEETS": {
+          "MEETS": 2,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 1,
+          "POTENTIAL_CONFLICT": 0
+        },
+        "DOES_NOT_MEET": {
+          "MEETS": 0,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 0,
+          "POTENTIAL_CONFLICT": 0
+        },
+        "UNKNOWN": {
+          "MEETS": 1,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 3,
+          "POTENTIAL_CONFLICT": 0
+        },
+        "POTENTIAL_CONFLICT": {
+          "MEETS": 0,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 0,
+          "POTENTIAL_CONFLICT": 0
+        }
+      },
+      "acceptable_rate": 0.8571
+    }
+  },
+  "rows": [
+    {
+      "method": "rule_baseline",
+      "trial": "NCT06252649",
+      "criterion_id": "EXC-04",
+      "probe": "pneumonia_trap",
+      "expected": "UNKNOWN",
+      "also_acceptable": [],
+      "predicted": "UNKNOWN",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment.",
+      "criterion_text": "History of interstitial pneumonitis or pulmonary fibrosis or evidence of interstitial pneumonitis or pulmonary fibrosis on baseline CT scan",
+      "patient_evidence": []
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT06412198",
+      "criterion_id": "EXC-03",
+      "probe": "topical_steroid_trap",
+      "expected": "UNKNOWN",
+      "also_acceptable": [],
+      "predicted": "UNKNOWN",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [
+        "EXC-03: Computed time-window guard: missing dated administration or planned first-dose reference date."
+      ],
+      "explanation": "Computed time-window guard: missing dated administration or planned first-dose reference date. Original reasoning: The supplied evidence does not safely establish this criterion without a live criterion assessment.",
+      "criterion_text": "Diagnosis of immunodeficiency or is receiving systemic steroid therapy or any other form of immunosuppressive therapy within 7 days prior to the first dose of trial treatment",
+      "patient_evidence": []
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT07559760",
+      "criterion_id": "EXC-08",
+      "probe": "vertigo_trap",
+      "expected": "UNKNOWN",
+      "also_acceptable": [],
+      "predicted": "UNKNOWN",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment.",
+      "criterion_text": "Severe/unstable angina, symptomatic congestive heart failure (NYHA ≥ II), clinically significant arrhythmia requiring treatment, arterial thrombosis, acute coronary syndrome, MI, cerebrovascular accident (including TIA) or other Grade ≥ 3 CV event within 6 months prior to first dose.",
+      "patient_evidence": []
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT06412198",
+      "criterion_id": "EXC-04",
+      "probe": "autoimmune_exception_trap",
+      "expected": "UNKNOWN",
+      "also_acceptable": [],
+      "predicted": "UNKNOWN",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment.",
+      "criterion_text": "Active autoimmune disease that has required systemic treatment in the past 2 years (i.e. with use of disease modifying agents, corticosteroids or immunosuppressive drugs). Replacement therapy (e.g., thyroxine, insulin, or physiologic corticosteroid replacement therapy for adrenal or pituitary insufficiency, etc.) is not considered a form of systemic treatment",
+      "patient_evidence": []
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT06252649",
+      "criterion_id": "EXC-01",
+      "probe": "brain_mri_explicit_negative",
+      "expected": "MEETS",
+      "also_acceptable": [
+        "UNKNOWN"
+      ],
+      "predicted": "UNKNOWN",
+      "match": false,
+      "acceptable": true,
+      "judgment_call": true,
+      "flags": [],
+      "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment.",
+      "criterion_text": "Active, untreated brain metastases.",
+      "patient_evidence": []
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT06252649",
+      "criterion_id": "INC-01",
+      "probe": "sanity",
+      "expected": "MEETS",
+      "also_acceptable": [],
+      "predicted": "MEETS",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "Explicit verified evidence matches the central condition or biomarker wording; human verification is required.",
+      "criterion_text": "Pathologically documented metastatic colorectal adenocarcinoma with KRAS p.G12C mutation by a locally validated assay.",
+      "patient_evidence": [
+        {
+          "category": "biomarker",
+          "value": "KRAS: G12C mutation detected",
+          "normalized_value": "G12C mutation",
+          "date": "2024-03-11",
+          "source_file": "pathology_report.pdf",
+          "source_page": 1,
+          "evidence_text": "KRAS: G12C mutation detected",
+          "quote_verified": true,
+          "source_kind": "other"
+        }
+      ]
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT06412198",
+      "criterion_id": "INC-11",
+      "probe": "sanity",
+      "expected": "MEETS",
+      "also_acceptable": [],
+      "predicted": "MEETS",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "Conservative offline comparison of all documented ECOG values; live LLM assessment was not requested.",
+      "criterion_text": "Eastern Cooperative Oncology Group (ECOG) performance status of 0 or 1.",
+      "patient_evidence": [
+        {
+          "category": "performance_status",
+          "value": "ECOG 1",
+          "normalized_value": "1",
+          "date": "2026-06-05",
+          "source_file": "oncology_note.pdf",
+          "source_page": 1,
+          "evidence_text": "Performance status: ECOG 1",
+          "quote_verified": true,
+          "source_kind": "other"
+        }
+      ]
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT06252649",
+      "criterion_id": "EXC-04",
+      "probe": "pneumonia_trap",
+      "expected": "UNKNOWN",
+      "also_acceptable": [],
+      "predicted": "UNKNOWN",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [
+        "EXC-04: History clearance guard: absence of explicit scope-matching negative evidence does not clear this condition history. Converted to UNKNOWN."
+      ],
+      "explanation": "History clearance guard: absence of explicit scope-matching negative evidence does not clear this condition history. Converted to UNKNOWN. Original reasoning: There is no evidence in the supplied clinical documents or imaging reports indicating a history of interstitial pneumonitis or pulmonary fibrosis, nor is there any evidence of these conditions on a baseline CT scan. The available evidence documents other diagnoses and treatments (such as gout flare, colorectal cancer, and pneumonia), but does not mention interstitial lung disease or findings consistent with pneumonitis or fibrosis. Therefore, this exclusion criterion does not apply to the patient based on the provided evidence.",
+      "criterion_text": "History of interstitial pneumonitis or pulmonary fibrosis or evidence of interstitial pneumonitis or pulmonary fibrosis on baseline CT scan",
+      "patient_evidence": []
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT06412198",
+      "criterion_id": "EXC-03",
+      "probe": "topical_steroid_trap",
+      "expected": "UNKNOWN",
+      "also_acceptable": [],
+      "predicted": "UNKNOWN",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [
+        "EXC-03: Computed time-window guard: missing dated administration or planned first-dose reference date."
+      ],
+      "explanation": "Computed time-window guard: missing dated administration or planned first-dose reference date. Original reasoning: Computed time-window guard: missing dated administration or planned first-dose reference date.",
+      "criterion_text": "Diagnosis of immunodeficiency or is receiving systemic steroid therapy or any other form of immunosuppressive therapy within 7 days prior to the first dose of trial treatment",
+      "patient_evidence": [
+        {
+          "category": "prior_treatment",
+          "value": "colchicine 0.6 mg by mouth twice daily for 5 days (2026-06-14 through 2026-06-18)",
+          "normalized_value": null,
+          "date": "2026-06-14",
+          "source_file": "ed_discharge_summary.pdf",
+          "source_page": 1,
+          "evidence_text": "Treatment: colchicine 0.6 mg by mouth twice daily for 5 days (2026-06-14 through 2026-06-18), with ice and rest.",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "prior_treatment",
+          "value": "FOLFOX, then FOLFIRI with bevacizumab; last dose 2026-05-12, stopped for disease progression",
+          "normalized_value": null,
+          "date": "2026-06-05",
+          "source_file": "oncology_note.pdf",
+          "source_page": 1,
+          "evidence_text": "Prior treatment: FOLFOX, then FOLFIRI with bevacizumab; last dose 2026-05-12, stopped for disease progression",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "planned_study_event",
+          "value": "cycle 1 day 1 of study treatment is scheduled for 2026-06-22",
+          "normalized_value": null,
+          "date": "2026-06-22",
+          "source_file": "trial_screening_letter.pdf",
+          "source_page": 1,
+          "evidence_text": "If eligibility is confirmed, cycle 1 day 1 of study treatment is scheduled for 2026-06-22.",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "prior_treatment",
+          "value": "chemotherapy for colorectal cancer",
+          "normalized_value": "chemotherapy for colorectal cancer",
+          "date": "2025-05-06",
+          "source_file": "pulmonology_consult_2025_scanned.pdf",
+          "source_page": 1,
+          "evidence_text": "In March 2025 she developed cough and fever while receiving chemotherapy for colorectal cancer.",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "prior_treatment",
+          "value": "7-day course of oral amoxicillin-clavulanate",
+          "normalized_value": "7-day course of oral amoxicillin-clavulanate",
+          "date": "2025-05-06",
+          "source_file": "pulmonology_consult_2025_scanned.pdf",
+          "source_page": 1,
+          "evidence_text": "She completed a 7-day course of oral amoxicillin-clavulanate.",
+          "quote_verified": true,
+          "source_kind": "other"
+        }
+      ]
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT07559760",
+      "criterion_id": "EXC-08",
+      "probe": "vertigo_trap",
+      "expected": "UNKNOWN",
+      "also_acceptable": [],
+      "predicted": "UNKNOWN",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [
+        "EXC-08: Time-window decision lacks an explicitly documented study reference date. Converted to UNKNOWN."
+      ],
+      "explanation": "Time-window decision lacks an explicitly documented study reference date. Converted to UNKNOWN. Original reasoning: The patient evidence includes diagnoses and treatment for gout and other conditions but shows no record of severe/unstable angina, symptomatic congestive heart failure (NYHA ≥ II), clinically significant arrhythmia requiring treatment, arterial thrombosis, acute coronary syndrome, myocardial infarction (MI), cerebrovascular accident (including TIA), or other Grade ≥ 3 cardiovascular events within six months prior to the first study dose on 2026-06-22. The presence of daily aspirin and atorvastatin for cardiovascular prevention and hyperlipidemia does not indicate any recent severe cardiovascular event, and no such event is documented. The evidence supports that none of the exclusion criteria cardiovascular events are present.",
+      "criterion_text": "Severe/unstable angina, symptomatic congestive heart failure (NYHA ≥ II), clinically significant arrhythmia requiring treatment, arterial thrombosis, acute coronary syndrome, MI, cerebrovascular accident (including TIA) or other Grade ≥ 3 CV event within 6 months prior to first dose.",
+      "patient_evidence": [
+        {
+          "category": "diagnosis",
+          "value": "acute gout flare, right first metatarsophalangeal joint",
+          "normalized_value": null,
+          "date": "2026-06-14",
+          "source_file": "ed_discharge_summary.pdf",
+          "source_page": 1,
+          "evidence_text": "Diagnosis: acute gout flare, right first metatarsophalangeal joint.",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "current_medication",
+          "value": "Aspirin 81 mg by mouth daily for Cardiovascular prevention",
+          "normalized_value": null,
+          "date": "2026-06-05",
+          "source_file": "medication_reconciliation.pdf",
+          "source_page": 1,
+          "evidence_text": "Aspirin\n81 mg by mouth daily\nCardiovascular prevention\nActive",
+          "quote_verified": true,
+          "source_kind": "medication_list"
+        },
+        {
+          "category": "current_medication",
+          "value": "Aspirin 81 mg by mouth daily for Cardiovascular prevention Active",
+          "normalized_value": null,
+          "date": "2026-06-05",
+          "source_file": "medication_reconciliation.pdf",
+          "source_page": 1,
+          "evidence_text": "Aspirin\n81 mg by mouth daily\nCardiovascular prevention\nActive",
+          "quote_verified": true,
+          "source_kind": "medication_list"
+        },
+        {
+          "category": "current_medication",
+          "value": "Atorvastatin 40 mg by mouth daily for Hyperlipidemia Active",
+          "normalized_value": null,
+          "date": "2026-06-05",
+          "source_file": "medication_reconciliation.pdf",
+          "source_page": 1,
+          "evidence_text": "Atorvastatin\n40 mg by mouth daily\nHyperlipidemia\nActive",
+          "quote_verified": true,
+          "source_kind": "medication_list"
+        },
+        {
+          "category": "comorbidity",
+          "value": "Hashimoto thyroiditis on levothyroxine replacement",
+          "normalized_value": null,
+          "date": "2026-06-05",
+          "source_file": "oncology_note.pdf",
+          "source_page": 1,
+          "evidence_text": "Past medical history: Hashimoto thyroiditis on levothyroxine replacement; gout",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "comorbidity",
+          "value": "gout",
+          "normalized_value": null,
+          "date": "2026-06-05",
+          "source_file": "oncology_note.pdf",
+          "source_page": 1,
+          "evidence_text": "Past medical history: Hashimoto thyroiditis on levothyroxine replacement; gout",
+          "quote_verified": true,
+          "source_kind": "other"
+        }
+      ]
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT06412198",
+      "criterion_id": "EXC-04",
+      "probe": "autoimmune_exception_trap",
+      "expected": "UNKNOWN",
+      "also_acceptable": [],
+      "predicted": "MEETS",
+      "match": false,
+      "acceptable": false,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The patient has Hashimoto thyroiditis treated with levothyroxine replacement therapy, which is specified as replacement therapy, not considered systemic treatment. There is no evidence of active autoimmune disease requiring systemic treatment such as disease modifying agents, corticosteroids, or immunosuppressive drugs in the past 2 years. The topical hydrocortisone cream for eczema is not systemic treatment. Therefore, the exclusion criterion for active autoimmune disease requiring systemic treatment in the past 2 years does not apply.",
+      "criterion_text": "Active autoimmune disease that has required systemic treatment in the past 2 years (i.e. with use of disease modifying agents, corticosteroids or immunosuppressive drugs). Replacement therapy (e.g., thyroxine, insulin, or physiologic corticosteroid replacement therapy for adrenal or pituitary insufficiency, etc.) is not considered a form of systemic treatment",
+      "patient_evidence": [
+        {
+          "category": "current_medication",
+          "value": "Levothyroxine 88 mcg by mouth daily for Hypothyroidism",
+          "normalized_value": null,
+          "date": "2026-06-05",
+          "source_file": "medication_reconciliation.pdf",
+          "source_page": 1,
+          "evidence_text": "Levothyroxine\n88 mcg by mouth daily\nHypothyroidism\nActive",
+          "quote_verified": true,
+          "source_kind": "medication_list"
+        },
+        {
+          "category": "current_medication",
+          "value": "Levothyroxine 88 mcg by mouth daily for Hypothyroidism Active",
+          "normalized_value": null,
+          "date": "2026-06-05",
+          "source_file": "medication_reconciliation.pdf",
+          "source_page": 1,
+          "evidence_text": "Levothyroxine\n88 mcg by mouth daily\nHypothyroidism\nActive",
+          "quote_verified": true,
+          "source_kind": "medication_list"
+        },
+        {
+          "category": "comorbidity",
+          "value": "Hashimoto thyroiditis on levothyroxine replacement",
+          "normalized_value": null,
+          "date": "2026-06-05",
+          "source_file": "oncology_note.pdf",
+          "source_page": 1,
+          "evidence_text": "Past medical history: Hashimoto thyroiditis on levothyroxine replacement; gout",
+          "quote_verified": true,
+          "source_kind": "other"
+        }
+      ]
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT06252649",
+      "criterion_id": "EXC-01",
+      "probe": "brain_mri_explicit_negative",
+      "expected": "MEETS",
+      "also_acceptable": [
+        "UNKNOWN"
+      ],
+      "predicted": "UNKNOWN",
+      "match": false,
+      "acceptable": true,
+      "judgment_call": true,
+      "flags": [
+        "EXC-01: unsupported conclusion converted to UNKNOWN."
+      ],
+      "explanation": "No patient evidence supports this conclusion; converted to UNKNOWN.",
+      "criterion_text": "Active, untreated brain metastases.",
+      "patient_evidence": []
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT06252649",
+      "criterion_id": "INC-01",
+      "probe": "sanity",
+      "expected": "MEETS",
+      "also_acceptable": [],
+      "predicted": "MEETS",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The patient has a diagnosis of metastatic colorectal adenocarcinoma with liver metastases documented (index 21). There is also evidence of a KRAS p.G12C mutation detected in a colon biopsy specimen showing invasive adenocarcinoma (indices 25 and 28). All components of the inclusion criterion are supported by the evidence.",
+      "criterion_text": "Pathologically documented metastatic colorectal adenocarcinoma with KRAS p.G12C mutation by a locally validated assay.",
+      "patient_evidence": [
+        {
+          "category": "diagnosis",
+          "value": "Metastatic colorectal adenocarcinoma, liver metastases",
+          "normalized_value": null,
+          "date": "2026-06-05",
+          "source_file": "oncology_note.pdf",
+          "source_page": 1,
+          "evidence_text": "Diagnosis: Metastatic colorectal adenocarcinoma, liver metastases",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "biomarker",
+          "value": "KRAS: G12C mutation detected",
+          "normalized_value": "G12C mutation",
+          "date": "2024-03-11",
+          "source_file": "pathology_report.pdf",
+          "source_page": 1,
+          "evidence_text": "KRAS: G12C mutation detected",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "biomarker",
+          "value": "Specimen: colon biopsy, invasive adenocarcinoma",
+          "normalized_value": null,
+          "date": "2024-03-11",
+          "source_file": "pathology_report.pdf",
+          "source_page": 1,
+          "evidence_text": "Specimen: colon biopsy, invasive adenocarcinoma",
+          "quote_verified": true,
+          "source_kind": "other"
+        }
+      ]
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT06412198",
+      "criterion_id": "INC-11",
+      "probe": "sanity",
+      "expected": "MEETS",
+      "also_acceptable": [],
+      "predicted": "MEETS",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The patient's performance status is documented as ECOG 1 (evidence index 24), which meets the inclusion criterion of having an ECOG performance status of 0 or 1.",
+      "criterion_text": "Eastern Cooperative Oncology Group (ECOG) performance status of 0 or 1.",
+      "patient_evidence": [
+        {
+          "category": "performance_status",
+          "value": "ECOG 1",
+          "normalized_value": "1",
+          "date": "2026-06-05",
+          "source_file": "oncology_note.pdf",
+          "source_page": 1,
+          "evidence_text": "Performance status: ECOG 1",
+          "quote_verified": true,
+          "source_kind": "other"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,968 @@
+{
+  "patient": "SYN-004",
+  "variant": "blind test on frozen round-2 code: buried exclusions (OCR, ED summary, neurology note)",
+  "label_status": "Reviewed by Lakshmi before any run on 10/18/26",
+  "extraction_model": "gpt-4.1-mini",
+  "assessment_model": "gpt-4.1-mini",
+  "extraction_check": {
+    "buried_pneumonitis_ocr": [
+      {
+        "category": "comorbidity",
+        "value": "drug-induced interstitial pneumonitis, felt to be oxaliplatin-related",
+        "source": "pulmonology_consult_2025_scanned.pdf p1",
+        "date": "2025-05-06",
+        "quote_verified": true
+      },
+      {
+        "category": "diagnosis",
+        "value": "drug-induced interstitial pneumonitis",
+        "source": "pulmonology_consult_2025_scanned.pdf p1",
+        "date": "2025-05-06",
+        "quote_verified": true
+      }
+    ],
+    "pneumonia_trap": [],
+    "buried_steroid": [
+      {
+        "category": "prior_treatment",
+        "value": "Oxaliplatin was permanently discontinued and she completed a prednisone taper in April 2025",
+        "source": "pulmonology_consult_2025_scanned.pdf p1",
+        "date": "2025-05-06",
+        "quote_verified": true
+      },
+      {
+        "category": "prior_treatment",
+        "value": "prednisone 40 mg by mouth once daily for 5 days (2026-06-14 through 2026-06-18)",
+        "source": "ed_discharge_summary.pdf p1",
+        "date": "2026-06-14",
+        "quote_verified": true
+      },
+      {
+        "category": "prior_treatment",
+        "value": "oxaliplatin discontinued",
+        "source": "pulmonology_consult_2025_scanned.pdf p1",
+        "date": "2025-05-06",
+        "quote_verified": true
+      },
+      {
+        "category": "prior_treatment",
+        "value": "prednisone taper completed in April 2025",
+        "source": "pulmonology_consult_2025_scanned.pdf p1",
+        "date": null,
+        "quote_verified": true
+      }
+    ],
+    "steroid_last_dose": [
+      {
+        "category": "prior_treatment",
+        "value": "prednisone 40 mg by mouth once daily for 5 days (2026-06-14 through 2026-06-18)",
+        "source": "ed_discharge_summary.pdf p1",
+        "date": "2026-06-14",
+        "quote_verified": true
+      }
+    ],
+    "inhaled_topical_steroid_trap": [
+      {
+        "category": "current_medication",
+        "value": "Fluticasone nasal spray 50 mcg, 2 sprays each nostril daily",
+        "source": "medication_reconciliation.pdf p1",
+        "date": "2026-06-05",
+        "quote_verified": true
+      },
+      {
+        "category": "current_medication",
+        "value": "Hydrocortisone 1% cream topical, as needed",
+        "source": "medication_reconciliation.pdf p1",
+        "date": "2026-06-05",
+        "quote_verified": true
+      }
+    ],
+    "buried_tia": [],
+    "vertigo_trap": [],
+    "autoimmune_exception_trap": [
+      {
+        "category": "comorbidity",
+        "value": "Hashimoto thyroiditis on levothyroxine replacement; gout",
+        "source": "oncology_note.pdf p1",
+        "date": "2026-06-05",
+        "quote_verified": true
+      },
+      {
+        "category": "comorbidity",
+        "value": "Hashimoto thyroiditis on levothyroxine replacement",
+        "source": "oncology_note.pdf p1",
+        "date": "2026-06-05",
+        "quote_verified": true
+      },
+      {
+        "category": "comorbidity",
+        "value": "gout",
+        "source": "oncology_note.pdf p1",
+        "date": "2026-06-05",
+        "quote_verified": true
+      }
+    ],
+    "brain_mri": [],
+    "scheduled_first_dose": [
+      {
+        "category": "planned_study_event",
+        "value": "cycle 1 day 1 of study treatment is scheduled for 2026-06-22",
+        "source": "trial_screening_letter.pdf p1",
+        "date": "2026-06-22",
+        "quote_verified": true
+      }
+    ]
+  },
+  "extraction_gaps": [
+    {
+      "source_file": "ct_chest_abdomen_pelvis.pdf",
+      "source_page": 1,
+      "line_number": 7,
+      "sentence_number": 1,
+      "text": "CT chest, abdomen and pelvis with contrast",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "ct_chest_abdomen_pelvis.pdf",
+      "source_page": 1,
+      "line_number": 8,
+      "sentence_number": 2,
+      "text": "Comparison: CT dated 2026-02-27.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "ct_chest_abdomen_pelvis.pdf",
+      "source_page": 1,
+      "line_number": 9,
+      "sentence_number": 3,
+      "text": "Liver: multiple hypodense lesions; the largest, in segment VII, measures 3.4 cm (previously 2.6",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "ct_chest_abdomen_pelvis.pdf",
+      "source_page": 1,
+      "line_number": 10,
+      "sentence_number": 4,
+      "text": "cm).",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "ct_chest_abdomen_pelvis.pdf",
+      "source_page": 1,
+      "line_number": 11,
+      "sentence_number": 5,
+      "text": "Lungs: mild bibasilar dependent atelectasis.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "ct_chest_abdomen_pelvis.pdf",
+      "source_page": 1,
+      "line_number": 11,
+      "sentence_number": 6,
+      "text": "No pulmonary nodules.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "ct_chest_abdomen_pelvis.pdf",
+      "source_page": 1,
+      "line_number": 11,
+      "sentence_number": 7,
+      "text": "No pleural effusion.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "ct_chest_abdomen_pelvis.pdf",
+      "source_page": 1,
+      "line_number": 12,
+      "sentence_number": 8,
+      "text": "Impression: progression of hepatic metastases, measurable by RECIST 1.1.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "ed_discharge_summary.pdf",
+      "source_page": 1,
+      "line_number": 8,
+      "sentence_number": 1,
+      "text": "Reason for visit: acute pain and swelling of the right big toe.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "ed_discharge_summary.pdf",
+      "source_page": 1,
+      "line_number": 11,
+      "sentence_number": 5,
+      "text": "Pain improved before discharge.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "ed_discharge_summary.pdf",
+      "source_page": 1,
+      "line_number": 12,
+      "sentence_number": 6,
+      "text": "Follow-up: primary care in one week.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "medication_reconciliation.pdf",
+      "source_page": 1,
+      "line_number": 2,
+      "sentence_number": 1,
+      "text": "Medication reconciliation",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "medication_reconciliation.pdf",
+      "source_page": 1,
+      "line_number": 9,
+      "sentence_number": 2,
+      "text": "Dose and route",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "medication_reconciliation.pdf",
+      "source_page": 1,
+      "line_number": 44,
+      "sentence_number": 11,
+      "text": "Reconciled with the patient at the oncology visit.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "neurology_note_2026.pdf",
+      "source_page": 1,
+      "line_number": 7,
+      "sentence_number": 1,
+      "text": "Follow-up after emergency visit Ms.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "neurology_note_2026.pdf",
+      "source_page": 1,
+      "line_number": 7,
+      "sentence_number": 2,
+      "text": "Roe presented to the emergency department on 2026-02-09 with sudden weakness of the left arm and slurred speech, which resolved completely within 30 minutes.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "neurology_note_2026.pdf",
+      "source_page": 1,
+      "line_number": 7,
+      "sentence_number": 3,
+      "text": "Neurological examination at this visit is normal.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "neurology_note_2026.pdf",
+      "source_page": 1,
+      "line_number": 11,
+      "sentence_number": 4,
+      "text": "MRI brain on 2026-02-10: no acute infarct, no hemorrhage, no intracranial metastases.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "neurology_note_2026.pdf",
+      "source_page": 1,
+      "line_number": 12,
+      "sentence_number": 5,
+      "text": "Assessment: transient ischemic attack on 2026-02-09.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "neurology_note_2026.pdf",
+      "source_page": 1,
+      "line_number": 12,
+      "sentence_number": 6,
+      "text": "Started aspirin 81 mg daily and atorvastatin.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "neurology_note_2026.pdf",
+      "source_page": 1,
+      "line_number": 12,
+      "sentence_number": 7,
+      "text": "Plan:",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "neurology_note_2026.pdf",
+      "source_page": 1,
+      "line_number": 13,
+      "sentence_number": 8,
+      "text": "carotid ultrasound; return immediately for new symptoms.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "oncology_note.pdf",
+      "source_page": 1,
+      "line_number": 7,
+      "sentence_number": 1,
+      "text": "Clinic visit",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "oncology_note.pdf",
+      "source_page": 1,
+      "line_number": 15,
+      "sentence_number": 9,
+      "text": "Plan: referred for clinical trial screening.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "pulmonology_consult_2025_scanned.pdf",
+      "source_page": 1,
+      "line_number": 11,
+      "sentence_number": 4,
+      "text": "CT chest showed bilateral ground-glass and reticular opacities.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "pulmonology_consult_2025_scanned.pdf",
+      "source_page": 1,
+      "line_number": 11,
+      "sentence_number": 7,
+      "text": "She is now asymptomatic.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "pulmonology_consult_2025_scanned.pdf",
+      "source_page": 1,
+      "line_number": 11,
+      "sentence_number": 8,
+      "text": "Plan: avoid oxaliplatin; repeat pulmonary function tests in one year.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "pulmonology_consult_2025_scanned.pdf",
+      "source_page": 1,
+      "line_number": 15,
+      "sentence_number": 9,
+      "text": "Page 1 of 1 (faxed copy)",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "trial_screening_letter.pdf",
+      "source_page": 1,
+      "line_number": 8,
+      "sentence_number": 1,
+      "text": "The patient has been referred for clinical trial screening.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "trial_screening_letter.pdf",
+      "source_page": 1,
+      "line_number": 10,
+      "sentence_number": 3,
+      "text": "Final eligibility will be confirmed by the study team.",
+      "message": "Not captured by the tool, review manually"
+    }
+  ],
+  "results": {
+    "rule_baseline": {
+      "labels": 7,
+      "accuracy": 0.4286,
+      "decidable_labels": 6,
+      "decided_correctly": 0.3333,
+      "unsafe_false_clearance": 0,
+      "false_exclusion": 0,
+      "unknown_to_meets": 0,
+      "confusion_matrix": {
+        "MEETS": {
+          "MEETS": 2,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 1,
+          "POTENTIAL_CONFLICT": 0
+        },
+        "DOES_NOT_MEET": {
+          "MEETS": 0,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 3,
+          "POTENTIAL_CONFLICT": 0
+        },
+        "UNKNOWN": {
+          "MEETS": 0,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 1,
+          "POTENTIAL_CONFLICT": 0
+        },
+        "POTENTIAL_CONFLICT": {
+          "MEETS": 0,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 0,
+          "POTENTIAL_CONFLICT": 0
+        }
+      },
+      "acceptable_rate": 0.7143
+    },
+    "llm_assessor": {
+      "labels": 7,
+      "accuracy": 0.4286,
+      "decidable_labels": 6,
+      "decided_correctly": 0.5,
+      "unsafe_false_clearance": 1,
+      "false_exclusion": 0,
+      "unknown_to_meets": 1,
+      "confusion_matrix": {
+        "MEETS": {
+          "MEETS": 2,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 1,
+          "POTENTIAL_CONFLICT": 0
+        },
+        "DOES_NOT_MEET": {
+          "MEETS": 0,
+          "DOES_NOT_MEET": 1,
+          "UNKNOWN": 2,
+          "POTENTIAL_CONFLICT": 0
+        },
+        "UNKNOWN": {
+          "MEETS": 1,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 0,
+          "POTENTIAL_CONFLICT": 0
+        },
+        "POTENTIAL_CONFLICT": {
+          "MEETS": 0,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 0,
+          "POTENTIAL_CONFLICT": 0
+        }
+      },
+      "acceptable_rate": 0.7143
+    }
+  },
+  "rows": [
+    {
+      "method": "rule_baseline",
+      "trial": "NCT06252649",
+      "criterion_id": "EXC-04",
+      "probe": "buried_pneumonitis_ocr",
+      "expected": "DOES_NOT_MEET",
+      "also_acceptable": [],
+      "predicted": "UNKNOWN",
+      "match": false,
+      "acceptable": false,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment.",
+      "criterion_text": "History of interstitial pneumonitis or pulmonary fibrosis or evidence of interstitial pneumonitis or pulmonary fibrosis on baseline CT scan",
+      "patient_evidence": []
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT06412198",
+      "criterion_id": "EXC-03",
+      "probe": "buried_steroid_window",
+      "expected": "DOES_NOT_MEET",
+      "also_acceptable": [
+        "UNKNOWN"
+      ],
+      "predicted": "UNKNOWN",
+      "match": false,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [
+        "EXC-03: Computed time-window guard: missing dated administration or planned first-dose reference date."
+      ],
+      "explanation": "Computed time-window guard: missing dated administration or planned first-dose reference date. Original reasoning: The supplied evidence does not safely establish this criterion without a live criterion assessment.",
+      "criterion_text": "Diagnosis of immunodeficiency or is receiving systemic steroid therapy or any other form of immunosuppressive therapy within 7 days prior to the first dose of trial treatment",
+      "patient_evidence": []
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT07559760",
+      "criterion_id": "EXC-08",
+      "probe": "buried_tia",
+      "expected": "DOES_NOT_MEET",
+      "also_acceptable": [],
+      "predicted": "UNKNOWN",
+      "match": false,
+      "acceptable": false,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment.",
+      "criterion_text": "Severe/unstable angina, symptomatic congestive heart failure (NYHA ≥ II), clinically significant arrhythmia requiring treatment, arterial thrombosis, acute coronary syndrome, MI, cerebrovascular accident (including TIA) or other Grade ≥ 3 CV event within 6 months prior to first dose.",
+      "patient_evidence": []
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT06412198",
+      "criterion_id": "EXC-04",
+      "probe": "autoimmune_exception_trap",
+      "expected": "UNKNOWN",
+      "also_acceptable": [],
+      "predicted": "UNKNOWN",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment.",
+      "criterion_text": "Active autoimmune disease that has required systemic treatment in the past 2 years (i.e. with use of disease modifying agents, corticosteroids or immunosuppressive drugs). Replacement therapy (e.g., thyroxine, insulin, or physiologic corticosteroid replacement therapy for adrenal or pituitary insufficiency, etc.) is not considered a form of systemic treatment",
+      "patient_evidence": []
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT06252649",
+      "criterion_id": "EXC-01",
+      "probe": "brain_mri_explicit_negative",
+      "expected": "MEETS",
+      "also_acceptable": [
+        "UNKNOWN"
+      ],
+      "predicted": "UNKNOWN",
+      "match": false,
+      "acceptable": true,
+      "judgment_call": true,
+      "flags": [],
+      "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment.",
+      "criterion_text": "Active, untreated brain metastases.",
+      "patient_evidence": []
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT06252649",
+      "criterion_id": "INC-01",
+      "probe": "sanity",
+      "expected": "MEETS",
+      "also_acceptable": [],
+      "predicted": "MEETS",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "Explicit verified evidence matches the central condition or biomarker wording; human verification is required.",
+      "criterion_text": "Pathologically documented metastatic colorectal adenocarcinoma with KRAS p.G12C mutation by a locally validated assay.",
+      "patient_evidence": [
+        {
+          "category": "biomarker",
+          "value": "KRAS: G12C mutation detected",
+          "normalized_value": null,
+          "date": "2024-03-11",
+          "source_file": "pathology_report.pdf",
+          "source_page": 1,
+          "evidence_text": "KRAS: G12C mutation detected",
+          "quote_verified": true,
+          "source_kind": "other"
+        }
+      ]
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT06412198",
+      "criterion_id": "INC-11",
+      "probe": "sanity",
+      "expected": "MEETS",
+      "also_acceptable": [],
+      "predicted": "MEETS",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "Conservative offline comparison of all documented ECOG values; live LLM assessment was not requested.",
+      "criterion_text": "Eastern Cooperative Oncology Group (ECOG) performance status of 0 or 1.",
+      "patient_evidence": [
+        {
+          "category": "performance_status",
+          "value": "ECOG 1",
+          "normalized_value": null,
+          "date": "2026-06-05",
+          "source_file": "oncology_note.pdf",
+          "source_page": 1,
+          "evidence_text": "Performance status: ECOG 1",
+          "quote_verified": true,
+          "source_kind": "other"
+        }
+      ]
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT06252649",
+      "criterion_id": "EXC-04",
+      "probe": "buried_pneumonitis_ocr",
+      "expected": "DOES_NOT_MEET",
+      "also_acceptable": [],
+      "predicted": "DOES_NOT_MEET",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The patient has a documented history of drug-induced interstitial pneumonitis, which was felt to be related to oxaliplatin, as evidenced by diagnosis and treatment notes dated 2025 (indices 19, 36). Oxaliplatin was permanently discontinued and a prednisone taper was completed in April 2025 (indices 37, 38). This constitutes a history of interstitial pneumonitis, meeting the exclusion criterion. There is no baseline CT scan evidence provided that contradicts or further clarifies, but the history alone suffices for exclusion.",
+      "criterion_text": "History of interstitial pneumonitis or pulmonary fibrosis or evidence of interstitial pneumonitis or pulmonary fibrosis on baseline CT scan",
+      "patient_evidence": [
+        {
+          "category": "comorbidity",
+          "value": "drug-induced interstitial pneumonitis, felt to be oxaliplatin-related",
+          "normalized_value": null,
+          "date": "2025-05-06",
+          "source_file": "pulmonology_consult_2025_scanned.pdf",
+          "source_page": 1,
+          "evidence_text": "Infection was excluded, and she was diagnosed with drug-induced interstitial pneumonitis, felt to be oxaliplatin-related.",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "diagnosis",
+          "value": "drug-induced interstitial pneumonitis",
+          "normalized_value": "drug-induced interstitial pneumonitis",
+          "date": "2025-05-06",
+          "source_file": "pulmonology_consult_2025_scanned.pdf",
+          "source_page": 1,
+          "evidence_text": "Infection was excluded, and she was diagnosed with drug-induced interstitial pneumonitis, felt to be oxaliplatin-related.",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "prior_treatment",
+          "value": "oxaliplatin discontinued",
+          "normalized_value": "oxaliplatin discontinued",
+          "date": "2025-05-06",
+          "source_file": "pulmonology_consult_2025_scanned.pdf",
+          "source_page": 1,
+          "evidence_text": "Oxaliplatin was permanently discontinued and she completed a prednisone taper in April 2025.",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "prior_treatment",
+          "value": "prednisone taper completed in April 2025",
+          "normalized_value": "prednisone taper completed",
+          "date": null,
+          "source_file": "pulmonology_consult_2025_scanned.pdf",
+          "source_page": 1,
+          "evidence_text": "Oxaliplatin was permanently discontinued and she completed a prednisone taper in April 2025.",
+          "quote_verified": true,
+          "source_kind": "other"
+        }
+      ]
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT06412198",
+      "criterion_id": "EXC-03",
+      "probe": "buried_steroid_window",
+      "expected": "DOES_NOT_MEET",
+      "also_acceptable": [
+        "UNKNOWN"
+      ],
+      "predicted": "UNKNOWN",
+      "match": false,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [
+        "EXC-03: Computed time-window guard: missing dated administration or planned first-dose reference date."
+      ],
+      "explanation": "Computed time-window guard: missing dated administration or planned first-dose reference date. Original reasoning: Computed time-window guard: missing dated administration or planned first-dose reference date.",
+      "criterion_text": "Diagnosis of immunodeficiency or is receiving systemic steroid therapy or any other form of immunosuppressive therapy within 7 days prior to the first dose of trial treatment",
+      "patient_evidence": [
+        {
+          "category": "prior_treatment",
+          "value": "FOLFOX, then FOLFIRI with bevacizumab; last dose 2026-05-12, stopped for disease progression",
+          "normalized_value": null,
+          "date": "2026-06-05",
+          "source_file": "oncology_note.pdf",
+          "source_page": 1,
+          "evidence_text": "Prior treatment: FOLFOX, then FOLFIRI with bevacizumab; last dose 2026-05-12, stopped for disease progression",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "planned_study_event",
+          "value": "cycle 1 day 1 of study treatment is scheduled for 2026-06-22",
+          "normalized_value": "2026-06-22",
+          "date": "2026-06-22",
+          "source_file": "trial_screening_letter.pdf",
+          "source_page": 1,
+          "evidence_text": "If eligibility is confirmed, cycle 1 day 1 of study treatment is scheduled for 2026-06-22.",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "prior_treatment",
+          "value": "Oxaliplatin was permanently discontinued and she completed a prednisone taper in April 2025",
+          "normalized_value": null,
+          "date": "2025-05-06",
+          "source_file": "pulmonology_consult_2025_scanned.pdf",
+          "source_page": 1,
+          "evidence_text": "Oxaliplatin was permanently discontinued and she completed a prednisone taper in April 2025.",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "prior_treatment",
+          "value": "prednisone 40 mg by mouth once daily for 5 days (2026-06-14 through 2026-06-18)",
+          "normalized_value": null,
+          "date": "2026-06-14",
+          "source_file": "ed_discharge_summary.pdf",
+          "source_page": 1,
+          "evidence_text": "Treatment: prednisone 40 mg by mouth once daily for 5 days (2026-06-14 through 2026-06-18), with ice and rest.",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "prior_treatment",
+          "value": "FOLFOX",
+          "normalized_value": "FOLFOX chemotherapy regimen",
+          "date": "2025-05-06",
+          "source_file": "pulmonology_consult_2025_scanned.pdf",
+          "source_page": 1,
+          "evidence_text": "In March 2025 she developed dry cough and exertional dyspnea while receiving FOLFOX for colorectal cancer.",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "prior_treatment",
+          "value": "oxaliplatin discontinued",
+          "normalized_value": "oxaliplatin discontinued",
+          "date": "2025-05-06",
+          "source_file": "pulmonology_consult_2025_scanned.pdf",
+          "source_page": 1,
+          "evidence_text": "Oxaliplatin was permanently discontinued and she completed a prednisone taper in April 2025.",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "prior_treatment",
+          "value": "prednisone taper completed in April 2025",
+          "normalized_value": "prednisone taper completed",
+          "date": null,
+          "source_file": "pulmonology_consult_2025_scanned.pdf",
+          "source_page": 1,
+          "evidence_text": "Oxaliplatin was permanently discontinued and she completed a prednisone taper in April 2025.",
+          "quote_verified": true,
+          "source_kind": "other"
+        }
+      ]
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT07559760",
+      "criterion_id": "EXC-08",
+      "probe": "buried_tia",
+      "expected": "DOES_NOT_MEET",
+      "also_acceptable": [],
+      "predicted": "UNKNOWN",
+      "match": false,
+      "acceptable": false,
+      "judgment_call": false,
+      "flags": [
+        "EXC-08: Time-window decision lacks dated cited evidence. Converted to UNKNOWN."
+      ],
+      "explanation": "Time-window decision lacks dated cited evidence. Converted to UNKNOWN. Original reasoning: The exclusion criterion involves severe or unstable angina, symptomatic congestive heart failure (NYHA ≥ II), significant arrhythmia requiring treatment, arterial thrombosis, acute coronary syndrome, myocardial infarction, cerebrovascular accident including TIA, or other Grade ≥3 cardiovascular events within 6 months prior to first dose (2026-06-22). The patient evidence does not document any such cardiovascular events or diagnoses in the 6 months before the planned study first dose. The comorbidities are Hashimoto thyroiditis, gout, and drug-induced interstitial pneumonitis. Cardiovascular conditions or events relevant to this exclusion criterion are not mentioned at all. Therefore, there is no evidence of the exclusion criterion applying.",
+      "criterion_text": "Severe/unstable angina, symptomatic congestive heart failure (NYHA ≥ II), clinically significant arrhythmia requiring treatment, arterial thrombosis, acute coronary syndrome, MI, cerebrovascular accident (including TIA) or other Grade ≥ 3 CV event within 6 months prior to first dose.",
+      "patient_evidence": []
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT06412198",
+      "criterion_id": "EXC-04",
+      "probe": "autoimmune_exception_trap",
+      "expected": "UNKNOWN",
+      "also_acceptable": [],
+      "predicted": "MEETS",
+      "match": false,
+      "acceptable": false,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The patient has a history of Hashimoto thyroiditis treated with levothyroxine replacement (index 4, 22, 31) which is a replacement therapy and not considered systemic treatment. There is also a history of drug-induced interstitial pneumonitis related to oxaliplatin, with a prednisone taper completed in April 2025 (index 18, 19, 37, 38). The prednisone taper was completed over 1 year before the planned study treatment date 2026-06-22 (index 6). The recent prednisone use in June 2026 (index 21) was a short 5-day course for an acute gout flare starting 2026-06-14 (index 20), which is not an autoimmune disease requiring systemic treatment. No evidence shows active autoimmune disease requiring systemic treatment in the past 2 years. Thus, the exclusion of active autoimmune disease treated systemically in the past 2 years does not apply.",
+      "criterion_text": "Active autoimmune disease that has required systemic treatment in the past 2 years (i.e. with use of disease modifying agents, corticosteroids or immunosuppressive drugs). Replacement therapy (e.g., thyroxine, insulin, or physiologic corticosteroid replacement therapy for adrenal or pituitary insufficiency, etc.) is not considered a form of systemic treatment",
+      "patient_evidence": [
+        {
+          "category": "comorbidity",
+          "value": "Hashimoto thyroiditis on levothyroxine replacement; gout",
+          "normalized_value": null,
+          "date": "2026-06-05",
+          "source_file": "oncology_note.pdf",
+          "source_page": 1,
+          "evidence_text": "Past medical history: Hashimoto thyroiditis on levothyroxine replacement; gout",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "prior_treatment",
+          "value": "Oxaliplatin was permanently discontinued and she completed a prednisone taper in April 2025",
+          "normalized_value": null,
+          "date": "2025-05-06",
+          "source_file": "pulmonology_consult_2025_scanned.pdf",
+          "source_page": 1,
+          "evidence_text": "Oxaliplatin was permanently discontinued and she completed a prednisone taper in April 2025.",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "comorbidity",
+          "value": "drug-induced interstitial pneumonitis, felt to be oxaliplatin-related",
+          "normalized_value": null,
+          "date": "2025-05-06",
+          "source_file": "pulmonology_consult_2025_scanned.pdf",
+          "source_page": 1,
+          "evidence_text": "Infection was excluded, and she was diagnosed with drug-induced interstitial pneumonitis, felt to be oxaliplatin-related.",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "prior_treatment",
+          "value": "prednisone 40 mg by mouth once daily for 5 days (2026-06-14 through 2026-06-18)",
+          "normalized_value": null,
+          "date": "2026-06-14",
+          "source_file": "ed_discharge_summary.pdf",
+          "source_page": 1,
+          "evidence_text": "Treatment: prednisone 40 mg by mouth once daily for 5 days (2026-06-14 through 2026-06-18), with ice and rest.",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "current_medication",
+          "value": "Levothyroxine 88 mcg by mouth daily",
+          "normalized_value": null,
+          "date": "2026-06-05",
+          "source_file": "medication_reconciliation.pdf",
+          "source_page": 1,
+          "evidence_text": "Levothyroxine\n88 mcg by mouth daily\nHypothyroidism\nActive",
+          "quote_verified": true,
+          "source_kind": "medication_list"
+        },
+        {
+          "category": "comorbidity",
+          "value": "Hashimoto thyroiditis on levothyroxine replacement",
+          "normalized_value": "Hashimoto thyroiditis",
+          "date": "2026-06-05",
+          "source_file": "oncology_note.pdf",
+          "source_page": 1,
+          "evidence_text": "Past medical history: Hashimoto thyroiditis on levothyroxine replacement; gout",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "prior_treatment",
+          "value": "oxaliplatin discontinued",
+          "normalized_value": "oxaliplatin discontinued",
+          "date": "2025-05-06",
+          "source_file": "pulmonology_consult_2025_scanned.pdf",
+          "source_page": 1,
+          "evidence_text": "Oxaliplatin was permanently discontinued and she completed a prednisone taper in April 2025.",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "prior_treatment",
+          "value": "prednisone taper completed in April 2025",
+          "normalized_value": "prednisone taper completed",
+          "date": null,
+          "source_file": "pulmonology_consult_2025_scanned.pdf",
+          "source_page": 1,
+          "evidence_text": "Oxaliplatin was permanently discontinued and she completed a prednisone taper in April 2025.",
+          "quote_verified": true,
+          "source_kind": "other"
+        }
+      ]
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT06252649",
+      "criterion_id": "EXC-01",
+      "probe": "brain_mri_explicit_negative",
+      "expected": "MEETS",
+      "also_acceptable": [
+        "UNKNOWN"
+      ],
+      "predicted": "UNKNOWN",
+      "match": false,
+      "acceptable": true,
+      "judgment_call": true,
+      "flags": [
+        "EXC-01: exclusion cleared without evidence about it; converted to UNKNOWN."
+      ],
+      "explanation": "No cited evidence addresses this exclusion; absence of a record does not clear it. Converted to UNKNOWN. Original reasoning: The patient has documented metastatic colorectal adenocarcinoma with liver metastases but there is no evidence or mention of brain metastases, active or untreated, in the provided medical records. Therefore, the exclusion criterion 'Active, untreated brain metastases' does not apply to this patient based on the available evidence.",
+      "criterion_text": "Active, untreated brain metastases.",
+      "patient_evidence": [
+        {
+          "category": "diagnosis",
+          "value": "Metastatic colorectal adenocarcinoma, liver metastases",
+          "normalized_value": null,
+          "date": "2026-06-05",
+          "source_file": "oncology_note.pdf",
+          "source_page": 1,
+          "evidence_text": "Diagnosis: Metastatic colorectal adenocarcinoma, liver metastases",
+          "quote_verified": true,
+          "source_kind": "other"
+        }
+      ]
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT06252649",
+      "criterion_id": "INC-01",
+      "probe": "sanity",
+      "expected": "MEETS",
+      "also_acceptable": [],
+      "predicted": "MEETS",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The patient has a diagnosis of metastatic colorectal adenocarcinoma with liver metastases (evidence 0), which is pathologically documented as invasive adenocarcinoma from colon biopsy (evidence 30). Additionally, the presence of a KRAS p.G12C mutation has been detected by a locally validated assay (evidence 7). These findings collectively meet the inclusion criterion requiring pathologically documented metastatic colorectal adenocarcinoma with KRAS p.G12C mutation.",
+      "criterion_text": "Pathologically documented metastatic colorectal adenocarcinoma with KRAS p.G12C mutation by a locally validated assay.",
+      "patient_evidence": [
+        {
+          "category": "diagnosis",
+          "value": "Metastatic colorectal adenocarcinoma, liver metastases",
+          "normalized_value": null,
+          "date": "2026-06-05",
+          "source_file": "oncology_note.pdf",
+          "source_page": 1,
+          "evidence_text": "Diagnosis: Metastatic colorectal adenocarcinoma, liver metastases",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "biomarker",
+          "value": "KRAS: G12C mutation detected",
+          "normalized_value": null,
+          "date": "2024-03-11",
+          "source_file": "pathology_report.pdf",
+          "source_page": 1,
+          "evidence_text": "KRAS: G12C mutation detected",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "diagnosis",
+          "value": "Specimen: colon biopsy, invasive adenocarcinoma",
+          "normalized_value": null,
+          "date": "2024-03-11",
+          "source_file": "pathology_report.pdf",
+          "source_page": 1,
+          "evidence_text": "Specimen: colon biopsy, invasive adenocarcinoma",
+          "quote_verified": true,
+          "source_kind": "other"
+        }
+      ]
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT06412198",
+      "criterion_id": "INC-11",
+      "probe": "sanity",
+      "expected": "MEETS",
+      "also_acceptable": [],
+      "predicted": "MEETS",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The patient has an ECOG performance status of 1 as documented in the evidence, which meets the inclusion criterion requiring an ECOG performance status of 0 or 1.",
+      "criterion_text": "Eastern Cooperative Oncology Group (ECOG) performance status of 0 or 1.",
+      "patient_evidence": [
+        {
+          "category": "performance_status",
+          "value": "ECOG 1",
+          "normalized_value": null,
+          "date": "2026-06-05",
+          "source_file": "oncology_note.pdf",
+          "source_page": 1,
+          "evidence_text": "Performance status: ECOG 1",
+          "quote_verified": true,
+          "source_kind": "other"
+        }
+      ]
+    }
+  ]
+}

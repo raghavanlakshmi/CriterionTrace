@@ -1,0 +1,70 @@
+{
+  "patient": "SYN-004",
+  "variant": "blind test on frozen round-2 code: buried exclusions (OCR, ED summary, neurology note)",
+  "label_status": "Reviewed by Lakshmi before any run on 10/18/26",
+  "status_semantics": "For exclusion criteria, MEETS means the patient appears clear of the exclusion; DOES_NOT_MEET means the exclusion appears to apply.",
+  "labels": [
+    {
+      "trial": "NCT06252649",
+      "criterion_id": "EXC-04",
+      "expected": "DOES_NOT_MEET",
+      "rationale": "Drug-induced interstitial pneumonitis in March 2025, stated only in the scanned 2025 pulmonology consult (reachable only through OCR). A history of interstitial pneumonitis excludes, even though it resolved. The atelectasis on the 2026 CT is not pneumonitis or fibrosis.",
+      "judgment_call": false,
+      "probe": "buried_pneumonitis_ocr"
+    },
+    {
+      "trial": "NCT06412198",
+      "criterion_id": "EXC-03",
+      "expected": "DOES_NOT_MEET",
+      "rationale": "Prednisone 40 mg daily 2026-06-14 through 2026-06-18 (ED discharge summary) is systemic steroid therapy 4 days before cycle 1 day 1 on 2026-06-22 (screening letter), inside the 7-day window. Fluticasone nasal spray and hydrocortisone cream are not systemic; the April 2025 prednisone taper is outside the window. UNKNOWN is acceptable because the scheduled date could move; MEETS is unsafe.",
+      "judgment_call": false,
+      "also_acceptable": [
+        "UNKNOWN"
+      ],
+      "probe": "buried_steroid_window"
+    },
+    {
+      "trial": "NCT07559760",
+      "criterion_id": "EXC-08",
+      "expected": "DOES_NOT_MEET",
+      "rationale": "Transient ischemic attack on 2026-02-09 (2026 neurology note), 133 days before cycle 1 day 1 on 2026-06-22, inside the 6-month window. The criterion names TIA explicitly.",
+      "judgment_call": false,
+      "probe": "buried_tia"
+    },
+    {
+      "trial": "NCT06412198",
+      "criterion_id": "EXC-04",
+      "expected": "UNKNOWN",
+      "rationale": "Hashimoto thyroiditis is autoimmune, but it is treated only with levothyroxine, and the criterion says replacement therapy (e.g., thyroxine) is not systemic treatment. Nothing else in the record shows or rules out another autoimmune disease. DOES_NOT_MEET is a false exclusion; MEETS would be clearance from absence.",
+      "judgment_call": false,
+      "probe": "autoimmune_exception_trap"
+    },
+    {
+      "trial": "NCT06252649",
+      "criterion_id": "EXC-01",
+      "expected": "MEETS",
+      "rationale": "MRI brain 2026-02-10 (neurology note, both variants): no intracranial metastases. Explicit negative evidence. UNKNOWN is acceptable because the MRI is about four months old.",
+      "judgment_call": true,
+      "also_acceptable": [
+        "UNKNOWN"
+      ],
+      "probe": "brain_mri_explicit_negative"
+    },
+    {
+      "trial": "NCT06252649",
+      "criterion_id": "INC-01",
+      "expected": "MEETS",
+      "rationale": "Metastatic colorectal adenocarcinoma (oncology note) with KRAS G12C (pathology report).",
+      "judgment_call": false,
+      "probe": "sanity"
+    },
+    {
+      "trial": "NCT06412198",
+      "criterion_id": "INC-11",
+      "expected": "MEETS",
+      "rationale": "ECOG 1 in the 2026-06-05 oncology note.",
+      "judgment_call": false,
+      "probe": "sanity"
+    }
+  ]
+}

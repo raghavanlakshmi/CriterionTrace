@@ -1,0 +1,67 @@
+{
+  "patient": "SYN-004-control",
+  "variant": "matched control: buried facts replaced by look-alike traps",
+  "label_status": "Reviewed by Lakshmi before any run on 10/18/26",
+  "status_semantics": "For exclusion criteria, MEETS means the patient appears clear of the exclusion; DOES_NOT_MEET means the exclusion appears to apply.",
+  "labels": [
+    {
+      "trial": "NCT06252649",
+      "criterion_id": "EXC-04",
+      "expected": "UNKNOWN",
+      "rationale": "The scanned consult describes community-acquired pneumonia (infection, resolved), not pneumonitis; the CT shows atelectasis, not fibrosis. Nothing explicitly rules out a history of interstitial pneumonitis. DOES_NOT_MEET is a false exclusion; MEETS is clearance from absence.",
+      "judgment_call": false,
+      "probe": "pneumonia_trap"
+    },
+    {
+      "trial": "NCT06412198",
+      "criterion_id": "EXC-03",
+      "expected": "UNKNOWN",
+      "rationale": "Only inhaled (fluticasone nasal) and topical (hydrocortisone cream) steroids, which are not systemic; the gout flare was treated with colchicine. No record covers the days just before 2026-06-22, and immunodeficiency is not addressed. DOES_NOT_MEET is a false exclusion; MEETS is clearance from absence.",
+      "judgment_call": false,
+      "probe": "topical_steroid_trap"
+    },
+    {
+      "trial": "NCT07559760",
+      "criterion_id": "EXC-08",
+      "expected": "UNKNOWN",
+      "rationale": "The 2026-02-09 episode was benign positional vertigo, with no infarct on MRI; that is not a cardiovascular event. Ruling out stroke does not rule out the other events listed (heart failure, arrhythmia, MI, and so on). DOES_NOT_MEET is a false exclusion; MEETS is clearance from a narrower negative.",
+      "judgment_call": false,
+      "probe": "vertigo_trap"
+    },
+    {
+      "trial": "NCT06412198",
+      "criterion_id": "EXC-04",
+      "expected": "UNKNOWN",
+      "rationale": "Hashimoto thyroiditis is autoimmune, but it is treated only with levothyroxine, and the criterion says replacement therapy (e.g., thyroxine) is not systemic treatment. Nothing else in the record shows or rules out another autoimmune disease. DOES_NOT_MEET is a false exclusion; MEETS would be clearance from absence.",
+      "judgment_call": false,
+      "probe": "autoimmune_exception_trap"
+    },
+    {
+      "trial": "NCT06252649",
+      "criterion_id": "EXC-01",
+      "expected": "MEETS",
+      "rationale": "MRI brain 2026-02-10 (neurology note, both variants): no intracranial metastases. Explicit negative evidence. UNKNOWN is acceptable because the MRI is about four months old.",
+      "judgment_call": true,
+      "also_acceptable": [
+        "UNKNOWN"
+      ],
+      "probe": "brain_mri_explicit_negative"
+    },
+    {
+      "trial": "NCT06252649",
+      "criterion_id": "INC-01",
+      "expected": "MEETS",
+      "rationale": "Metastatic colorectal adenocarcinoma (oncology note) with KRAS G12C (pathology report).",
+      "judgment_call": false,
+      "probe": "sanity"
+    },
+    {
+      "trial": "NCT06412198",
+      "criterion_id": "INC-11",
+      "expected": "MEETS",
+      "rationale": "ECOG 1 in the 2026-06-05 oncology note.",
+      "judgment_call": false,
+      "probe": "sanity"
+    }
+  ]
+}
