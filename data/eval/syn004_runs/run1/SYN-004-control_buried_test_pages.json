@@ -1,0 +1,56 @@
+[
+  {
+    "file": "ct_chest_abdomen_pelvis.pdf",
+    "page": 1,
+    "method": "PYMUPDF",
+    "text": "SYNTHETIC PATIENT - FICTIONAL DATA - FOR DEMONSTRATION ONLY\nRadiology report\nPatient ID: SYN-004\nDocument date: 2026-06-01\nFictional document. No real patient information.\nPage 1 of 1\nCT chest, abdomen and pelvis with contrast\nComparison: CT dated 2026-02-27.\nLiver: multiple hypodense lesions; the largest, in segment VII, measures 3.4 cm (previously 2.6\ncm).\nLungs: mild bibasilar dependent atelectasis. No pulmonary nodules. No pleural effusion.\nImpression: progression of hepatic metastases, measurable by RECIST 1.1.\n"
+  },
+  {
+    "file": "ed_discharge_summary.pdf",
+    "page": 1,
+    "method": "PYMUPDF",
+    "text": "SYNTHETIC PATIENT - FICTIONAL DATA - FOR DEMONSTRATION ONLY\nEmergency department discharge summary\nPatient ID: SYN-004\nDocument date: 2026-06-14\nFictional document. No real patient information.\nPage 1 of 1\nDischarge summary\nReason for visit: acute pain and swelling of the right big toe.\nDiagnosis: acute gout flare, right first metatarsophalangeal joint.\nTreatment: colchicine 0.6 mg by mouth twice daily for 5 days (2026-06-14 through 2026-06-18), with ice\nand rest. Pain improved before discharge.\nFollow-up: primary care in one week.\n"
+  },
+  {
+    "file": "lab_report.pdf",
+    "page": 1,
+    "method": "PYMUPDF",
+    "text": "SYNTHETIC PATIENT - FICTIONAL DATA - FOR DEMONSTRATION ONLY\nLaboratory report\nPatient ID: SYN-004\nDocument date: 2026-06-03\nFictional document. No real patient information.\nPage 1 of 1\nReported laboratory values\nAbsolute neutrophil count (ANC): 3.4 x 10^9/L\nHemoglobin: 11.6 g/dL\nPlatelets: 238 x 10^9/L\nCreatinine: 0.9 mg/dL\nTotal bilirubin: 0.7 mg/dL\nAST: 31 U/L\nALT: 27 U/L\nTSH: 2.1 mIU/L\n"
+  },
+  {
+    "file": "medication_reconciliation.pdf",
+    "page": 1,
+    "method": "PYMUPDF",
+    "text": "SYNTHETIC PATIENT - FICTIONAL DATA - FOR DEMONSTRATION ONLY\nMedication reconciliation\nPatient ID: SYN-004\nDocument date: 2026-06-05\nFictional document. No real patient information.\nPage 1 of 1\nCurrent medication list\nMedication\nDose and route\nIndication\nStatus\nLevothyroxine\n88 mcg by mouth daily\nHypothyroidism\nActive\nAllopurinol\n100 mg by mouth daily\nGout\nActive\nFluticasone nasal spray\n50 mcg, 2 sprays each nostril daily\nAllergic rhinitis\nActive\nHydrocortisone 1% cream\nTopical, as needed\nEczema\nActive\nAspirin\n81 mg by mouth daily\nCardiovascular prevention\nActive\nAtorvastatin\n40 mg by mouth daily\nHyperlipidemia\nActive\nOndansetron\n8 mg by mouth as needed\nNausea\nActive\nLoperamide\n2 mg by mouth as needed\nDiarrhea\nActive\nReconciled with the patient at the oncology visit.\n"
+  },
+  {
+    "file": "neurology_note_2026.pdf",
+    "page": 1,
+    "method": "PYMUPDF",
+    "text": "SYNTHETIC PATIENT - FICTIONAL DATA - FOR DEMONSTRATION ONLY\nNeurology clinic note\nPatient ID: SYN-004\nDocument date: 2026-02-20\nFictional document. No real patient information.\nPage 1 of 1\nFollow-up after emergency visit\nMs. Roe presented to the emergency department on 2026-02-09 with sudden spinning dizziness on\nturning her head in bed, lasting under a minute per episode. Neurological examination was normal. The\nDix-Hallpike test was positive on the right.\nMRI brain on 2026-02-10: no acute infarct, no hemorrhage, no intracranial metastases.\nAssessment: benign paroxysmal positional vertigo. Treated with a canalith repositioning maneuver;\nsymptoms resolved. Plan: vestibular exercises; return if symptoms recur.\n"
+  },
+  {
+    "file": "oncology_note.pdf",
+    "page": 1,
+    "method": "PYMUPDF",
+    "text": "SYNTHETIC PATIENT - FICTIONAL DATA - FOR DEMONSTRATION ONLY\nOncology note\nPatient ID: SYN-004\nDocument date: 2026-06-05\nFictional document. No real patient information.\nPage 1 of 1\nClinic visit\nAge: 58 years\nSex: Female\nDiagnosis: Metastatic colorectal adenocarcinoma, liver metastases\nPrior treatment: FOLFOX, then FOLFIRI with bevacizumab; last dose 2026-05-12, stopped for\ndisease progression\nPast medical history: Hashimoto thyroiditis on levothyroxine replacement; gout\nPerformance status: ECOG 1\nPlan: referred for clinical trial screening.\n"
+  },
+  {
+    "file": "pathology_report.pdf",
+    "page": 1,
+    "method": "PYMUPDF",
+    "text": "SYNTHETIC PATIENT - FICTIONAL DATA - FOR DEMONSTRATION ONLY\nPathology report\nPatient ID: SYN-004\nDocument date: 2024-03-11\nFictional document. No real patient information.\nPage 1 of 1\nMolecular findings\nSpecimen: colon biopsy, invasive adenocarcinoma\nKRAS: G12C mutation detected\nMSI: microsatellite stable (MSS)\nBRAF: wild type\n"
+  },
+  {
+    "file": "pulmonology_consult_2025_scanned.pdf",
+    "page": 1,
+    "method": "OPENAI_VISION",
+    "text": "SYNTHETIC PATIENT - FICTIONAL DATA - FOR DEMONSTRATION ONLY\n\nPulmonology consultation\n\nPatient ID: SYN-004\n\nDocument date: 2025-05-06\n\nConsultation summary\n\nMs. Roe is seen in follow-up for a respiratory illness. In March 2025 she developed cough and fever while receiving chemotherapy for colorectal cancer. Chest X-ray showed right lower lobe consolidation, and she was diagnosed with community-acquired pneumonia. She completed a 7-day course of oral amoxicillin-clavulanate. Repeat chest X-ray on 2025-04-15 showed resolution of the consolidation. She is now asymptomatic. Plan: no further pulmonary follow-up is needed.\n\nFictional document. No real patient information.\nPage 1 of 1 (faxed copy)"
+  },
+  {
+    "file": "trial_screening_letter.pdf",
+    "page": 1,
+    "method": "PYMUPDF",
+    "text": "SYNTHETIC PATIENT - FICTIONAL DATA - FOR DEMONSTRATION ONLY\nTrial screening letter\nPatient ID: SYN-004\nDocument date: 2026-06-16\nFictional document. No real patient information.\nPage 1 of 1\nScreening plan\nThe patient has been referred for clinical trial screening.\nIf eligibility is confirmed, cycle 1 day 1 of study treatment is scheduled for 2026-06-22.\nFinal eligibility will be confirmed by the study team.\n"
+  }
+]

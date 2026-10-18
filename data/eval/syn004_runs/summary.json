@@ -1,0 +1,20 @@
+{
+  "run_commit": "b09f44e09c6757fa2b4fcd7196a5fe0a5aa4958a",
+  "implementation_commit": "caa440b3a324428f7fdb2dc62468ad0a311667a4",
+  "exact": 24,
+  "acceptable": 33,
+  "total": 42,
+  "unsafe_false_clearances": 5,
+  "false_exclusions": 1,
+  "control_false_exclusions": 0,
+  "guards": {
+    "History clearance": 3,
+    "Computed window missing dated pair": 6,
+    "Missing study reference": 3,
+    "Missing dated citation": 2,
+    "Medication snapshots only": 1,
+    "Unsupported exclusion clearance": 2,
+    "No cited evidence": 4,
+    "Status contradicts explanation": 0
+  }
+}
