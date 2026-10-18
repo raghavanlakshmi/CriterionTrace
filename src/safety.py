@@ -399,6 +399,37 @@ def status_contradicts_explanation(item: CriterionAssessment) -> bool:
 
 
 
+
+def date_comparison_problem(item: CriterionAssessment) -> str | None:
+    comparisons = [c.model_dump() for c in item.date_comparisons]
+    if not comparisons:
+        month = r"(?:January|February|March|April|May|June|July|August|September|October|November|December|Jan|Feb|Mar|Apr|Jun|Jul|Aug|Sep|Oct|Nov|Dec)"
+        date_text = r"(?:\d{4}-\d{2}(?:-\d{2})?|" + month + r"\s+(?:\d{1,2},?\s+)?\d{4})"
+        pattern = r"("+date_text+r").{0,80}?\b(more than|less than|within)\s+(\d+|"+"|".join(NUMBER_WORDS)+r")\s+(days?|weeks?|months?|years?)\s+(?:before|prior to)\s+("+date_text+r")"
+        for match in re.finditer(pattern, item.explanation, re.I):
+            amount = int(match[3]) if match[3].isdigit() else NUMBER_WORDS[match[3].lower()]
+            comparisons.append(dict(from_date=match[1],to_date=match[5],claimed=match[2].replace(" ","_"),amount=amount,unit=match[4]))
+    for comparison in comparisons:
+        start, end = date_bounds(comparison['from_date']), date_bounds(comparison['to_date'])
+        if not start or not end:
+            return "Date-comparison guard: explanation contains an unverifiable date comparison."
+        results = []
+        try:
+            for source in set(start):
+                for reference in set(end):
+                    lower = window_start(reference, comparison['amount'], comparison['unit'])
+                    if comparison['claimed'] == 'within': valid = lower <= source <= reference
+                    elif comparison['claimed'] == 'more_than': valid = source < lower
+                    else: valid = lower < source <= reference
+                    results.append(valid)
+        except (ValueError, OverflowError):
+            return "Date-comparison guard: explanation contains an unverifiable date comparison."
+        if not any(results):
+            return "Date-comparison guard: explanation contains an incorrect date comparison."
+        if not all(results):
+            return "Date-comparison guard: source date precision cannot verify the explanation's comparison."
+    return None
+
 def is_compound_window(text: str) -> bool:
     # Only top-level connectors; alternatives inside an example list in
     # parentheses do not silently become separate clinical requirements.
@@ -427,6 +458,9 @@ def review_assessments(assessments: list[CriterionAssessment], *, _part: bool = 
             if status_contradicts_explanation(item):
                 status = "UNKNOWN"
                 child_flags.append(f"{item.criterion_id}: status contradicts explanation; converted to UNKNOWN.")
+            if reason := date_comparison_problem(item):
+                status = "UNKNOWN"
+                child_flags.append(f"{item.criterion_id}: {reason} Converted to UNKNOWN.")
             explanation = "Compound criterion guard: " + " | ".join(f"Part {n}: {part.criterion_text} => {part.status}. {part.explanation}" for n, part in enumerate(checked, 1))
             reviewed.append(item.model_copy(update={"status": status, "parts": checked,
                 "explanation": explanation + " Original reasoning: " + item.explanation}))
@@ -466,6 +500,9 @@ def review_assessments(assessments: list[CriterionAssessment], *, _part: bool = 
             status, detail = computed
             update = {"status": status, "explanation": detail + " Original reasoning: " + item.explanation}
             flags.append(f"{item.criterion_id}: {detail}")
+        if reason := date_comparison_problem(item):
+            update = {"status": "UNKNOWN", "explanation": reason + " Converted to UNKNOWN. Original reasoning: " + item.explanation}
+            flags.append(f"{item.criterion_id}: {reason} Converted to UNKNOWN.")
         if any(not evidence.quote_verified for evidence in item.patient_evidence):
             update = {"status": "UNKNOWN", "explanation": "A cited source quote was not verified; converted to UNKNOWN."}
             flags.append(f"{item.criterion_id}: unverified source quote.")

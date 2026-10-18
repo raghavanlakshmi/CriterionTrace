@@ -107,6 +107,15 @@ class TrialCriterion(BaseModel):
     text: str = Field(min_length=1)
 
 
+class DateComparison(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    from_date: str
+    to_date: str
+    claimed: Literal["within", "more_than", "less_than"]
+    amount: int = Field(ge=0)
+    unit: Literal["day", "days", "week", "weeks", "month", "months", "year", "years"]
+
+
 class CriterionAssessment(BaseModel):
     """Auditable prescreening result for one criterion."""
 
@@ -123,6 +132,7 @@ class CriterionAssessment(BaseModel):
     clearance_basis: Literal["explicit_negative", "exception_only", "absence", "other"] | None = None
     window_evidence_index: int | None = Field(default=None, ge=0, description="Selected event index within patient_evidence, mapped from the model input by code")
     parts: list["CriterionAssessment"] = Field(default_factory=list)
+    date_comparisons: list[DateComparison] = Field(default_factory=list)
 
 
 class RetrievalChunk(BaseModel):
