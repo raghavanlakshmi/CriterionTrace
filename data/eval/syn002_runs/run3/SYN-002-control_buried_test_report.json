@@ -1,0 +1,295 @@
+{
+  "patient": "SYN-002-control",
+  "variant": "control (buried lines removed)",
+  "label_status": "APPROVED by user in chat on 2026-10-17 before first live run; original expected labels unchanged",
+  "extraction_model": "gpt-4.1-mini",
+  "assessment_model": "gpt-4.1-mini",
+  "extraction_check": {
+    "buried_malignancy": [],
+    "buried_kras_inhibitor": [],
+    "family_history_decoy": [],
+    "last_chemo_dose": []
+  },
+  "results": {
+    "rule_baseline": {
+      "labels": 7,
+      "accuracy": 0.8571,
+      "decidable_labels": 3,
+      "decided_correctly": 0.6667,
+      "unsafe_false_clearance": 0,
+      "false_exclusion": 0,
+      "unknown_to_meets": 0,
+      "confusion_matrix": {
+        "MEETS": {
+          "MEETS": 2,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 1,
+          "POTENTIAL_CONFLICT": 0
+        },
+        "DOES_NOT_MEET": {
+          "MEETS": 0,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 0,
+          "POTENTIAL_CONFLICT": 0
+        },
+        "UNKNOWN": {
+          "MEETS": 0,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 4,
+          "POTENTIAL_CONFLICT": 0
+        },
+        "POTENTIAL_CONFLICT": {
+          "MEETS": 0,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 0,
+          "POTENTIAL_CONFLICT": 0
+        }
+      },
+      "acceptable_rate": 0.8571
+    },
+    "llm_assessor": {
+      "labels": 7,
+      "accuracy": 1.0,
+      "decidable_labels": 3,
+      "decided_correctly": 1.0,
+      "unsafe_false_clearance": 0,
+      "false_exclusion": 0,
+      "unknown_to_meets": 0,
+      "confusion_matrix": {
+        "MEETS": {
+          "MEETS": 3,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 0,
+          "POTENTIAL_CONFLICT": 0
+        },
+        "DOES_NOT_MEET": {
+          "MEETS": 0,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 0,
+          "POTENTIAL_CONFLICT": 0
+        },
+        "UNKNOWN": {
+          "MEETS": 0,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 4,
+          "POTENTIAL_CONFLICT": 0
+        },
+        "POTENTIAL_CONFLICT": {
+          "MEETS": 0,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 0,
+          "POTENTIAL_CONFLICT": 0
+        }
+      },
+      "acceptable_rate": 1.0
+    }
+  },
+  "rows": [
+    {
+      "method": "rule_baseline",
+      "trial": "NCT07559760",
+      "criterion_id": "EXC-19",
+      "probe": "buried_malignancy",
+      "expected": "UNKNOWN",
+      "also_acceptable": [],
+      "predicted": "UNKNOWN",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment."
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT06412198",
+      "criterion_id": "EXC-02",
+      "probe": "buried_kras_inhibitor",
+      "expected": "UNKNOWN",
+      "also_acceptable": [],
+      "predicted": "UNKNOWN",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment."
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT06252649",
+      "criterion_id": "EXC-03",
+      "probe": "buried_kras_inhibitor",
+      "expected": "UNKNOWN",
+      "also_acceptable": [],
+      "predicted": "UNKNOWN",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment."
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT06412198",
+      "criterion_id": "INC-01",
+      "probe": "sanity",
+      "expected": "MEETS",
+      "also_acceptable": [],
+      "predicted": "UNKNOWN",
+      "match": false,
+      "acceptable": false,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The matched fact covers only part of this criterion; its additional requirements are not documented."
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT06412198",
+      "criterion_id": "INC-02",
+      "probe": "sanity",
+      "expected": "MEETS",
+      "also_acceptable": [],
+      "predicted": "MEETS",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "Explicit verified evidence matches the central condition or biomarker wording; human verification is required."
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT07559760",
+      "criterion_id": "INC-02",
+      "probe": "sanity",
+      "expected": "MEETS",
+      "also_acceptable": [],
+      "predicted": "MEETS",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "Explicit verified evidence matches the central condition or biomarker wording; human verification is required."
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT07559760",
+      "criterion_id": "EXC-05",
+      "probe": "washout",
+      "expected": "UNKNOWN",
+      "also_acceptable": [
+        "DOES_NOT_MEET"
+      ],
+      "predicted": "UNKNOWN",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": true,
+      "flags": [],
+      "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment."
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT07559760",
+      "criterion_id": "EXC-19",
+      "probe": "buried_malignancy",
+      "expected": "UNKNOWN",
+      "also_acceptable": [],
+      "predicted": "UNKNOWN",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [
+        "EXC-19: exclusion cleared without evidence about it; converted to UNKNOWN."
+      ],
+      "explanation": "No cited evidence addresses this exclusion; absence of a record does not clear it. Converted to UNKNOWN. Original reasoning: The patient has a diagnosis of metastatic colorectal adenocarcinoma with no documented history of other malignancies within the past 5 years, except those specifically excluded (basal-cell carcinoma of skin or cervical carcinoma in situ). Therefore, the exclusion criterion related to other malignancies within 5 years does not apply."
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT06412198",
+      "criterion_id": "EXC-02",
+      "probe": "buried_kras_inhibitor",
+      "expected": "UNKNOWN",
+      "also_acceptable": [],
+      "predicted": "UNKNOWN",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [
+        "EXC-02: unsupported conclusion converted to UNKNOWN."
+      ],
+      "explanation": "No patient evidence supports this conclusion; converted to UNKNOWN."
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT06252649",
+      "criterion_id": "EXC-03",
+      "probe": "buried_kras_inhibitor",
+      "expected": "UNKNOWN",
+      "also_acceptable": [],
+      "predicted": "UNKNOWN",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [
+        "EXC-03: absence-based clearance of a prior-exposure exclusion converted to UNKNOWN."
+      ],
+      "explanation": "The record does not explicitly rule out this prior exposure; absence from a treatment list is not a negative. Converted to UNKNOWN."
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT06412198",
+      "criterion_id": "INC-01",
+      "probe": "sanity",
+      "expected": "MEETS",
+      "also_acceptable": [],
+      "predicted": "MEETS",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The patient has a histologically confirmed diagnosis of metastatic colorectal adenocarcinoma (evidence 2), which is consistent with advanced/metastatic colorectal cancer. The biomarker evidence shows a KRAS G12C mutation detected (evidence 7) and microsatellite stable status (MSS) (evidence 8). The patient has received multiple prior lines of therapy (FOLFOX, then FOLFIRI) (evidence 4), indicating at least one prior line of therapy. Therefore, all components of the inclusion criterion are met."
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT06412198",
+      "criterion_id": "INC-02",
+      "probe": "sanity",
+      "expected": "MEETS",
+      "also_acceptable": [],
+      "predicted": "MEETS",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The criterion requires confirmed KRASG12C mutation status. Evidence index 7 explicitly states 'KRAS: G12C mutation detected', confirming the presence of this mutation in the patient, thus meeting the inclusion criterion."
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT07559760",
+      "criterion_id": "INC-02",
+      "probe": "sanity",
+      "expected": "MEETS",
+      "also_acceptable": [],
+      "predicted": "MEETS",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The inclusion criterion requires histologically or cytologically confirmed colorectal adenocarcinoma. The evidence includes a diagnosis of metastatic colorectal adenocarcinoma (index 2), confirming that the patient's diagnosis meets this criterion."
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT07559760",
+      "criterion_id": "EXC-05",
+      "probe": "washout",
+      "expected": "UNKNOWN",
+      "also_acceptable": [
+        "DOES_NOT_MEET"
+      ],
+      "predicted": "UNKNOWN",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": true,
+      "flags": [],
+      "explanation": "The criterion excludes patients who have had any anti-cancer therapy within 4 weeks before the first study dose or major surgery within 4 weeks that has not fully healed. The patient's evidence includes prior treatments of FOLFOX and FOLFIRI, but the dates of these treatments or whether they occurred within 4 weeks prior to the study dose is not provided. There is no evidence of recent major surgery or healing status. Therefore, there is insufficient evidence to determine if the exclusion applies."
+    }
+  ]
+}

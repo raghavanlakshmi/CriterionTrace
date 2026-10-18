@@ -1,0 +1,132 @@
+[
+  {
+    "category": "age",
+    "value": "61 years",
+    "normalized_value": "61 years",
+    "date": "2026-03-30",
+    "source_file": "oncology_note.pdf",
+    "source_page": 1,
+    "evidence_text": "Age: 61 years",
+    "quote_verified": true
+  },
+  {
+    "category": "sex",
+    "value": "Male",
+    "normalized_value": "Male",
+    "date": "2026-03-30",
+    "source_file": "oncology_note.pdf",
+    "source_page": 1,
+    "evidence_text": "Sex: Male",
+    "quote_verified": true
+  },
+  {
+    "category": "diagnosis",
+    "value": "Metastatic colorectal adenocarcinoma",
+    "normalized_value": "Metastatic colorectal adenocarcinoma",
+    "date": "2026-03-30",
+    "source_file": "oncology_note.pdf",
+    "source_page": 1,
+    "evidence_text": "Diagnosis: Metastatic colorectal adenocarcinoma",
+    "quote_verified": true
+  },
+  {
+    "category": "metastatic_site",
+    "value": "Liver",
+    "normalized_value": "Liver",
+    "date": "2026-03-30",
+    "source_file": "oncology_note.pdf",
+    "source_page": 1,
+    "evidence_text": "Metastatic site: Liver",
+    "quote_verified": true
+  },
+  {
+    "category": "prior_treatment",
+    "value": "FOLFOX, then FOLFIRI",
+    "normalized_value": "FOLFOX, then FOLFIRI",
+    "date": "2026-03-30",
+    "source_file": "oncology_note.pdf",
+    "source_page": 2,
+    "evidence_text": "Prior treatment: FOLFOX, then FOLFIRI",
+    "quote_verified": true
+  },
+  {
+    "category": "performance_status",
+    "value": "ECOG 1",
+    "normalized_value": "ECOG 1",
+    "date": "2026-03-30",
+    "source_file": "oncology_note.pdf",
+    "source_page": 2,
+    "evidence_text": "Performance status: ECOG 1",
+    "quote_verified": true
+  },
+  {
+    "category": "lab",
+    "value": "2.4 x 10^9/L",
+    "normalized_value": "2.4 x 10^9/L",
+    "date": "2026-03-28",
+    "source_file": "lab_report.pdf",
+    "source_page": 1,
+    "evidence_text": "Absolute neutrophil count (ANC): 2.4 x 10^9/L",
+    "quote_verified": true
+  },
+  {
+    "category": "biomarker",
+    "value": "KRAS: G12C mutation detected",
+    "normalized_value": "KRAS G12C mutation detected",
+    "date": "2024-02-12",
+    "source_file": "pathology_report.pdf",
+    "source_page": 1,
+    "evidence_text": "KRAS: G12C mutation detected",
+    "quote_verified": true
+  },
+  {
+    "category": "biomarker",
+    "value": "MSI: microsatellite stable (MSS)",
+    "normalized_value": "Microsatellite stable (MSS)",
+    "date": "2024-02-12",
+    "source_file": "pathology_report.pdf",
+    "source_page": 1,
+    "evidence_text": "MSI: microsatellite stable (MSS)",
+    "quote_verified": true
+  },
+  {
+    "category": "current_medication",
+    "value": "Sotorasib 960 mg by mouth once daily (started 2025-06-10)",
+    "normalized_value": "Sotorasib 960 mg daily",
+    "date": "2025-10-02",
+    "source_file": "outside_pharmacy_medication_list_2025.pdf",
+    "source_page": 1,
+    "evidence_text": "Sotorasib 960 mg by mouth once daily (started 2025-06-10)",
+    "quote_verified": true
+  },
+  {
+    "category": "current_medication",
+    "value": "Lisinopril 20 mg by mouth once daily",
+    "normalized_value": "Lisinopril 20 mg daily",
+    "date": "2025-10-02",
+    "source_file": "outside_pharmacy_medication_list_2025.pdf",
+    "source_page": 1,
+    "evidence_text": "Lisinopril 20 mg by mouth once daily",
+    "quote_verified": true
+  },
+  {
+    "category": "current_medication",
+    "value": "Atorvastatin 40 mg by mouth once daily",
+    "normalized_value": "Atorvastatin 40 mg daily",
+    "date": "2025-10-02",
+    "source_file": "outside_pharmacy_medication_list_2025.pdf",
+    "source_page": 1,
+    "evidence_text": "Atorvastatin 40 mg by mouth once daily",
+    "quote_verified": true
+  },
+  {
+    "category": "current_medication",
+    "value": "Omeprazole 20 mg by mouth once daily",
+    "normalized_value": "Omeprazole 20 mg daily",
+    "date": "2025-10-02",
+    "source_file": "outside_pharmacy_medication_list_2025.pdf",
+    "source_page": 1,
+    "evidence_text": "Omeprazole 20 mg by mouth once daily",
+    "quote_verified": true
+  }
+]

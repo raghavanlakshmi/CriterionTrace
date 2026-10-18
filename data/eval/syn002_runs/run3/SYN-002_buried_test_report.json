@@ -1,0 +1,299 @@
+{
+  "patient": "SYN-002",
+  "variant": "buried exclusions",
+  "label_status": "APPROVED by user in chat on 2026-10-17 before first live run; original expected labels unchanged",
+  "extraction_model": "gpt-4.1-mini",
+  "assessment_model": "gpt-4.1-mini",
+  "extraction_check": {
+    "buried_malignancy": [],
+    "buried_kras_inhibitor": [
+      {
+        "category": "current_medication",
+        "value": "Sotorasib 960 mg by mouth once daily (started 2025-06-10)",
+        "source": "outside_pharmacy_medication_list_2025.pdf p1",
+        "date": "2025-10-02",
+        "quote_verified": true
+      }
+    ],
+    "family_history_decoy": [],
+    "last_chemo_dose": []
+  },
+  "results": {
+    "rule_baseline": {
+      "labels": 7,
+      "accuracy": 0.4286,
+      "decidable_labels": 6,
+      "decided_correctly": 0.3333,
+      "unsafe_false_clearance": 0,
+      "false_exclusion": 0,
+      "unknown_to_meets": 0,
+      "confusion_matrix": {
+        "MEETS": {
+          "MEETS": 2,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 1,
+          "POTENTIAL_CONFLICT": 0
+        },
+        "DOES_NOT_MEET": {
+          "MEETS": 0,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 3,
+          "POTENTIAL_CONFLICT": 0
+        },
+        "UNKNOWN": {
+          "MEETS": 0,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 1,
+          "POTENTIAL_CONFLICT": 0
+        },
+        "POTENTIAL_CONFLICT": {
+          "MEETS": 0,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 0,
+          "POTENTIAL_CONFLICT": 0
+        }
+      },
+      "acceptable_rate": 0.4286
+    },
+    "llm_assessor": {
+      "labels": 7,
+      "accuracy": 0.7143,
+      "decidable_labels": 6,
+      "decided_correctly": 0.8333,
+      "unsafe_false_clearance": 0,
+      "false_exclusion": 1,
+      "unknown_to_meets": 0,
+      "confusion_matrix": {
+        "MEETS": {
+          "MEETS": 3,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 0,
+          "POTENTIAL_CONFLICT": 0
+        },
+        "DOES_NOT_MEET": {
+          "MEETS": 0,
+          "DOES_NOT_MEET": 2,
+          "UNKNOWN": 1,
+          "POTENTIAL_CONFLICT": 0
+        },
+        "UNKNOWN": {
+          "MEETS": 0,
+          "DOES_NOT_MEET": 1,
+          "UNKNOWN": 0,
+          "POTENTIAL_CONFLICT": 0
+        },
+        "POTENTIAL_CONFLICT": {
+          "MEETS": 0,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 0,
+          "POTENTIAL_CONFLICT": 0
+        }
+      },
+      "acceptable_rate": 0.8571
+    }
+  },
+  "rows": [
+    {
+      "method": "rule_baseline",
+      "trial": "NCT07559760",
+      "criterion_id": "EXC-19",
+      "probe": "buried_malignancy",
+      "expected": "DOES_NOT_MEET",
+      "also_acceptable": [],
+      "predicted": "UNKNOWN",
+      "match": false,
+      "acceptable": false,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment."
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT06412198",
+      "criterion_id": "EXC-02",
+      "probe": "buried_kras_inhibitor",
+      "expected": "DOES_NOT_MEET",
+      "also_acceptable": [],
+      "predicted": "UNKNOWN",
+      "match": false,
+      "acceptable": false,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment."
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT06252649",
+      "criterion_id": "EXC-03",
+      "probe": "buried_kras_inhibitor",
+      "expected": "DOES_NOT_MEET",
+      "also_acceptable": [],
+      "predicted": "UNKNOWN",
+      "match": false,
+      "acceptable": false,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment."
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT06412198",
+      "criterion_id": "INC-01",
+      "probe": "sanity",
+      "expected": "MEETS",
+      "also_acceptable": [],
+      "predicted": "UNKNOWN",
+      "match": false,
+      "acceptable": false,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The matched fact covers only part of this criterion; its additional requirements are not documented."
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT06412198",
+      "criterion_id": "INC-02",
+      "probe": "sanity",
+      "expected": "MEETS",
+      "also_acceptable": [],
+      "predicted": "MEETS",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "Explicit verified evidence matches the central condition or biomarker wording; human verification is required."
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT07559760",
+      "criterion_id": "INC-02",
+      "probe": "sanity",
+      "expected": "MEETS",
+      "also_acceptable": [],
+      "predicted": "MEETS",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "Explicit verified evidence matches the central condition or biomarker wording; human verification is required."
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT07559760",
+      "criterion_id": "EXC-05",
+      "probe": "washout",
+      "expected": "UNKNOWN",
+      "also_acceptable": [
+        "DOES_NOT_MEET"
+      ],
+      "predicted": "UNKNOWN",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": true,
+      "flags": [],
+      "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment."
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT07559760",
+      "criterion_id": "EXC-19",
+      "probe": "buried_malignancy",
+      "expected": "DOES_NOT_MEET",
+      "also_acceptable": [],
+      "predicted": "UNKNOWN",
+      "match": false,
+      "acceptable": false,
+      "judgment_call": false,
+      "flags": [
+        "EXC-19: exclusion cleared without evidence about it; converted to UNKNOWN."
+      ],
+      "explanation": "No cited evidence addresses this exclusion; absence of a record does not clear it. Converted to UNKNOWN. Original reasoning: The patient has a diagnosis of metastatic colorectal adenocarcinoma but there is no evidence of any other malignancy within 5 years mentioned. Therefore, the exclusion criterion regarding other malignancies within 5 years does not apply."
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT06412198",
+      "criterion_id": "EXC-02",
+      "probe": "buried_kras_inhibitor",
+      "expected": "DOES_NOT_MEET",
+      "also_acceptable": [],
+      "predicted": "DOES_NOT_MEET",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The patient is currently taking Sotorasib, which is a KRAS G12C inhibitor, as evidenced by current medication entry showing Sotorasib 960 mg daily started on 2025-06-10. This fulfills the exclusion criterion of prior KRASG12C inhibition therapy."
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT06252649",
+      "criterion_id": "EXC-03",
+      "probe": "buried_kras_inhibitor",
+      "expected": "DOES_NOT_MEET",
+      "also_acceptable": [],
+      "predicted": "DOES_NOT_MEET",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The patient has a KRAS G12C mutation detected (index 7) and is currently treated with Sotorasib, a KRAS p.G12C inhibitor (index 9). Therefore, the exclusion criterion of previous treatment with a KRAS p.G12C inhibitor applies."
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT06412198",
+      "criterion_id": "INC-01",
+      "probe": "sanity",
+      "expected": "MEETS",
+      "also_acceptable": [],
+      "predicted": "MEETS",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The patient has a histologically confirmed diagnosis of metastatic colorectal adenocarcinoma (evidence 2), which matches the advanced/metastatic colorectal cancer requirement. The patient has a KRAS G12C mutation (evidence 7) and is microsatellite stable (MSS) (evidence 8), fulfilling the biomarker subtype criteria. The patient has received prior lines of therapy, specifically FOLFOX followed by FOLFIRI (evidence 4), which meets the requirement of having 1 or more prior lines of therapy."
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT06412198",
+      "criterion_id": "INC-02",
+      "probe": "sanity",
+      "expected": "MEETS",
+      "also_acceptable": [],
+      "predicted": "MEETS",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The inclusion criterion requires confirmed KRASG12C mutation status. The evidence includes a pathology report (index 7) stating 'KRAS: G12C mutation detected,' which confirms that the patient meets this molecular mutation requirement."
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT07559760",
+      "criterion_id": "INC-02",
+      "probe": "sanity",
+      "expected": "MEETS",
+      "also_acceptable": [],
+      "predicted": "MEETS",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The patient has a diagnosis of metastatic colorectal adenocarcinoma as documented in the evidence (index 2), which confirms histologically or cytologically confirmed colorectal adenocarcinoma as required by the inclusion criterion."
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT07559760",
+      "criterion_id": "EXC-05",
+      "probe": "washout",
+      "expected": "UNKNOWN",
+      "also_acceptable": [
+        "DOES_NOT_MEET"
+      ],
+      "predicted": "DOES_NOT_MEET",
+      "match": false,
+      "acceptable": true,
+      "judgment_call": true,
+      "flags": [],
+      "explanation": "The patient is currently taking Sotorasib, which is a targeted therapy (anti-cancer therapy), started on 2025-06-10 and still ongoing as of the last record dated 2025-10-02. This falls within 4 weeks before the first study dose, thus meeting the exclusion criterion for recent anti-cancer therapy."
+    }
+  ]
+}
