@@ -1,0 +1,650 @@
+[
+  {
+    "run": 1,
+    "patient": "SYN-003",
+    "before_raw_lines": 19,
+    "after_sentences_same_evidence": 12,
+    "after_gaps": [
+      {
+        "source_file": "dermatology_note_2023.pdf",
+        "source_page": 1,
+        "line_number": 7,
+        "sentence_number": 2,
+        "text": "No further treatment needed.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "dermatology_note_2023.pdf",
+        "source_page": 1,
+        "line_number": 7,
+        "sentence_number": 3,
+        "text": "Annual skin checks recommended.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "hematology_followup_2023.pdf",
+        "source_page": 1,
+        "line_number": 6,
+        "sentence_number": 3,
+        "text": "She has a history of classical Hodgkin lymphoma, stage IIA, diagnosed in February 2022 and treated with six cycles of ABVD completed in August 2022; PET-CT in October 2022 showed a complete metabolic response and she remains in remission.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "hematology_followup_2023.pdf",
+        "source_page": 1,
+        "line_number": 6,
+        "sentence_number": 5,
+        "text": "She reports good energy and walks daily.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "hematology_followup_2023.pdf",
+        "source_page": 1,
+        "line_number": 6,
+        "sentence_number": 6,
+        "text": "Plan: annual survivorship visit and repeat ferritin in six months.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "infusion_record.pdf",
+        "source_page": 1,
+        "line_number": 8,
+        "sentence_number": 3,
+        "text": "No further cycles scheduled at this clinic.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "oncology_note.pdf",
+        "source_page": 1,
+        "line_number": 10,
+        "sentence_number": 5,
+        "text": "Treatment history continues on page 2.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "oncology_note.pdf",
+        "source_page": 2,
+        "line_number": 8,
+        "sentence_number": 3,
+        "text": "Referred for second-line clinical trial screening.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "outside_oncology_consult_2024.pdf",
+        "source_page": 1,
+        "line_number": 9,
+        "sentence_number": 6,
+        "text": "She will continue care with her local oncologist.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "trial_screening_letter.pdf",
+        "source_page": 1,
+        "line_number": 6,
+        "sentence_number": 1,
+        "text": "The patient has been referred for second-line clinical trial screening.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "trial_screening_letter.pdf",
+        "source_page": 1,
+        "line_number": 7,
+        "sentence_number": 2,
+        "text": "If eligibility is confirmed, cycle 1 day 1 of study treatment is scheduled for 2026-04-20.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "trial_screening_letter.pdf",
+        "source_page": 1,
+        "line_number": 8,
+        "sentence_number": 3,
+        "text": "Final eligibility will be confirmed by the study team.",
+        "message": "Not captured by the tool, review manually"
+      }
+    ]
+  },
+  {
+    "run": 1,
+    "patient": "SYN-003-control",
+    "before_raw_lines": 19,
+    "after_sentences_same_evidence": 13,
+    "after_gaps": [
+      {
+        "source_file": "dermatology_note_2023.pdf",
+        "source_page": 1,
+        "line_number": 7,
+        "sentence_number": 2,
+        "text": "No further treatment needed.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "dermatology_note_2023.pdf",
+        "source_page": 1,
+        "line_number": 7,
+        "sentence_number": 3,
+        "text": "Annual skin checks recommended.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "hematology_followup_2023.pdf",
+        "source_page": 1,
+        "line_number": 6,
+        "sentence_number": 4,
+        "text": "She reports good energy and walks daily.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "hematology_followup_2023.pdf",
+        "source_page": 1,
+        "line_number": 6,
+        "sentence_number": 5,
+        "text": "There is no history of blood cancer.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "hematology_followup_2023.pdf",
+        "source_page": 1,
+        "line_number": 6,
+        "sentence_number": 6,
+        "text": "Bone marrow evaluation was not indicated.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "hematology_followup_2023.pdf",
+        "source_page": 1,
+        "line_number": 6,
+        "sentence_number": 7,
+        "text": "Plan: repeat ferritin in six months and continue a balanced diet.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "infusion_record.pdf",
+        "source_page": 1,
+        "line_number": 8,
+        "sentence_number": 3,
+        "text": "No further cycles scheduled at this clinic.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "oncology_note.pdf",
+        "source_page": 1,
+        "line_number": 10,
+        "sentence_number": 5,
+        "text": "Treatment history continues on page 2.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "oncology_note.pdf",
+        "source_page": 2,
+        "line_number": 8,
+        "sentence_number": 3,
+        "text": "Referred for second-line clinical trial screening.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "outside_oncology_consult_2024.pdf",
+        "source_page": 1,
+        "line_number": 7,
+        "sentence_number": 6,
+        "text": "She will continue care with her local oncologist.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "trial_screening_letter.pdf",
+        "source_page": 1,
+        "line_number": 6,
+        "sentence_number": 1,
+        "text": "The patient has been referred for second-line clinical trial screening.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "trial_screening_letter.pdf",
+        "source_page": 1,
+        "line_number": 7,
+        "sentence_number": 2,
+        "text": "If eligibility is confirmed, cycle 1 day 1 of study treatment is scheduled for 2026-04-20.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "trial_screening_letter.pdf",
+        "source_page": 1,
+        "line_number": 8,
+        "sentence_number": 3,
+        "text": "Final eligibility will be confirmed by the study team.",
+        "message": "Not captured by the tool, review manually"
+      }
+    ]
+  },
+  {
+    "run": 2,
+    "patient": "SYN-003",
+    "before_raw_lines": 20,
+    "after_sentences_same_evidence": 12,
+    "after_gaps": [
+      {
+        "source_file": "dermatology_note_2023.pdf",
+        "source_page": 1,
+        "line_number": 7,
+        "sentence_number": 2,
+        "text": "No further treatment needed.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "dermatology_note_2023.pdf",
+        "source_page": 1,
+        "line_number": 7,
+        "sentence_number": 3,
+        "text": "Annual skin checks recommended.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "hematology_followup_2023.pdf",
+        "source_page": 1,
+        "line_number": 6,
+        "sentence_number": 3,
+        "text": "She has a history of classical Hodgkin lymphoma, stage IIA, diagnosed in February 2022 and treated with six cycles of ABVD completed in August 2022; PET-CT in October 2022 showed a complete metabolic response and she remains in remission.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "hematology_followup_2023.pdf",
+        "source_page": 1,
+        "line_number": 6,
+        "sentence_number": 5,
+        "text": "She reports good energy and walks daily.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "hematology_followup_2023.pdf",
+        "source_page": 1,
+        "line_number": 6,
+        "sentence_number": 6,
+        "text": "Plan: annual survivorship visit and repeat ferritin in six months.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "infusion_record.pdf",
+        "source_page": 1,
+        "line_number": 8,
+        "sentence_number": 3,
+        "text": "No further cycles scheduled at this clinic.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "oncology_note.pdf",
+        "source_page": 1,
+        "line_number": 10,
+        "sentence_number": 5,
+        "text": "Treatment history continues on page 2.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "oncology_note.pdf",
+        "source_page": 2,
+        "line_number": 8,
+        "sentence_number": 3,
+        "text": "Referred for second-line clinical trial screening.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "outside_oncology_consult_2024.pdf",
+        "source_page": 1,
+        "line_number": 9,
+        "sentence_number": 6,
+        "text": "She will continue care with her local oncologist.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "trial_screening_letter.pdf",
+        "source_page": 1,
+        "line_number": 6,
+        "sentence_number": 1,
+        "text": "The patient has been referred for second-line clinical trial screening.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "trial_screening_letter.pdf",
+        "source_page": 1,
+        "line_number": 7,
+        "sentence_number": 2,
+        "text": "If eligibility is confirmed, cycle 1 day 1 of study treatment is scheduled for 2026-04-20.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "trial_screening_letter.pdf",
+        "source_page": 1,
+        "line_number": 8,
+        "sentence_number": 3,
+        "text": "Final eligibility will be confirmed by the study team.",
+        "message": "Not captured by the tool, review manually"
+      }
+    ]
+  },
+  {
+    "run": 2,
+    "patient": "SYN-003-control",
+    "before_raw_lines": 20,
+    "after_sentences_same_evidence": 13,
+    "after_gaps": [
+      {
+        "source_file": "dermatology_note_2023.pdf",
+        "source_page": 1,
+        "line_number": 7,
+        "sentence_number": 2,
+        "text": "No further treatment needed.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "dermatology_note_2023.pdf",
+        "source_page": 1,
+        "line_number": 7,
+        "sentence_number": 3,
+        "text": "Annual skin checks recommended.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "hematology_followup_2023.pdf",
+        "source_page": 1,
+        "line_number": 6,
+        "sentence_number": 4,
+        "text": "She reports good energy and walks daily.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "hematology_followup_2023.pdf",
+        "source_page": 1,
+        "line_number": 6,
+        "sentence_number": 6,
+        "text": "Bone marrow evaluation was not indicated.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "hematology_followup_2023.pdf",
+        "source_page": 1,
+        "line_number": 6,
+        "sentence_number": 7,
+        "text": "Plan: repeat ferritin in six months and continue a balanced diet.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "infusion_record.pdf",
+        "source_page": 1,
+        "line_number": 8,
+        "sentence_number": 3,
+        "text": "No further cycles scheduled at this clinic.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "oncology_note.pdf",
+        "source_page": 1,
+        "line_number": 10,
+        "sentence_number": 5,
+        "text": "Treatment history continues on page 2.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "oncology_note.pdf",
+        "source_page": 2,
+        "line_number": 8,
+        "sentence_number": 3,
+        "text": "Referred for second-line clinical trial screening.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "outside_oncology_consult_2024.pdf",
+        "source_page": 1,
+        "line_number": 7,
+        "sentence_number": 4,
+        "text": "Pembrolizumab was discussed as a possible option on a basket study, but she declined and it was not started.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "outside_oncology_consult_2024.pdf",
+        "source_page": 1,
+        "line_number": 7,
+        "sentence_number": 6,
+        "text": "She will continue care with her local oncologist.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "trial_screening_letter.pdf",
+        "source_page": 1,
+        "line_number": 6,
+        "sentence_number": 1,
+        "text": "The patient has been referred for second-line clinical trial screening.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "trial_screening_letter.pdf",
+        "source_page": 1,
+        "line_number": 7,
+        "sentence_number": 2,
+        "text": "If eligibility is confirmed, cycle 1 day 1 of study treatment is scheduled for 2026-04-20.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "trial_screening_letter.pdf",
+        "source_page": 1,
+        "line_number": 8,
+        "sentence_number": 3,
+        "text": "Final eligibility will be confirmed by the study team.",
+        "message": "Not captured by the tool, review manually"
+      }
+    ]
+  },
+  {
+    "run": 3,
+    "patient": "SYN-003",
+    "before_raw_lines": 20,
+    "after_sentences_same_evidence": 12,
+    "after_gaps": [
+      {
+        "source_file": "dermatology_note_2023.pdf",
+        "source_page": 1,
+        "line_number": 7,
+        "sentence_number": 2,
+        "text": "No further treatment needed.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "dermatology_note_2023.pdf",
+        "source_page": 1,
+        "line_number": 7,
+        "sentence_number": 3,
+        "text": "Annual skin checks recommended.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "hematology_followup_2023.pdf",
+        "source_page": 1,
+        "line_number": 6,
+        "sentence_number": 3,
+        "text": "She has a history of classical Hodgkin lymphoma, stage IIA, diagnosed in February 2022 and treated with six cycles of ABVD completed in August 2022; PET-CT in October 2022 showed a complete metabolic response and she remains in remission.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "hematology_followup_2023.pdf",
+        "source_page": 1,
+        "line_number": 6,
+        "sentence_number": 5,
+        "text": "She reports good energy and walks daily.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "hematology_followup_2023.pdf",
+        "source_page": 1,
+        "line_number": 6,
+        "sentence_number": 6,
+        "text": "Plan: annual survivorship visit and repeat ferritin in six months.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "infusion_record.pdf",
+        "source_page": 1,
+        "line_number": 8,
+        "sentence_number": 3,
+        "text": "No further cycles scheduled at this clinic.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "oncology_note.pdf",
+        "source_page": 1,
+        "line_number": 10,
+        "sentence_number": 5,
+        "text": "Treatment history continues on page 2.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "oncology_note.pdf",
+        "source_page": 2,
+        "line_number": 8,
+        "sentence_number": 3,
+        "text": "Referred for second-line clinical trial screening.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "outside_oncology_consult_2024.pdf",
+        "source_page": 1,
+        "line_number": 9,
+        "sentence_number": 6,
+        "text": "She will continue care with her local oncologist.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "trial_screening_letter.pdf",
+        "source_page": 1,
+        "line_number": 6,
+        "sentence_number": 1,
+        "text": "The patient has been referred for second-line clinical trial screening.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "trial_screening_letter.pdf",
+        "source_page": 1,
+        "line_number": 7,
+        "sentence_number": 2,
+        "text": "If eligibility is confirmed, cycle 1 day 1 of study treatment is scheduled for 2026-04-20.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "trial_screening_letter.pdf",
+        "source_page": 1,
+        "line_number": 8,
+        "sentence_number": 3,
+        "text": "Final eligibility will be confirmed by the study team.",
+        "message": "Not captured by the tool, review manually"
+      }
+    ]
+  },
+  {
+    "run": 3,
+    "patient": "SYN-003-control",
+    "before_raw_lines": 19,
+    "after_sentences_same_evidence": 13,
+    "after_gaps": [
+      {
+        "source_file": "dermatology_note_2023.pdf",
+        "source_page": 1,
+        "line_number": 7,
+        "sentence_number": 2,
+        "text": "No further treatment needed.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "dermatology_note_2023.pdf",
+        "source_page": 1,
+        "line_number": 7,
+        "sentence_number": 3,
+        "text": "Annual skin checks recommended.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "hematology_followup_2023.pdf",
+        "source_page": 1,
+        "line_number": 6,
+        "sentence_number": 4,
+        "text": "She reports good energy and walks daily.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "hematology_followup_2023.pdf",
+        "source_page": 1,
+        "line_number": 6,
+        "sentence_number": 5,
+        "text": "There is no history of blood cancer.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "hematology_followup_2023.pdf",
+        "source_page": 1,
+        "line_number": 6,
+        "sentence_number": 6,
+        "text": "Bone marrow evaluation was not indicated.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "hematology_followup_2023.pdf",
+        "source_page": 1,
+        "line_number": 6,
+        "sentence_number": 7,
+        "text": "Plan: repeat ferritin in six months and continue a balanced diet.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "infusion_record.pdf",
+        "source_page": 1,
+        "line_number": 8,
+        "sentence_number": 3,
+        "text": "No further cycles scheduled at this clinic.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "oncology_note.pdf",
+        "source_page": 1,
+        "line_number": 10,
+        "sentence_number": 5,
+        "text": "Treatment history continues on page 2.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "oncology_note.pdf",
+        "source_page": 2,
+        "line_number": 8,
+        "sentence_number": 3,
+        "text": "Referred for second-line clinical trial screening.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "outside_oncology_consult_2024.pdf",
+        "source_page": 1,
+        "line_number": 7,
+        "sentence_number": 6,
+        "text": "She will continue care with her local oncologist.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "trial_screening_letter.pdf",
+        "source_page": 1,
+        "line_number": 6,
+        "sentence_number": 1,
+        "text": "The patient has been referred for second-line clinical trial screening.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "trial_screening_letter.pdf",
+        "source_page": 1,
+        "line_number": 7,
+        "sentence_number": 2,
+        "text": "If eligibility is confirmed, cycle 1 day 1 of study treatment is scheduled for 2026-04-20.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "trial_screening_letter.pdf",
+        "source_page": 1,
+        "line_number": 8,
+        "sentence_number": 3,
+        "text": "Final eligibility will be confirmed by the study team.",
+        "message": "Not captured by the tool, review manually"
+      }
+    ]
+  }
+]

@@ -1,0 +1,19 @@
+{
+  "commit": "de13fb87472a8cd5a4b30efe5833c78159035a37",
+  "started_at": "2026-10-18T15:29:36.762039+00:00",
+  "command": [
+    "scripts/run_criterion_eval.py",
+    "--llm",
+    "--labels",
+    "data/eval/criterion_labels_heldout.json",
+    "--output-dir",
+    "data/eval/round2_validation/syn001/held_out"
+  ],
+  "implementation_attempt": 1,
+  "fresh_extraction": false,
+  "label": "after round-2 fixes, not blind",
+  "finished_at": "2026-10-18T15:30:07.716175+00:00",
+  "exit_code": 0,
+  "frozen_code_verified": true,
+  "protected_records_verified": true
+}
