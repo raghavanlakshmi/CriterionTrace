@@ -296,7 +296,8 @@ def time_window_problem(item: CriterionAssessment) -> str | None:
     if all(e.source_kind == "medication_list" or e.category == "current_medication"
            or MEDICATION_LIST.search(e.source_file + " " + e.evidence_text) for e in cited):
         return "Time-window decision cites only medication snapshots, not administration or stop dates."
-    if STUDY_REFERENCE.search(item.criterion_text) and not DATED_REFERENCE.search(_cited_text(item)):
+    has_reference = any(e.category == "planned_study_event" and e.date for e in cited)
+    if STUDY_REFERENCE.search(item.criterion_text) and not has_reference and not DATED_REFERENCE.search(_cited_text(item)):
         return "Time-window decision lacks an explicitly documented study reference date."
     return None
 
@@ -433,10 +434,11 @@ def review_assessments(assessments: list[CriterionAssessment]) -> tuple[list[Cri
         update = {}
         if item.explanation.startswith("Conflict preservation guard:"):
             flags.append(f"{item.criterion_id}: Conflict preservation guard: all differing verified values retained.")
+        computed = computed_study_window(item)
         if status_contradicts_explanation(item):
             update = {"status": "UNKNOWN", "explanation": "Status contradicts explanation. Converted to UNKNOWN. Original reasoning: " + item.explanation}
             flags.append(f"{item.criterion_id}: status contradicts explanation; converted to UNKNOWN.")
-        elif reason := time_window_problem(item):
+        elif computed is None and (reason := time_window_problem(item)):
             update = {"status": "UNKNOWN", "explanation": f"{reason} Converted to UNKNOWN. Original reasoning: {item.explanation}"}
             flags.append(f"{item.criterion_id}: {reason} Converted to UNKNOWN.")
         elif item.status in {"MEETS", "DOES_NOT_MEET", "POTENTIAL_CONFLICT"} and INVESTIGATOR_JUDGMENT.search(item.criterion_text):
@@ -460,7 +462,7 @@ def review_assessments(assessments: list[CriterionAssessment]) -> tuple[list[Cri
             flags.append(f"{item.criterion_id}: {reason} Converted to UNKNOWN.")
         # Arithmetic replaces a model conclusion only after consistency and
         # other guards; a detected contradiction must remain UNKNOWN.
-        if not status_contradicts_explanation(item) and (computed := computed_study_window(item)):
+        if not status_contradicts_explanation(item) and computed:
             status, detail = computed
             update = {"status": status, "explanation": detail + " Original reasoning: " + item.explanation}
             flags.append(f"{item.criterion_id}: {detail}")
