@@ -398,10 +398,41 @@ def status_contradicts_explanation(item: CriterionAssessment) -> bool:
     return prose_status != item.status
 
 
-def review_assessments(assessments: list[CriterionAssessment]) -> tuple[list[CriterionAssessment], list[str]]:
+
+def is_compound_window(text: str) -> bool:
+    # Only top-level connectors; alternatives inside an example list in
+    # parentheses do not silently become separate clinical requirements.
+    stripped = re.sub(r"\([^)]*\)", "", text)
+    return bool(TIME_WINDOW.search(text) and re.search(r"\bor\b|;|\n\s*[-*]", stripped, re.I))
+
+
+def review_assessments(assessments: list[CriterionAssessment], *, _part: bool = False) -> tuple[list[CriterionAssessment], list[str]]:
     """Downgrade unsupported conclusions and return visible review flags."""
     reviewed, flags = [], []
     for item in assessments:
+        if not _part and item.criterion_type == "exclusion" and (item.parts or is_compound_window(item.criterion_text)):
+            children = list(item.parts)
+            if not children:
+                children = [item.model_copy(update={"parts": [], "explanation": "Window part: " + item.explanation})]
+                children.append(item.model_copy(update={"status": "UNKNOWN", "parts": [], "patient_evidence": [],
+                    "window_evidence_index": None, "criterion_text": "Other compound conditions",
+                    "final_conclusion": None, "explanation": "Other parts were not separately assessed."}))
+            if is_compound_window(item.criterion_text) and len(children) < 2:
+                children.append(item.model_copy(update={"status": "UNKNOWN", "parts": [], "patient_evidence": [],
+                    "window_evidence_index": None, "final_conclusion": None, "criterion_text": "Unaddressed compound parts",
+                    "explanation": "Compound criterion has more conditions than returned parts."}))
+            checked, child_flags = review_assessments(children, _part=True)
+            statuses = [p.status for p in checked]
+            status = "DOES_NOT_MEET" if "DOES_NOT_MEET" in statuses else ("MEETS" if statuses and all(s == "MEETS" for s in statuses) else "UNKNOWN")
+            if status_contradicts_explanation(item):
+                status = "UNKNOWN"
+                child_flags.append(f"{item.criterion_id}: status contradicts explanation; converted to UNKNOWN.")
+            explanation = "Compound criterion guard: " + " | ".join(f"Part {n}: {part.criterion_text} => {part.status}. {part.explanation}" for n, part in enumerate(checked, 1))
+            reviewed.append(item.model_copy(update={"status": status, "parts": checked,
+                "explanation": explanation + " Original reasoning: " + item.explanation}))
+            flags.extend(child_flags)
+            flags.append(f"{item.criterion_id}: Compound criterion guard: combined {', '.join(statuses)} => {status}.")
+            continue
         update = {}
         computed = computed_study_window(item)
         if status_contradicts_explanation(item):

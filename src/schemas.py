@@ -122,6 +122,7 @@ class CriterionAssessment(BaseModel):
     final_conclusion: Literal["APPLIES", "DOES_NOT_APPLY", "MEETS", "DOES_NOT_MEET", "UNKNOWN", "POTENTIAL_CONFLICT"] | None = None
     clearance_basis: Literal["explicit_negative", "exception_only", "absence", "other"] | None = None
     window_evidence_index: int | None = Field(default=None, ge=0, description="Selected event index within patient_evidence, mapped from the model input by code")
+    parts: list["CriterionAssessment"] = Field(default_factory=list)
 
 
 class RetrievalChunk(BaseModel):
