@@ -33,7 +33,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 from src.criteria import load_criteria  # noqa: E402
 from src.document_ingestion import ingest_documents  # noqa: E402
 from src.eligibility import assess_free_text_criterion, conservative_assessment  # noqa: E402
-from src.evidence_extraction import extract_evidence  # noqa: E402
+from src.evidence_extraction import extract_evidence, uncovered_content_lines  # noqa: E402
 from src.safety import review_assessments  # noqa: E402
 from src.schemas import EvidenceItem  # noqa: E402
 from run_criterion_eval import score  # noqa: E402
@@ -77,7 +77,7 @@ def run_variant(variant: str, args, criteria, client) -> dict:
             print(f"   {p.filename} p{p.page_number} [{p.extraction_method}] {len(p.text)} chars")
         return {}
 
-    evidence_path = EVAL / f"{variant}_buried_test_evidence.json"
+    evidence_path = args.output_dir / f"{variant}_buried_test_evidence.json"
     if args.reuse_evidence and evidence_path.exists():
         evidence = [EvidenceItem.model_validate(e) for e in json.loads(evidence_path.read_text(encoding="utf-8"))]
         print(f"   reusing {evidence_path.name} ({len(evidence)} records)")
@@ -87,6 +87,7 @@ def run_variant(variant: str, args, criteria, client) -> dict:
         print(f"   extracted {len(evidence)} records ({sum(e.quote_verified for e in evidence)} verified)")
 
     extraction = extraction_check(evidence)
+    gaps = uncovered_content_lines(pages, evidence)
     for probe, hits in extraction.items():
         shown = "; ".join(f"{h['category']}: {h['value']} ({h['source']}, verified={h['quote_verified']})" for h in hits) or "NOT EXTRACTED"
         print(f"   extraction · {probe}: {shown}")
@@ -111,20 +112,24 @@ def run_variant(variant: str, args, criteria, client) -> dict:
                          "also_acceptable": label.get("also_acceptable", []), "predicted": predicted,
                          "match": predicted == label["expected"], "acceptable": ok,
                          "judgment_call": label["judgment_call"], "flags": flags,
-                         "explanation": reviewed[0].explanation})
+                         "explanation": reviewed[0].explanation,
+                         "criterion_text": criterion.text,
+                         "patient_evidence": [e.model_dump(mode="json") for e in reviewed[0].patient_evidence]})
             print(f"   {name:13} {label['trial']} {label['criterion_id']:6} expected {label['expected']:13} got {predicted:18} {'ok' if ok else 'MISS'}")
         results[name] = score(pairs) | {"acceptable_rate": round(sum(acceptable_pairs) / len(acceptable_pairs), 4)}
 
     report = {"patient": variant, "variant": labels["variant"], "label_status": labels["label_status"],
               "extraction_model": args.extraction_model, "assessment_model": args.model,
-              "extraction_check": extraction, "results": results, "rows": rows}
-    stem = EVAL / f"{variant}_buried_test_report"
+              "extraction_check": extraction, "extraction_gaps": gaps, "results": results, "rows": rows}
+    stem = args.output_dir / f"{variant}_buried_test_report"
     stem.with_suffix(".json").write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     lines = [f"# Buried-exclusion test: {variant} ({labels['variant']})", "",
              f"Labels: {labels['label_status']}. Models: extraction {args.extraction_model}, assessment {args.model}.", "",
              "## Extraction: were the buried facts captured?", ""]
     for probe, hits in extraction.items():
         lines.append(f"- **{probe}**: " + ("; ".join(f"{h['category']} '{h['value']}' ({h['source']}, verified={h['quote_verified']})" for h in hits) or "not extracted"))
+    lines += ["", "## Not captured by the tool, review manually", ""]
+    lines += [f"- {g['source_file']} p{g['source_page']}, line {g['line_number']}: {g['text']}" for g in gaps] or ["No uncovered content lines."]
     lines += ["", "## Assessment", "", "| Method | Accuracy | Acceptable | Unsafe false clearance | UNKNOWN to MEETS | False exclusion |", "|---|---|---|---|---|---|"]
     for name, r in results.items():
         lines.append(f"| {name} | {r['accuracy']:.2f} | {r['acceptable_rate']:.2f} | {r['unsafe_false_clearance']} | {r['unknown_to_meets']} | {r['false_exclusion']} |")
@@ -149,11 +154,13 @@ def main() -> None:
     parser.add_argument("--dry-run", action="store_true", help="ingest and list pages; no API calls")
     parser.add_argument("--reuse-evidence", action="store_true", help="re-score saved evidence instead of re-extracting")
     parser.add_argument("--rules-only", action="store_true", help="skip the LLM assessor (extraction still uses the API)")
+    parser.add_argument("--output-dir", type=Path, default=EVAL, help="report/evidence destination; labels are always loaded from data/eval")
     args = parser.parse_args()
 
     criteria = load_criteria()
     client = None
     if not args.dry_run:
+        args.output_dir.mkdir(parents=True, exist_ok=True)
         from run_live_assessment import _client  # noqa: E402
         client = _client()
     for variant in args.variants:

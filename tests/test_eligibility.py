@@ -140,3 +140,20 @@ def test_llm_payload_numbers_each_fact():
     payload = json.loads(sent[0]["input"][0]["content"])
     assert [f["index"] for f in payload["evidence"]] == [0, 1]
     assert result.status == "MEETS" and result.patient_evidence[0].evidence_text == "BRAF: wild type"
+
+
+def test_unverified_records_are_review_only_not_model_citations():
+    import json
+    from types import SimpleNamespace
+    from src.eligibility import assess_free_text_criterion, _LLMAssessment
+    sent = []
+    def parse(**kwargs):
+        sent.append(kwargs)
+        return SimpleNamespace(output=[], output_parsed=_LLMAssessment(status='APPLIES', evidence_indices=[0, 1], explanation='Documented treatment'))
+    bad = evidence('prior_treatment', 'Unverified treatment').model_copy(update={'quote_verified': False})
+    good = evidence('prior_treatment', 'Documented treatment')
+    criterion = TrialCriterion(criterion_id='EXC-01', type='exclusion', text='Prior therapy')
+    result = assess_free_text_criterion(criterion, [bad, good], [], client=SimpleNamespace(responses=SimpleNamespace(parse=parse)))
+    payload = json.loads(sent[0]['input'][0]['content'])
+    assert [e['index'] for e in payload['evidence']] == [1]
+    assert result.patient_evidence == [good]

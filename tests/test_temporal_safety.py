@@ -48,3 +48,31 @@ def test_documented_study_reference_and_dated_event_are_not_blocked():
     result, flags = review_assessments([decision([item], text='Therapy within 4 weeks before first study dose')])
     assert result[0].status == 'DOES_NOT_MEET'
     assert flags == []
+
+
+@pytest.mark.parametrize('wording', ['The patient is currently taking a targeted drug.',
+    'Documented current medication with a targeted drug.', 'The patient is currently on therapy.'])
+def test_snapshot_current_use_wording_is_corrected_without_weakening_prior_exposure(wording):
+    item = decision([evidence('current_medication', source_kind='medication_list')], text='Prior targeted therapy').model_copy(update={'explanation': wording})
+    result, flags = review_assessments([item])
+    assert result[0].status == 'DOES_NOT_MEET'
+    assert 'currently taking' not in result[0].explanation
+    assert 'current medication' not in result[0].explanation
+    assert 'currently on' not in result[0].explanation
+    assert 'use at screening is not established' in result[0].explanation
+    assert any('current-use wording corrected' in f for f in flags)
+
+
+def test_snapshot_wording_correction_does_not_rescue_temporal_decision():
+    item = decision([evidence('current_medication', source_kind='medication_list')]).model_copy(update={'explanation': 'The patient is currently taking a drug.'})
+    result, flags = review_assessments([item])
+    assert result[0].status == 'UNKNOWN'
+    assert 'currently taking' not in result[0].explanation
+    assert any('snapshots' in f for f in flags)
+
+
+def test_correct_negative_snapshot_caveat_is_not_reversed():
+    from src.safety import snapshot_explanation
+    item = decision([evidence('current_medication', source_kind='medication_list')])
+    text = 'The dated list does not establish current use; the patient is not currently taking a documented dose.'
+    assert snapshot_explanation(item, text) == text

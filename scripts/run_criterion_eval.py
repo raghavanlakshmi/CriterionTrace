@@ -60,10 +60,14 @@ def main() -> None:
     parser.add_argument("--llm", action="store_true", help="also score the live LLM assessor")
     parser.add_argument("--model", default="gpt-4.1-mini")
     parser.add_argument("--labels", type=Path, default=LABELS, help="label file (default: criterion_labels.json)")
+    parser.add_argument("--output-dir", type=Path, default=LABELS.parent, help="destination for reports; saved inputs are unchanged")
     args = parser.parse_args()
     suffix = "" if args.labels == LABELS else "_" + args.labels.stem.replace("criterion_labels_", "")
     report_json = REPORT_JSON.with_name(f"criterion_eval_report{suffix}.json")
     report_md = REPORT_MD.with_name(f"criterion_eval_report{suffix}.md")
+    args.output_dir.mkdir(parents=True, exist_ok=True)
+    report_json = args.output_dir / report_json.name
+    report_md = args.output_dir / report_md.name
 
     labels = json.loads(args.labels.read_text(encoding="utf-8"))
     run = json.loads((BASELINE_RUN if BASELINE_RUN.exists() else SAVED_RUN).read_text(encoding="utf-8"))

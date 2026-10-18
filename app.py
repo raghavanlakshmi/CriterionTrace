@@ -235,11 +235,13 @@ def render_evidence(evidence: list[EvidenceItem], *, review_only: bool = False) 
                 source_button(item, key=f"ev-{group.key}-{index}")
 
 
-def render_review_checklist(evidence: list[EvidenceItem]) -> None:
+def render_review_checklist(evidence: list[EvidenceItem], extraction_gaps: list[dict] | None = None) -> None:
     groups = [g for g in build_evidence_groups(evidence) if g.status or g.has_unverified_quotes]
     st.subheader("Reviewer checklist")
     st.markdown("<span class='tm-muted'>Items the system will not resolve on its own. Record your decision, then download the review summary.</span>", unsafe_allow_html=True)
     notes = {}
+    for gap in extraction_gaps or []:
+        st.warning(f"Not captured by the tool, review manually: {gap['source_file']} p{gap['source_page']}, line {gap['line_number']}: {gap['text']}")
     for group in groups:
         status = STATUS_UI[group.status][0] if group.status else "Unverified quote"
         with st.container(border=True):
@@ -250,6 +252,8 @@ def render_review_checklist(evidence: list[EvidenceItem]) -> None:
             notes[group.label] = {"status": status, "reviewed": done, "note": note,
                                   "sources": [f"{i.source_file} p{i.source_page}: {i.value}" for i in group.items]}
     lines = ["# TrialMatch AI reviewer summary", f"Generated {datetime.now(timezone.utc):%Y-%m-%d %H:%M} UTC", "", DISCLAIMER.replace("\n", " "), ""]
+    for gap in extraction_gaps or []:
+        lines.append(f"- Not captured by the tool, review manually: {gap['source_file']} p{gap['source_page']}, line {gap['line_number']}: {gap['text']}")
     for label, record in notes.items():
         lines.append(f"## {label} {DASH} {record['status']}")
         lines.append(f"- Reviewed: {'yes' if record['reviewed'] else 'no'}")
@@ -398,9 +402,11 @@ def main() -> None:
             with left:
                 render_evidence(display_evidence, review_only=review_only)
             with right:
-                render_review_checklist(display_evidence)
+                render_review_checklist(display_evidence, (run or {}).get("extraction_gaps", []))
         else:
             st.info("Analyze documents or replay the saved run.")
+            if run and run.get("extraction_gaps"):
+                render_review_checklist([], run["extraction_gaps"])
 
     with trials_tab:
         render_trials_tab(run)

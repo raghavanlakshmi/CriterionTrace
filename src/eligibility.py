@@ -188,7 +188,9 @@ Biomarkers describe test findings, not treatments. Never infer therapy or inhibi
 Some criteria are one option in a list (for example acceptable contraception methods) or a branch that applies only under a condition (for example "No liver mets: ..."). Return UNKNOWN for these unless the record shows the option or condition applies.
 Cite facts by their "index" field in evidence_indices. Never say the patient is eligible or ineligible."""
     # Each fact carries its own index so the model cites it instead of counting list positions.
-    payload = {"criterion": criterion.model_dump(), "evidence": [{"index": i, **item.model_dump()} for i, item in enumerate(evidence)]}
+    # Unverified records remain in the review output, but are not candidate
+    # citations for the model. Preserve original indices for traceability.
+    payload = {"criterion": criterion.model_dump(), "evidence": [{"index": i, **item.model_dump()} for i, item in enumerate(evidence) if item.quote_verified]}
     context = ToolContext(evidence=evidence, pages=pages)
     # store=False keeps nothing on the provider side, so the conversation is carried locally:
     # each follow-up sends the original input, the model's tool calls and the tool results.
@@ -209,7 +211,7 @@ Cite facts by their "index" field in evidence_indices. Never say the patient is 
     status = _project_status(criterion.type, result.status) if result is not None else None
     if status is None:
         return conservative_assessment(criterion, evidence)
-    cited = [evidence[index] for index in result.evidence_indices if 0 <= index < len(evidence)]
+    cited = [evidence[index] for index in result.evidence_indices if 0 <= index < len(evidence) and evidence[index].quote_verified]
     return CriterionAssessment(criterion_id=criterion.criterion_id, criterion_text=criterion.text, criterion_type=criterion.type, status=status, method="llm", patient_evidence=cited, explanation=result.explanation)
 
 

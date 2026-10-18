@@ -10,7 +10,7 @@ from langgraph.graph import END, START, StateGraph
 from .criteria import load_criteria
 from .document_ingestion import ingest_documents
 from .eligibility import assess_trial, summarize_trial
-from .evidence_extraction import extract_evidence, verify_quotes
+from .evidence_extraction import extract_evidence, uncovered_content_lines, verify_quotes
 from .evidence_view import build_evidence_groups
 from .observability import utc_now
 from .retrieval import BM25Retriever, RetrievalError, compact_patient_summary, hybrid_search, load_chunks, reciprocal_rank_fusion, rerank_candidates
@@ -23,6 +23,7 @@ class WorkflowState(TypedDict, total=False):
     uploaded_files: list[str]
     pages: list[DocumentPage]
     evidence: list[EvidenceItem]
+    extraction_gaps: list[dict]
     patient_summary: str
     candidate_trials: list[dict]
     trial_criteria: dict[str, list]
@@ -63,8 +64,10 @@ def ingest_documents_node(state: WorkflowState):
 
 def extract_evidence_node(state: WorkflowState):
     def action():
-        evidence = state.get("evidence") or extract_evidence(state.get("pages", []))
-        return {"evidence": evidence, "_output_count": len(evidence)}
+        gaps = []
+        evidence = state.get("evidence") or extract_evidence(state.get("pages", []), completeness=gaps)
+        gaps = uncovered_content_lines(state.get("pages", []), evidence)
+        return {"evidence": evidence, "extraction_gaps": gaps, "_output_count": len(evidence)}
     return _run_node(state, "extract_evidence", len(state.get("pages", [])), action)
 
 
@@ -145,7 +148,8 @@ def safety_review_node(state: WorkflowState):
 
 def prepare_human_review_node(state: WorkflowState):
     def action():
-        review = {"candidate_trials": state.get("candidate_trials", []), "trial_summaries": state.get("trial_summaries", {}), "requires_human_review": True}
+        review = {"candidate_trials": state.get("candidate_trials", []), "trial_summaries": state.get("trial_summaries", {}), "requires_human_review": True,
+                  "extraction_gaps": state.get("extraction_gaps", [])}
         if not state.get("candidate_trials"):
             review["message"] = "Insufficient information"
         return {"human_review": review, "_output_count": len(state.get("candidate_trials", []))}

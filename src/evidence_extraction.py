@@ -126,6 +126,53 @@ def _quote_present(quote: str, source_text: str) -> bool:
     return re.search(pattern, _normalize(source_text)) is not None
 
 
+def _is_patient_fact(item: EvidenceItem) -> bool:
+    """Missing-value placeholders and unsupported sex values are not facts."""
+    if _normalize(item.value) in {'unknown', 'not documented', 'not stated', 'not provided', 'not mentioned', 'n/a'}:
+        return False
+    if item.category == 'sex':
+        return _quote_present(item.value, item.evidence_text) and not re.match(r'^\s*family history\s*:', item.evidence_text, re.I)
+    return True
+
+
+def extract_labeled_facts(pages: Iterable[DocumentPage]) -> list[EvidenceItem]:
+    """Read explicit labelled fields without asking a model to restate them.
+
+    Only fixed clinical field labels are recognized; no patient, document name,
+    drug, cancer type, or trial is special-cased. Unlabelled narrative remains
+    the model's job and is checked for uncovered lines.
+    """
+    fields = {
+        'diagnosis': 'diagnosis',
+        'specimen': 'diagnosis', 'histology': 'diagnosis', 'biopsy findings': 'diagnosis',
+        'kras': 'biomarker', 'braf': 'biomarker', 'msi': 'biomarker', 'mss': 'biomarker',
+        'absolute neutrophil count (anc)': 'lab', 'anc': 'lab',
+        'hemoglobin': 'lab', 'haemoglobin': 'lab', 'platelets': 'lab',
+        'creatinine': 'lab', 'total bilirubin': 'lab', 'bilirubin': 'lab',
+        'ast': 'lab', 'alt': 'lab',
+    }
+    items = []
+    page_list = list(pages)
+    for page in page_list:
+        if page.extraction_method == 'OCR_REQUIRED':
+            continue
+        header = re.search(r'^\s*document date\s*:\s*([^\r\n]+)', page.text, re.I | re.M)
+        date = header.group(1).strip() if header else None
+        for line in page.text.splitlines():
+            label, separator, value = line.partition(':')
+            category = fields.get(_normalize(label))
+            if not separator or not category or not value.strip() or '[unreadable]' in _normalize(value):
+                continue
+            if _normalize(value) in {'unknown', 'not documented', 'not stated', 'not provided', 'not mentioned', 'n/a'}:
+                continue
+            item = EvidenceItem(category=category, value=line.strip(), date=date,
+                source_file=page.filename, source_page=page.page_number,
+                evidence_text=line.strip())
+            if _is_patient_fact(item):
+                items.append(item)
+    return verify_quotes(items, page_list)
+
+
 def verify_quotes(
     evidence: Iterable[EvidenceItem], pages: Iterable[DocumentPage]
 ) -> list[EvidenceItem]:
@@ -145,7 +192,15 @@ def verify_quotes(
             and source.extraction_method != "OCR_REQUIRED"
             and _quote_present(item.evidence_text, source.text)
         )
-        verified_items.append(item.model_copy(update={"quote_verified": verified}))
+        update = {"quote_verified": verified, "source_kind": "other"}
+        if source is not None and re.search(
+            r"medication[ _-]+list|medicines[ _-]+list|medication reconciliation",
+            source.filename + "\n" + source.text, re.I,
+        ):
+            update["source_kind"] = "medication_list"
+            header = re.search(r"^\s*(?:document|list) date\s*:\s*([^\r\n]+)", source.text, re.I | re.M)
+            update["date"] = header.group(1).strip() if header else None
+        verified_items.append(item.model_copy(update=update))
         if not verified:
             LOGGER.warning("Unverified quote: %s, page %d", item.source_file, item.source_page)
     return verified_items
@@ -189,16 +244,12 @@ def _request_evidence(client: OpenAI, model: str, pages: list[DocumentPage]) -> 
         raise EvidenceExtractionError("No structured evidence was returned by the extraction API.")
     try:
         items = [EvidenceItem(**fact.model_dump()) for fact in parsed.evidence]
+        items = [item for item in items if _is_patient_fact(item)]
     except ValidationError:
         raise EvidenceExtractionError("The extraction response contains invalid evidence records.") from None
     sources = _source_pages(pages)
     for item in items:
         source = sources.get((item.source_file, item.source_page))
-        if source is not None and re.search(
-            r"medication[ _-]+list|medicines[ _-]+list|medication reconciliation",
-            source.filename + "\n" + source.text, re.I,
-        ):
-            item.source_kind = "medication_list"
         if item.date is not None and (
             source is None or not _quote_present(item.date, source.text)
         ):
@@ -213,6 +264,7 @@ def extract_evidence(
     *,
     client: OpenAI | None = None,
     model: str | None = None,
+    completeness: list[dict] | None = None,
 ) -> list[EvidenceItem]:
     """Extract facts using structured output, then recompute quote verification.
 
@@ -243,11 +295,85 @@ def extract_evidence(
         raise EvidenceExtractionError("Set OPENAI_EXTRACTION_MODEL to a structured-output model name.")
     if client is not None:
         items = _request_evidence(client, selected_model, page_list)
+        items, gaps = complete_extraction(page_list, items, lambda subset: _request_evidence(client, selected_model, subset))
     else:
         api_key = (os.environ.get("OPENAI_API_KEY") or settings.get("OPENAI_API_KEY") or "").strip()
         if not api_key or api_key == "your_api_key_here":
             raise EvidenceExtractionError("Evidence extraction needs OPENAI_API_KEY in the repository .env or environment.")
         with OpenAI(api_key=api_key, timeout=60.0, max_retries=1) as local_client:
             items = _request_evidence(local_client, selected_model, page_list)
+            items, gaps = complete_extraction(page_list, items, lambda subset: _request_evidence(local_client, selected_model, subset))
+    if completeness is not None:
+        completeness.extend(gaps)
     LOGGER.info("Extracted %d fact(s), %d with verified quotes", len(items), sum(item.quote_verified for item in items))
     return items
+
+
+ADMINISTRATIVE_LINE = re.compile(
+    r"^(?:synthetic\b.*|fictional document\b.*|patient\s*(?:id|identifier)\s*:.*|"
+    r"document date\s*:.*|page\s+\d+(?:\s+of\s+\d+)?\s*|"
+    r"(?:[\w -]+\s+)?(?:note|report|record|medication list|annual visit)|"
+    r"patient overview|visit summary|plan|active medications|molecular findings|"
+    r"reported laboratory values|chemotherapy administration|"
+    r"(?:past medical|surgical|family|treatment) history(?: and performance status)?)$", re.I,
+)
+
+
+def uncovered_content_lines(pages: Iterable[DocumentPage], evidence: Iterable[EvidenceItem]) -> list[dict]:
+    """Measure literal line coverage, not clinical correctness or model confidence."""
+    page_list = list(pages)
+    verified = verify_quotes(evidence, page_list)
+    gaps = []
+    for page in page_list:
+        quotes = [_normalize(e.evidence_text) for e in verified
+                  if e.quote_verified and (e.source_file, e.source_page) == (page.filename, page.page_number)]
+        for number, line in enumerate(page.text.splitlines(), 1):
+            line = line.strip()
+            if not line or ADMINISTRATIVE_LINE.fullmatch(line):
+                continue
+            # A short heading ending in ':' has no fact value. Never ignore a
+            # labelled fact such as 'Diagnosis: ...' or a family-history line.
+            if line.endswith(':') and len(line.split()) <= 8:
+                continue
+            if not any(_normalize(line) in quote for quote in quotes):
+                gaps.append({'source_file': page.filename, 'source_page': page.page_number,
+                             'line_number': number, 'text': line,
+                             'message': 'Not captured by the tool, review manually'})
+    return gaps
+
+
+def complete_extraction(pages: Iterable[DocumentPage], evidence: Iterable[EvidenceItem], extractor):
+    """Retry each uncovered page once; retain persistent gaps, including on failure.
+
+    extractor receives one complete source page so file/page/date context is
+    preserved. It must be the single-pass requester, not extract_evidence.
+    """
+    page_list = list(pages)
+    items = verify_quotes((e for e in evidence if _is_patient_fact(e)), page_list)
+    # Deterministic fields must be present before measuring recovery needs.
+    for explicit in extract_labeled_facts(page_list):
+        if not any(e.quote_verified and e.category == explicit.category
+                   and (e.source_file, e.source_page) == (explicit.source_file, explicit.source_page)
+                   and _normalize(explicit.evidence_text) == _normalize(e.evidence_text) for e in items):
+            items.append(explicit)
+    affected = {(g['source_file'], g['source_page']) for g in uncovered_content_lines(page_list, items)}
+    def key(e):
+        return (e.category, e.source_file, e.source_page, _normalize(e.value), _normalize(e.evidence_text), e.date)
+    seen = {key(e) for e in items}
+    for page in page_list:
+        if (page.filename, page.page_number) not in affected:
+            continue
+        try:
+            recovered = verify_quotes(extractor([page]), [page])
+        except EvidenceExtractionError as exc:
+            LOGGER.warning('Completeness retry failed: %s p%d: %s', page.filename, page.page_number, exc)
+            continue
+        for item in recovered:
+            if not _is_patient_fact(item):
+                continue
+            if (item.source_file, item.source_page) != (page.filename, page.page_number):
+                continue
+            if key(item) not in seen:
+                items.append(item)
+                seen.add(key(item))
+    return items, uncovered_content_lines(page_list, items)

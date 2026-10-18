@@ -219,6 +219,28 @@ def has_biomarker_treatment_reasoning(explanation: str) -> bool:
     return False
 
 
+def snapshot_explanation(item: CriterionAssessment, explanation: str) -> str:
+    """A model's wording cannot upgrade a dated listing into present use."""
+    snapshots = [e for e in item.patient_evidence if e.source_kind == 'medication_list'
+                 or MEDICATION_LIST.search(e.source_file)]
+    if not snapshots:
+        return explanation
+    def replace_claim(text, pattern, replacement):
+        def replace(match):
+            prefix = text[max(0, match.start() - 50):match.start()]
+            if re.search(r'(?:\bnot|\bno evidence of|does not establish|cannot establish)\s*$', prefix, re.I):
+                return match.group()
+            return replacement
+        return re.sub(pattern, replace, text, flags=re.I)
+    corrected = replace_claim(explanation, r'\b(?:is\s+)?currently\s+(?:taking|receiving|using|on|being treated with)\b', 'was listed as receiving')
+    corrected = replace_claim(corrected, r'\bcurrent medications?\b', 'dated medication-list exposure')
+    corrected = replace_claim(corrected, r'\bcurrent use\b', 'documented past exposure')
+    if corrected != explanation:
+        dates = ', '.join(sorted({e.date or 'date not documented' for e in snapshots}))
+        corrected += f' The cited medication list is a snapshot as of {dates}; use at screening is not established.'
+    return corrected
+
+
 def review_assessments(assessments: list[CriterionAssessment]) -> tuple[list[CriterionAssessment], list[str]]:
     """Downgrade unsupported conclusions and return visible review flags."""
     reviewed, flags = [], []
@@ -261,5 +283,10 @@ def review_assessments(assessments: list[CriterionAssessment]) -> tuple[list[Cri
             else:
                 update = {"status": "UNKNOWN", "explanation": "Biomarker-to-treatment inference has no cited treatment evidence; converted to UNKNOWN. Original reasoning: " + item.explanation}
                 flags.append(flag + "; no supported treatment citation, converted to UNKNOWN.")
+        explanation = update.get('explanation', item.explanation)
+        corrected = snapshot_explanation(item, explanation)
+        if corrected != explanation:
+            update['explanation'] = corrected
+            flags.append(f'{item.criterion_id}: current-use wording corrected to dated medication-list exposure; verify chronology.')
         reviewed.append(item.model_copy(update=update))
     return reviewed, flags
