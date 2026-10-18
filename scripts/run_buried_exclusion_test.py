@@ -1,4 +1,4 @@
-"""Run the SYN-002 / SYN-003 buried-exclusion tests end to end and score them against labels.
+"""Run the SYN-002 / SYN-003 / SYN-004 buried-exclusion tests end to end and score them against labels.
 
     python scripts/run_buried_exclusion_test.py --dry-run          # ingest only, no API calls
     python scripts/run_buried_exclusion_test.py                    # SYN-002 and SYN-002-control
@@ -45,6 +45,8 @@ LABEL_FILES = {
     "SYN-002-control": EVAL / "criterion_labels_syn002_control.json",
     "SYN-003": EVAL / "criterion_labels_syn003.json",
     "SYN-003-control": EVAL / "criterion_labels_syn003_control.json",
+    "SYN-004": EVAL / "criterion_labels_syn004.json",
+    "SYN-004-control": EVAL / "criterion_labels_syn004_control.json",
 }
 # Words that identify each probe's source fact in the extracted evidence.
 PROBE_TERMS = {
@@ -61,6 +63,28 @@ PROBE_TERMS_SYN003 = {
     "last_chemo_dose": ("2026-04-08",),
     "scheduled_first_dose": ("2026-04-20",),
 }
+# SYN-004 (blind test of the frozen round-2 code). Buried facts and the traps that replace
+# them in the control, so each report shows whether a miss came from OCR/extraction or later.
+PROBE_TERMS_SYN004 = {
+    "buried_pneumonitis_ocr": ("pneumonitis",),
+    "pneumonia_trap": ("pneumonia",),
+    "buried_steroid": ("prednisone",),
+    "steroid_last_dose": ("2026-06-18",),
+    "inhaled_topical_steroid_trap": ("fluticasone", "hydrocortisone"),
+    "buried_tia": ("transient ischemic",),
+    "vertigo_trap": ("vertigo",),
+    "autoimmune_exception_trap": ("hashimoto",),
+    "brain_mri": ("intracranial",),
+    "scheduled_first_dose": ("2026-06-22",),
+}
+
+
+def probe_terms_for(variant: str) -> dict:
+    if variant.startswith("SYN-004"):
+        return PROBE_TERMS_SYN004
+    if variant.startswith("SYN-003"):
+        return PROBE_TERMS_SYN003
+    return PROBE_TERMS
 
 
 def extraction_check(evidence: list[EvidenceItem], probe_terms: dict | None = None) -> dict:
@@ -80,12 +104,20 @@ def run_variant(variant: str, args, criteria, client) -> dict:
     files = sorted(folder.glob("*.pdf"))
     if not files:
         raise SystemExit(f"No documents in {folder}. Run scripts/create_syn002_patient.py first.")
-    pages = ingest_documents(files)
+    # SYN-004 includes a scanned page; read it with OCR as the app does. Earlier patients
+    # have text layers only, so their ingestion is unchanged.
+    use_ocr = variant.startswith("SYN-004") and not args.dry_run
+    pages = ingest_documents(files, use_ocr=use_ocr, ocr_client=client if use_ocr else None)
     print(f"\n== {variant}: {len(files)} documents, {len(pages)} pages")
     if args.dry_run:
         for p in pages:
             print(f"   {p.filename} p{p.page_number} [{p.extraction_method}] {len(p.text)} chars")
         return {}
+    if use_ocr:
+        pages_path = args.output_dir / f"{variant}_buried_test_pages.json"
+        pages_path.write_text(json.dumps([{"file": p.filename, "page": p.page_number, "method": p.extraction_method,
+                                           "text": p.text} for p in pages], indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+        print(f"   wrote {pages_path.name} (OCR text kept for review)")
 
     evidence_path = args.output_dir / f"{variant}_buried_test_evidence.json"
     if args.reuse_evidence and evidence_path.exists():
@@ -96,7 +128,7 @@ def run_variant(variant: str, args, criteria, client) -> dict:
         evidence_path.write_text(json.dumps([e.model_dump(mode="json") for e in evidence], indent=2) + "\n", encoding="utf-8")
         print(f"   extracted {len(evidence)} records ({sum(e.quote_verified for e in evidence)} verified)")
 
-    extraction = extraction_check(evidence, PROBE_TERMS_SYN003 if variant.startswith("SYN-003") else PROBE_TERMS)
+    extraction = extraction_check(evidence, probe_terms_for(variant))
     gaps = uncovered_content_lines(pages, evidence)
     for probe, hits in extraction.items():
         shown = "; ".join(f"{h['category']}: {h['value']} ({h['source']}, verified={h['quote_verified']})" for h in hits) or "NOT EXTRACTED"
