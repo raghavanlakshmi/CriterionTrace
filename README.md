@@ -1,6 +1,6 @@
 # CriterionTrace
 
-**Clinical Trial prescreening with traceable evidence.**
+**Clinical trial prescreening with traceable evidence.**
 
 [![tests](https://github.com/raghavanlakshmi/CriterionTrace/actions/workflows/tests.yml/badge.svg)](https://github.com/raghavanlakshmi/CriterionTrace/actions/workflows/tests.yml)
 ![python](https://img.shields.io/badge/python-3.11-blue)
@@ -134,7 +134,7 @@ docs/               technical details and code organisation guide
 ```
 
 Deeper write-ups: [Technical details](docs/TECHNICAL_DETAILS.md) ·
-[Code organisation guide](docs/TrialMatch_AI_Code_Organization_Guide.md)
+[Code organisation guide](docs/CriterionTrace_Code_Organization_Guide.md)
 
 ## Limitations
 

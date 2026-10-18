@@ -1,6 +1,6 @@
 # CriterionTrace name screening
 
-Checked on 2026-10-18 before renaming the repository. Tagline: **Clinical Trial prescreening with traceable evidence.**
+Checked on 2026-10-18 before renaming the repository. Tagline: **Clinical trial prescreening with traceable evidence.**
 
 - GitHub public repository name search returned zero results for CriterionTrace; the proposed owner/repository URL returned HTTP 404. [Search](https://github.com/search?q=CriterionTrace&type=repositories).
 - Registry RDAP returned HTTP 404 for criteriontrace.com, criteriontrace.ai and criteriontrace.org. No registration was found; purchase availability and pricing were not verified, and no domain was purchased.

@@ -352,7 +352,7 @@ def render_safety_tab(run: dict | None) -> None:
 def render_sidebar() -> None:
     with st.sidebar:
         st.markdown("### CriterionTrace")
-        st.markdown("Clinical Trial prescreening with traceable evidence. Uses synthetic data and never decides eligibility.")
+        st.markdown("Clinical trial prescreening with traceable evidence. Uses synthetic data and never decides eligibility.")
         st.markdown("**How to read results**")
         for key, (text, color) in STATUS_UI.items():
             st.badge(text, color=color)
@@ -370,7 +370,7 @@ def main() -> None:
     render_sidebar()
 
     st.title("CriterionTrace")
-    st.caption("Clinical Trial prescreening with traceable evidence.")
+    st.caption("Clinical trial prescreening with traceable evidence.")
     st.warning(DISCLAIMER)
     run = st.session_state.get("run")
     if st.session_state.get("run_source") == "saved":
