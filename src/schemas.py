@@ -116,6 +116,7 @@ class CriterionAssessment(BaseModel):
     method: Literal["rule", "llm"]
     patient_evidence: list[EvidenceItem]
     explanation: str = Field(min_length=1)
+    final_conclusion: Literal["APPLIES", "DOES_NOT_APPLY", "MEETS", "DOES_NOT_MEET", "UNKNOWN", "POTENTIAL_CONFLICT"] | None = None
 
 
 class RetrievalChunk(BaseModel):

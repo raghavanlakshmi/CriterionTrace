@@ -289,12 +289,41 @@ def snapshot_explanation(item: CriterionAssessment, explanation: str) -> str:
     return corrected
 
 
+
+def status_contradicts_explanation(item: CriterionAssessment) -> bool:
+    """Check the structured conclusion and the last explicit prose conclusion."""
+    if item.method != "llm" or item.status not in {"MEETS", "DOES_NOT_MEET"}:
+        return False
+    mapping = {"APPLIES": "DOES_NOT_MEET", "DOES_NOT_APPLY": "MEETS"} if item.criterion_type == "exclusion" else {}
+    conclusion = item.final_conclusion
+    if conclusion is not None and mapping.get(conclusion, conclusion) != item.status:
+        return True
+    if item.criterion_type == "exclusion":
+        pattern = r"\b(?:the |this )?exclusion\s+(does not apply|doesn't apply|is not applicable|applies|is applicable)\b"
+        matches = list(re.finditer(pattern, item.explanation, re.I))
+        if not matches:
+            return False
+        phrase = matches[-1].group(1).lower()
+        prose_status = "MEETS" if phrase in {"does not apply", "doesn't apply", "is not applicable"} else "DOES_NOT_MEET"
+    else:
+        pattern = r"\b(?:(?:the |this )?(?:inclusion )?criterion\s+(is not met|is not satisfied|is met|is satisfied)|(?:patient\s+)?(does not meet|doesn't meet|meets)\s+(?:the |this )?(?:inclusion )?criterion)\b"
+        matches = list(re.finditer(pattern, item.explanation, re.I))
+        if not matches:
+            return False
+        phrase = (matches[-1].group(1) or matches[-1].group(2)).lower()
+        prose_status = "DOES_NOT_MEET" if "not" in phrase or "n't" in phrase else "MEETS"
+    return prose_status != item.status
+
+
 def review_assessments(assessments: list[CriterionAssessment]) -> tuple[list[CriterionAssessment], list[str]]:
     """Downgrade unsupported conclusions and return visible review flags."""
     reviewed, flags = [], []
     for item in assessments:
         update = {}
-        if reason := history_clearance_problem(item):
+        if status_contradicts_explanation(item):
+            update = {"status": "UNKNOWN", "explanation": "Status contradicts explanation. Converted to UNKNOWN. Original reasoning: " + item.explanation}
+            flags.append(f"{item.criterion_id}: status contradicts explanation; converted to UNKNOWN.")
+        elif reason := history_clearance_problem(item):
             update = {"status": "UNKNOWN", "explanation": f"{reason} Converted to UNKNOWN. Original reasoning: {item.explanation}"}
             flags.append(f"{item.criterion_id}: {reason} Converted to UNKNOWN.")
         elif reason := time_window_problem(item):

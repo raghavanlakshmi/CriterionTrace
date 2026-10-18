@@ -6,6 +6,7 @@ from collections import Counter
 import json
 import re
 from typing import Iterable
+from typing import Literal
 
 from pydantic import BaseModel, Field
 
@@ -168,6 +169,7 @@ class _LLMAssessment(BaseModel):
     status: str
     evidence_indices: list[int] = Field(default_factory=list)
     explanation: str
+    final_conclusion: Literal["APPLIES", "DOES_NOT_APPLY", "MEETS", "DOES_NOT_MEET", "UNKNOWN", "POTENTIAL_CONFLICT"] | None = None
 
 
 def assess_free_text_criterion(criterion: TrialCriterion, evidence: list[EvidenceItem], pages: list, *, client, model: str = "gpt-4.1-mini") -> CriterionAssessment:
@@ -186,7 +188,7 @@ A dated medication list documents that the drug was listed as of that date and i
 Time-window criteria such as within 4 weeks need a dated administration or stop date and the actual reference date (such as first study dose). A note date is not a study dose date. If either date is missing, return UNKNOWN. A medication snapshot alone cannot decide a recent time window. It can still establish prior exposure for exclusions without a recent-use window.
 Biomarkers describe test findings, not treatments. Never infer therapy or inhibitor exposure from a mutation; cite an explicit treatment or medication record.
 Some criteria are one option in a list (for example acceptable contraception methods) or a branch that applies only under a condition (for example "No liver mets: ..."). Return UNKNOWN for these unless the record shows the option or condition applies.
-Cite facts by their "index" field in evidence_indices. Never say the patient is eligible or ineligible."""
+Cite facts by their "index" field in evidence_indices. Also return final_conclusion using the same criterion-type vocabulary, stating the final conclusion of your explanation separately from status. Never say the patient is eligible or ineligible."""
     # Each fact carries its own index so the model cites it instead of counting list positions.
     # Unverified records remain in the review output, but are not candidate
     # citations for the model. Preserve original indices for traceability.
@@ -212,7 +214,7 @@ Cite facts by their "index" field in evidence_indices. Never say the patient is 
     if status is None:
         return conservative_assessment(criterion, evidence)
     cited = [evidence[index] for index in result.evidence_indices if 0 <= index < len(evidence) and evidence[index].quote_verified]
-    return CriterionAssessment(criterion_id=criterion.criterion_id, criterion_text=criterion.text, criterion_type=criterion.type, status=status, method="llm", patient_evidence=cited, explanation=result.explanation)
+    return CriterionAssessment(criterion_id=criterion.criterion_id, criterion_text=criterion.text, criterion_type=criterion.type, status=status, method="llm", patient_evidence=cited, explanation=result.explanation, final_conclusion=getattr(result, "final_conclusion", None))
 
 
 # The model answers the natural question for each criterion type; code applies the project's
