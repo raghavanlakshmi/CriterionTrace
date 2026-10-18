@@ -1,0 +1,23 @@
+{
+  "purpose": "Controlled guard-only check using an exact negative sentence from the existing patient source. The fact is supplied explicitly to isolate the guard; this is not extracted evidence from a live pipeline run and is not part of the reported scores.",
+  "source_fact": {
+    "category": "comorbidity",
+    "value": "MRI brain on 2026-02-10: no acute infarct, no hemorrhage, no intracranial metastases.",
+    "normalized_value": null,
+    "date": null,
+    "start_date": null,
+    "end_date": null,
+    "source_file": "neurology_note_2026.pdf",
+    "source_page": 1,
+    "evidence_text": "MRI brain on 2026-02-10: no acute infarct, no hemorrhage, no intracranial metastases.",
+    "quote_verified": true,
+    "source_kind": "other"
+  },
+  "criterion": {
+    "criterion_id": "EXC-01",
+    "type": "exclusion",
+    "text": "Active, untreated brain metastases."
+  },
+  "reviewed_status": "MEETS",
+  "flags": []
+}

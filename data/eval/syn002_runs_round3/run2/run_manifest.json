@@ -1,0 +1,19 @@
+{
+  "commit": "6da940d49021855cc3d03a26ece5efa001e60c5c",
+  "attempt": 2,
+  "label": "after round-3 fixes, not blind",
+  "started_at": "2026-10-18T21:21:17.797566+00:00",
+  "command": [
+    "scripts/run_buried_exclusion_test.py",
+    "--variants",
+    "SYN-002",
+    "SYN-002-control",
+    "--output-dir",
+    "data/eval/syn002_runs_round3/run2"
+  ],
+  "fresh_extraction": true,
+  "finished_at": "2026-10-18T21:22:28.686613+00:00",
+  "exit_code": 0,
+  "frozen_code_verified": true,
+  "protected_artifacts_verified": true
+}
