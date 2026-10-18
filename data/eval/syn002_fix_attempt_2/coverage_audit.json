@@ -1,0 +1,632 @@
+[
+  {
+    "run": "run1",
+    "variant": "SYN-002",
+    "verified_labs": [
+      "ANC",
+      "hemoglobin",
+      "platelets",
+      "creatinine",
+      "bilirubin",
+      "AST",
+      "ALT"
+    ],
+    "braf": true,
+    "biopsy": false,
+    "dated_administrations": [
+      {
+        "category": "prior_treatment",
+        "value": "FOLFIRI",
+        "normalized_value": null,
+        "date": "2026-03-20",
+        "source_file": "infusion_record.pdf",
+        "source_page": 1,
+        "evidence_text": "Regimen: FOLFIRI\nCycle 8 administered on 2026-03-20.",
+        "quote_verified": true,
+        "source_kind": "other"
+      },
+      {
+        "category": "prior_treatment",
+        "value": "FOLFIRI, Cycle 8 administered on 2026-03-20",
+        "normalized_value": null,
+        "date": "2026-03-20",
+        "source_file": "infusion_record.pdf",
+        "source_page": 1,
+        "evidence_text": "Regimen: FOLFIRI\nCycle 8 administered on 2026-03-20.",
+        "quote_verified": true,
+        "source_kind": "other"
+      },
+      {
+        "category": "prior_treatment",
+        "value": "Cycle 8 administered on 2026-03-20",
+        "normalized_value": null,
+        "date": "2026-03-20",
+        "source_file": "infusion_record.pdf",
+        "source_page": 1,
+        "evidence_text": "Cycle 8 administered on 2026-03-20.",
+        "quote_verified": true,
+        "source_kind": "other"
+      }
+    ],
+    "family_history_evidence_for_manual_inspection": [
+      {
+        "category": "sex",
+        "value": "UNKNOWN",
+        "normalized_value": null,
+        "date": null,
+        "source_file": "primary_care_annual_visit_2023.pdf",
+        "source_page": 2,
+        "evidence_text": "SYNTHETIC PATIENT - FICTIONAL DATA - FOR DEMONSTRATION ONLY\nPrimary care annual visit\nPatient ID: SYN-002\nDocument date: 2023-05-16\nPast medical history\nHypertension, on lisinopril\nHyperlipidemia, on atorvastatin\nGastroesophageal reflux disease\nProstate adenocarcinoma, Gleason 3+4=7, treated with radical prostatectomy in March 2022; PSA\nundetectable at last check\nOsteoarthritis, right knee\nCataract surgery, left eye, 2019\nAppendectomy, 1988\nFamily history: mother diagnosed with breast cancer at age 70\nFamily history: father with coronary artery disease\nFictional document. No real patient information.",
+        "quote_verified": true,
+        "source_kind": "other"
+      }
+    ],
+    "unverified_record_count": 0,
+    "uncovered_line_count": 13,
+    "placeholder_records": [
+      {
+        "category": "sex",
+        "value": "UNKNOWN",
+        "normalized_value": null,
+        "date": null,
+        "source_file": "primary_care_annual_visit_2023.pdf",
+        "source_page": 2,
+        "evidence_text": "SYNTHETIC PATIENT - FICTIONAL DATA - FOR DEMONSTRATION ONLY\nPrimary care annual visit\nPatient ID: SYN-002\nDocument date: 2023-05-16\nPast medical history\nHypertension, on lisinopril\nHyperlipidemia, on atorvastatin\nGastroesophageal reflux disease\nProstate adenocarcinoma, Gleason 3+4=7, treated with radical prostatectomy in March 2022; PSA\nundetectable at last check\nOsteoarthritis, right knee\nCataract surgery, left eye, 2019\nAppendectomy, 1988\nFamily history: mother diagnosed with breast cancer at age 70\nFamily history: father with coronary artery disease\nFictional document. No real patient information.",
+        "quote_verified": true,
+        "source_kind": "other"
+      }
+    ],
+    "scalar_value_not_present_in_quote": [
+      {
+        "category": "sex",
+        "value": "UNKNOWN",
+        "normalized_value": null,
+        "date": null,
+        "source_file": "primary_care_annual_visit_2023.pdf",
+        "source_page": 2,
+        "evidence_text": "SYNTHETIC PATIENT - FICTIONAL DATA - FOR DEMONSTRATION ONLY\nPrimary care annual visit\nPatient ID: SYN-002\nDocument date: 2023-05-16\nPast medical history\nHypertension, on lisinopril\nHyperlipidemia, on atorvastatin\nGastroesophageal reflux disease\nProstate adenocarcinoma, Gleason 3+4=7, treated with radical prostatectomy in March 2022; PSA\nundetectable at last check\nOsteoarthritis, right knee\nCataract surgery, left eye, 2019\nAppendectomy, 1988\nFamily history: mother diagnosed with breast cancer at age 70\nFamily history: father with coronary artery disease\nFictional document. No real patient information.",
+        "quote_verified": true,
+        "source_kind": "other"
+      },
+      {
+        "category": "sex",
+        "value": "male",
+        "normalized_value": "male",
+        "date": "2023-05-16",
+        "source_file": "primary_care_annual_visit_2023.pdf",
+        "source_page": 2,
+        "evidence_text": "Prostate adenocarcinoma, Gleason 3+4=7, treated with radical prostatectomy in March 2022; PSA\nundetectable at last check",
+        "quote_verified": true,
+        "source_kind": "other"
+      }
+    ]
+  },
+  {
+    "run": "run1",
+    "variant": "SYN-002-control",
+    "verified_labs": [
+      "ANC",
+      "hemoglobin",
+      "platelets",
+      "creatinine",
+      "bilirubin",
+      "AST",
+      "ALT"
+    ],
+    "braf": true,
+    "biopsy": false,
+    "dated_administrations": [
+      {
+        "category": "prior_treatment",
+        "value": "FOLFIRI",
+        "normalized_value": null,
+        "date": "2026-03-20",
+        "source_file": "infusion_record.pdf",
+        "source_page": 1,
+        "evidence_text": "Regimen: FOLFIRI\nCycle 8 administered on 2026-03-20.",
+        "quote_verified": true,
+        "source_kind": "other"
+      },
+      {
+        "category": "prior_treatment",
+        "value": "Cycle 8 administered on 2026-03-20",
+        "normalized_value": null,
+        "date": "2026-03-20",
+        "source_file": "infusion_record.pdf",
+        "source_page": 1,
+        "evidence_text": "Cycle 8 administered on 2026-03-20.",
+        "quote_verified": true,
+        "source_kind": "other"
+      }
+    ],
+    "family_history_evidence_for_manual_inspection": [
+      {
+        "category": "sex",
+        "value": "Male",
+        "normalized_value": "male",
+        "date": "2023-05-16",
+        "source_file": "primary_care_annual_visit_2023.pdf",
+        "source_page": 2,
+        "evidence_text": "Family history: mother diagnosed with breast cancer at age 70\nFamily history: father with coronary artery disease",
+        "quote_verified": true,
+        "source_kind": "other"
+      },
+      {
+        "category": "sex",
+        "value": "UNKNOWN",
+        "normalized_value": null,
+        "date": null,
+        "source_file": "primary_care_annual_visit_2023.pdf",
+        "source_page": 2,
+        "evidence_text": "SYNTHETIC PATIENT - FICTIONAL DATA - FOR DEMONSTRATION ONLY\nPrimary care annual visit\nPatient ID: SYN-002\nDocument date: 2023-05-16\nPast medical history\nHypertension, on lisinopril\nHyperlipidemia, on atorvastatin\nGastroesophageal reflux disease\nOsteoarthritis, right knee\nCataract surgery, left eye, 2019\nAppendectomy, 1988\nFamily history: mother diagnosed with breast cancer at age 70\nFamily history: father with coronary artery disease\nFictional document. No real patient information.",
+        "quote_verified": true,
+        "source_kind": "other"
+      }
+    ],
+    "unverified_record_count": 1,
+    "uncovered_line_count": 13,
+    "placeholder_records": [
+      {
+        "category": "sex",
+        "value": "UNKNOWN",
+        "normalized_value": null,
+        "date": null,
+        "source_file": "primary_care_annual_visit_2023.pdf",
+        "source_page": 2,
+        "evidence_text": "SYNTHETIC PATIENT - FICTIONAL DATA - FOR DEMONSTRATION ONLY\nPrimary care annual visit\nPatient ID: SYN-002\nDocument date: 2023-05-16\nPast medical history\nHypertension, on lisinopril\nHyperlipidemia, on atorvastatin\nGastroesophageal reflux disease\nOsteoarthritis, right knee\nCataract surgery, left eye, 2019\nAppendectomy, 1988\nFamily history: mother diagnosed with breast cancer at age 70\nFamily history: father with coronary artery disease\nFictional document. No real patient information.",
+        "quote_verified": true,
+        "source_kind": "other"
+      },
+      {
+        "category": "sex",
+        "value": "UNKNOWN",
+        "normalized_value": null,
+        "date": "2023-05-16",
+        "source_file": "primary_care_annual_visit_2023.pdf",
+        "source_page": 2,
+        "evidence_text": "Patient ID: SYN-002\nDocument date: 2023-05-16\nPast medical history\nHypertension, on lisinopril\nHyperlipidemia, on atorvastatin\nGastroesophageal reflux disease\nOsteoarthritis, right knee\nCataract surgery, left eye, 2019\nAppendectomy, 1988",
+        "quote_verified": true,
+        "source_kind": "other"
+      }
+    ],
+    "scalar_value_not_present_in_quote": [
+      {
+        "category": "sex",
+        "value": "Male",
+        "normalized_value": "male",
+        "date": "2023-05-16",
+        "source_file": "primary_care_annual_visit_2023.pdf",
+        "source_page": 2,
+        "evidence_text": "Family history: mother diagnosed with breast cancer at age 70\nFamily history: father with coronary artery disease",
+        "quote_verified": true,
+        "source_kind": "other"
+      },
+      {
+        "category": "sex",
+        "value": "UNKNOWN",
+        "normalized_value": null,
+        "date": null,
+        "source_file": "primary_care_annual_visit_2023.pdf",
+        "source_page": 2,
+        "evidence_text": "SYNTHETIC PATIENT - FICTIONAL DATA - FOR DEMONSTRATION ONLY\nPrimary care annual visit\nPatient ID: SYN-002\nDocument date: 2023-05-16\nPast medical history\nHypertension, on lisinopril\nHyperlipidemia, on atorvastatin\nGastroesophageal reflux disease\nOsteoarthritis, right knee\nCataract surgery, left eye, 2019\nAppendectomy, 1988\nFamily history: mother diagnosed with breast cancer at age 70\nFamily history: father with coronary artery disease\nFictional document. No real patient information.",
+        "quote_verified": true,
+        "source_kind": "other"
+      },
+      {
+        "category": "sex",
+        "value": "UNKNOWN",
+        "normalized_value": null,
+        "date": "2023-05-16",
+        "source_file": "primary_care_annual_visit_2023.pdf",
+        "source_page": 2,
+        "evidence_text": "Patient ID: SYN-002\nDocument date: 2023-05-16\nPast medical history\nHypertension, on lisinopril\nHyperlipidemia, on atorvastatin\nGastroesophageal reflux disease\nOsteoarthritis, right knee\nCataract surgery, left eye, 2019\nAppendectomy, 1988",
+        "quote_verified": true,
+        "source_kind": "other"
+      }
+    ]
+  },
+  {
+    "run": "run2",
+    "variant": "SYN-002",
+    "verified_labs": [
+      "ANC",
+      "hemoglobin",
+      "platelets",
+      "creatinine",
+      "bilirubin",
+      "AST",
+      "ALT"
+    ],
+    "braf": true,
+    "biopsy": false,
+    "dated_administrations": [
+      {
+        "category": "prior_treatment",
+        "value": "FOLFIRI",
+        "normalized_value": null,
+        "date": "2026-03-20",
+        "source_file": "infusion_record.pdf",
+        "source_page": 1,
+        "evidence_text": "Regimen: FOLFIRI\nCycle 8 administered on 2026-03-20.",
+        "quote_verified": true,
+        "source_kind": "other"
+      },
+      {
+        "category": "prior_treatment",
+        "value": "Cycle 8 administered on 2026-03-20",
+        "normalized_value": null,
+        "date": "2026-03-20",
+        "source_file": "infusion_record.pdf",
+        "source_page": 1,
+        "evidence_text": "Cycle 8 administered on 2026-03-20.",
+        "quote_verified": true,
+        "source_kind": "other"
+      }
+    ],
+    "family_history_evidence_for_manual_inspection": [],
+    "unverified_record_count": 0,
+    "uncovered_line_count": 15,
+    "placeholder_records": [],
+    "scalar_value_not_present_in_quote": [
+      {
+        "category": "sex",
+        "value": "Male",
+        "normalized_value": "male",
+        "date": "2023-05-16",
+        "source_file": "primary_care_annual_visit_2023.pdf",
+        "source_page": 2,
+        "evidence_text": "Prostate adenocarcinoma, Gleason 3+4=7, treated with radical prostatectomy in March 2022; PSA\nundetectable at last check",
+        "quote_verified": true,
+        "source_kind": "other"
+      },
+      {
+        "category": "sex",
+        "value": "Male",
+        "normalized_value": "male",
+        "date": "2025-10-02",
+        "source_file": "outside_pharmacy_medication_list_2025.pdf",
+        "source_page": 1,
+        "evidence_text": "Lisinopril 20 mg by mouth once daily",
+        "quote_verified": true,
+        "source_kind": "medication_list"
+      },
+      {
+        "category": "sex",
+        "value": "Male",
+        "normalized_value": "male",
+        "date": "2024-02-12",
+        "source_file": "pathology_report.pdf",
+        "source_page": 1,
+        "evidence_text": "KRAS: G12C mutation detected",
+        "quote_verified": true,
+        "source_kind": "other"
+      }
+    ]
+  },
+  {
+    "run": "run2",
+    "variant": "SYN-002-control",
+    "verified_labs": [
+      "ANC",
+      "hemoglobin",
+      "platelets",
+      "creatinine",
+      "bilirubin",
+      "AST",
+      "ALT"
+    ],
+    "braf": true,
+    "biopsy": true,
+    "dated_administrations": [
+      {
+        "category": "prior_treatment",
+        "value": "FOLFIRI\nCycle 8 administered on 2026-03-20",
+        "normalized_value": null,
+        "date": "2026-03-20",
+        "source_file": "infusion_record.pdf",
+        "source_page": 1,
+        "evidence_text": "Chemotherapy administration\nRegimen: FOLFIRI\nCycle 8 administered on 2026-03-20.",
+        "quote_verified": true,
+        "source_kind": "other"
+      }
+    ],
+    "family_history_evidence_for_manual_inspection": [],
+    "unverified_record_count": 0,
+    "uncovered_line_count": 9,
+    "placeholder_records": [
+      {
+        "category": "sex",
+        "value": "UNKNOWN",
+        "normalized_value": null,
+        "date": null,
+        "source_file": "primary_care_annual_visit_2023.pdf",
+        "source_page": 2,
+        "evidence_text": "SYNTHETIC PATIENT - FICTIONAL DATA - FOR DEMONSTRATION ONLY",
+        "quote_verified": true,
+        "source_kind": "other"
+      }
+    ],
+    "scalar_value_not_present_in_quote": [
+      {
+        "category": "sex",
+        "value": "Male",
+        "normalized_value": null,
+        "date": null,
+        "source_file": "infusion_record.pdf",
+        "source_page": 1,
+        "evidence_text": "SYNTHETIC PATIENT - FICTIONAL DATA - FOR DEMONSTRATION ONLY\nInfusion record\nPatient ID: SYN-002\nDocument date: 2026-03-20\nChemotherapy administration\nRegimen: FOLFIRI\nCycle 8 administered on 2026-03-20.\nFurther cycles on hold pending clinical trial screening.\nFictional document. No real patient information.\nPage 1 of 1",
+        "quote_verified": true,
+        "source_kind": "other"
+      },
+      {
+        "category": "sex",
+        "value": "Male",
+        "normalized_value": null,
+        "date": null,
+        "source_file": "primary_care_annual_visit_2023.pdf",
+        "source_page": 1,
+        "evidence_text": "SYNTHETIC PATIENT - FICTIONAL DATA - FOR DEMONSTRATION ONLY\nPrimary care annual visit\nPatient ID: SYN-002\nDocument date: 2023-05-16\nVisit summary\nReason for visit: annual physical examination\nBlood pressure: 132/84 mmHg\nWeight: 84 kg\nNo new complaints today.",
+        "quote_verified": true,
+        "source_kind": "other"
+      },
+      {
+        "category": "sex",
+        "value": "Male",
+        "normalized_value": null,
+        "date": null,
+        "source_file": "primary_care_annual_visit_2023.pdf",
+        "source_page": 3,
+        "evidence_text": "Plan\nContinue current medications.\nInfluenza vaccine given today.\nColonoscopy referral placed.\nReturn in 12 months.",
+        "quote_verified": true,
+        "source_kind": "other"
+      },
+      {
+        "category": "sex",
+        "value": "UNKNOWN",
+        "normalized_value": null,
+        "date": null,
+        "source_file": "primary_care_annual_visit_2023.pdf",
+        "source_page": 2,
+        "evidence_text": "SYNTHETIC PATIENT - FICTIONAL DATA - FOR DEMONSTRATION ONLY",
+        "quote_verified": true,
+        "source_kind": "other"
+      }
+    ]
+  },
+  {
+    "run": "run3",
+    "variant": "SYN-002",
+    "verified_labs": [
+      "ANC",
+      "hemoglobin",
+      "platelets",
+      "creatinine",
+      "bilirubin",
+      "AST",
+      "ALT"
+    ],
+    "braf": true,
+    "biopsy": false,
+    "dated_administrations": [
+      {
+        "category": "prior_treatment",
+        "value": "Cycle 8 administered on 2026-03-20.",
+        "normalized_value": null,
+        "date": "2026-03-20",
+        "source_file": "infusion_record.pdf",
+        "source_page": 1,
+        "evidence_text": "Cycle 8 administered on 2026-03-20.",
+        "quote_verified": true,
+        "source_kind": "other"
+      },
+      {
+        "category": "prior_treatment",
+        "value": "Cycle 8 administered on 2026-03-20",
+        "normalized_value": null,
+        "date": "2026-03-20",
+        "source_file": "infusion_record.pdf",
+        "source_page": 1,
+        "evidence_text": "Cycle 8 administered on 2026-03-20",
+        "quote_verified": true,
+        "source_kind": "other"
+      }
+    ],
+    "family_history_evidence_for_manual_inspection": [],
+    "unverified_record_count": 1,
+    "uncovered_line_count": 17,
+    "placeholder_records": [
+      {
+        "category": "sex",
+        "value": "UNKNOWN",
+        "normalized_value": null,
+        "date": null,
+        "source_file": "primary_care_annual_visit_2023.pdf",
+        "source_page": 2,
+        "evidence_text": ".\nPrimary care annual visit\nPatient ID: SYN-002\nDocument date: 2023-05-16\nPast medical history\nHypertension, on lisinopril\nHyperlipidemia, on atorvastatin\nGastroesophageal reflux disease\nProstate adenocarcinoma, Gleason 3+4=7, treated with radical prostatectomy in March 2022; PSA\nundetectable at last check\nOsteoarthritis, right knee\nCataract surgery, left eye, 2019\nAppendectomy, 1988\nFamily history: mother diagnosed with breast cancer at age 70\nFamily history: father with coronary artery disease",
+        "quote_verified": false,
+        "source_kind": "other"
+      }
+    ],
+    "scalar_value_not_present_in_quote": [
+      {
+        "category": "sex",
+        "value": "Male",
+        "normalized_value": null,
+        "date": "2023-05-16",
+        "source_file": "primary_care_annual_visit_2023.pdf",
+        "source_page": 2,
+        "evidence_text": "Prostate adenocarcinoma, Gleason 3+4=7, treated with radical prostatectomy in March 2022; PSA\nundetectable at last check",
+        "quote_verified": true,
+        "source_kind": "other"
+      },
+      {
+        "category": "sex",
+        "value": "Male",
+        "normalized_value": null,
+        "date": "2026-03-20",
+        "source_file": "infusion_record.pdf",
+        "source_page": 1,
+        "evidence_text": "Patient ID: SYN-002",
+        "quote_verified": true,
+        "source_kind": "other"
+      }
+    ]
+  },
+  {
+    "run": "run3",
+    "variant": "SYN-002-control",
+    "verified_labs": [
+      "ANC",
+      "hemoglobin",
+      "platelets",
+      "creatinine",
+      "bilirubin",
+      "AST",
+      "ALT"
+    ],
+    "braf": true,
+    "biopsy": false,
+    "dated_administrations": [
+      {
+        "category": "prior_treatment",
+        "value": "FOLFIRI\nCycle 8 administered on 2026-03-20.",
+        "normalized_value": null,
+        "date": "2026-03-20",
+        "source_file": "infusion_record.pdf",
+        "source_page": 1,
+        "evidence_text": "FOLFIRI\nCycle 8 administered on 2026-03-20.",
+        "quote_verified": true,
+        "source_kind": "other"
+      },
+      {
+        "category": "prior_treatment",
+        "value": "Cycle 8 administered on 2026-03-20",
+        "normalized_value": "Cycle 8 chemotherapy administration on 2026-03-20",
+        "date": "2026-03-20",
+        "source_file": "infusion_record.pdf",
+        "source_page": 1,
+        "evidence_text": "Cycle 8 administered on 2026-03-20.",
+        "quote_verified": true,
+        "source_kind": "other"
+      }
+    ],
+    "family_history_evidence_for_manual_inspection": [
+      {
+        "category": "sex",
+        "value": "UNKNOWN",
+        "normalized_value": null,
+        "date": null,
+        "source_file": "primary_care_annual_visit_2023.pdf",
+        "source_page": 2,
+        "evidence_text": "SYNTHETIC PATIENT - FICTIONAL DATA - FOR DEMONSTRATION ONLY\nPrimary care annual visit\nPatient ID: SYN-002\nDocument date: 2023-05-16\nPast medical history\nHypertension, on lisinopril\nHyperlipidemia, on atorvastatin\nGastroesophageal reflux disease\nOsteoarthritis, right knee\nCataract surgery, left eye, 2019\nAppendectomy, 1988\nFamily history: mother diagnosed with breast cancer at age 70\nFamily history: father with coronary artery disease\nFictional document. No real patient information.",
+        "quote_verified": true,
+        "source_kind": "other"
+      }
+    ],
+    "unverified_record_count": 4,
+    "uncovered_line_count": 9,
+    "placeholder_records": [
+      {
+        "category": "sex",
+        "value": "UNKNOWN",
+        "normalized_value": null,
+        "date": null,
+        "source_file": "primary_care_annual_visit_2023.pdf",
+        "source_page": 2,
+        "evidence_text": "SYNTHETIC PATIENT - FICTIONAL DATA - FOR DEMONSTRATION ONLY\nPrimary care annual visit\nPatient ID: SYN-002\nDocument date: 2023-05-16\nPast medical history\nHypertension, on lisinopril\nHyperlipidemia, on atorvastatin\nGastroesophageal reflux disease\nOsteoarthritis, right knee\nCataract surgery, left eye, 2019\nAppendectomy, 1988\nFamily history: mother diagnosed with breast cancer at age 70\nFamily history: father with coronary artery disease\nFictional document. No real patient information.",
+        "quote_verified": true,
+        "source_kind": "other"
+      },
+      {
+        "category": "sex",
+        "value": "UNKNOWN",
+        "normalized_value": null,
+        "date": "2023-05-16",
+        "source_file": "primary_care_annual_visit_2023.pdf",
+        "source_page": 2,
+        "evidence_text": "Past medical history\nHypertension, on lisinopril\nHyperlipidemia, on atorvastatin\nGastroesophageal reflux disease\nOsteoarthritis, right knee\nCataract surgery, left eye, 2019\nAppendectomy, 1988",
+        "quote_verified": true,
+        "source_kind": "other"
+      }
+    ],
+    "scalar_value_not_present_in_quote": [
+      {
+        "category": "sex",
+        "value": "Male",
+        "normalized_value": null,
+        "date": "2023-05-16",
+        "source_file": "primary_care_annual_visit_2023.pdf",
+        "source_page": 1,
+        "evidence_text": "No new complaints today.",
+        "quote_verified": true,
+        "source_kind": "other"
+      },
+      {
+        "category": "sex",
+        "value": "Male",
+        "normalized_value": null,
+        "date": "2023-05-16",
+        "source_file": "primary_care_annual_visit_2023.pdf",
+        "source_page": 1,
+        "evidence_text": "Reason for visit: annual physical examination",
+        "quote_verified": true,
+        "source_kind": "other"
+      },
+      {
+        "category": "sex",
+        "value": "Male",
+        "normalized_value": null,
+        "date": "2023-05-16",
+        "source_file": "primary_care_annual_visit_2023.pdf",
+        "source_page": 1,
+        "evidence_text": "Blood pressure: 132/84 mmHg",
+        "quote_verified": true,
+        "source_kind": "other"
+      },
+      {
+        "category": "sex",
+        "value": "Male",
+        "normalized_value": null,
+        "date": "2023-05-16",
+        "source_file": "primary_care_annual_visit_2023.pdf",
+        "source_page": 1,
+        "evidence_text": "Weight: 84 kg",
+        "quote_verified": true,
+        "source_kind": "other"
+      },
+      {
+        "category": "sex",
+        "value": "Male",
+        "normalized_value": null,
+        "date": "2023-05-16",
+        "source_file": "primary_care_annual_visit_2023.pdf",
+        "source_page": 1,
+        "evidence_text": "Patient ID: SYN-002",
+        "quote_verified": true,
+        "source_kind": "other"
+      },
+      {
+        "category": "sex",
+        "value": "UNKNOWN",
+        "normalized_value": null,
+        "date": null,
+        "source_file": "primary_care_annual_visit_2023.pdf",
+        "source_page": 2,
+        "evidence_text": "SYNTHETIC PATIENT - FICTIONAL DATA - FOR DEMONSTRATION ONLY\nPrimary care annual visit\nPatient ID: SYN-002\nDocument date: 2023-05-16\nPast medical history\nHypertension, on lisinopril\nHyperlipidemia, on atorvastatin\nGastroesophageal reflux disease\nOsteoarthritis, right knee\nCataract surgery, left eye, 2019\nAppendectomy, 1988\nFamily history: mother diagnosed with breast cancer at age 70\nFamily history: father with coronary artery disease\nFictional document. No real patient information.",
+        "quote_verified": true,
+        "source_kind": "other"
+      },
+      {
+        "category": "sex",
+        "value": "UNKNOWN",
+        "normalized_value": null,
+        "date": "2023-05-16",
+        "source_file": "primary_care_annual_visit_2023.pdf",
+        "source_page": 2,
+        "evidence_text": "Past medical history\nHypertension, on lisinopril\nHyperlipidemia, on atorvastatin\nGastroesophageal reflux disease\nOsteoarthritis, right knee\nCataract surgery, left eye, 2019\nAppendectomy, 1988",
+        "quote_verified": true,
+        "source_kind": "other"
+      }
+    ]
+  }
+]

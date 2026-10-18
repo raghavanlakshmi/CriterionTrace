@@ -1,0 +1,699 @@
+{
+  "patient": "SYN-002-control",
+  "variant": "control (buried lines removed)",
+  "label_status": "APPROVED by user in chat on 2026-10-17 before first live run; original expected labels unchanged",
+  "extraction_model": "gpt-4.1-mini",
+  "assessment_model": "gpt-4.1-mini",
+  "extraction_check": {
+    "buried_malignancy": [],
+    "buried_kras_inhibitor": [],
+    "family_history_decoy": [],
+    "last_chemo_dose": [
+      {
+        "category": "prior_treatment",
+        "value": "FOLFIRI",
+        "source": "infusion_record.pdf p1",
+        "date": "2026-03-20",
+        "quote_verified": true
+      },
+      {
+        "category": "prior_treatment",
+        "value": "Chemotherapy administration\nRegimen: FOLFIRI\nCycle 8 administered on 2026-03-20",
+        "source": "infusion_record.pdf p1",
+        "date": "2026-03-20",
+        "quote_verified": true
+      }
+    ]
+  },
+  "extraction_gaps": [
+    {
+      "source_file": "infusion_record.pdf",
+      "source_page": 1,
+      "line_number": 8,
+      "text": "Further cycles on hold pending clinical trial screening.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "oncology_note.pdf",
+      "source_page": 1,
+      "line_number": 10,
+      "text": "Transferred care to this clinic in March 2026.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "oncology_note.pdf",
+      "source_page": 1,
+      "line_number": 11,
+      "text": "Treatment history and performance status continue on page 2.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "oncology_note.pdf",
+      "source_page": 2,
+      "line_number": 8,
+      "text": "Referred for clinical trial prescreening.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "primary_care_annual_visit_2023.pdf",
+      "source_page": 1,
+      "line_number": 6,
+      "text": "Reason for visit: annual physical examination",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "primary_care_annual_visit_2023.pdf",
+      "source_page": 1,
+      "line_number": 7,
+      "text": "Blood pressure: 132/84 mmHg",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "primary_care_annual_visit_2023.pdf",
+      "source_page": 1,
+      "line_number": 8,
+      "text": "Weight: 84 kg",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "primary_care_annual_visit_2023.pdf",
+      "source_page": 1,
+      "line_number": 9,
+      "text": "No new complaints today.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "primary_care_annual_visit_2023.pdf",
+      "source_page": 1,
+      "line_number": 10,
+      "text": "Past medical history and family history continue on page 2.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "primary_care_annual_visit_2023.pdf",
+      "source_page": 2,
+      "line_number": 10,
+      "text": "Cataract surgery, left eye, 2019",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "primary_care_annual_visit_2023.pdf",
+      "source_page": 2,
+      "line_number": 11,
+      "text": "Appendectomy, 1988",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "primary_care_annual_visit_2023.pdf",
+      "source_page": 2,
+      "line_number": 12,
+      "text": "Family history: mother diagnosed with breast cancer at age 70",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "primary_care_annual_visit_2023.pdf",
+      "source_page": 2,
+      "line_number": 13,
+      "text": "Family history: father with coronary artery disease",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "primary_care_annual_visit_2023.pdf",
+      "source_page": 3,
+      "line_number": 6,
+      "text": "Continue current medications.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "primary_care_annual_visit_2023.pdf",
+      "source_page": 3,
+      "line_number": 7,
+      "text": "Influenza vaccine given today.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "primary_care_annual_visit_2023.pdf",
+      "source_page": 3,
+      "line_number": 8,
+      "text": "Colonoscopy referral placed.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "primary_care_annual_visit_2023.pdf",
+      "source_page": 3,
+      "line_number": 9,
+      "text": "Return in 12 months.",
+      "message": "Not captured by the tool, review manually"
+    }
+  ],
+  "results": {
+    "rule_baseline": {
+      "labels": 7,
+      "accuracy": 0.8571,
+      "decidable_labels": 3,
+      "decided_correctly": 0.6667,
+      "unsafe_false_clearance": 0,
+      "false_exclusion": 0,
+      "unknown_to_meets": 0,
+      "confusion_matrix": {
+        "MEETS": {
+          "MEETS": 2,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 1,
+          "POTENTIAL_CONFLICT": 0
+        },
+        "DOES_NOT_MEET": {
+          "MEETS": 0,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 0,
+          "POTENTIAL_CONFLICT": 0
+        },
+        "UNKNOWN": {
+          "MEETS": 0,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 4,
+          "POTENTIAL_CONFLICT": 0
+        },
+        "POTENTIAL_CONFLICT": {
+          "MEETS": 0,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 0,
+          "POTENTIAL_CONFLICT": 0
+        }
+      },
+      "acceptable_rate": 0.8571
+    },
+    "llm_assessor": {
+      "labels": 7,
+      "accuracy": 1.0,
+      "decidable_labels": 3,
+      "decided_correctly": 1.0,
+      "unsafe_false_clearance": 0,
+      "false_exclusion": 0,
+      "unknown_to_meets": 0,
+      "confusion_matrix": {
+        "MEETS": {
+          "MEETS": 3,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 0,
+          "POTENTIAL_CONFLICT": 0
+        },
+        "DOES_NOT_MEET": {
+          "MEETS": 0,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 0,
+          "POTENTIAL_CONFLICT": 0
+        },
+        "UNKNOWN": {
+          "MEETS": 0,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 4,
+          "POTENTIAL_CONFLICT": 0
+        },
+        "POTENTIAL_CONFLICT": {
+          "MEETS": 0,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 0,
+          "POTENTIAL_CONFLICT": 0
+        }
+      },
+      "acceptable_rate": 1.0
+    }
+  },
+  "rows": [
+    {
+      "method": "rule_baseline",
+      "trial": "NCT07559760",
+      "criterion_id": "EXC-19",
+      "probe": "buried_malignancy",
+      "expected": "UNKNOWN",
+      "also_acceptable": [],
+      "predicted": "UNKNOWN",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment.",
+      "criterion_text": "Other malignancies within 5 years, except adequately treated basal-cell carcinoma of skin or cervical carcinoma in situ.",
+      "patient_evidence": []
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT06412198",
+      "criterion_id": "EXC-02",
+      "probe": "buried_kras_inhibitor",
+      "expected": "UNKNOWN",
+      "also_acceptable": [],
+      "predicted": "UNKNOWN",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment.",
+      "criterion_text": "Prior KRASG12C inhibition therapy",
+      "patient_evidence": []
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT06252649",
+      "criterion_id": "EXC-03",
+      "probe": "buried_kras_inhibitor",
+      "expected": "UNKNOWN",
+      "also_acceptable": [],
+      "predicted": "UNKNOWN",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment.",
+      "criterion_text": "Previous treatment with a KRAS p.G12C inhibitor",
+      "patient_evidence": []
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT06412198",
+      "criterion_id": "INC-01",
+      "probe": "sanity",
+      "expected": "MEETS",
+      "also_acceptable": [],
+      "predicted": "UNKNOWN",
+      "match": false,
+      "acceptable": false,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The matched fact covers only part of this criterion; its additional requirements are not documented.",
+      "criterion_text": "Histologically confirmed diagnosis of advanced/metastatic microsatellite stable colorectal cancer with KRASG12C mutation with 1+ prior line(s) of therapy",
+      "patient_evidence": [
+        {
+          "category": "biomarker",
+          "value": "KRAS: G12C mutation detected",
+          "normalized_value": "G12C mutation detected",
+          "date": "2024-02-12",
+          "source_file": "pathology_report.pdf",
+          "source_page": 1,
+          "evidence_text": "KRAS: G12C mutation detected",
+          "quote_verified": true,
+          "source_kind": "other"
+        }
+      ]
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT06412198",
+      "criterion_id": "INC-02",
+      "probe": "sanity",
+      "expected": "MEETS",
+      "also_acceptable": [],
+      "predicted": "MEETS",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "Explicit verified evidence matches the central condition or biomarker wording; human verification is required.",
+      "criterion_text": "Confirmed KRASG12C mutation status. If a molecular profiling report is not available, a representative paraffin-embedded tumor block or a minimum of 10 unstained slides will be requested for retrospective KRASG12C mutation testing.",
+      "patient_evidence": [
+        {
+          "category": "biomarker",
+          "value": "KRAS: G12C mutation detected",
+          "normalized_value": "G12C mutation detected",
+          "date": "2024-02-12",
+          "source_file": "pathology_report.pdf",
+          "source_page": 1,
+          "evidence_text": "KRAS: G12C mutation detected",
+          "quote_verified": true,
+          "source_kind": "other"
+        }
+      ]
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT07559760",
+      "criterion_id": "INC-02",
+      "probe": "sanity",
+      "expected": "MEETS",
+      "also_acceptable": [],
+      "predicted": "MEETS",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "Explicit verified evidence matches the central condition or biomarker wording; human verification is required.",
+      "criterion_text": "Histologically or cytologically confirmed colorectal adenocarcinoma.",
+      "patient_evidence": [
+        {
+          "category": "diagnosis",
+          "value": "Metastatic colorectal adenocarcinoma",
+          "normalized_value": "Metastatic colorectal adenocarcinoma",
+          "date": "2026-03-30",
+          "source_file": "oncology_note.pdf",
+          "source_page": 1,
+          "evidence_text": "Diagnosis: Metastatic colorectal adenocarcinoma",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "diagnosis",
+          "value": "Specimen: liver biopsy, metastatic adenocarcinoma consistent with colorectal primary",
+          "normalized_value": null,
+          "date": "2024-02-12",
+          "source_file": "pathology_report.pdf",
+          "source_page": 1,
+          "evidence_text": "Specimen: liver biopsy, metastatic adenocarcinoma consistent with colorectal primary",
+          "quote_verified": true,
+          "source_kind": "other"
+        }
+      ]
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT07559760",
+      "criterion_id": "EXC-05",
+      "probe": "washout",
+      "expected": "UNKNOWN",
+      "also_acceptable": [
+        "DOES_NOT_MEET"
+      ],
+      "predicted": "UNKNOWN",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": true,
+      "flags": [],
+      "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment.",
+      "criterion_text": "Any anti-cancer therapy (chemotherapy, radiotherapy, biologics, targeted therapy, immunotherapy, etc.) within 4 weeks before first study-dose; major surgery (excluding biopsy) within 4 weeks that has not fully healed.",
+      "patient_evidence": []
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT07559760",
+      "criterion_id": "EXC-19",
+      "probe": "buried_malignancy",
+      "expected": "UNKNOWN",
+      "also_acceptable": [],
+      "predicted": "UNKNOWN",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [
+        "EXC-19: Time-window decision lacks dated cited evidence. Converted to UNKNOWN."
+      ],
+      "explanation": "Time-window decision lacks dated cited evidence. Converted to UNKNOWN. Original reasoning: There is no evidence in the provided records of any other malignancies diagnosed within the past 5 years except for the current metastatic colorectal adenocarcinoma. No reports indicate basal-cell carcinoma of skin or cervical carcinoma in situ either, but as this would not exclude the patient, the critical point is no other malignancies are documented. Therefore, the exclusion criterion of other malignancies within 5 years does not apply.",
+      "criterion_text": "Other malignancies within 5 years, except adequately treated basal-cell carcinoma of skin or cervical carcinoma in situ.",
+      "patient_evidence": []
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT06412198",
+      "criterion_id": "EXC-02",
+      "probe": "buried_kras_inhibitor",
+      "expected": "UNKNOWN",
+      "also_acceptable": [],
+      "predicted": "UNKNOWN",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [
+        "EXC-02: absence-based clearance of a prior-exposure exclusion converted to UNKNOWN."
+      ],
+      "explanation": "The record does not explicitly rule out this prior exposure; absence from a treatment list is not a negative. Converted to UNKNOWN.",
+      "criterion_text": "Prior KRASG12C inhibition therapy",
+      "patient_evidence": [
+        {
+          "category": "prior_treatment",
+          "value": "FOLFIRI",
+          "normalized_value": null,
+          "date": "2026-03-20",
+          "source_file": "infusion_record.pdf",
+          "source_page": 1,
+          "evidence_text": "Regimen: FOLFIRI\nCycle 8 administered on 2026-03-20.",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "prior_treatment",
+          "value": "FOLFOX, then FOLFIRI",
+          "normalized_value": null,
+          "date": "2026-03-30",
+          "source_file": "oncology_note.pdf",
+          "source_page": 2,
+          "evidence_text": "Prior treatment: FOLFOX, then FOLFIRI",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "prior_treatment",
+          "value": "Chemotherapy administration\nRegimen: FOLFIRI\nCycle 8 administered on 2026-03-20",
+          "normalized_value": null,
+          "date": "2026-03-20",
+          "source_file": "infusion_record.pdf",
+          "source_page": 1,
+          "evidence_text": "Chemotherapy administration\nRegimen: FOLFIRI\nCycle 8 administered on 2026-03-20.",
+          "quote_verified": true,
+          "source_kind": "other"
+        }
+      ]
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT06252649",
+      "criterion_id": "EXC-03",
+      "probe": "buried_kras_inhibitor",
+      "expected": "UNKNOWN",
+      "also_acceptable": [],
+      "predicted": "UNKNOWN",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [
+        "EXC-03: absence-based clearance of a prior-exposure exclusion converted to UNKNOWN."
+      ],
+      "explanation": "The record does not explicitly rule out this prior exposure; absence from a treatment list is not a negative. Converted to UNKNOWN.",
+      "criterion_text": "Previous treatment with a KRAS p.G12C inhibitor",
+      "patient_evidence": [
+        {
+          "category": "prior_treatment",
+          "value": "FOLFIRI",
+          "normalized_value": null,
+          "date": "2026-03-20",
+          "source_file": "infusion_record.pdf",
+          "source_page": 1,
+          "evidence_text": "Regimen: FOLFIRI\nCycle 8 administered on 2026-03-20.",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "prior_treatment",
+          "value": "FOLFOX, then FOLFIRI",
+          "normalized_value": null,
+          "date": "2026-03-30",
+          "source_file": "oncology_note.pdf",
+          "source_page": 2,
+          "evidence_text": "Prior treatment: FOLFOX, then FOLFIRI",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "prior_treatment",
+          "value": "Chemotherapy administration\nRegimen: FOLFIRI\nCycle 8 administered on 2026-03-20",
+          "normalized_value": null,
+          "date": "2026-03-20",
+          "source_file": "infusion_record.pdf",
+          "source_page": 1,
+          "evidence_text": "Chemotherapy administration\nRegimen: FOLFIRI\nCycle 8 administered on 2026-03-20.",
+          "quote_verified": true,
+          "source_kind": "other"
+        }
+      ]
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT06412198",
+      "criterion_id": "INC-01",
+      "probe": "sanity",
+      "expected": "MEETS",
+      "also_acceptable": [],
+      "predicted": "MEETS",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The patient has a histologically confirmed diagnosis of metastatic colorectal adenocarcinoma (indices 10, 19, 28) consistent with colorectal primary. The biomarker analysis shows the presence of KRAS G12C mutation (index 20) and the microsatellite status is microsatellite stable (MSS) (index 21). The patient has received prior lines of therapy including FOLFOX followed by FOLFIRI (index 12), confirming at least one prior line of therapy. Therefore, all parts of the inclusion criterion are met.",
+      "criterion_text": "Histologically confirmed diagnosis of advanced/metastatic microsatellite stable colorectal cancer with KRASG12C mutation with 1+ prior line(s) of therapy",
+      "patient_evidence": [
+        {
+          "category": "diagnosis",
+          "value": "Metastatic colorectal adenocarcinoma",
+          "normalized_value": "Metastatic colorectal adenocarcinoma",
+          "date": "2026-03-30",
+          "source_file": "oncology_note.pdf",
+          "source_page": 1,
+          "evidence_text": "Diagnosis: Metastatic colorectal adenocarcinoma",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "biomarker",
+          "value": "Specimen: liver biopsy, metastatic adenocarcinoma consistent with colorectal primary",
+          "normalized_value": null,
+          "date": "2024-02-12",
+          "source_file": "pathology_report.pdf",
+          "source_page": 1,
+          "evidence_text": "Specimen: liver biopsy, metastatic adenocarcinoma consistent with colorectal primary",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "biomarker",
+          "value": "KRAS: G12C mutation detected",
+          "normalized_value": "G12C mutation detected",
+          "date": "2024-02-12",
+          "source_file": "pathology_report.pdf",
+          "source_page": 1,
+          "evidence_text": "KRAS: G12C mutation detected",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "biomarker",
+          "value": "MSI: microsatellite stable (MSS)",
+          "normalized_value": "microsatellite stable (MSS)",
+          "date": "2024-02-12",
+          "source_file": "pathology_report.pdf",
+          "source_page": 1,
+          "evidence_text": "MSI: microsatellite stable (MSS)",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "prior_treatment",
+          "value": "FOLFOX, then FOLFIRI",
+          "normalized_value": null,
+          "date": "2026-03-30",
+          "source_file": "oncology_note.pdf",
+          "source_page": 2,
+          "evidence_text": "Prior treatment: FOLFOX, then FOLFIRI",
+          "quote_verified": true,
+          "source_kind": "other"
+        }
+      ]
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT06412198",
+      "criterion_id": "INC-02",
+      "probe": "sanity",
+      "expected": "MEETS",
+      "also_acceptable": [],
+      "predicted": "MEETS",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The patient has confirmed KRAS G12C mutation status as documented in the pathology report indicating 'KRAS: G12C mutation detected' (evidence 20). This satisfies the inclusion criterion requiring confirmed KRASG12C mutation status.",
+      "criterion_text": "Confirmed KRASG12C mutation status. If a molecular profiling report is not available, a representative paraffin-embedded tumor block or a minimum of 10 unstained slides will be requested for retrospective KRASG12C mutation testing.",
+      "patient_evidence": [
+        {
+          "category": "biomarker",
+          "value": "KRAS: G12C mutation detected",
+          "normalized_value": "G12C mutation detected",
+          "date": "2024-02-12",
+          "source_file": "pathology_report.pdf",
+          "source_page": 1,
+          "evidence_text": "KRAS: G12C mutation detected",
+          "quote_verified": true,
+          "source_kind": "other"
+        }
+      ]
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT07559760",
+      "criterion_id": "INC-02",
+      "probe": "sanity",
+      "expected": "MEETS",
+      "also_acceptable": [],
+      "predicted": "MEETS",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The patient's diagnosis is documented as metastatic colorectal adenocarcinoma (indices 10, 19, and 28). The pathology report confirms a liver biopsy showing metastatic adenocarcinoma consistent with colorectal primary, fulfilling the criterion for histologically or cytologically confirmed colorectal adenocarcinoma.",
+      "criterion_text": "Histologically or cytologically confirmed colorectal adenocarcinoma.",
+      "patient_evidence": [
+        {
+          "category": "diagnosis",
+          "value": "Metastatic colorectal adenocarcinoma",
+          "normalized_value": "Metastatic colorectal adenocarcinoma",
+          "date": "2026-03-30",
+          "source_file": "oncology_note.pdf",
+          "source_page": 1,
+          "evidence_text": "Diagnosis: Metastatic colorectal adenocarcinoma",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "biomarker",
+          "value": "Specimen: liver biopsy, metastatic adenocarcinoma consistent with colorectal primary",
+          "normalized_value": null,
+          "date": "2024-02-12",
+          "source_file": "pathology_report.pdf",
+          "source_page": 1,
+          "evidence_text": "Specimen: liver biopsy, metastatic adenocarcinoma consistent with colorectal primary",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "diagnosis",
+          "value": "Specimen: liver biopsy, metastatic adenocarcinoma consistent with colorectal primary",
+          "normalized_value": null,
+          "date": "2024-02-12",
+          "source_file": "pathology_report.pdf",
+          "source_page": 1,
+          "evidence_text": "Specimen: liver biopsy, metastatic adenocarcinoma consistent with colorectal primary",
+          "quote_verified": true,
+          "source_kind": "other"
+        }
+      ]
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT07559760",
+      "criterion_id": "EXC-05",
+      "probe": "washout",
+      "expected": "UNKNOWN",
+      "also_acceptable": [
+        "DOES_NOT_MEET"
+      ],
+      "predicted": "UNKNOWN",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": true,
+      "flags": [],
+      "explanation": "The patient received chemotherapy with FOLFIRI on 2026-03-20, which is a form of anti-cancer therapy. However, the exact date of the first study dose is not provided, so it cannot be determined if the chemotherapy was administered within 4 weeks before the first study dose. There is no information provided regarding any major surgery within the last 4 weeks. Therefore, the exclusion criterion cannot be conclusively applied or ruled out based on the available evidence.",
+      "criterion_text": "Any anti-cancer therapy (chemotherapy, radiotherapy, biologics, targeted therapy, immunotherapy, etc.) within 4 weeks before first study-dose; major surgery (excluding biopsy) within 4 weeks that has not fully healed.",
+      "patient_evidence": [
+        {
+          "category": "prior_treatment",
+          "value": "FOLFIRI",
+          "normalized_value": null,
+          "date": "2026-03-20",
+          "source_file": "infusion_record.pdf",
+          "source_page": 1,
+          "evidence_text": "Regimen: FOLFIRI\nCycle 8 administered on 2026-03-20.",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "prior_treatment",
+          "value": "Chemotherapy administration\nRegimen: FOLFIRI\nCycle 8 administered on 2026-03-20",
+          "normalized_value": null,
+          "date": "2026-03-20",
+          "source_file": "infusion_record.pdf",
+          "source_page": 1,
+          "evidence_text": "Chemotherapy administration\nRegimen: FOLFIRI\nCycle 8 administered on 2026-03-20.",
+          "quote_verified": true,
+          "source_kind": "other"
+        }
+      ]
+    }
+  ]
+}

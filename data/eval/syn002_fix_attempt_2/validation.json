@@ -1,0 +1,9 @@
+{
+  "label": "after fixes, not blind",
+  "model": "gpt-4.1-mini",
+  "baseline_tests_passed": 192,
+  "after_tests_passed": 222,
+  "protected_files_unchanged": true,
+  "fix_revision": "6688ee1f0e2d21883dffa4e6d88c577fc1907ed4",
+  "syn001_heldout_is_no_longer_blind": true
+}

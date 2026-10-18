@@ -1,0 +1,266 @@
+[
+  {
+    "run": "run1",
+    "variant": "SYN-002",
+    "verified_labs": [
+      "ANC",
+      "hemoglobin",
+      "platelets",
+      "creatinine",
+      "bilirubin",
+      "AST",
+      "ALT"
+    ],
+    "braf": true,
+    "biopsy": true,
+    "dated_administrations": [
+      {
+        "category": "prior_treatment",
+        "value": "FOLFIRI, Cycle 8 administered on 2026-03-20",
+        "normalized_value": null,
+        "date": "2026-03-20",
+        "source_file": "infusion_record.pdf",
+        "source_page": 1,
+        "evidence_text": "Regimen: FOLFIRI\nCycle 8 administered on 2026-03-20.",
+        "quote_verified": true,
+        "source_kind": "other"
+      },
+      {
+        "category": "prior_treatment",
+        "value": "Cycle 8 administered on 2026-03-20",
+        "normalized_value": "Cycle 8 administered on 2026-03-20",
+        "date": "2026-03-20",
+        "source_file": "infusion_record.pdf",
+        "source_page": 1,
+        "evidence_text": "Cycle 8 administered on 2026-03-20.",
+        "quote_verified": true,
+        "source_kind": "other"
+      }
+    ],
+    "family_history_evidence_for_manual_inspection": [],
+    "unverified_record_count": 0,
+    "uncovered_line_count": 15,
+    "placeholder_records": [],
+    "scalar_value_not_present_in_quote": []
+  },
+  {
+    "run": "run1",
+    "variant": "SYN-002-control",
+    "verified_labs": [
+      "ANC",
+      "hemoglobin",
+      "platelets",
+      "creatinine",
+      "bilirubin",
+      "AST",
+      "ALT"
+    ],
+    "braf": true,
+    "biopsy": true,
+    "dated_administrations": [
+      {
+        "category": "prior_treatment",
+        "value": "FOLFIRI",
+        "normalized_value": null,
+        "date": "2026-03-20",
+        "source_file": "infusion_record.pdf",
+        "source_page": 1,
+        "evidence_text": "Regimen: FOLFIRI\nCycle 8 administered on 2026-03-20.",
+        "quote_verified": true,
+        "source_kind": "other"
+      },
+      {
+        "category": "prior_treatment",
+        "value": "Cycle 8 administered on 2026-03-20",
+        "normalized_value": null,
+        "date": "2026-03-20",
+        "source_file": "infusion_record.pdf",
+        "source_page": 1,
+        "evidence_text": "Cycle 8 administered on 2026-03-20.",
+        "quote_verified": true,
+        "source_kind": "other"
+      }
+    ],
+    "family_history_evidence_for_manual_inspection": [],
+    "unverified_record_count": 0,
+    "uncovered_line_count": 17,
+    "placeholder_records": [],
+    "scalar_value_not_present_in_quote": []
+  },
+  {
+    "run": "run2",
+    "variant": "SYN-002",
+    "verified_labs": [
+      "ANC",
+      "hemoglobin",
+      "platelets",
+      "creatinine",
+      "bilirubin",
+      "AST",
+      "ALT"
+    ],
+    "braf": true,
+    "biopsy": true,
+    "dated_administrations": [
+      {
+        "category": "prior_treatment",
+        "value": "FOLFIRI",
+        "normalized_value": null,
+        "date": "2026-03-20",
+        "source_file": "infusion_record.pdf",
+        "source_page": 1,
+        "evidence_text": "Regimen: FOLFIRI\nCycle 8 administered on 2026-03-20.",
+        "quote_verified": true,
+        "source_kind": "other"
+      },
+      {
+        "category": "prior_treatment",
+        "value": "Cycle 8 administered on 2026-03-20.",
+        "normalized_value": null,
+        "date": "2026-03-20",
+        "source_file": "infusion_record.pdf",
+        "source_page": 1,
+        "evidence_text": "Cycle 8 administered on 2026-03-20.",
+        "quote_verified": true,
+        "source_kind": "other"
+      }
+    ],
+    "family_history_evidence_for_manual_inspection": [],
+    "unverified_record_count": 8,
+    "uncovered_line_count": 19,
+    "placeholder_records": [],
+    "scalar_value_not_present_in_quote": []
+  },
+  {
+    "run": "run2",
+    "variant": "SYN-002-control",
+    "verified_labs": [
+      "ANC",
+      "hemoglobin",
+      "platelets",
+      "creatinine",
+      "bilirubin",
+      "AST",
+      "ALT"
+    ],
+    "braf": true,
+    "biopsy": true,
+    "dated_administrations": [
+      {
+        "category": "prior_treatment",
+        "value": "FOLFIRI",
+        "normalized_value": null,
+        "date": "2026-03-20",
+        "source_file": "infusion_record.pdf",
+        "source_page": 1,
+        "evidence_text": "Regimen: FOLFIRI\nCycle 8 administered on 2026-03-20.",
+        "quote_verified": true,
+        "source_kind": "other"
+      },
+      {
+        "category": "prior_treatment",
+        "value": "Chemotherapy administration Regimen: FOLFIRI Cycle 8 administered on 2026-03-20",
+        "normalized_value": null,
+        "date": "2026-03-20",
+        "source_file": "infusion_record.pdf",
+        "source_page": 1,
+        "evidence_text": "Chemotherapy administration\nRegimen: FOLFIRI\nCycle 8 administered on 2026-03-20.",
+        "quote_verified": true,
+        "source_kind": "other"
+      }
+    ],
+    "family_history_evidence_for_manual_inspection": [],
+    "unverified_record_count": 1,
+    "uncovered_line_count": 17,
+    "placeholder_records": [],
+    "scalar_value_not_present_in_quote": []
+  },
+  {
+    "run": "run3",
+    "variant": "SYN-002",
+    "verified_labs": [
+      "ANC",
+      "hemoglobin",
+      "platelets",
+      "creatinine",
+      "bilirubin",
+      "AST",
+      "ALT"
+    ],
+    "braf": true,
+    "biopsy": true,
+    "dated_administrations": [
+      {
+        "category": "prior_treatment",
+        "value": "FOLFIRI cycle 8 administered on 2026-03-20",
+        "normalized_value": null,
+        "date": "2026-03-20",
+        "source_file": "infusion_record.pdf",
+        "source_page": 1,
+        "evidence_text": "Cycle 8 administered on 2026-03-20.",
+        "quote_verified": true,
+        "source_kind": "other"
+      },
+      {
+        "category": "prior_treatment",
+        "value": "Cycle 8 administered on 2026-03-20.",
+        "normalized_value": "Cycle 8 administered on 2026-03-20.",
+        "date": "2026-03-20",
+        "source_file": "infusion_record.pdf",
+        "source_page": 1,
+        "evidence_text": "Cycle 8 administered on 2026-03-20.",
+        "quote_verified": true,
+        "source_kind": "other"
+      }
+    ],
+    "family_history_evidence_for_manual_inspection": [],
+    "unverified_record_count": 0,
+    "uncovered_line_count": 15,
+    "placeholder_records": [],
+    "scalar_value_not_present_in_quote": []
+  },
+  {
+    "run": "run3",
+    "variant": "SYN-002-control",
+    "verified_labs": [
+      "ANC",
+      "hemoglobin",
+      "platelets",
+      "creatinine",
+      "bilirubin",
+      "AST",
+      "ALT"
+    ],
+    "braf": true,
+    "biopsy": true,
+    "dated_administrations": [
+      {
+        "category": "prior_treatment",
+        "value": "FOLFIRI",
+        "normalized_value": null,
+        "date": "2026-03-20",
+        "source_file": "infusion_record.pdf",
+        "source_page": 1,
+        "evidence_text": "Regimen: FOLFIRI\nCycle 8 administered on 2026-03-20.",
+        "quote_verified": true,
+        "source_kind": "other"
+      },
+      {
+        "category": "prior_treatment",
+        "value": "Chemotherapy administration\nRegimen: FOLFIRI\nCycle 8 administered on 2026-03-20",
+        "normalized_value": null,
+        "date": "2026-03-20",
+        "source_file": "infusion_record.pdf",
+        "source_page": 1,
+        "evidence_text": "Chemotherapy administration\nRegimen: FOLFIRI\nCycle 8 administered on 2026-03-20.",
+        "quote_verified": true,
+        "source_kind": "other"
+      }
+    ],
+    "family_history_evidence_for_manual_inspection": [],
+    "unverified_record_count": 4,
+    "uncovered_line_count": 17,
+    "placeholder_records": [],
+    "scalar_value_not_present_in_quote": []
+  }
+]

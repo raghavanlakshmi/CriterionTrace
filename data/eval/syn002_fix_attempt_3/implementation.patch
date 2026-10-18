@@ -1,0 +1,1012 @@
+diff --git a/app.py b/app.py
+index b52acd6..4b1a670 100644
+--- a/app.py
++++ b/app.py
+@@ -235,11 +235,13 @@ def render_evidence(evidence: list[EvidenceItem], *, review_only: bool = False)
+                 source_button(item, key=f"ev-{group.key}-{index}")
+ 
+ 
+-def render_review_checklist(evidence: list[EvidenceItem]) -> None:
++def render_review_checklist(evidence: list[EvidenceItem], extraction_gaps: list[dict] | None = None) -> None:
+     groups = [g for g in build_evidence_groups(evidence) if g.status or g.has_unverified_quotes]
+     st.subheader("Reviewer checklist")
+     st.markdown("<span class='tm-muted'>Items the system will not resolve on its own. Record your decision, then download the review summary.</span>", unsafe_allow_html=True)
+     notes = {}
++    for gap in extraction_gaps or []:
++        st.warning(f"Not captured by the tool, review manually: {gap['source_file']} p{gap['source_page']}, line {gap['line_number']}: {gap['text']}")
+     for group in groups:
+         status = STATUS_UI[group.status][0] if group.status else "Unverified quote"
+         with st.container(border=True):
+@@ -250,6 +252,8 @@ def render_review_checklist(evidence: list[EvidenceItem]) -> None:
+             notes[group.label] = {"status": status, "reviewed": done, "note": note,
+                                   "sources": [f"{i.source_file} p{i.source_page}: {i.value}" for i in group.items]}
+     lines = ["# TrialMatch AI reviewer summary", f"Generated {datetime.now(timezone.utc):%Y-%m-%d %H:%M} UTC", "", DISCLAIMER.replace("\n", " "), ""]
++    for gap in extraction_gaps or []:
++        lines.append(f"- Not captured by the tool, review manually: {gap['source_file']} p{gap['source_page']}, line {gap['line_number']}: {gap['text']}")
+     for label, record in notes.items():
+         lines.append(f"## {label} {DASH} {record['status']}")
+         lines.append(f"- Reviewed: {'yes' if record['reviewed'] else 'no'}")
+@@ -398,9 +402,11 @@ def main() -> None:
+             with left:
+                 render_evidence(display_evidence, review_only=review_only)
+             with right:
+-                render_review_checklist(display_evidence)
++                render_review_checklist(display_evidence, (run or {}).get("extraction_gaps", []))
+         else:
+             st.info("Analyze documents or replay the saved run.")
++            if run and run.get("extraction_gaps"):
++                render_review_checklist([], run["extraction_gaps"])
+ 
+     with trials_tab:
+         render_trials_tab(run)
+diff --git a/docs/fix_spec_syn002.md b/docs/fix_spec_syn002.md
+new file mode 100644
+index 0000000..2b8ec56
+--- /dev/null
++++ b/docs/fix_spec_syn002.md
+@@ -0,0 +1,118 @@
++# Fix spec: SYN-002 buried-exclusion findings
++
++Hand this file to the coding assistant. Save it in the repo as `docs/fix_spec_syn002.md`.
++
++## Context
++
++The blind SYN-002 test (three runs, labels signed off before the first run; results in the
++`syn002_runs/` folders) found four problems:
++
++1. Extraction skips facts outside the SYN-001 checklist: the infusion record (last FOLFIRI dose
++   2026-03-20), every lab except ANC, BRAF, and the biopsy line.
++2. Extraction is unreliable: in run 3 the prostate cancer line on page 2 of the 2023
++   primary-care note was skipped, so EXC-19 stayed UNKNOWN.
++3. The assessor treated a 2025-10-02 medication list as current ("currently taking sotorasib")
++   and used it to decide a 4-week washout.
++4. The assessor reasoned from a biomarker to a treatment ("KRAS G12C ... indicating they are
++   being treated with KRASG12C inhibition therapy").
++
++## Ground rules
++
++- **Do not change** any label file, any SYN-002 document, the `syn002_runs/` folders, or the
++  blind results in `docs/buried_exclusion_test.md`. They are the record of the blind test.
++- Do not create SYN-003 or any new test patient. That is built separately, before the
++  after-fix results are looked at.
++- Keep every change general. Do not special-case sotorasib, prostate cancer, SYN-002 filenames,
++  or the trials used in the test.
++- No LLM output may decide anything a code check can decide.
++- All existing tests must still pass. Report the before and after test count.
++- One commit per fix, with a clear message, so each fix can be reviewed alone.
++
++## Fix 1: extract all patient facts, with treatment dates
++
++Files: `src/config.py` (`FACTS_TO_LOOK_FOR`), `src/evidence_extraction.py` (`EXTRACTION_PROMPT`),
++`src/schemas.py` only if a new category is truly needed.
++
++- Expand the checklist beyond SYN-001's items: all labs with units (hemoglobin, platelets,
++  creatinine, bilirubin, AST, ALT, and any others present), every documented treatment
++  administration with its date, past medical history including prior cancers, and surgical
++  history.
++- Add to the prompt: the checklist is a minimum, not a limit. Extract every explicitly stated
++  patient fact on every page.
++- A treatment administration record must carry its administration date in `date`
++  (for example: FOLFIRI, cycle 8, date 2026-03-20).
++- Keep existing rules: no inference from absence, exact quotes, family history is not a patient
++  fact.
++
++Done when (on SYN-002): the infusion record, all seven labs, BRAF, and the biopsy line appear as
++verified evidence; family history is still not recorded as a patient condition.
++
++## Fix 2: medication lists are dated snapshots, not current use
++
++Files: `src/evidence_extraction.py` (prompt), `src/eligibility.py`
++(`assess_free_text_criterion` prompt), `src/safety.py`.
++
++- Extraction: a medication taken from a dated list keeps the list's document date in `date`.
++  Do not describe it as current unless the source page says so in a current document.
++- Assessor prompt: a dated medication list shows the drug was listed as of that date. It is
++  evidence of past exposure. It is not evidence of current use or of use within a recent time
++  window. Time-window criteria (for example "within 4 weeks") need a dated administration or
++  stop date.
++- Code guard in `safety.py`: for a criterion whose text contains a time window
++  ("within N days/weeks/months"), if the conclusion is MEETS or DOES_NOT_MEET and none of the
++  cited evidence has a date, convert to UNKNOWN with a visible flag. If cited evidence is
++  only from medication lists, also convert to UNKNOWN with a flag.
++- Prior-exposure exclusions (for example "prior KRAS G12C inhibitor") are still satisfied by a
++  dated list. Do not weaken those.
++
++Done when: SYN-002 EXC-02 and EXC-03 remain DOES_NOT_MEET, their explanations no longer say
++"currently taking", and EXC-05 is never decided from the 2025 medication list.
++
++## Fix 3: guard against biomarker-to-treatment reasoning
++
++File: `src/safety.py` (`review_assessments`).
++
++- Detect explanations that infer a treatment from a biomarker (for example a mutation named
++  together with "indicating", "suggests", "implies", "consistent with" plus "treated",
++  "therapy", "inhibitor").
++- If no cited evidence of category `prior_treatment` or `current_medication` supports a
++  treatment, convert to UNKNOWN with a visible flag.
++- If supporting treatment evidence is cited, keep the status but add a review flag saying the
++  explanation contains biomarker-to-treatment reasoning.
++
++Done when: unit tests show (a) mutation evidence only gives UNKNOWN plus flag, (b) mutation
++plus a medication record keeps DOES_NOT_MEET plus a review flag, (c) an explanation without
++that reasoning is unchanged.
++
++## Fix 4: extraction completeness check
++
++Files: new function in `src/evidence_extraction.py` (or a new small module), wired into the
++workflow and the UI review list.
++
++- After extraction and quote verification, for each page list the content lines that are not
++  covered by any verified evidence quote. Ignore administrative lines: the synthetic
++  disclaimer, title, patient ID, document date, page footer, and section headings.
++- If a page has uncovered content lines, re-run extraction once on that page only, verify
++  quotes, and merge new records (no duplicates).
++- Any line still uncovered is listed as "Not captured by the tool, review manually" in the
++  output and in the human review section of the app.
++- This check is deterministic and makes at most one extra extraction call per affected page.
++
++Done when: a unit test with a fake extractor that skips one line shows that line either
++captured by the second pass or listed as not captured; it is never silently dropped.
++
++## Testing and reporting
++
++1. Run the full test suite offline; add tests for Fix 3 and Fix 4.
++2. Re-run the SYN-001 criterion evaluations (in-sample and held-out). Report any change. Note
++   that the held-out set is no longer blind.
++3. Run `scripts/run_buried_exclusion_test.py` three times, saving each run to
++   `syn002_runs_after_fix/run1`, `run2`, `run3`, with all reports and evidence files.
++4. Write `syn002_runs_after_fix/summary.md` in the same format as the blind summary, labeled
++   "after fixes, not blind". Do not merge it with the blind results.
++5. Report anything that got worse, not just what improved.
++
++## Out of scope
++
++- No changes to retrieval, the UI layout beyond the "not captured" list, or the trial data.
++- No new patients or labels.
+diff --git a/scripts/run_buried_exclusion_test.py b/scripts/run_buried_exclusion_test.py
+index a5e7d41..ab35e87 100644
+--- a/scripts/run_buried_exclusion_test.py
++++ b/scripts/run_buried_exclusion_test.py
+@@ -33,7 +33,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
+ from src.criteria import load_criteria  # noqa: E402
+ from src.document_ingestion import ingest_documents  # noqa: E402
+ from src.eligibility import assess_free_text_criterion, conservative_assessment  # noqa: E402
+-from src.evidence_extraction import extract_evidence  # noqa: E402
++from src.evidence_extraction import extract_evidence, uncovered_content_lines  # noqa: E402
+ from src.safety import review_assessments  # noqa: E402
+ from src.schemas import EvidenceItem  # noqa: E402
+ from run_criterion_eval import score  # noqa: E402
+@@ -77,7 +77,7 @@ def run_variant(variant: str, args, criteria, client) -> dict:
+             print(f"   {p.filename} p{p.page_number} [{p.extraction_method}] {len(p.text)} chars")
+         return {}
+ 
+-    evidence_path = EVAL / f"{variant}_buried_test_evidence.json"
++    evidence_path = args.output_dir / f"{variant}_buried_test_evidence.json"
+     if args.reuse_evidence and evidence_path.exists():
+         evidence = [EvidenceItem.model_validate(e) for e in json.loads(evidence_path.read_text(encoding="utf-8"))]
+         print(f"   reusing {evidence_path.name} ({len(evidence)} records)")
+@@ -87,6 +87,7 @@ def run_variant(variant: str, args, criteria, client) -> dict:
+         print(f"   extracted {len(evidence)} records ({sum(e.quote_verified for e in evidence)} verified)")
+ 
+     extraction = extraction_check(evidence)
++    gaps = uncovered_content_lines(pages, evidence)
+     for probe, hits in extraction.items():
+         shown = "; ".join(f"{h['category']}: {h['value']} ({h['source']}, verified={h['quote_verified']})" for h in hits) or "NOT EXTRACTED"
+         print(f"   extraction · {probe}: {shown}")
+@@ -111,20 +112,24 @@ def run_variant(variant: str, args, criteria, client) -> dict:
+                          "also_acceptable": label.get("also_acceptable", []), "predicted": predicted,
+                          "match": predicted == label["expected"], "acceptable": ok,
+                          "judgment_call": label["judgment_call"], "flags": flags,
+-                         "explanation": reviewed[0].explanation})
++                         "explanation": reviewed[0].explanation,
++                         "criterion_text": criterion.text,
++                         "patient_evidence": [e.model_dump(mode="json") for e in reviewed[0].patient_evidence]})
+             print(f"   {name:13} {label['trial']} {label['criterion_id']:6} expected {label['expected']:13} got {predicted:18} {'ok' if ok else 'MISS'}")
+         results[name] = score(pairs) | {"acceptable_rate": round(sum(acceptable_pairs) / len(acceptable_pairs), 4)}
+ 
+     report = {"patient": variant, "variant": labels["variant"], "label_status": labels["label_status"],
+               "extraction_model": args.extraction_model, "assessment_model": args.model,
+-              "extraction_check": extraction, "results": results, "rows": rows}
+-    stem = EVAL / f"{variant}_buried_test_report"
++              "extraction_check": extraction, "extraction_gaps": gaps, "results": results, "rows": rows}
++    stem = args.output_dir / f"{variant}_buried_test_report"
+     stem.with_suffix(".json").write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+     lines = [f"# Buried-exclusion test: {variant} ({labels['variant']})", "",
+              f"Labels: {labels['label_status']}. Models: extraction {args.extraction_model}, assessment {args.model}.", "",
+              "## Extraction: were the buried facts captured?", ""]
+     for probe, hits in extraction.items():
+         lines.append(f"- **{probe}**: " + ("; ".join(f"{h['category']} '{h['value']}' ({h['source']}, verified={h['quote_verified']})" for h in hits) or "not extracted"))
++    lines += ["", "## Not captured by the tool, review manually", ""]
++    lines += [f"- {g['source_file']} p{g['source_page']}, line {g['line_number']}: {g['text']}" for g in gaps] or ["No uncovered content lines."]
+     lines += ["", "## Assessment", "", "| Method | Accuracy | Acceptable | Unsafe false clearance | UNKNOWN to MEETS | False exclusion |", "|---|---|---|---|---|---|"]
+     for name, r in results.items():
+         lines.append(f"| {name} | {r['accuracy']:.2f} | {r['acceptable_rate']:.2f} | {r['unsafe_false_clearance']} | {r['unknown_to_meets']} | {r['false_exclusion']} |")
+@@ -149,11 +154,13 @@ def main() -> None:
+     parser.add_argument("--dry-run", action="store_true", help="ingest and list pages; no API calls")
+     parser.add_argument("--reuse-evidence", action="store_true", help="re-score saved evidence instead of re-extracting")
+     parser.add_argument("--rules-only", action="store_true", help="skip the LLM assessor (extraction still uses the API)")
++    parser.add_argument("--output-dir", type=Path, default=EVAL, help="report/evidence destination; labels are always loaded from data/eval")
+     args = parser.parse_args()
+ 
+     criteria = load_criteria()
+     client = None
+     if not args.dry_run:
++        args.output_dir.mkdir(parents=True, exist_ok=True)
+         from run_live_assessment import _client  # noqa: E402
+         client = _client()
+     for variant in args.variants:
+diff --git a/scripts/run_criterion_eval.py b/scripts/run_criterion_eval.py
+index 00cc9f2..11d33c7 100644
+--- a/scripts/run_criterion_eval.py
++++ b/scripts/run_criterion_eval.py
+@@ -60,10 +60,14 @@ def main() -> None:
+     parser.add_argument("--llm", action="store_true", help="also score the live LLM assessor")
+     parser.add_argument("--model", default="gpt-4.1-mini")
+     parser.add_argument("--labels", type=Path, default=LABELS, help="label file (default: criterion_labels.json)")
++    parser.add_argument("--output-dir", type=Path, default=LABELS.parent, help="destination for reports; saved inputs are unchanged")
+     args = parser.parse_args()
+     suffix = "" if args.labels == LABELS else "_" + args.labels.stem.replace("criterion_labels_", "")
+     report_json = REPORT_JSON.with_name(f"criterion_eval_report{suffix}.json")
+     report_md = REPORT_MD.with_name(f"criterion_eval_report{suffix}.md")
++    args.output_dir.mkdir(parents=True, exist_ok=True)
++    report_json = args.output_dir / report_json.name
++    report_md = args.output_dir / report_md.name
+ 
+     labels = json.loads(args.labels.read_text(encoding="utf-8"))
+     run = json.loads((BASELINE_RUN if BASELINE_RUN.exists() else SAVED_RUN).read_text(encoding="utf-8"))
+diff --git a/src/config.py b/src/config.py
+index 2e91a93..f7eac0b 100644
+--- a/src/config.py
++++ b/src/config.py
+@@ -44,4 +44,23 @@ FACTS_TO_LOOK_FOR = {
+     "prior_kras_g12c_inhibitor": "Prior KRAS G12C inhibitor",
+     "ecog": "ECOG",
+     "anc": "Absolute neutrophil count (ANC)",
++    "braf_status": "BRAF status",
++    "hemoglobin": "Hemoglobin with units",
++    "platelets": "Platelets with units",
++    "creatinine": "Creatinine with units",
++    "bilirubin": "Bilirubin with units",
++    "ast": "AST with units",
++    "alt": "ALT with units",
++    "other_labs": "All other documented laboratory results with units",
++    "treatment_administrations": "Every treatment administration, cycle and administration date",
++    "past_medical_history": "Past medical history, including prior cancers",
++    "surgical_history": "Surgical history and procedure dates",
++    "biopsy": "Biopsy site and findings",
+ }
++
++# Keep the prepared demo's review checklist stable. Broader extraction facts
++# appear as source evidence when found; their absence is covered by line review.
++REVIEW_FACT_KEYS = (
++    "age", "sex", "diagnosis", "kras_status", "msi_status", "prior_therapies",
++    "prior_kras_g12c_inhibitor", "ecog", "anc",
++)
+diff --git a/src/eligibility.py b/src/eligibility.py
+index 7eb51ce..3ec0dbf 100644
+--- a/src/eligibility.py
++++ b/src/eligibility.py
+@@ -182,10 +182,15 @@ Missing evidence is UNKNOWN. Absence is not a negative. Preserve conflicts unles
+ A list of past treatments does not prove another treatment was never given; for prior-exposure exclusions, return DOES_NOT_APPLY only when the record explicitly rules the exposure out.
+ Every requirement in the criterion must be supported by cited evidence; if any part (a lab value, central testing, documented failure or progression, absence of transfusion) is not documented, return UNKNOWN.
+ Treatment order: "X, then Y" means Y was given after X; do not reassign lines of therapy.
++A dated medication list documents that the drug was listed as of that date and is evidence of past exposure only. Never describe it as currently taken or infer recent dosing from a start date.
++Time-window criteria such as within 4 weeks need a dated administration or stop date and the actual reference date (such as first study dose). A note date is not a study dose date. If either date is missing, return UNKNOWN. A medication snapshot alone cannot decide a recent time window. It can still establish prior exposure for exclusions without a recent-use window.
++Biomarkers describe test findings, not treatments. Never infer therapy or inhibitor exposure from a mutation; cite an explicit treatment or medication record.
+ Some criteria are one option in a list (for example acceptable contraception methods) or a branch that applies only under a condition (for example "No liver mets: ..."). Return UNKNOWN for these unless the record shows the option or condition applies.
+ Cite facts by their "index" field in evidence_indices. Never say the patient is eligible or ineligible."""
+     # Each fact carries its own index so the model cites it instead of counting list positions.
+-    payload = {"criterion": criterion.model_dump(), "evidence": [{"index": i, **item.model_dump()} for i, item in enumerate(evidence)]}
++    # Unverified records remain in the review output, but are not candidate
++    # citations for the model. Preserve original indices for traceability.
++    payload = {"criterion": criterion.model_dump(), "evidence": [{"index": i, **item.model_dump()} for i, item in enumerate(evidence) if item.quote_verified]}
+     context = ToolContext(evidence=evidence, pages=pages)
+     # store=False keeps nothing on the provider side, so the conversation is carried locally:
+     # each follow-up sends the original input, the model's tool calls and the tool results.
+@@ -206,7 +211,7 @@ Cite facts by their "index" field in evidence_indices. Never say the patient is
+     status = _project_status(criterion.type, result.status) if result is not None else None
+     if status is None:
+         return conservative_assessment(criterion, evidence)
+-    cited = [evidence[index] for index in result.evidence_indices if 0 <= index < len(evidence)]
++    cited = [evidence[index] for index in result.evidence_indices if 0 <= index < len(evidence) and evidence[index].quote_verified]
+     return CriterionAssessment(criterion_id=criterion.criterion_id, criterion_text=criterion.text, criterion_type=criterion.type, status=status, method="llm", patient_evidence=cited, explanation=result.explanation)
+ 
+ 
+diff --git a/src/evidence_extraction.py b/src/evidence_extraction.py
+index 3664c0b..392533b 100644
+--- a/src/evidence_extraction.py
++++ b/src/evidence_extraction.py
+@@ -42,6 +42,23 @@ the date as written. If neither is available, date must be null.
+ Extract age, sex, diagnosis, explicitly stated cancer stage, metastatic sites,
+ biomarkers, documented prior treatment, current medications, performance
+ status, labs with units, and comorbidities. Use the provided category enum.
++The checklist is a minimum, not a limit. Extract every explicitly stated
++patient fact on every page, including every laboratory result with its analyte
++and units, all biomarkers, biopsy site and findings, past medical history
++(including prior cancers), and surgical history. Use diagnosis for biopsy
++findings, prior_treatment for procedures and administrations, and comorbidity
++for past conditions; no new categories are needed.
++Extract every documented treatment administration separately, including drug
++or regimen, cycle when stated, and administration date. Its date must be the
++administration date, not the date of a later summary. A drug start date is not
++proof of a subsequent dose or stop date.
++Family history describes relatives, not patient conditions; do not extract it
++as a patient fact.
++A dated medication list is a snapshot: keep the list's document date in date,
++even when a drug start date also appears (retain that start date in the quote).
++Describe the drug as listed as of that date, not as currently taken. The legacy
++current_medication category does not establish present use. A list documents
++past exposure, not a recent administration or a stop date.
+ Split separate facts into separate records. Retain all differing values for
+ the same fact as separate records with their own sources and dates. Do not
+ select a preferred value, merge conflicts, or infer change from date proximity.
+@@ -109,6 +126,53 @@ def _quote_present(quote: str, source_text: str) -> bool:
+     return re.search(pattern, _normalize(source_text)) is not None
+ 
+ 
++def _is_patient_fact(item: EvidenceItem) -> bool:
++    """Missing-value placeholders and unsupported sex values are not facts."""
++    if _normalize(item.value) in {'unknown', 'not documented', 'not stated', 'not provided', 'not mentioned', 'n/a'}:
++        return False
++    if item.category == 'sex':
++        return _quote_present(item.value, item.evidence_text) and not re.match(r'^\s*family history\s*:', item.evidence_text, re.I)
++    return True
++
++
++def extract_labeled_facts(pages: Iterable[DocumentPage]) -> list[EvidenceItem]:
++    """Read explicit labelled fields without asking a model to restate them.
++
++    Only fixed clinical field labels are recognized; no patient, document name,
++    drug, cancer type, or trial is special-cased. Unlabelled narrative remains
++    the model's job and is checked for uncovered lines.
++    """
++    fields = {
++        'diagnosis': 'diagnosis',
++        'specimen': 'diagnosis', 'histology': 'diagnosis', 'biopsy findings': 'diagnosis',
++        'kras': 'biomarker', 'braf': 'biomarker', 'msi': 'biomarker', 'mss': 'biomarker',
++        'absolute neutrophil count (anc)': 'lab', 'anc': 'lab',
++        'hemoglobin': 'lab', 'haemoglobin': 'lab', 'platelets': 'lab',
++        'creatinine': 'lab', 'total bilirubin': 'lab', 'bilirubin': 'lab',
++        'ast': 'lab', 'alt': 'lab',
++    }
++    items = []
++    page_list = list(pages)
++    for page in page_list:
++        if page.extraction_method == 'OCR_REQUIRED':
++            continue
++        header = re.search(r'^\s*document date\s*:\s*([^\r\n]+)', page.text, re.I | re.M)
++        date = header.group(1).strip() if header else None
++        for line in page.text.splitlines():
++            label, separator, value = line.partition(':')
++            category = fields.get(_normalize(label))
++            if not separator or not category or not value.strip() or '[unreadable]' in _normalize(value):
++                continue
++            if _normalize(value) in {'unknown', 'not documented', 'not stated', 'not provided', 'not mentioned', 'n/a'}:
++                continue
++            item = EvidenceItem(category=category, value=line.strip(), date=date,
++                source_file=page.filename, source_page=page.page_number,
++                evidence_text=line.strip())
++            if _is_patient_fact(item):
++                items.append(item)
++    return verify_quotes(items, page_list)
++
++
+ def verify_quotes(
+     evidence: Iterable[EvidenceItem], pages: Iterable[DocumentPage]
+ ) -> list[EvidenceItem]:
+@@ -128,7 +192,15 @@ def verify_quotes(
+             and source.extraction_method != "OCR_REQUIRED"
+             and _quote_present(item.evidence_text, source.text)
+         )
+-        verified_items.append(item.model_copy(update={"quote_verified": verified}))
++        update = {"quote_verified": verified, "source_kind": "other"}
++        if source is not None and re.search(
++            r"medication[ _-]+list|medicines[ _-]+list|medication reconciliation",
++            source.filename + "\n" + source.text, re.I,
++        ):
++            update["source_kind"] = "medication_list"
++            header = re.search(r"^\s*(?:document|list) date\s*:\s*([^\r\n]+)", source.text, re.I | re.M)
++            update["date"] = header.group(1).strip() if header else None
++        verified_items.append(item.model_copy(update=update))
+         if not verified:
+             LOGGER.warning("Unverified quote: %s, page %d", item.source_file, item.source_page)
+     return verified_items
+@@ -172,6 +244,7 @@ def _request_evidence(client: OpenAI, model: str, pages: list[DocumentPage]) ->
+         raise EvidenceExtractionError("No structured evidence was returned by the extraction API.")
+     try:
+         items = [EvidenceItem(**fact.model_dump()) for fact in parsed.evidence]
++        items = [item for item in items if _is_patient_fact(item)]
+     except ValidationError:
+         raise EvidenceExtractionError("The extraction response contains invalid evidence records.") from None
+     sources = _source_pages(pages)
+@@ -191,6 +264,7 @@ def extract_evidence(
+     *,
+     client: OpenAI | None = None,
+     model: str | None = None,
++    completeness: list[dict] | None = None,
+ ) -> list[EvidenceItem]:
+     """Extract facts using structured output, then recompute quote verification.
+ 
+@@ -221,11 +295,85 @@ def extract_evidence(
+         raise EvidenceExtractionError("Set OPENAI_EXTRACTION_MODEL to a structured-output model name.")
+     if client is not None:
+         items = _request_evidence(client, selected_model, page_list)
++        items, gaps = complete_extraction(page_list, items, lambda subset: _request_evidence(client, selected_model, subset))
+     else:
+         api_key = (os.environ.get("OPENAI_API_KEY") or settings.get("OPENAI_API_KEY") or "").strip()
+         if not api_key or api_key == "your_api_key_here":
+             raise EvidenceExtractionError("Evidence extraction needs OPENAI_API_KEY in the repository .env or environment.")
+         with OpenAI(api_key=api_key, timeout=60.0, max_retries=1) as local_client:
+             items = _request_evidence(local_client, selected_model, page_list)
++            items, gaps = complete_extraction(page_list, items, lambda subset: _request_evidence(local_client, selected_model, subset))
++    if completeness is not None:
++        completeness.extend(gaps)
+     LOGGER.info("Extracted %d fact(s), %d with verified quotes", len(items), sum(item.quote_verified for item in items))
+     return items
++
++
++ADMINISTRATIVE_LINE = re.compile(
++    r"^(?:synthetic\b.*|fictional document\b.*|patient\s*(?:id|identifier)\s*:.*|"
++    r"document date\s*:.*|page\s+\d+(?:\s+of\s+\d+)?\s*|"
++    r"(?:[\w -]+\s+)?(?:note|report|record|medication list|annual visit)|"
++    r"patient overview|visit summary|plan|active medications|molecular findings|"
++    r"reported laboratory values|chemotherapy administration|"
++    r"(?:past medical|surgical|family|treatment) history(?: and performance status)?)$", re.I,
++)
++
++
++def uncovered_content_lines(pages: Iterable[DocumentPage], evidence: Iterable[EvidenceItem]) -> list[dict]:
++    """Measure literal line coverage, not clinical correctness or model confidence."""
++    page_list = list(pages)
++    verified = verify_quotes(evidence, page_list)
++    gaps = []
++    for page in page_list:
++        quotes = [_normalize(e.evidence_text) for e in verified
++                  if e.quote_verified and (e.source_file, e.source_page) == (page.filename, page.page_number)]
++        for number, line in enumerate(page.text.splitlines(), 1):
++            line = line.strip()
++            if not line or ADMINISTRATIVE_LINE.fullmatch(line):
++                continue
++            # A short heading ending in ':' has no fact value. Never ignore a
++            # labelled fact such as 'Diagnosis: ...' or a family-history line.
++            if line.endswith(':') and len(line.split()) <= 8:
++                continue
++            if not any(_normalize(line) in quote for quote in quotes):
++                gaps.append({'source_file': page.filename, 'source_page': page.page_number,
++                             'line_number': number, 'text': line,
++                             'message': 'Not captured by the tool, review manually'})
++    return gaps
++
++
++def complete_extraction(pages: Iterable[DocumentPage], evidence: Iterable[EvidenceItem], extractor):
++    """Retry each uncovered page once; retain persistent gaps, including on failure.
++
++    extractor receives one complete source page so file/page/date context is
++    preserved. It must be the single-pass requester, not extract_evidence.
++    """
++    page_list = list(pages)
++    items = verify_quotes((e for e in evidence if _is_patient_fact(e)), page_list)
++    # Deterministic fields must be present before measuring recovery needs.
++    for explicit in extract_labeled_facts(page_list):
++        if not any(e.quote_verified and e.category == explicit.category
++                   and (e.source_file, e.source_page) == (explicit.source_file, explicit.source_page)
++                   and _normalize(explicit.evidence_text) == _normalize(e.evidence_text) for e in items):
++            items.append(explicit)
++    affected = {(g['source_file'], g['source_page']) for g in uncovered_content_lines(page_list, items)}
++    def key(e):
++        return (e.category, e.source_file, e.source_page, _normalize(e.value), _normalize(e.evidence_text), e.date)
++    seen = {key(e) for e in items}
++    for page in page_list:
++        if (page.filename, page.page_number) not in affected:
++            continue
++        try:
++            recovered = verify_quotes(extractor([page]), [page])
++        except EvidenceExtractionError as exc:
++            LOGGER.warning('Completeness retry failed: %s p%d: %s', page.filename, page.page_number, exc)
++            continue
++        for item in recovered:
++            if not _is_patient_fact(item):
++                continue
++            if (item.source_file, item.source_page) != (page.filename, page.page_number):
++                continue
++            if key(item) not in seen:
++                items.append(item)
++                seen.add(key(item))
++    return items, uncovered_content_lines(page_list, items)
+diff --git a/src/evidence_view.py b/src/evidence_view.py
+index b90013b..4bb4f30 100644
+--- a/src/evidence_view.py
++++ b/src/evidence_view.py
+@@ -9,7 +9,7 @@ from typing import Literal
+ 
+ from pydantic import ValidationError
+ 
+-from .config import FACTS_TO_LOOK_FOR
++from .config import FACTS_TO_LOOK_FOR, REVIEW_FACT_KEYS
+ from .evidence_extraction import EvidenceExtractionError, verify_quotes
+ from .schemas import DocumentPage, EvidenceItem
+ 
+@@ -110,7 +110,7 @@ def _comparison_value(key: str, item: EvidenceItem) -> str:
+ 
+ def build_evidence_groups(evidence: Iterable[EvidenceItem]) -> list[EvidenceGroup]:
+     """Include all checklist facts; missing verified support remains UNKNOWN."""
+-    grouped = {key: [] for key in FACTS_TO_LOOK_FOR}
++    grouped = {key: [] for key in REVIEW_FACT_KEYS}
+     for item in evidence:
+         keys = _checklist_keys(item) or [_extra_key(item)]
+         for key in keys:
+diff --git a/src/safety.py b/src/safety.py
+index 555fe1b..4feeccd 100644
+--- a/src/safety.py
++++ b/src/safety.py
+@@ -107,13 +107,19 @@ metastatic require required requiring use using evidence documented
+ """.split())
+ 
+ 
++def _stem(word: str) -> str:
++    word = word.rstrip('s')
++    return word[:-1] if word.endswith('ed') and len(word) >= 4 else word
++
++
++GENERIC_STEMS = frozenset(_stem(word) for word in GENERIC_TERMS)
++
++
+ def _terms(text: str) -> set[str]:
+     terms = set()
+     for word in re.findall(r"[a-z0-9]+", text.lower()):
+-        word = word.rstrip("s")
+-        if word.endswith("ed") and len(word) >= 4:  # aged -> age, mutated -> mutate
+-            word = word[:-1]
+-        if len(word) >= 3 and word not in GENERIC_TERMS:
++        word = _stem(word)
++        if len(word) >= 3 and word not in GENERIC_STEMS:
+             terms.add(word)
+     return terms
+ 
+@@ -172,12 +178,56 @@ def is_conditional_or_option_rejection(item: CriterionAssessment) -> bool:
+             and bool(CONDITIONAL_OR_OPTION.search(item.criterion_text)))
+ 
+ 
++TIME_WINDOW = re.compile(r"\bwithin\s+(?:\d+|one|two|three|four|five|six|seven|eight|nine|ten|twelve)\s*[- ]?\s*(?:days?|weeks?|months?|years?)\b", re.I)
++MEDICATION_LIST = re.compile(r"medication[ _-]+list|medicines[ _-]+list|medication reconciliation", re.I)
++STUDY_REFERENCE = re.compile(r"first[\s-]+(?:study[\s-]+|trial[\s-]+)?dose|study[\s-]+(?:dose|dosing|start)|randomi[sz]ation", re.I)
++DATED_REFERENCE = re.compile(
++    r"(?:first[\s-]+(?:study[\s-]+|trial[\s-]+)?dose|study[\s-]+(?:dose|dosing|start)|randomi[sz]ation)"
++    r"\s*(?:date)?\s*(?:is|was|on|scheduled for|planned for|:|=)?\s*\d{4}-\d{2}-\d{2}\b", re.I,
++)
++
++
++def time_window_problem(item: CriterionAssessment) -> str | None:
++    """Reject temporal decisions lacking dated events or an explicit study anchor.
++
++    Medication categories and source provenance remain snapshots even when a
++    model calls the drug current. No use of wall-clock time or inferred dosing.
++    """
++    if item.status not in {"MEETS", "DOES_NOT_MEET"} or not TIME_WINDOW.search(item.criterion_text):
++        return None
++    cited = [e for e in item.patient_evidence if e.quote_verified]
++    if not any(e.date and e.date.strip() for e in cited):
++        return "Time-window decision lacks dated cited evidence."
++    if all(e.source_kind == "medication_list" or e.category == "current_medication"
++           or MEDICATION_LIST.search(e.source_file + " " + e.evidence_text) for e in cited):
++        return "Time-window decision cites only medication snapshots, not administration or stop dates."
++    if STUDY_REFERENCE.search(item.criterion_text) and not DATED_REFERENCE.search(_cited_text(item)):
++        return "Time-window decision lacks an explicitly documented study reference date."
++    return None
++
++
++def has_biomarker_treatment_reasoning(explanation: str) -> bool:
++    """Flag inference language linking a test finding to treatment, not citations."""
++    for sentence in re.split(r"(?<=[.!?])\s+", explanation):
++        biomarker = re.search(r"\b(?:mutations?|biomarkers?|variants?|genotyp\w*)\b", sentence, re.I)
++        named_variant = re.search(r"\b[A-Z][A-Z0-9]{1,9}\s+(?:p\.)?[A-Z]\d+[A-Z]\b", sentence)
++        inference = re.search(r"\b(?:indicat\w*|suggest\w*|impl(?:y|ies|ying)|consistent with)\b", sentence, re.I)
++        treatment = re.search(r"\b(?:treated|treating|treatment|therapy|inhibitor\w*)\b", sentence, re.I)
++        negated = re.search(r"\b(?:does not|do not|cannot|can't|not)\s+(?:indicat\w*|suggest\w*|impl\w*)", sentence, re.I)
++        if (biomarker or named_variant) and inference and treatment and not negated:
++            return True
++    return False
++
++
+ def review_assessments(assessments: list[CriterionAssessment]) -> tuple[list[CriterionAssessment], list[str]]:
+     """Downgrade unsupported conclusions and return visible review flags."""
+     reviewed, flags = [], []
+     for item in assessments:
+         update = {}
+-        if item.status in {"MEETS", "DOES_NOT_MEET", "POTENTIAL_CONFLICT"} and INVESTIGATOR_JUDGMENT.search(item.criterion_text):
++        if reason := time_window_problem(item):
++            update = {"status": "UNKNOWN", "explanation": f"{reason} Converted to UNKNOWN. Original reasoning: {item.explanation}"}
++            flags.append(f"{item.criterion_id}: {reason} Converted to UNKNOWN.")
++        elif item.status in {"MEETS", "DOES_NOT_MEET", "POTENTIAL_CONFLICT"} and INVESTIGATOR_JUDGMENT.search(item.criterion_text):
+             update = {"status": "UNKNOWN", "explanation": f"This criterion depends on investigator judgment and cannot be settled from records; converted to UNKNOWN. Original reasoning: {item.explanation}"}
+             flags.append(f"{item.criterion_id}: investigator-judgment criterion converted to UNKNOWN.")
+         elif item.status in {"MEETS", "DOES_NOT_MEET", "POTENTIAL_CONFLICT"} and not item.patient_evidence and item.method == "llm":
+@@ -201,5 +251,15 @@ def review_assessments(assessments: list[CriterionAssessment]) -> tuple[list[Cri
+         if any(not evidence.quote_verified for evidence in item.patient_evidence):
+             update = {"status": "UNKNOWN", "explanation": "A cited source quote was not verified; converted to UNKNOWN."}
+             flags.append(f"{item.criterion_id}: unverified source quote.")
++        if has_biomarker_treatment_reasoning(item.explanation):
++            supported = any(e.quote_verified and e.category in {"prior_treatment", "current_medication"}
++                            and not EXPLICIT_NEGATION.search(e.evidence_text)
++                            for e in item.patient_evidence)
++            flag = f"{item.criterion_id}: explanation contains biomarker-to-treatment reasoning"
++            if supported:
++                flags.append(flag + "; treatment evidence is cited, review the explanation.")
++            else:
++                update = {"status": "UNKNOWN", "explanation": "Biomarker-to-treatment inference has no cited treatment evidence; converted to UNKNOWN. Original reasoning: " + item.explanation}
++                flags.append(flag + "; no supported treatment citation, converted to UNKNOWN.")
+         reviewed.append(item.model_copy(update=update))
+     return reviewed, flags
+diff --git a/src/schemas.py b/src/schemas.py
+index 02f29f4..fdbbfef 100644
+--- a/src/schemas.py
++++ b/src/schemas.py
+@@ -47,6 +47,7 @@ class EvidenceItem(BaseModel):
+     source_page: int = Field(ge=1, strict=True)
+     evidence_text: str = Field(min_length=1, description="Exact quote copied from source page text")
+     quote_verified: bool = Field(default=False, strict=True)
++    source_kind: Literal["medication_list", "other"] = "other"
+ 
+     @field_validator("value", "source_file", "evidence_text")
+     @classmethod
+diff --git a/src/workflow.py b/src/workflow.py
+index 44c4332..927c94e 100644
+--- a/src/workflow.py
++++ b/src/workflow.py
+@@ -10,7 +10,7 @@ from langgraph.graph import END, START, StateGraph
+ from .criteria import load_criteria
+ from .document_ingestion import ingest_documents
+ from .eligibility import assess_trial, summarize_trial
+-from .evidence_extraction import extract_evidence, verify_quotes
++from .evidence_extraction import extract_evidence, uncovered_content_lines, verify_quotes
+ from .evidence_view import build_evidence_groups
+ from .observability import utc_now
+ from .retrieval import BM25Retriever, RetrievalError, compact_patient_summary, hybrid_search, load_chunks, reciprocal_rank_fusion, rerank_candidates
+@@ -23,6 +23,7 @@ class WorkflowState(TypedDict, total=False):
+     uploaded_files: list[str]
+     pages: list[DocumentPage]
+     evidence: list[EvidenceItem]
++    extraction_gaps: list[dict]
+     patient_summary: str
+     candidate_trials: list[dict]
+     trial_criteria: dict[str, list]
+@@ -63,8 +64,10 @@ def ingest_documents_node(state: WorkflowState):
+ 
+ def extract_evidence_node(state: WorkflowState):
+     def action():
+-        evidence = state.get("evidence") or extract_evidence(state.get("pages", []))
+-        return {"evidence": evidence, "_output_count": len(evidence)}
++        gaps = []
++        evidence = state.get("evidence") or extract_evidence(state.get("pages", []), completeness=gaps)
++        gaps = uncovered_content_lines(state.get("pages", []), evidence)
++        return {"evidence": evidence, "extraction_gaps": gaps, "_output_count": len(evidence)}
+     return _run_node(state, "extract_evidence", len(state.get("pages", [])), action)
+ 
+ 
+@@ -145,7 +148,8 @@ def safety_review_node(state: WorkflowState):
+ 
+ def prepare_human_review_node(state: WorkflowState):
+     def action():
+-        review = {"candidate_trials": state.get("candidate_trials", []), "trial_summaries": state.get("trial_summaries", {}), "requires_human_review": True}
++        review = {"candidate_trials": state.get("candidate_trials", []), "trial_summaries": state.get("trial_summaries", {}), "requires_human_review": True,
++                  "extraction_gaps": state.get("extraction_gaps", [])}
+         if not state.get("candidate_trials"):
+             review["message"] = "Insufficient information"
+         return {"human_review": review, "_output_count": len(state.get("candidate_trials", []))}
+diff --git a/tests/test_biomarker_reasoning.py b/tests/test_biomarker_reasoning.py
+new file mode 100644
+index 0000000..dbe394d
+--- /dev/null
++++ b/tests/test_biomarker_reasoning.py
+@@ -0,0 +1,43 @@
++import pytest
++
++from src.safety import review_assessments
++from src.schemas import CriterionAssessment, EvidenceItem
++
++
++def record(category, quote):
++    return EvidenceItem(category=category, value=quote, evidence_text=quote,
++                        source_file='note.txt', source_page=1, quote_verified=True)
++
++
++def assess(explanation, extra=()):
++    item = CriterionAssessment(criterion_id='EXC-01', criterion_type='exclusion',
++        criterion_text='Prior targeted inhibitor therapy', status='DOES_NOT_MEET', method='llm',
++        patient_evidence=[record('biomarker', 'ABC V123D mutation detected'), *extra], explanation=explanation)
++    return review_assessments([item])
++
++
++@pytest.mark.parametrize('link', ['indicating', 'suggests', 'implies', 'consistent with'])
++def test_mutation_alone_cannot_establish_treatment(link):
++    result, flags = assess(f'The ABC V123D mutation is {link} inhibitor therapy.')
++    assert result[0].status == 'UNKNOWN'
++    assert any('biomarker-to-treatment' in f for f in flags)
++
++
++def test_cited_medication_keeps_status_but_requires_review():
++    result, flags = assess('ABC V123D suggests inhibitor therapy.', [record('current_medication', 'Targeted drug listed')])
++    assert result[0].status == 'DOES_NOT_MEET'
++    assert any('review the explanation' in f for f in flags)
++
++
++@pytest.mark.parametrize('explanation', ['Explicit treatment is documented.', 'The mutation does not imply inhibitor therapy.'])
++def test_explanations_without_inference_are_unchanged(explanation):
++    result, flags = assess(explanation)
++    assert result[0].status == 'DOES_NOT_MEET'
++    assert flags == []
++
++
++def test_unverified_or_negative_treatment_does_not_rescue_inference():
++    negative = record('prior_treatment', 'No prior inhibitor therapy')
++    result, flags = assess('ABC V123D indicating inhibitor therapy.', [negative])
++    assert result[0].status == 'UNKNOWN'
++    assert flags
+diff --git a/tests/test_completeness.py b/tests/test_completeness.py
+new file mode 100644
+index 0000000..926e031
+--- /dev/null
++++ b/tests/test_completeness.py
+@@ -0,0 +1,100 @@
++import pytest
++from streamlit.testing.v1 import AppTest
++from pathlib import Path
++
++from src.evidence_extraction import (
++    EvidenceExtractionError, complete_extraction, uncovered_content_lines,
++    verify_quotes,
++)
++from src.schemas import DocumentPage, EvidenceItem
++from src.workflow import prepare_human_review_node
++
++
++def page():
++    return DocumentPage(filename='source.txt', page_number=2, extraction_method='TXT',
++        text='SYNTHETIC PATIENT - FICTIONAL DATA\nClinical note\nPatient ID: TEST\nDocument date: 2026-01-01\nHistory:\nFinding A\nFinding B\nFamily history: relative with condition\nPage 2 of 2')
++
++
++def fact(quote='Finding A', verified=True):
++    return EvidenceItem(category='comorbidity', value=quote, evidence_text=quote,
++                        source_file='source.txt', source_page=2, quote_verified=verified)
++
++
++def test_second_pass_captures_missing_line_once_without_duplicates():
++    calls = []
++    def extractor(pages):
++        calls.append(pages)
++        return [fact(), fact('Finding B')]
++    items, gaps = complete_extraction([page()], [fact()], extractor)
++    assert len(calls) == 1 and calls[0] == [page()]
++    assert len(items) == 2
++    assert all(e.quote_verified for e in items)
++    assert [g['text'] for g in gaps] == ['Family history: relative with condition']
++    assert gaps[0]['message'] == 'Not captured by the tool, review manually'
++
++
++def test_missing_line_is_visible_when_retry_skips_it():
++    calls = []
++    items, gaps = complete_extraction([page()], [fact()], lambda pages: calls.append(pages) or [fact()])
++    assert len(calls) == 1 and len(items) == 1
++    assert 'Finding B' in [g['text'] for g in gaps]
++    assert all(g['source_file'] == 'source.txt' and g['source_page'] == 2 for g in gaps)
++
++
++def test_failed_retry_retains_initial_facts_and_manual_review_lines():
++    def fail(pages):
++        raise EvidenceExtractionError('Synthetic failure')
++    items, gaps = complete_extraction([page()], [fact()], fail)
++    assert len(items) == 1
++    assert 'Finding B' in [g['text'] for g in gaps]
++
++
++def test_verification_is_recomputed_and_wrong_page_cannot_hide_gaps():
++    wrong = fact('Finding B').model_copy(update={'source_page': 1})
++    gaps = uncovered_content_lines([page()], [wrong])
++    assert 'Finding B' in [g['text'] for g in gaps]
++
++
++def test_covered_page_has_no_retry_and_whitespace_normalizes():
++    source = page().model_copy(update={'text': 'Finding   A\nFinding B'})
++    items, gaps = complete_extraction([source], [fact('Finding A\nFinding B')], lambda pages: pytest.fail('Unexpected retry'))
++    assert len(items) == 1 and gaps == []
++
++
++def test_retries_only_affected_pages_and_rejects_other_page_results():
++    covered = page().model_copy(update={'page_number': 1, 'text': 'Finding A'})
++    initial = fact().model_copy(update={'source_page': 1})
++    calls = []
++    def retry(pages):
++        calls.extend(pages)
++        return [fact('Finding B').model_copy(update={'source_page': 99})]
++    items, gaps = complete_extraction([covered, page()], [initial], retry)
++    assert [p.page_number for p in calls] == [2]
++    assert len(items) == 1
++    assert 'Finding B' in [g['text'] for g in gaps]
++
++
++def test_human_review_contains_uncovered_lines_even_without_candidates():
++    gaps = uncovered_content_lines([page()], [fact()])
++    result = prepare_human_review_node({'extraction_gaps': gaps})
++    assert result['human_review']['extraction_gaps'] == gaps
++    assert result['human_review']['requires_human_review']
++
++
++def test_app_displays_persistent_gaps():
++    app = AppTest.from_file(str(Path(__file__).resolve().parents[1] / 'app.py'))
++    app.session_state['run'] = {'evidence': [], 'pages': [], 'candidate_trials': [],
++                                'extraction_gaps': uncovered_content_lines([page()], [fact()])}
++    app.run(timeout=15)
++    assert not app.exception
++    assert any('Not captured by the tool, review manually' in w.value and 'Finding B' in w.value for w in app.warning)
++
++
++@pytest.mark.parametrize('header,expected', [('Document date: 2026-01-01\n', '2026-01-01'), ('', None)])
++def test_snapshot_provenance_and_document_date_are_code_verified(header, expected):
++    source = page().model_copy(update={'text': 'Medication list\n' + header + 'Drug listed (started 2025-01-01)'})
++    item = fact('Drug listed (started 2025-01-01)').model_copy(update={'category': 'current_medication', 'date': '2025-01-01'})
++    result = verify_quotes([item], [source])[0]
++    assert result.source_kind == 'medication_list'
++    assert result.date == expected
++    assert result.quote_verified
+diff --git a/tests/test_eligibility.py b/tests/test_eligibility.py
+index c3ac086..48f5187 100644
+--- a/tests/test_eligibility.py
++++ b/tests/test_eligibility.py
+@@ -140,3 +140,20 @@ def test_llm_payload_numbers_each_fact():
+     payload = json.loads(sent[0]["input"][0]["content"])
+     assert [f["index"] for f in payload["evidence"]] == [0, 1]
+     assert result.status == "MEETS" and result.patient_evidence[0].evidence_text == "BRAF: wild type"
++
++
++def test_unverified_records_are_review_only_not_model_citations():
++    import json
++    from types import SimpleNamespace
++    from src.eligibility import assess_free_text_criterion, _LLMAssessment
++    sent = []
++    def parse(**kwargs):
++        sent.append(kwargs)
++        return SimpleNamespace(output=[], output_parsed=_LLMAssessment(status='APPLIES', evidence_indices=[0, 1], explanation='Documented treatment'))
++    bad = evidence('prior_treatment', 'Unverified treatment').model_copy(update={'quote_verified': False})
++    good = evidence('prior_treatment', 'Documented treatment')
++    criterion = TrialCriterion(criterion_id='EXC-01', type='exclusion', text='Prior therapy')
++    result = assess_free_text_criterion(criterion, [bad, good], [], client=SimpleNamespace(responses=SimpleNamespace(parse=parse)))
++    payload = json.loads(sent[0]['input'][0]['content'])
++    assert [e['index'] for e in payload['evidence']] == [1]
++    assert result.patient_evidence == [good]
+diff --git a/tests/test_evidence_view.py b/tests/test_evidence_view.py
+index 44acaa6..1975794 100644
+--- a/tests/test_evidence_view.py
++++ b/tests/test_evidence_view.py
+@@ -6,7 +6,7 @@ from pathlib import Path
+ import pytest
+ from streamlit.testing.v1 import AppTest
+ 
+-from src.config import FACTS_TO_LOOK_FOR
++from src.config import REVIEW_FACT_KEYS
+ from src.evidence_view import (
+     EvidenceViewError, build_evidence_groups, load_prepared_evidence, source_file_path,
+ )
+@@ -43,7 +43,7 @@ def test_prepared_patient_has_one_ecog_conflict_and_one_unknown_fact():
+ 
+ def test_all_checklist_facts_remain_unknown_with_no_evidence():
+     groups = by_key([])
+-    assert set(groups) == set(FACTS_TO_LOOK_FOR)
++    assert set(groups) == set(REVIEW_FACT_KEYS)
+     assert all(group.status == "UNKNOWN" and group.items == [] for group in groups.values())
+ 
+ 
+diff --git a/tests/test_labeled_extraction.py b/tests/test_labeled_extraction.py
+new file mode 100644
+index 0000000..c324d7d
+--- /dev/null
++++ b/tests/test_labeled_extraction.py
+@@ -0,0 +1,38 @@
++from src.evidence_extraction import complete_extraction, extract_labeled_facts
++from src.schemas import DocumentPage, EvidenceItem
++
++
++def source(text):
++    return DocumentPage(filename='arbitrary.txt', page_number=1, text=text, extraction_method='TXT')
++
++
++def test_explicit_biopsy_labs_and_biomarkers_do_not_depend_on_model():
++    page = source('Document date: 2026-01-02\nSpecimen: lung biopsy, carcinoma\nHemoglobin: 12 g/dL\nBRAF: wild type')
++    items, gaps = complete_extraction([page], [], lambda pages: [])
++    assert [e.category for e in items] == ['diagnosis', 'lab', 'biomarker']
++    assert all(e.quote_verified and e.date == '2026-01-02' for e in items)
++    assert gaps == []
++
++
++def test_label_parser_ignores_family_and_administrative_or_unreadable_fields():
++    items = extract_labeled_facts([source('Family history: relative had cancer\nPatient ID: X\nSex: UNKNOWN\nAge: [UNREADABLE]')])
++    assert items == []
++
++
++def test_existing_label_quote_is_not_duplicated_by_deterministic_reader():
++    page = source('Hemoglobin: 12 g/dL')
++    existing = EvidenceItem(category='lab', value='12 g/dL', evidence_text=page.text,
++        source_file=page.filename, source_page=1)
++    items, gaps = complete_extraction([page], [existing], lambda pages: [])
++    assert len(items) == 1 and gaps == []
++
++
++def test_missing_placeholders_and_sex_inferred_from_relatives_do_not_cover_lines():
++    page = source('Finding A\nFamily history: mother had cancer')
++    records = [EvidenceItem(category='sex', value='Male', source_file=page.filename,
++        source_page=1, evidence_text='Family history: mother had cancer'),
++        EvidenceItem(category='sex', value='UNKNOWN', source_file=page.filename,
++        source_page=1, evidence_text=page.text)]
++    items, gaps = complete_extraction([page], records, lambda pages: records)
++    assert items == []
++    assert len(gaps) == 2
+diff --git a/tests/test_safety.py b/tests/test_safety.py
+index ac6ff57..3864e34 100644
+--- a/tests/test_safety.py
++++ b/tests/test_safety.py
+@@ -48,3 +48,10 @@ def test_treatment_list_cannot_clear_prior_exposure_exclusion():
+ def test_explicit_negative_can_clear_prior_exposure_exclusion():
+     reviewed, _ = review_assessments([_llm_exclusion("Prior KRASG12C inhibition therapy", "No prior KRAS G12C inhibitor therapy")])
+     assert reviewed[0].status == "MEETS"
++
++
++def test_generic_treated_word_cannot_establish_condition_specific_clearance():
++    item = _llm_exclusion('Treated infection with specified exceptions', 'Treated unrelated condition')
++    result, flags = review_assessments([item])
++    assert result[0].status == 'UNKNOWN'
++    assert any('without evidence about it' in f for f in flags)
+diff --git a/tests/test_temporal_safety.py b/tests/test_temporal_safety.py
+new file mode 100644
+index 0000000..c058065
+--- /dev/null
++++ b/tests/test_temporal_safety.py
+@@ -0,0 +1,50 @@
++import pytest
++
++from src.safety import review_assessments
++from src.schemas import CriterionAssessment, EvidenceItem
++
++
++def evidence(category='prior_treatment', date='2026-01-05', **kwargs):
++    return EvidenceItem(category=category, value='Documented treatment', date=date,
++                        source_file='record.pdf', source_page=1,
++                        evidence_text='Treatment administered 2026-01-05', quote_verified=True, **kwargs)
++
++
++def decision(items, text='Therapy within 4 weeks', status='DOES_NOT_MEET'):
++    return CriterionAssessment(criterion_id='EXC-01', criterion_text=text, criterion_type='exclusion',
++                               status=status, method='llm', patient_evidence=items,
++                               explanation='The cited therapy establishes the exclusion.')
++
++
++@pytest.mark.parametrize('status', ['MEETS', 'DOES_NOT_MEET'])
++def test_undated_temporal_decisions_are_unknown(status):
++    reviewed, flags = review_assessments([decision([evidence(date=None)], status=status)])
++    assert reviewed[0].status == 'UNKNOWN'
++    assert any('lacks dated' in f for f in flags)
++
++
++@pytest.mark.parametrize('category', ['current_medication', 'prior_treatment'])
++def test_dated_medication_snapshot_cannot_decide_washout(category):
++    reviewed, flags = review_assessments([decision([evidence(category, source_kind='medication_list')])])
++    assert reviewed[0].status == 'UNKNOWN'
++    assert any('snapshots' in f for f in flags)
++
++
++def test_snapshot_can_establish_prior_exposure_without_time_window():
++    result, flags = review_assessments([decision([evidence('current_medication', source_kind='medication_list')], text='Prior targeted therapy')])
++    assert result[0].status == 'DOES_NOT_MEET'
++    assert flags == []
++
++
++@pytest.mark.parametrize('anchor', ['first study dose', 'first study-dose', 'first trial-dose', 'study-start', 'randomization'])
++def test_dated_administration_needs_actual_study_reference(anchor):
++    result, flags = review_assessments([decision([evidence()], text='Therapy within 4 weeks before ' + anchor)])
++    assert result[0].status == 'UNKNOWN'
++    assert any('reference date' in f for f in flags)
++
++
++def test_documented_study_reference_and_dated_event_are_not_blocked():
++    item = evidence().model_copy(update={'evidence_text': 'Treatment administered 2026-01-05; first study dose: 2026-01-10'})
++    result, flags = review_assessments([decision([item], text='Therapy within 4 weeks before first study dose')])
++    assert result[0].status == 'DOES_NOT_MEET'
++    assert flags == []

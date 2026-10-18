@@ -1,0 +1,67 @@
+{
+  "patient": "SYN-002",
+  "variant": "buried exclusions",
+  "label_status": "APPROVED by user in chat on 2026-10-17 before first live run; original expected labels unchanged",
+  "status_semantics": "For exclusion criteria, MEETS means the patient appears clear of the exclusion; DOES_NOT_MEET means the exclusion appears to apply.",
+  "labels": [
+    {
+      "trial": "NCT07559760",
+      "criterion_id": "EXC-19",
+      "expected": "DOES_NOT_MEET",
+      "rationale": "Prostate adenocarcinoma treated with radical prostatectomy in March 2022 (2023 primary-care note, page 2) is another malignancy within 5 years and not one of the listed exceptions.",
+      "judgment_call": false,
+      "probe": "buried_malignancy"
+    },
+    {
+      "trial": "NCT06412198",
+      "criterion_id": "EXC-02",
+      "expected": "DOES_NOT_MEET",
+      "rationale": "Sotorasib, a KRAS G12C inhibitor, appears on the 2025 outside pharmacy medication list. The oncology summary omits it.",
+      "judgment_call": false,
+      "probe": "buried_kras_inhibitor"
+    },
+    {
+      "trial": "NCT06252649",
+      "criterion_id": "EXC-03",
+      "expected": "DOES_NOT_MEET",
+      "rationale": "Sotorasib (a KRAS p.G12C inhibitor) on the 2025 outside pharmacy medication list.",
+      "judgment_call": false,
+      "probe": "buried_kras_inhibitor"
+    },
+    {
+      "trial": "NCT06412198",
+      "criterion_id": "INC-01",
+      "expected": "MEETS",
+      "rationale": "Metastatic MSS colorectal adenocarcinoma with KRAS G12C and 1+ prior lines (FOLFOX, then FOLFIRI). The prior prostate cancer must not be confused with the colorectal diagnosis.",
+      "judgment_call": false,
+      "probe": "sanity"
+    },
+    {
+      "trial": "NCT06412198",
+      "criterion_id": "INC-02",
+      "expected": "MEETS",
+      "rationale": "KRAS G12C mutation documented on the pathology report.",
+      "judgment_call": false,
+      "probe": "sanity"
+    },
+    {
+      "trial": "NCT07559760",
+      "criterion_id": "INC-02",
+      "expected": "MEETS",
+      "rationale": "Colorectal adenocarcinoma documented (liver biopsy and oncology note).",
+      "judgment_call": false,
+      "probe": "sanity"
+    },
+    {
+      "trial": "NCT07559760",
+      "criterion_id": "EXC-05",
+      "expected": "UNKNOWN",
+      "rationale": "Last FOLFIRI dose 2026-03-20. Whether this falls within 4 weeks of the first study dose depends on a dose date the record does not contain. Clearing it (MEETS) is unsafe; flagging it as applying is a defensible reading at a prescreen in early April 2026.",
+      "judgment_call": true,
+      "also_acceptable": [
+        "DOES_NOT_MEET"
+      ],
+      "probe": "washout"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+[
+  {
+    "set": "held_out",
+    "method": "llm_assessor",
+    "trial": "NCT06244771",
+    "criterion_id": "INC-04",
+    "expected": "UNKNOWN",
+    "before": "POTENTIAL_CONFLICT",
+    "after": "UNKNOWN",
+    "explanation": "The criterion requires adequate hematological, renal, and hepatic function. The patient has lab results for hematological parameters (Absolute neutrophil count 2.1 x 10^9/L, Hemoglobin 11.2 g/dL) and renal function (Creatinine 0.9 mg/dL), which appear adequate. However, no evidence was provided documenting hepatic function (e.g., liver enzyme tests, bilirubin). Without hepatic function data, the assessment of adequate overall function is incomplete and thus UNKNOWN."
+  }
+]

@@ -1,0 +1,12 @@
+[
+  {
+    "set": "held_out",
+    "method": "llm_assessor",
+    "trial": "NCT06244771",
+    "criterion_id": "INC-04",
+    "expected": "UNKNOWN",
+    "before": "POTENTIAL_CONFLICT",
+    "after": "UNKNOWN",
+    "explanation": "The inclusion criterion requires adequate hematological, renal, and hepatic function. The lab values provided show Absolute Neutrophil Count (ANC) of 2.1 x 10^9/L and Hemoglobin of 11.2 g/dL, which may indicate acceptable hematologic function, and Creatinine of 0.9 mg/dL, indicating adequate renal function. However, there is no information on hepatic function (such as liver enzymes or bilirubin levels). Without hepatic function data, adequacy of all required organ functions cannot be confirmed. Therefore, the status is UNKNOWN."
+  }
+]
