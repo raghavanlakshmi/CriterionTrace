@@ -94,4 +94,47 @@ For each miss, find the layer where it happened:
 Report results as they come out, including anything worse than SYN-002/SYN-003. If a fix
 follows, SYN-004 is no longer blind and the after-fix result is reported separately.
 
+## Results (blind, three runs on frozen code `caa440b`)
+
+Labels were signed and committed (`b09f44e`) before the dry run and before any live run. `src/` was
+unchanged. Nothing was changed in response to these results before all three runs were recorded.
+
+| Run | Variant | Exact | Acceptable | Unsafe clearances | False exclusions |
+|---|---|---|---|---|---|
+| 1 | SYN-004 | 3/7 | 5/7 | 1 | 0 |
+| 1 | Control | 5/7 | 6/7 | 1 | 0 |
+| 2 | SYN-004 | 3/7 | 5/7 | 1 | 0 |
+| 2 | Control | 5/7 | 6/7 | 1 | 0 |
+| 3 | SYN-004 | 3/7 | 5/7 | 0 | 1 |
+| 3 | Control | 5/7 | 6/7 | 1 | 0 |
+
+Total: 24/42 exact, 33/42 acceptable, 5 unsafe clearances, 1 false exclusion. These are three
+repetitions of 14 labeled pairs, not 42 independent cases.
+
+- **Scanned fax (OCR):** read correctly in all runs. The pneumonitis was extracted and flagged as an
+  exclusion 3/3. Control pneumonia never caused an exclusion.
+- **Decoys:** pneumonia, nasal and topical steroids, and vertigo never triggered an exclusion.
+- **Autoimmune exclusion (all 5 unsafe clearances):** the model reasoned "Hashimoto's is on
+  replacement therapy, which is allowed, and nothing else is documented, so the patient is clear."
+  No guard fired. One run also contained a date error ("April 2025 is more than 2 years before
+  2026-06-22"). The one false exclusion called drug-induced pneumonitis "likely autoimmune-related,"
+  which the record does not state.
+- **TIA (UNKNOWN in 3/3, a safe miss):** in run 1 the TIA was extracted and the model answered
+  correctly, but an older study-reference guard overrode it although the planned first-dose record was
+  cited. In runs 2 and 3 the TIA was not extracted; the model concluded no event was documented, and a
+  guard converted that to UNKNOWN.
+- **Steroid window (UNKNOWN in 3/3, acceptable but not reasoned):** the prednisone course was stored
+  with its start date (2026-06-14), not its last dose (2026-06-18), and the code-computed window did not
+  treat it as a dated administration. The immunodeficiency part of the same criterion was never assessed.
+- **Brain MRI (UNKNOWN in 6/6, acceptable):** guards blocked a clearance the record supports.
+- **Sanity criteria:** correct in every run.
+
+The finding: zero unsafe clearances on the development patients (SYN-002, SYN-003) did not generalize.
+The guards blocked the failure patterns they were written for, in the wordings they were written for.
+Any fix designed from these results makes SYN-004 a development test; its after-fix results will be
+reported separately.
+
+Reports, evidence, OCR text and logs are in `data/eval/syn004_runs/run1..3`, with the full layer audit
+in `layer_audit.json`.
+
 Synthetic data only. Not clinical validation.
