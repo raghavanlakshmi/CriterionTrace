@@ -346,25 +346,57 @@ ADMINISTRATIVE_LINE = re.compile(
 )
 
 
+def content_sentences(page: DocumentPage) -> list[tuple[int, str]]:
+    """Join PDF wraps while keeping labelled fields and page boundaries intact."""
+    sentences = []
+    pending = []
+    first_line = 1
+    def flush():
+        if pending:
+            text = " ".join(pending)
+            for sentence in re.split(r"(?<=[.!?])\s+(?=[A-Z0-9])", text):
+                if sentence.strip():
+                    sentences.append((first_line, sentence.strip()))
+            pending.clear()
+    for number, raw in enumerate(page.text.splitlines(), 1):
+        line = raw.strip()
+        if not line:
+            flush()
+            continue
+        heading = (len(line.split()) <= 8 and not re.search(r"[.!?:;\d]", line)
+                   and (line.istitle() or bool(re.search(
+                       r"\b(?:summary|history|plan|findings|values|consultation|follow-up|overview|letter|results)\s*$", line, re.I))))
+        if ADMINISTRATIVE_LINE.fullmatch(line) or heading or (line.endswith(':') and len(line.split()) <= 8):
+            flush()
+            continue
+        labelled = bool(re.match(r"^[\w ()/-]{1,50}:", line))
+        if labelled:
+            flush()
+        if not pending:
+            first_line = number
+        pending.append(line)
+        if re.search(r"[.!?]$", line) or labelled:
+            flush()
+    flush()
+    return sentences
+
+
 def uncovered_content_lines(pages: Iterable[DocumentPage], evidence: Iterable[EvidenceItem]) -> list[dict]:
-    """Measure literal line coverage, not clinical correctness or model confidence."""
+    """Report uncovered sentences after whitespace-normalized quote coverage.
+
+    The public function name and line_number remain for saved-output compatibility;
+    line_number identifies the sentence's starting source line, not a raw-line gap.
+    """
     page_list = list(pages)
     verified = verify_quotes(evidence, page_list)
     gaps = []
     for page in page_list:
         quotes = [_normalize(e.evidence_text) for e in verified
                   if e.quote_verified and (e.source_file, e.source_page) == (page.filename, page.page_number)]
-        for number, line in enumerate(page.text.splitlines(), 1):
-            line = line.strip()
-            if not line or ADMINISTRATIVE_LINE.fullmatch(line):
-                continue
-            # A short heading ending in ':' has no fact value. Never ignore a
-            # labelled fact such as 'Diagnosis: ...' or a family-history line.
-            if line.endswith(':') and len(line.split()) <= 8:
-                continue
-            if not any(_normalize(line) in quote for quote in quotes):
+        for sentence_number, (number, sentence) in enumerate(content_sentences(page), 1):
+            if not any(_normalize(sentence) in quote for quote in quotes):
                 gaps.append({'source_file': page.filename, 'source_page': page.page_number,
-                             'line_number': number, 'text': line,
+                             'line_number': number, 'sentence_number': sentence_number, 'text': sentence,
                              'message': 'Not captured by the tool, review manually'})
     return gaps
 
