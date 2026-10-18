@@ -1,0 +1,176 @@
+[
+  {
+    "original_run": 2,
+    "saved_review_list_contains_missing_diagnosis": true,
+    "saved_gaps": [
+      {
+        "source_file": "neurology_note_2026.pdf",
+        "source_page": 1,
+        "line_number": 12,
+        "sentence_number": 5,
+        "text": "Assessment: transient ischemic attack on 2026-02-09.",
+        "message": "Not captured by the tool, review manually"
+      }
+    ],
+    "replayed_second_pass_triggered": true,
+    "retry_pages": [
+      [
+        "neurology_note_2026.pdf"
+      ]
+    ],
+    "replayed_gaps": [
+      {
+        "source_file": "neurology_note_2026.pdf",
+        "source_page": 1,
+        "line_number": 7,
+        "sentence_number": 1,
+        "text": "Follow-up after emergency visit Ms.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "neurology_note_2026.pdf",
+        "source_page": 1,
+        "line_number": 7,
+        "sentence_number": 2,
+        "text": "Roe presented to the emergency department on 2026-02-09 with sudden weakness of the left arm and slurred speech, which resolved completely within 30 minutes.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "neurology_note_2026.pdf",
+        "source_page": 1,
+        "line_number": 7,
+        "sentence_number": 3,
+        "text": "Neurological examination at this visit is normal.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "neurology_note_2026.pdf",
+        "source_page": 1,
+        "line_number": 11,
+        "sentence_number": 4,
+        "text": "MRI brain on 2026-02-10: no acute infarct, no hemorrhage, no intracranial metastases.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "neurology_note_2026.pdf",
+        "source_page": 1,
+        "line_number": 12,
+        "sentence_number": 5,
+        "text": "Assessment: transient ischemic attack on 2026-02-09.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "neurology_note_2026.pdf",
+        "source_page": 1,
+        "line_number": 12,
+        "sentence_number": 6,
+        "text": "Started aspirin 81 mg daily and atorvastatin.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "neurology_note_2026.pdf",
+        "source_page": 1,
+        "line_number": 12,
+        "sentence_number": 7,
+        "text": "Plan:",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "neurology_note_2026.pdf",
+        "source_page": 1,
+        "line_number": 13,
+        "sentence_number": 8,
+        "text": "carotid ultrasound; return immediately for new symptoms.",
+        "message": "Not captured by the tool, review manually"
+      }
+    ],
+    "historical_retry_note": "Original runner saved no per-pass trace. The frozen algorithm and saved evidence deterministically reproduce the retry trigger; original logs alone cannot prove a successful second API response."
+  },
+  {
+    "original_run": 3,
+    "saved_review_list_contains_missing_diagnosis": true,
+    "saved_gaps": [
+      {
+        "source_file": "neurology_note_2026.pdf",
+        "source_page": 1,
+        "line_number": 12,
+        "sentence_number": 5,
+        "text": "Assessment: transient ischemic attack on 2026-02-09.",
+        "message": "Not captured by the tool, review manually"
+      }
+    ],
+    "replayed_second_pass_triggered": true,
+    "retry_pages": [
+      [
+        "neurology_note_2026.pdf"
+      ]
+    ],
+    "replayed_gaps": [
+      {
+        "source_file": "neurology_note_2026.pdf",
+        "source_page": 1,
+        "line_number": 7,
+        "sentence_number": 1,
+        "text": "Follow-up after emergency visit Ms.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "neurology_note_2026.pdf",
+        "source_page": 1,
+        "line_number": 7,
+        "sentence_number": 2,
+        "text": "Roe presented to the emergency department on 2026-02-09 with sudden weakness of the left arm and slurred speech, which resolved completely within 30 minutes.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "neurology_note_2026.pdf",
+        "source_page": 1,
+        "line_number": 7,
+        "sentence_number": 3,
+        "text": "Neurological examination at this visit is normal.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "neurology_note_2026.pdf",
+        "source_page": 1,
+        "line_number": 11,
+        "sentence_number": 4,
+        "text": "MRI brain on 2026-02-10: no acute infarct, no hemorrhage, no intracranial metastases.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "neurology_note_2026.pdf",
+        "source_page": 1,
+        "line_number": 12,
+        "sentence_number": 5,
+        "text": "Assessment: transient ischemic attack on 2026-02-09.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "neurology_note_2026.pdf",
+        "source_page": 1,
+        "line_number": 12,
+        "sentence_number": 6,
+        "text": "Started aspirin 81 mg daily and atorvastatin.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "neurology_note_2026.pdf",
+        "source_page": 1,
+        "line_number": 12,
+        "sentence_number": 7,
+        "text": "Plan:",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "neurology_note_2026.pdf",
+        "source_page": 1,
+        "line_number": 13,
+        "sentence_number": 8,
+        "text": "carotid ultrasound; return immediately for new symptoms.",
+        "message": "Not captured by the tool, review manually"
+      }
+    ],
+    "historical_retry_note": "Original runner saved no per-pass trace. The frozen algorithm and saved evidence deterministically reproduce the retry trigger; original logs alone cannot prove a successful second API response."
+  }
+]
