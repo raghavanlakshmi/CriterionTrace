@@ -1,8 +1,10 @@
-"""Output guardrails for research-trial prescreening."""
+﻿"""Output guardrails for research-trial prescreening."""
 
 from __future__ import annotations
 
 import re
+import calendar
+from datetime import date, timedelta
 
 from .schemas import CriterionAssessment
 
@@ -254,6 +256,70 @@ def time_window_problem(item: CriterionAssessment) -> str | None:
     return None
 
 
+
+NUMBER_WORDS = dict(zip("one two three four five six seven eight nine ten eleven twelve".split(), range(1, 13)))
+
+
+def computed_study_window(item: CriterionAssessment) -> tuple[str, str] | None:
+    """Compute a recent-therapy window from cited actual and planned events only."""
+    if item.criterion_type != "exclusion" or item.status == "POTENTIAL_CONFLICT":
+        return None
+    window = re.search(r"\bwithin\s+(\d+|" + "|".join(NUMBER_WORDS) + r")\s*[- ]?\s*(days?|weeks?|months?|years?)\b", item.criterion_text, re.I)
+    if not window or not STUDY_REFERENCE.search(item.criterion_text):
+        return None
+    # Only broad treatment windows; a specific drug or modality requires a
+    # clinically matched administration, which this arithmetic guard cannot infer.
+    treatment_scope = re.search(r"\b(?:anti[- ]?cancer (?:therapy|treatment)|systemic (?:therapy|treatment)|chemotherapy|therapy)\b", item.criterion_text, re.I)
+    if not treatment_scope:
+        return None
+    scope_text = re.sub(r"\([^)]*\)", "", item.criterion_text).split(";")[0]
+    if re.search(r"\b(?:radiation|radiotherapy|targeted|inhibitor|immunotherapy|antibod\w*)\b", scope_text, re.I):
+        return None
+    cited = [e for e in item.patient_evidence if e.quote_verified]
+    references, events = [], []
+    for e in cited:
+        # Legacy evidence may contain an explicitly dated study-dose anchor in
+        # the same verified quote as the administration. Preserve that support.
+        for anchor in re.finditer("(?:" + STUDY_REFERENCE.pattern + r")\s*(?:date)?\s*(?:is|was|on|scheduled for|planned for|:|=)?\s*(\d{4}-\d{2}-\d{2})\b", e.evidence_text, re.I):
+            try:
+                references.append(date.fromisoformat(anchor.group(anchor.re.groups)))
+            except ValueError:
+                pass
+        if not e.date or e.date not in e.evidence_text:
+            continue
+        try:
+            day = date.fromisoformat(e.date)
+        except ValueError:
+            continue
+        if e.category == "planned_study_event" and re.search(r"first[ -]+(?:study[ -]+|trial[ -]+)?dose|cycle\s+1\s+day\s+1", e.evidence_text, re.I):
+            references.append(day)
+        elif e.category == "prior_treatment" and e.source_kind != "medication_list" and not MEDICATION_LIST.search(e.source_file):
+            if re.search(r"\b(?:administered|given|received|infused|last dose|stopped|discontinued)\b", e.evidence_text, re.I) and not re.search(r"\b(?:not|never)\s+(?:administered|given|received)|\b(?:planned|scheduled|discussed)\b", e.evidence_text, re.I):
+                events.append(day)
+    if not references or not events:
+        return "UNKNOWN", "Computed time-window guard: missing dated administration or planned first-dose reference date."
+    if len(set(references)) != 1:
+        return "UNKNOWN", "Computed time-window guard: conflicting planned first-dose reference dates; reviewer must reconcile them."
+    reference = references[0]
+    amount = int(window[1]) if window[1].isdigit() else NUMBER_WORDS[window[1].lower()]
+    unit = window[2].lower()
+    if unit.startswith(('day', 'week')):
+        lower = reference - timedelta(days=amount * (7 if unit.startswith('week') else 1))
+    else:
+        months = amount * (12 if unit.startswith('year') else 1)
+        year, month = divmod(reference.year * 12 + reference.month - 1 - months, 12)
+        if year < 1:
+            return "UNKNOWN", "Computed time-window guard: unsupported calendar boundary."
+        month += 1
+        lower = date(year, month, min(reference.day, calendar.monthrange(year, month)[1]))
+    inside = [day for day in events if lower <= day <= reference]
+    event = max(inside or events)
+    interval = (reference - event).days
+    detail = f"Computed time-window guard: administration {event.isoformat()}, planned first dose {reference.isoformat()}; code-computed interval {interval} days; window {amount} {unit} (starts {lower.isoformat()})."
+    if inside:
+        return "DOES_NOT_MEET", detail + " Documented administration is inside the window; the exclusion appears to apply. Planned dates require human verification."
+    return "UNKNOWN", detail + " No cited administration is inside the window; absence of later therapy is not established."
+
 def has_biomarker_treatment_reasoning(explanation: str) -> bool:
     """Flag inference language linking a test finding to treatment, not citations."""
     for sentence in re.split(r"(?<=[.!?])\s+", explanation):
@@ -350,6 +416,12 @@ def review_assessments(assessments: list[CriterionAssessment]) -> tuple[list[Cri
         elif is_conditional_or_option_rejection(item):
             update = {"status": "UNKNOWN", "explanation": f"This item is a conditional branch or one option among alternatives, so not meeting it does not show exclusion; reviewer decides applicability. Original reasoning: {item.explanation}"}
             flags.append(f"{item.criterion_id}: conditional or option sub-item; DOES_NOT_MEET converted to UNKNOWN.")
+        # Arithmetic replaces a model conclusion only after consistency and
+        # other guards; a detected contradiction must remain UNKNOWN.
+        if not status_contradicts_explanation(item) and (computed := computed_study_window(item)):
+            status, detail = computed
+            update = {"status": status, "explanation": detail + " Original reasoning: " + item.explanation}
+            flags.append(f"{item.criterion_id}: {detail}")
         if any(not evidence.quote_verified for evidence in item.patient_evidence):
             update = {"status": "UNKNOWN", "explanation": "A cited source quote was not verified; converted to UNKNOWN."}
             flags.append(f"{item.criterion_id}: unverified source quote.")
