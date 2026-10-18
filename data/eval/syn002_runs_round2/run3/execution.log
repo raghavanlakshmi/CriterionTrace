@@ -1,0 +1,44 @@
+
+== SYN-002: 6 documents, 9 pages
+   extracted 38 records (38 verified)
+   extraction · buried_malignancy: comorbidity: Hypertension, on lisinopril (primary_care_annual_visit_2023.pdf p2, verified=True); comorbidity: Hyperlipidemia, on atorvastatin (primary_care_annual_visit_2023.pdf p2, verified=True); comorbidity: Gastroesophageal reflux disease (primary_care_annual_visit_2023.pdf p2, verified=True); prior_treatment: Prostate adenocarcinoma, Gleason 3+4=7, treated with radical prostatectomy in March 2022 (primary_care_annual_visit_2023.pdf p2, verified=True); comorbidity: Osteoarthritis, right knee (primary_care_annual_visit_2023.pdf p2, verified=True); prior_treatment: treated with radical prostatectomy in March 2022 (primary_care_annual_visit_2023.pdf p2, verified=True); diagnosis: Prostate adenocarcinoma, Gleason 3+4=7 (primary_care_annual_visit_2023.pdf p2, verified=True); comorbidity: Hypertension (primary_care_annual_visit_2023.pdf p2, verified=True); current_medication: lisinopril (primary_care_annual_visit_2023.pdf p2, verified=True); comorbidity: Hyperlipidemia (primary_care_annual_visit_2023.pdf p2, verified=True); current_medication: atorvastatin (primary_care_annual_visit_2023.pdf p2, verified=True)
+   extraction · buried_kras_inhibitor: biomarker: Sotorasib 960 mg by mouth once daily (started 2025-06-10) (outside_pharmacy_medication_list_2025.pdf p1, verified=True); current_medication: Lisinopril 20 mg by mouth once daily (outside_pharmacy_medication_list_2025.pdf p1, verified=True); current_medication: Atorvastatin 40 mg by mouth once daily (outside_pharmacy_medication_list_2025.pdf p1, verified=True); current_medication: Omeprazole 20 mg by mouth once daily (outside_pharmacy_medication_list_2025.pdf p1, verified=True); current_medication: Ondansetron 8 mg by mouth every 8 hours as needed for nausea (outside_pharmacy_medication_list_2025.pdf p1, verified=True); current_medication: Loperamide 2 mg by mouth as needed for diarrhea (outside_pharmacy_medication_list_2025.pdf p1, verified=True)
+   extraction · family_history_decoy: NOT EXTRACTED
+   extraction · last_chemo_dose: prior_treatment: FOLFIRI Cycle 8 administered on 2026-03-20 (infusion_record.pdf p1, verified=True); prior_treatment: Chemotherapy administration Regimen: FOLFIRI Cycle 8 administered on 2026-03-20. (infusion_record.pdf p1, verified=True)
+   rule_baseline NCT07559760 EXC-19 expected DOES_NOT_MEET got UNKNOWN            MISS
+   rule_baseline NCT06412198 EXC-02 expected DOES_NOT_MEET got UNKNOWN            MISS
+   rule_baseline NCT06252649 EXC-03 expected DOES_NOT_MEET got UNKNOWN            MISS
+   rule_baseline NCT06412198 INC-01 expected MEETS         got UNKNOWN            MISS
+   rule_baseline NCT06412198 INC-02 expected MEETS         got MEETS              ok
+   rule_baseline NCT07559760 INC-02 expected MEETS         got MEETS              ok
+   rule_baseline NCT07559760 EXC-05 expected UNKNOWN       got UNKNOWN            ok
+   llm_assessor  NCT07559760 EXC-19 expected DOES_NOT_MEET got DOES_NOT_MEET      ok
+   llm_assessor  NCT06412198 EXC-02 expected DOES_NOT_MEET got DOES_NOT_MEET      ok
+   llm_assessor  NCT06252649 EXC-03 expected DOES_NOT_MEET got DOES_NOT_MEET      ok
+   llm_assessor  NCT06412198 INC-01 expected MEETS         got MEETS              ok
+   llm_assessor  NCT06412198 INC-02 expected MEETS         got MEETS              ok
+   llm_assessor  NCT07559760 INC-02 expected MEETS         got MEETS              ok
+   llm_assessor  NCT07559760 EXC-05 expected UNKNOWN       got UNKNOWN            ok
+   wrote SYN-002_buried_test_report.md / .json
+
+== SYN-002-control: 6 documents, 9 pages
+   extracted 33 records (33 verified)
+   extraction · buried_malignancy: NOT EXTRACTED
+   extraction · buried_kras_inhibitor: NOT EXTRACTED
+   extraction · family_history_decoy: NOT EXTRACTED
+   extraction · last_chemo_dose: prior_treatment: Chemotherapy administration Regimen: FOLFIRI Cycle 8 administered on 2026-03-20 (infusion_record.pdf p1, verified=True)
+   rule_baseline NCT07559760 EXC-19 expected UNKNOWN       got UNKNOWN            ok
+   rule_baseline NCT06412198 EXC-02 expected UNKNOWN       got UNKNOWN            ok
+   rule_baseline NCT06252649 EXC-03 expected UNKNOWN       got UNKNOWN            ok
+   rule_baseline NCT06412198 INC-01 expected MEETS         got UNKNOWN            MISS
+   rule_baseline NCT06412198 INC-02 expected MEETS         got MEETS              ok
+   rule_baseline NCT07559760 INC-02 expected MEETS         got MEETS              ok
+   rule_baseline NCT07559760 EXC-05 expected UNKNOWN       got UNKNOWN            ok
+   llm_assessor  NCT07559760 EXC-19 expected UNKNOWN       got UNKNOWN            ok
+   llm_assessor  NCT06412198 EXC-02 expected UNKNOWN       got UNKNOWN            ok
+   llm_assessor  NCT06252649 EXC-03 expected UNKNOWN       got UNKNOWN            ok
+   llm_assessor  NCT06412198 INC-01 expected MEETS         got MEETS              ok
+   llm_assessor  NCT06412198 INC-02 expected MEETS         got MEETS              ok
+   llm_assessor  NCT07559760 INC-02 expected MEETS         got MEETS              ok
+   llm_assessor  NCT07559760 EXC-05 expected UNKNOWN       got UNKNOWN            ok
+   wrote SYN-002-control_buried_test_report.md / .json

@@ -1,0 +1,165 @@
+{
+  "frozen_commit": "caa440b3a324428f7fdb2dc62468ad0a311667a4",
+  "offline_before": 232,
+  "offline_after": 271,
+  "final": {
+    "002": {
+      "exact": 39,
+      "acceptable": 39,
+      "total": 42,
+      "unsafe": 0
+    },
+    "003": {
+      "exact": 28,
+      "acceptable": 28,
+      "total": 30,
+      "unsafe": 0
+    }
+  },
+  "attempt1": {
+    "002": {
+      "exact": 42,
+      "acceptable": 42,
+      "total": 42,
+      "unsafe": 0
+    },
+    "003": {
+      "exact": 23,
+      "acceptable": 28,
+      "total": 30,
+      "unsafe": 0
+    }
+  },
+  "prior": {
+    "002": {
+      "exact": 41,
+      "acceptable": 41,
+      "total": 42,
+      "unsafe": 0
+    },
+    "003": {
+      "exact": 20,
+      "acceptable": 26,
+      "total": 30,
+      "unsafe": 4
+    }
+  },
+  "syn001": {
+    "in_sample": {
+      "before": [
+        28,
+        29
+      ],
+      "after": [
+        28,
+        29
+      ],
+      "unsafe_before": 0,
+      "unsafe_after": 0
+    },
+    "held_out": {
+      "before": [
+        21,
+        21
+      ],
+      "after": [
+        21,
+        21
+      ],
+      "unsafe_before": 0,
+      "unsafe_after": 0
+    }
+  },
+  "guards": {
+    "History scope / exception / narrower negative": {
+      "002": 4,
+      "003": 4
+    },
+    "Status / conclusion contradiction": {
+      "002": 0,
+      "003": 1
+    },
+    "Computed therapy window": {
+      "002": 6,
+      "003": 6
+    },
+    "Legacy missing study reference": {
+      "002": 0,
+      "003": 6
+    },
+    "Prior-exposure absence": {
+      "002": 3,
+      "003": 2
+    },
+    "Unsupported conclusion (no citations)": {
+      "002": 5,
+      "003": 1
+    },
+    "Partial inclusion evidence": {
+      "002": 0,
+      "003": 0
+    },
+    "Unverified citation": {
+      "002": 0,
+      "003": 0
+    },
+    "Medication snapshot wording": {
+      "002": 2,
+      "003": 0
+    }
+  },
+  "sentence_coverage": [
+    {
+      "patient": "SYN-003-control",
+      "run": "run1",
+      "before": 19,
+      "same_evidence_after": 13,
+      "fresh_after": 13,
+      "unextracted_named_sentences": [
+        "Pembrolizumab was discussed as a possible option on a basket study, but she declined and it was not started."
+      ]
+    },
+    {
+      "patient": "SYN-003",
+      "run": "run1",
+      "before": 19,
+      "same_evidence_after": 11,
+      "fresh_after": 10,
+      "unextracted_named_sentences": []
+    },
+    {
+      "patient": "SYN-003-control",
+      "run": "run2",
+      "before": 20,
+      "same_evidence_after": 13,
+      "fresh_after": 14,
+      "unextracted_named_sentences": [
+        "Pembrolizumab was discussed as a possible option on a basket study, but she declined and it was not started."
+      ]
+    },
+    {
+      "patient": "SYN-003",
+      "run": "run2",
+      "before": 20,
+      "same_evidence_after": 11,
+      "fresh_after": 10,
+      "unextracted_named_sentences": []
+    },
+    {
+      "patient": "SYN-003-control",
+      "run": "run3",
+      "before": 19,
+      "same_evidence_after": 13,
+      "fresh_after": 13,
+      "unextracted_named_sentences": []
+    },
+    {
+      "patient": "SYN-003",
+      "run": "run3",
+      "before": 20,
+      "same_evidence_after": 11,
+      "fresh_after": 10,
+      "unextracted_named_sentences": []
+    }
+  ]
+}

@@ -1,0 +1,732 @@
+{
+  "label_status": "Reviewed By Lakshmi on 10/3/26",
+  "results": {
+    "rule_baseline": {
+      "labels": 29,
+      "accuracy": 0.8276,
+      "decidable_labels": 12,
+      "decided_correctly": 0.5833,
+      "unsafe_false_clearance": 0,
+      "false_exclusion": 0,
+      "unknown_to_meets": 0,
+      "confusion_matrix": {
+        "MEETS": {
+          "MEETS": 3,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 5,
+          "POTENTIAL_CONFLICT": 0
+        },
+        "DOES_NOT_MEET": {
+          "MEETS": 0,
+          "DOES_NOT_MEET": 1,
+          "UNKNOWN": 0,
+          "POTENTIAL_CONFLICT": 0
+        },
+        "UNKNOWN": {
+          "MEETS": 0,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 17,
+          "POTENTIAL_CONFLICT": 0
+        },
+        "POTENTIAL_CONFLICT": {
+          "MEETS": 0,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 0,
+          "POTENTIAL_CONFLICT": 3
+        }
+      }
+    },
+    "llm_assessor": {
+      "labels": 29,
+      "accuracy": 0.9655,
+      "decidable_labels": 12,
+      "decided_correctly": 0.9167,
+      "unsafe_false_clearance": 0,
+      "false_exclusion": 0,
+      "unknown_to_meets": 0,
+      "confusion_matrix": {
+        "MEETS": {
+          "MEETS": 7,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 1,
+          "POTENTIAL_CONFLICT": 0
+        },
+        "DOES_NOT_MEET": {
+          "MEETS": 0,
+          "DOES_NOT_MEET": 1,
+          "UNKNOWN": 0,
+          "POTENTIAL_CONFLICT": 0
+        },
+        "UNKNOWN": {
+          "MEETS": 0,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 17,
+          "POTENTIAL_CONFLICT": 0
+        },
+        "POTENTIAL_CONFLICT": {
+          "MEETS": 0,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 0,
+          "POTENTIAL_CONFLICT": 3
+        }
+      }
+    }
+  },
+  "rows": [
+    {
+      "method": "rule_baseline",
+      "trial": "NCT06412198",
+      "criterion_id": "INC-01",
+      "expected": "MEETS",
+      "predicted": "UNKNOWN",
+      "match": false,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The matched fact covers only part of this criterion; its additional requirements are not documented."
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT06412198",
+      "criterion_id": "INC-02",
+      "expected": "MEETS",
+      "predicted": "MEETS",
+      "match": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "Explicit verified evidence matches the central condition or biomarker wording; human verification is required."
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT06412198",
+      "criterion_id": "INC-03",
+      "expected": "MEETS",
+      "predicted": "UNKNOWN",
+      "match": false,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment."
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT06412198",
+      "criterion_id": "INC-05",
+      "expected": "UNKNOWN",
+      "predicted": "UNKNOWN",
+      "match": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment."
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT06412198",
+      "criterion_id": "INC-11",
+      "expected": "POTENTIAL_CONFLICT",
+      "predicted": "POTENTIAL_CONFLICT",
+      "match": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "Conservative offline comparison of all documented ECOG values; live LLM assessment was not requested."
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT06412198",
+      "criterion_id": "INC-13",
+      "expected": "MEETS",
+      "predicted": "UNKNOWN",
+      "match": false,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment."
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT06412198",
+      "criterion_id": "INC-14",
+      "expected": "UNKNOWN",
+      "predicted": "UNKNOWN",
+      "match": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment."
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT06412198",
+      "criterion_id": "INC-18",
+      "expected": "UNKNOWN",
+      "predicted": "UNKNOWN",
+      "match": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment."
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT06412198",
+      "criterion_id": "EXC-01",
+      "expected": "UNKNOWN",
+      "predicted": "UNKNOWN",
+      "match": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment."
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT06412198",
+      "criterion_id": "EXC-02",
+      "expected": "UNKNOWN",
+      "predicted": "UNKNOWN",
+      "match": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment."
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT06412198",
+      "criterion_id": "EXC-05",
+      "expected": "UNKNOWN",
+      "predicted": "UNKNOWN",
+      "match": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment."
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT06412198",
+      "criterion_id": "EXC-08",
+      "expected": "UNKNOWN",
+      "predicted": "UNKNOWN",
+      "match": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment."
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT06252649",
+      "criterion_id": "INC-01",
+      "expected": "MEETS",
+      "predicted": "MEETS",
+      "match": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "Explicit verified evidence matches the central condition or biomarker wording; human verification is required."
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT06252649",
+      "criterion_id": "INC-02",
+      "expected": "UNKNOWN",
+      "predicted": "UNKNOWN",
+      "match": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The matched fact covers only part of this criterion; its additional requirements are not documented."
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT06252649",
+      "criterion_id": "INC-03",
+      "expected": "UNKNOWN",
+      "predicted": "UNKNOWN",
+      "match": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment."
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT06252649",
+      "criterion_id": "INC-04",
+      "expected": "POTENTIAL_CONFLICT",
+      "predicted": "POTENTIAL_CONFLICT",
+      "match": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "Conservative offline comparison of all documented ECOG values; live LLM assessment was not requested."
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT06252649",
+      "criterion_id": "EXC-03",
+      "expected": "UNKNOWN",
+      "predicted": "UNKNOWN",
+      "match": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment."
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT06252649",
+      "criterion_id": "EXC-04",
+      "expected": "UNKNOWN",
+      "predicted": "UNKNOWN",
+      "match": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment."
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT07559760",
+      "criterion_id": "INC-01",
+      "expected": "MEETS",
+      "predicted": "UNKNOWN",
+      "match": false,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment."
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT07559760",
+      "criterion_id": "INC-02",
+      "expected": "MEETS",
+      "predicted": "MEETS",
+      "match": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "Explicit verified evidence matches the central condition or biomarker wording; human verification is required."
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT07559760",
+      "criterion_id": "INC-03",
+      "expected": "UNKNOWN",
+      "predicted": "UNKNOWN",
+      "match": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The matched fact covers only part of this criterion; its additional requirements are not documented."
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT07559760",
+      "criterion_id": "INC-07",
+      "expected": "POTENTIAL_CONFLICT",
+      "predicted": "POTENTIAL_CONFLICT",
+      "match": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "Conservative offline comparison of all documented ECOG values; live LLM assessment was not requested."
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT07559760",
+      "criterion_id": "INC-10",
+      "expected": "UNKNOWN",
+      "predicted": "UNKNOWN",
+      "match": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment."
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT07559760",
+      "criterion_id": "INC-12",
+      "expected": "UNKNOWN",
+      "predicted": "UNKNOWN",
+      "match": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment."
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT07559760",
+      "criterion_id": "INC-15",
+      "expected": "UNKNOWN",
+      "predicted": "UNKNOWN",
+      "match": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment."
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT07559760",
+      "criterion_id": "EXC-01",
+      "expected": "MEETS",
+      "predicted": "UNKNOWN",
+      "match": false,
+      "judgment_call": true,
+      "flags": [],
+      "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment."
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT07559760",
+      "criterion_id": "EXC-03",
+      "expected": "UNKNOWN",
+      "predicted": "UNKNOWN",
+      "match": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment."
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT07559760",
+      "criterion_id": "EXC-19",
+      "expected": "UNKNOWN",
+      "predicted": "UNKNOWN",
+      "match": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment."
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT06782685",
+      "criterion_id": "INC-02",
+      "expected": "DOES_NOT_MEET",
+      "predicted": "DOES_NOT_MEET",
+      "match": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "Verified diagnosis (colorectal) does not match the cancer type this criterion requires (pancreatic); human verification is required."
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT06412198",
+      "criterion_id": "INC-01",
+      "expected": "MEETS",
+      "predicted": "MEETS",
+      "match": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The patient has a histologically confirmed diagnosis of metastatic colorectal adenocarcinoma (index 8), which is advanced/metastatic colorectal cancer. The pathology report confirms the presence of a KRAS G12C mutation (index 14). The tumor is microsatellite stable (MSS) as per the MSI test (index 15). The patient has received prior lines of therapy including FOLFOX followed by FOLFIRI (index 10), indicating more than one prior treatment line. All elements of the inclusion criterion, including histologic confirmation, disease status, KRAS G12C mutation, microsatellite stability, and prior therapy, are met based on the cited evidence."
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT06412198",
+      "criterion_id": "INC-02",
+      "expected": "MEETS",
+      "predicted": "MEETS",
+      "match": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The inclusion criterion requires confirmed KRASG12C mutation status. Evidence index 2 reports 'KRAS G12C+' and evidence index 14 specifically states 'KRAS: G12C mutation detected' from pathology report, which confirms the KRASG12C mutation status for the patient. Therefore, the criterion is met."
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT06412198",
+      "criterion_id": "INC-03",
+      "expected": "MEETS",
+      "predicted": "MEETS",
+      "match": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The patient has metastatic colorectal adenocarcinoma with metastatic involvement of the liver. Metastatic disease is by definition unresectable or widespread and qualifies as 'unresectable or metastatic disease' as required by the inclusion criterion."
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT06412198",
+      "criterion_id": "INC-05",
+      "expected": "UNKNOWN",
+      "predicted": "UNKNOWN",
+      "match": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The evidence provided includes diagnostic information, treatment history, performance status, and biomarker status but does not document the presence of measurable disease according to RECIST 1.1 criteria. There is no imaging report or radiological assessment cited that confirms measurable lesions meeting RECIST 1.1 to support this inclusion criterion. Therefore, based on the current evidence, it is unknown if the patient meets the presence of measurable disease per RECIST 1.1."
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT06412198",
+      "criterion_id": "INC-11",
+      "expected": "POTENTIAL_CONFLICT",
+      "predicted": "POTENTIAL_CONFLICT",
+      "match": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The inclusion criterion requires an ECOG performance status of 0 or 1. There is evidence of the patient having ECOG 1 status (indices 0 and 11), which meets the criterion. However, there is also evidence from index 12 showing the patient has an ECOG 2 status at a later date, which does not meet the inclusion criterion. This conflicting information about the ECOG performance status creates uncertainty regarding the patient's eligibility based on this criterion."
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT06412198",
+      "criterion_id": "INC-13",
+      "expected": "MEETS",
+      "predicted": "MEETS",
+      "match": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The patient has an absolute neutrophil count (ANC) of 2.1 x 10^9/L, which is equivalent to 2,100/mm3. This is greater than the required minimum of 1.0 x 10^9/L (1,000/mm3) specified in the inclusion criterion."
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT06412198",
+      "criterion_id": "INC-14",
+      "expected": "UNKNOWN",
+      "predicted": "UNKNOWN",
+      "match": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "There is no evidence provided about the patient's platelet count. The criterion requires a platelet count of at least 100,000/mm3 (100 x 10^9/L), but no platelet count value is found in the evidence set. Therefore, the status is UNKNOWN due to missing platelet count information."
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT06412198",
+      "criterion_id": "INC-18",
+      "expected": "UNKNOWN",
+      "predicted": "UNKNOWN",
+      "match": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The inclusion criterion requires calculated creatinine clearance (Cockcroft-Gault) ≥ 60 mL/min at screening. Evidence shows serum creatinine of 0.9 mg/dL (index 5), patient is female (index 7) and 58 years old (index 6). However, the patient's weight, which is necessary to calculate the creatinine clearance using Cockcroft-Gault, is not provided. Without weight, the calculation cannot be completed, so we cannot definitively determine if the criterion is met."
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT06412198",
+      "criterion_id": "EXC-01",
+      "expected": "UNKNOWN",
+      "predicted": "UNKNOWN",
+      "match": true,
+      "judgment_call": false,
+      "flags": [
+        "EXC-01: unsupported conclusion converted to UNKNOWN."
+      ],
+      "explanation": "No patient evidence supports this conclusion; converted to UNKNOWN."
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT06412198",
+      "criterion_id": "EXC-02",
+      "expected": "UNKNOWN",
+      "predicted": "UNKNOWN",
+      "match": true,
+      "judgment_call": false,
+      "flags": [
+        "EXC-02: unsupported conclusion converted to UNKNOWN.",
+        "EXC-02: explanation contains biomarker-to-treatment reasoning; no supported treatment citation, converted to UNKNOWN."
+      ],
+      "explanation": "Biomarker-to-treatment inference has no cited treatment evidence; converted to UNKNOWN. Original reasoning: The patient has documented prior treatments including FOLFOX and FOLFIRI, but there is no evidence in the provided records indicating prior exposure to KRAS G12C inhibition therapy. The presence of a KRAS G12C mutation (biomarker) does not imply prior KRAS G12C inhibitor treatment. Therefore, this exclusion criterion does not apply based on the available evidence."
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT06412198",
+      "criterion_id": "EXC-05",
+      "expected": "UNKNOWN",
+      "predicted": "UNKNOWN",
+      "match": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "There is no evidence provided in the supplied documents describing the presence or absence of active brain metastases, the status of neurological stability, corticosteroid use, or prednisone dose. Without explicit information on these aspects, it is impossible to determine if this exclusion criterion applies or does not apply to the patient."
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT06412198",
+      "criterion_id": "EXC-08",
+      "expected": "UNKNOWN",
+      "predicted": "UNKNOWN",
+      "match": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The exclusion criterion requires a negative serum or urine pregnancy test during screening for women of child-bearing potential. While the patient is female (evidence index 7), there is no evidence provided regarding a pregnancy test result. Without documentation of a negative pregnancy test, it is unknown whether this exclusion applies."
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT06252649",
+      "criterion_id": "INC-01",
+      "expected": "MEETS",
+      "predicted": "MEETS",
+      "match": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The patient has a pathologically documented metastatic colorectal adenocarcinoma (evidence 8) and a KRAS p.G12C mutation detected by a locally validated assay (evidence 14). Thus, this meets the inclusion criterion requiring metastatic colorectal adenocarcinoma with KRAS p.G12C mutation."
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT06252649",
+      "criterion_id": "INC-02",
+      "expected": "UNKNOWN",
+      "predicted": "UNKNOWN",
+      "match": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The criterion requires central laboratory detection of the KRAS p.G12C mutation. The evidence indicates the presence of KRAS G12C mutation from biomarker data at indices 2 and 14; however, it is not explicitly stated whether this detection was performed by a central laboratory. Hence, it is unknown if the criterion is met due to the lack of explicit confirmation about the central laboratory testing."
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT06252649",
+      "criterion_id": "INC-03",
+      "expected": "UNKNOWN",
+      "predicted": "UNKNOWN",
+      "match": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "There is evidence that the patient has metastatic colorectal adenocarcinoma with metastatic disease to the liver, which suggests metastatic disease presence. However, there is no explicit documentation of measurable metastatic disease per RECIST v1.1 criteria, such as lesion measurements or imaging reports confirming measurable disease. Without this specific information, it cannot be determined if the measurable metastatic disease per RECIST v1.1 criteria is met."
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT06252649",
+      "criterion_id": "INC-04",
+      "expected": "POTENTIAL_CONFLICT",
+      "predicted": "POTENTIAL_CONFLICT",
+      "match": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The criterion requires an ECOG Performance Status of ≤ 1. There are multiple records of the patient's ECOG status: two sources indicate ECOG 1 (indices 0 and 11), which meets the inclusion criterion. However, there is also one record indicating ECOG 2 (index 12), which does not meet the criterion. This discrepancy creates a potential conflict regarding the patient's true performance status relative to the criterion."
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT06252649",
+      "criterion_id": "EXC-03",
+      "expected": "UNKNOWN",
+      "predicted": "UNKNOWN",
+      "match": true,
+      "judgment_call": false,
+      "flags": [
+        "EXC-03: explanation contains biomarker-to-treatment reasoning; treatment evidence is cited, review the explanation."
+      ],
+      "explanation": "The patient has a KRAS G12C mutation (evidence 2,14), but there is no explicit evidence or documentation indicating prior treatment with a KRAS p.G12C inhibitor. Prior treatments documented are FOLFOX and FOLFIRI (evidence 1,10), but these are not KRAS p.G12C inhibitors. Therefore, it is unknown if the exclusion criterion for previous treatment with a KRAS p.G12C inhibitor applies or not, due to lack of specific treatment evidence."
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT06252649",
+      "criterion_id": "EXC-04",
+      "expected": "UNKNOWN",
+      "predicted": "UNKNOWN",
+      "match": true,
+      "judgment_call": false,
+      "flags": [
+        "EXC-04: History clearance guard: absence of explicit scope-matching negative evidence does not clear this condition history. Converted to UNKNOWN."
+      ],
+      "explanation": "History clearance guard: absence of explicit scope-matching negative evidence does not clear this condition history. Converted to UNKNOWN. Original reasoning: There is no evidence in the provided patient data indicating a history of interstitial pneumonitis or pulmonary fibrosis, nor is there any report or evidence of interstitial pneumonitis or pulmonary fibrosis on a baseline CT scan. Without such evidence, the exclusion criterion is not met."
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT07559760",
+      "criterion_id": "INC-01",
+      "expected": "MEETS",
+      "predicted": "MEETS",
+      "match": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The inclusion criterion requires the patient to be male or female and aged between 18 and 75 years. The evidence shows the patient is female (index 7) and age 58 years (index 6), which fits within the required age range and sex requirements."
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT07559760",
+      "criterion_id": "INC-02",
+      "expected": "MEETS",
+      "predicted": "MEETS",
+      "match": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The patient has a documented diagnosis of metastatic colorectal adenocarcinoma (evidence index 8) and the pathology report confirms KRAS G12C mutation consistent with colorectal adenocarcinoma (evidence index 14). This confirms histological or cytological confirmation of colorectal adenocarcinoma as required by the inclusion criterion."
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT07559760",
+      "criterion_id": "INC-03",
+      "expected": "UNKNOWN",
+      "predicted": "UNKNOWN",
+      "match": true,
+      "judgment_call": false,
+      "flags": [
+        "INC-03: line of therapy not documented; converted to UNKNOWN."
+      ],
+      "explanation": "This criterion depends on the line of therapy, which the cited record does not state; converted to UNKNOWN. Original reasoning: The patient has metastatic colorectal adenocarcinoma which is microsatellite stable (MSS) as confirmed by evidence index 15. The patient received and failed first-line standard treatment with oxaliplatin plus fluoropyrimidine (FOLFOX) as noted at index 10. \"Failed or intolerant\" is interpreted here as having received and completed the first-line therapy. The evidence supports the criterion of unresectable, MSS-type metastatic colorectal cancer with prior exposure to the required first-line therapy."
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT07559760",
+      "criterion_id": "INC-07",
+      "expected": "POTENTIAL_CONFLICT",
+      "predicted": "POTENTIAL_CONFLICT",
+      "match": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "There is conflicting evidence regarding the patient's ECOG performance status. Evidence from 2026-03-10 shows ECOG 1 twice (indices 0 and 11), which meets the inclusion criterion of ECOG 0-1. However, evidence from the next day, 2026-03-11, shows ECOG 2 (index 12), which does not meet the criterion. Due to this discrepancy, the final conclusion about meeting the criterion is uncertain."
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT07559760",
+      "criterion_id": "INC-10",
+      "expected": "UNKNOWN",
+      "predicted": "UNKNOWN",
+      "match": true,
+      "judgment_call": false,
+      "flags": [
+        "INC-10: partial evidence (white blood cells, platelets not documented); converted to UNKNOWN."
+      ],
+      "explanation": "Part of this criterion is not documented (white blood cells, platelets); converted to UNKNOWN. Original reasoning: The inclusion criterion requires hematology values of Hemoglobin (Hb) ≥ 90 g/L, White Blood Cell count (WBC) ≥ 3.0 x 10^9/L, Absolute Neutrophil Count (ANC) ≥ 1.5 x 10^9/L, and Platelet count (PLT) ≥ 90 x 10^9/L. Evidence shows: Hemoglobin is 11.2 g/dL (which converts to 112 g/L, exceeding 90 g/L) and ANC is 2.1 x 10^9/L, which meets the ANC requirement. However, evidence for WBC and Platelet count are not provided, making it unknown if those lab criteria are met. Given that at least some critical hematology values are documented and meet criteria, and no contradictory data is found, the patient currently MEETS the criterion with partial lab data."
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT07559760",
+      "criterion_id": "INC-12",
+      "expected": "UNKNOWN",
+      "predicted": "UNKNOWN",
+      "match": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The inclusion criterion requires a creatinine clearance of >= 50 mL/min calculated by Cockcroft-Gault formula. The evidence shows a serum creatinine of 0.9 mg/dL (index 5) and patient age 58 years (index 6), female sex (index 7), but no direct or calculated creatinine clearance value is provided. Without the actual creatinine clearance calculation or sufficient details (patient weight, which is necessary for Cockcroft-Gault estimation), we cannot confirm if the criterion is met or not."
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT07559760",
+      "criterion_id": "INC-15",
+      "expected": "UNKNOWN",
+      "predicted": "UNKNOWN",
+      "match": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The patient has liver metastases (evidence index 9), which triggers this lab value criterion for TBIL, ALT, and AST levels to be checked. However, there is no available laboratory evidence documenting the patient's TBIL, ALT or AST values. Without the specific liver function test results, it is not possible to determine whether the patient meets the threshold of TBIL ≤ 2 x ULN, ALT ≤ 5 x ULN, and AST ≤ 5 x ULN."
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT07559760",
+      "criterion_id": "EXC-01",
+      "expected": "MEETS",
+      "predicted": "UNKNOWN",
+      "match": false,
+      "judgment_call": true,
+      "flags": [
+        "EXC-01: absence-based clearance of a prior-exposure exclusion converted to UNKNOWN."
+      ],
+      "explanation": "The record does not explicitly rule out this prior exposure; absence from a treatment list is not a negative. Converted to UNKNOWN."
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT07559760",
+      "criterion_id": "EXC-03",
+      "expected": "UNKNOWN",
+      "predicted": "UNKNOWN",
+      "match": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "There is no evidence provided in the patient's records to indicate pregnancy or breast-feeding status. The patient is female, but the data do not mention whether she is pregnant or breast-feeding, so it cannot be determined if this exclusion applies."
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT07559760",
+      "criterion_id": "EXC-19",
+      "expected": "UNKNOWN",
+      "predicted": "UNKNOWN",
+      "match": true,
+      "judgment_call": false,
+      "flags": [
+        "EXC-19: History clearance guard: absence of explicit scope-matching negative evidence does not clear this condition history. Converted to UNKNOWN."
+      ],
+      "explanation": "History clearance guard: absence of explicit scope-matching negative evidence does not clear this condition history. Converted to UNKNOWN. Original reasoning: The patient has a diagnosis of metastatic colorectal adenocarcinoma with prior treatments and biomarker results, but there is no evidence of any other malignancies within the past 5 years. No basal-cell carcinoma of skin or cervical carcinoma in situ was mentioned either. Therefore, this exclusion criterion does not apply based on the provided evidence."
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT06782685",
+      "criterion_id": "INC-02",
+      "expected": "DOES_NOT_MEET",
+      "predicted": "DOES_NOT_MEET",
+      "match": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The inclusion criterion requires pancreatic cancer diagnosed by histopathology or cytology. The available evidence documents a diagnosis of metastatic colorectal adenocarcinoma (index 8) but does not indicate pancreatic cancer. Therefore, the criterion is not met based on the current evidence."
+    }
+  ]
+}
