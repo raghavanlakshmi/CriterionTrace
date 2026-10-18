@@ -1,4 +1,4 @@
-"""Run the SYN-002 buried-exclusion test end to end and score it against labels.
+"""Run the SYN-002 / SYN-003 buried-exclusion tests end to end and score them against labels.
 
     python scripts/run_buried_exclusion_test.py --dry-run          # ingest only, no API calls
     python scripts/run_buried_exclusion_test.py                    # SYN-002 and SYN-002-control
@@ -43,6 +43,8 @@ EVAL = ROOT / "data" / "eval"
 LABEL_FILES = {
     "SYN-002": EVAL / "criterion_labels_syn002.json",
     "SYN-002-control": EVAL / "criterion_labels_syn002_control.json",
+    "SYN-003": EVAL / "criterion_labels_syn003.json",
+    "SYN-003-control": EVAL / "criterion_labels_syn003_control.json",
 }
 # Words that identify each probe's source fact in the extracted evidence.
 PROBE_TERMS = {
@@ -51,11 +53,19 @@ PROBE_TERMS = {
     "family_history_decoy": ("breast cancer",),
     "last_chemo_dose": ("2026-03-20",),
 }
+# SYN-003 has its own buried facts and traps; SYN-002 keeps the original probes unchanged.
+PROBE_TERMS_SYN003 = {
+    "buried_malignancy": ("hodgkin",),
+    "buried_pd1": ("pembrolizumab",),
+    "excepted_cancer_trap": ("basal-cell", "basal cell"),
+    "last_chemo_dose": ("2026-04-08",),
+    "scheduled_first_dose": ("2026-04-20",),
+}
 
 
-def extraction_check(evidence: list[EvidenceItem]) -> dict:
+def extraction_check(evidence: list[EvidenceItem], probe_terms: dict | None = None) -> dict:
     found = {}
-    for probe, terms in PROBE_TERMS.items():
+    for probe, terms in (probe_terms or PROBE_TERMS).items():
         hits = [e for e in evidence if any(t in f"{e.value} {e.evidence_text}".casefold() for t in terms)]
         found[probe] = [
             {"category": e.category, "value": e.value, "source": f"{e.source_file} p{e.source_page}",
@@ -86,7 +96,7 @@ def run_variant(variant: str, args, criteria, client) -> dict:
         evidence_path.write_text(json.dumps([e.model_dump(mode="json") for e in evidence], indent=2) + "\n", encoding="utf-8")
         print(f"   extracted {len(evidence)} records ({sum(e.quote_verified for e in evidence)} verified)")
 
-    extraction = extraction_check(evidence)
+    extraction = extraction_check(evidence, PROBE_TERMS_SYN003 if variant.startswith("SYN-003") else PROBE_TERMS)
     gaps = uncovered_content_lines(pages, evidence)
     for probe, hits in extraction.items():
         shown = "; ".join(f"{h['category']}: {h['value']} ({h['source']}, verified={h['quote_verified']})" for h in hits) or "NOT EXTRACTED"

@@ -1,0 +1,51 @@
+{
+  "patient": "SYN-003",
+  "variant": "buried exclusions (narrative)",
+  "label_status": "Reviewed by Lakshmi - 10/18/2026, before any run",
+  "status_semantics": "For exclusion criteria, MEETS means the patient appears clear of the exclusion; DOES_NOT_MEET means the exclusion appears to apply.",
+  "labels": [
+    {
+      "trial": "NCT07559760",
+      "criterion_id": "EXC-19",
+      "expected": "DOES_NOT_MEET",
+      "rationale": "Classical Hodgkin lymphoma diagnosed February 2022 and treated with ABVD (2023 hematology note, narrative paragraph) is another malignancy within 5 years. The 2023 basal-cell carcinoma is an allowed exception, but the lymphoma is not.",
+      "judgment_call": false,
+      "probe": "buried_malignancy"
+    },
+    {
+      "trial": "NCT06412198",
+      "criterion_id": "EXC-01",
+      "expected": "DOES_NOT_MEET",
+      "rationale": "Pembrolizumab (a PD-1 inhibitor) given June to August 2024, documented only in the 2024 outside consult narrative.",
+      "judgment_call": false,
+      "probe": "buried_pd1"
+    },
+    {
+      "trial": "NCT07559760",
+      "criterion_id": "EXC-05",
+      "expected": "DOES_NOT_MEET",
+      "rationale": "FOLFIRI given 2026-04-08 (infusion record) and cycle 1 day 1 scheduled for 2026-04-20 (screening letter): 12 days apart, inside the 4-week window. UNKNOWN is acceptable because the scheduled date could move; clearing it (MEETS) is unsafe.",
+      "judgment_call": false,
+      "also_acceptable": [
+        "UNKNOWN"
+      ],
+      "probe": "washout_with_dates"
+    },
+    {
+      "trial": "NCT06412198",
+      "criterion_id": "INC-02",
+      "expected": "MEETS",
+      "rationale": "KRAS G12C mutation documented on the pathology report.",
+      "judgment_call": false,
+      "probe": "sanity"
+    },
+    {
+      "trial": "NCT07559760",
+      "criterion_id": "INC-02",
+      "expected": "MEETS",
+      "rationale": "Colorectal adenocarcinoma documented (liver biopsy and oncology note); prior Hodgkin lymphoma or basal-cell carcinoma must not confuse the diagnosis.",
+      "judgment_call": false,
+      "probe": "sanity"
+    }
+  ]
+}

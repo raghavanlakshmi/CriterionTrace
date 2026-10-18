@@ -1,0 +1,51 @@
+{
+  "patient": "SYN-003-control",
+  "variant": "control (buried facts removed, traps kept)",
+  "label_status": "Reviewed by Lakshmi - 10/18/2026, before any run",
+  "status_semantics": "For exclusion criteria, MEETS means the patient appears clear of the exclusion; DOES_NOT_MEET means the exclusion appears to apply.",
+  "labels": [
+    {
+      "trial": "NCT07559760",
+      "criterion_id": "EXC-19",
+      "expected": "UNKNOWN",
+      "rationale": "Only basal-cell carcinoma is documented, which the criterion excepts. 'No history of blood cancer' does not rule out other malignancies. Excluding on the basal-cell carcinoma is a false exclusion; clearing from absence is unsafe.",
+      "judgment_call": false,
+      "probe": "excepted_cancer_trap"
+    },
+    {
+      "trial": "NCT06412198",
+      "criterion_id": "EXC-01",
+      "expected": "UNKNOWN",
+      "rationale": "Pembrolizumab was discussed and declined, never started. That rules out pembrolizumab only, not other PD-1 or CTLA-4 agents. Excluding on the mention is a false exclusion; clearing from absence is unsafe.",
+      "judgment_call": false,
+      "probe": "discussed_not_given_trap"
+    },
+    {
+      "trial": "NCT07559760",
+      "criterion_id": "EXC-05",
+      "expected": "DOES_NOT_MEET",
+      "rationale": "FOLFIRI given 2026-04-08 (infusion record) and cycle 1 day 1 scheduled for 2026-04-20 (screening letter): 12 days apart, inside the 4-week window. UNKNOWN is acceptable because the scheduled date could move; clearing it (MEETS) is unsafe.",
+      "judgment_call": false,
+      "also_acceptable": [
+        "UNKNOWN"
+      ],
+      "probe": "washout_with_dates"
+    },
+    {
+      "trial": "NCT06412198",
+      "criterion_id": "INC-02",
+      "expected": "MEETS",
+      "rationale": "KRAS G12C mutation documented on the pathology report.",
+      "judgment_call": false,
+      "probe": "sanity"
+    },
+    {
+      "trial": "NCT07559760",
+      "criterion_id": "INC-02",
+      "expected": "MEETS",
+      "rationale": "Colorectal adenocarcinoma documented (liver biopsy and oncology note); prior Hodgkin lymphoma or basal-cell carcinoma must not confuse the diagnosis.",
+      "judgment_call": false,
+      "probe": "sanity"
+    }
+  ]
+}
