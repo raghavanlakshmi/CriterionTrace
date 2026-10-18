@@ -206,6 +206,19 @@ def time_window_problem(item: CriterionAssessment) -> str | None:
     return None
 
 
+def has_biomarker_treatment_reasoning(explanation: str) -> bool:
+    """Flag inference language linking a test finding to treatment, not citations."""
+    for sentence in re.split(r"(?<=[.!?])\s+", explanation):
+        biomarker = re.search(r"\b(?:mutations?|biomarkers?|variants?|genotyp\w*)\b", sentence, re.I)
+        named_variant = re.search(r"\b[A-Z][A-Z0-9]{1,9}\s+(?:p\.)?[A-Z]\d+[A-Z]\b", sentence)
+        inference = re.search(r"\b(?:indicat\w*|suggest\w*|impl(?:y|ies|ying)|consistent with)\b", sentence, re.I)
+        treatment = re.search(r"\b(?:treated|treating|treatment|therapy|inhibitor\w*)\b", sentence, re.I)
+        negated = re.search(r"\b(?:does not|do not|cannot|can't|not)\s+(?:indicat\w*|suggest\w*|impl\w*)", sentence, re.I)
+        if (biomarker or named_variant) and inference and treatment and not negated:
+            return True
+    return False
+
+
 def review_assessments(assessments: list[CriterionAssessment]) -> tuple[list[CriterionAssessment], list[str]]:
     """Downgrade unsupported conclusions and return visible review flags."""
     reviewed, flags = [], []
@@ -238,5 +251,15 @@ def review_assessments(assessments: list[CriterionAssessment]) -> tuple[list[Cri
         if any(not evidence.quote_verified for evidence in item.patient_evidence):
             update = {"status": "UNKNOWN", "explanation": "A cited source quote was not verified; converted to UNKNOWN."}
             flags.append(f"{item.criterion_id}: unverified source quote.")
+        if has_biomarker_treatment_reasoning(item.explanation):
+            supported = any(e.quote_verified and e.category in {"prior_treatment", "current_medication"}
+                            and not EXPLICIT_NEGATION.search(e.evidence_text)
+                            for e in item.patient_evidence)
+            flag = f"{item.criterion_id}: explanation contains biomarker-to-treatment reasoning"
+            if supported:
+                flags.append(flag + "; treatment evidence is cited, review the explanation.")
+            else:
+                update = {"status": "UNKNOWN", "explanation": "Biomarker-to-treatment inference has no cited treatment evidence; converted to UNKNOWN. Original reasoning: " + item.explanation}
+                flags.append(flag + "; no supported treatment citation, converted to UNKNOWN.")
         reviewed.append(item.model_copy(update=update))
     return reviewed, flags
