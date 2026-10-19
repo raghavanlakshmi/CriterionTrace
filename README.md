@@ -40,7 +40,7 @@ After the round-3 safety rules, 1 in-sample and 4 held-out answers that were cor
 The rule baseline is deliberately conservative: it leaves anything it can't prove as `UNKNOWN`. The LLM
 assessor resolves most of those correctly without ever clearing a patient the evidence doesn't support.
 
-**Held-out check** — 21 labels from 4 trials never used while building the safety guards, committed before the run. First run: 9/10 decidable correct, 1 unsafe clearance (organ function marked met without liver tests). That failure became a new guard; the re-run scored 10/10 with 0 unsafe, but that figure is no longer held-out.
+**Held-out check** — 21 labels from 4 trials never used while building the safety guards, committed before the run. First run: 9/10 decidable correct, 1 unsafe clearance (organ function marked met without liver tests). That failure became a new guard; the re-run scored 10/10 with 0 unsafe, but that figure is no longer held-out. After the round-3 safety rules, the held-out set scored 17/21, with the four losses all correct answers that became `UNKNOWN`.
 
 **Buried-exclusion tests** — check whether an exclusion hidden in an old note, a table, page 2 of a
 discharge summary or a scanned fax is found, not cleared, and whether the tool still decides what the
