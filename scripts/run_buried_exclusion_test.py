@@ -1,4 +1,4 @@
-"""Run the SYN-002 / SYN-003 / SYN-004 buried-exclusion tests end to end and score them against labels.
+"""Run the SYN-002 / SYN-003 / SYN-004 / SYN-005 buried-exclusion tests end to end and score them against labels.
 
     python scripts/run_buried_exclusion_test.py --dry-run          # ingest only, no API calls
     python scripts/run_buried_exclusion_test.py                    # SYN-002 and SYN-002-control
@@ -47,6 +47,8 @@ LABEL_FILES = {
     "SYN-003-control": EVAL / "criterion_labels_syn003_control.json",
     "SYN-004": EVAL / "criterion_labels_syn004.json",
     "SYN-004-control": EVAL / "criterion_labels_syn004_control.json",
+    "SYN-005": EVAL / "criterion_labels_syn005.json",
+    "SYN-005-control": EVAL / "criterion_labels_syn005_control.json",
 }
 # Words that identify each probe's source fact in the extracted evidence.
 PROBE_TERMS = {
@@ -79,7 +81,25 @@ PROBE_TERMS_SYN004 = {
 }
 
 
+# SYN-005 (blind test of the frozen round-3 code): buried facts, look-alikes, and the facts
+# needed to decide criteria rather than leave them UNKNOWN.
+PROBE_TERMS_SYN005 = {
+    "qtcf_value": ("478 ms", "441 ms"),
+    "buried_major_surgery": ("laparotomy",),
+    "biopsy_trap": ("core-needle", "core needle"),
+    "surgery_or_biopsy_date": ("2026-07-22",),
+    "neuropathy_grade": ("neuropathy",),
+    "alopecia_exception": ("alopecia",),
+    "serology": ("hiv", "hbsag", "hepatitis"),
+    "creatinine": ("creatinine",),
+    "weight": ("52 kg",),
+    "scheduled_first_dose": ("2026-08-10",),
+}
+
+
 def probe_terms_for(variant: str) -> dict:
+    if variant.startswith("SYN-005"):
+        return PROBE_TERMS_SYN005
     if variant.startswith("SYN-004"):
         return PROBE_TERMS_SYN004
     if variant.startswith("SYN-003"):
