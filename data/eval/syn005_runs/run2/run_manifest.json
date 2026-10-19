@@ -1,0 +1,18 @@
+{
+  "run_commit": "ec2b6275e5e8349f5eaac0f81e01808673b68fa7",
+  "implementation_commit": "6da940d49021855cc3d03a26ece5efa001e60c5c",
+  "started_at": "2026-10-19T00:09:16.983775+00:00",
+  "command": [
+    "scripts/run_buried_exclusion_test.py",
+    "--variants",
+    "SYN-005",
+    "SYN-005-control",
+    "--output-dir",
+    "data/eval/syn005_runs/run2"
+  ],
+  "reuse_evidence": false,
+  "finished_at": "2026-10-19T00:10:48.012629+00:00",
+  "exit_code": 0,
+  "frozen_code_verified": true,
+  "protected_inputs_verified": true
+}

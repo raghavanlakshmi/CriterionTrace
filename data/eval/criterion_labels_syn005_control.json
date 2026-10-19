@@ -1,0 +1,87 @@
+{
+  "patient": "SYN-005-control",
+  "variant": "matched control: buried facts replaced by look-alikes that should clear or stay UNKNOWN",
+  "label_status": "Reviewed by Lakshmi before any SYN-005 run on 10/18/26",
+  "status_semantics": "For exclusion criteria, MEETS means the patient appears clear of the exclusion; DOES_NOT_MEET means the exclusion appears to apply.",
+  "labels": [
+    {
+      "trial": "NCT07559760",
+      "criterion_id": "EXC-09",
+      "expected": "MEETS",
+      "rationale": "Resting 12-lead ECG 2026-07-30: QTcF 441 ms in a woman, below 470 ms. A measured value below the threshold is explicit evidence. UNKNOWN is acceptable but is a missed decision.",
+      "judgment_call": false,
+      "also_acceptable": [
+        "UNKNOWN"
+      ],
+      "probe": "qtcf_below_threshold"
+    },
+    {
+      "trial": "NCT06412198",
+      "criterion_id": "EXC-11",
+      "expected": "UNKNOWN",
+      "rationale": "Ultrasound-guided core-needle liver biopsy on 2026-07-22 is not major surgery. Nothing documents that no major surgery occurred. DOES_NOT_MEET is a false exclusion; MEETS is clearance from absence.",
+      "judgment_call": false,
+      "probe": "biopsy_trap"
+    },
+    {
+      "trial": "NCT07559760",
+      "criterion_id": "EXC-04",
+      "expected": "MEETS",
+      "rationale": "Neuropathy improved to grade 1; alopecia grade 2 is explicitly excepted; the note states all other treatment-related toxicities are grade 0 to 1. UNKNOWN is acceptable; DOES_NOT_MEET (for example, excluding on alopecia) is a false exclusion.",
+      "judgment_call": false,
+      "also_acceptable": [
+        "UNKNOWN"
+      ],
+      "probe": "except_clause_alopecia"
+    },
+    {
+      "trial": "NCT06412198",
+      "criterion_id": "INC-10",
+      "expected": "MEETS",
+      "rationale": "Neuropathy grade 1, alopecia excepted, all other toxicities grade 0 to 1. UNKNOWN is acceptable but is a missed decision; DOES_NOT_MEET is wrong.",
+      "judgment_call": false,
+      "also_acceptable": [
+        "UNKNOWN"
+      ],
+      "probe": "recovered_to_grade1"
+    },
+    {
+      "trial": "NCT07559760",
+      "criterion_id": "EXC-14",
+      "expected": "MEETS",
+      "rationale": "Outside serology 2026-07-29: HIV-1/2 antigen/antibody nonreactive, HBsAg negative, HBcAb negative, HCV antibody nonreactive. Explicit negative evidence for every condition named. UNKNOWN is acceptable but is a missed decision.",
+      "judgment_call": false,
+      "also_acceptable": [
+        "UNKNOWN"
+      ],
+      "probe": "explicit_negative_serology"
+    },
+    {
+      "trial": "NCT07559760",
+      "criterion_id": "INC-12",
+      "expected": "DOES_NOT_MEET",
+      "rationale": "Cockcroft-Gault from documented values: female, 67 years, 52 kg, creatinine 1.3 mg/dL: (140-67) x 52 x 0.85 / (72 x 1.3) = 34.5 mL/min, below 50. UNKNOWN is acceptable if the tool does not calculate it; MEETS is an unsafe clearance.",
+      "judgment_call": false,
+      "also_acceptable": [
+        "UNKNOWN"
+      ],
+      "probe": "calculated_creatinine_clearance"
+    },
+    {
+      "trial": "NCT07559760",
+      "criterion_id": "INC-01",
+      "expected": "MEETS",
+      "rationale": "Female, 67 years (oncology note), within 18-75.",
+      "judgment_call": false,
+      "probe": "sanity"
+    },
+    {
+      "trial": "NCT07559760",
+      "criterion_id": "INC-07",
+      "expected": "MEETS",
+      "rationale": "ECOG 1 (oncology note).",
+      "judgment_call": false,
+      "probe": "sanity"
+    }
+  ]
+}

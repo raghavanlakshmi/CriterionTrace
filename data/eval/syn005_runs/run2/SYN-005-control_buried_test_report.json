@@ -1,0 +1,1772 @@
+{
+  "patient": "SYN-005-control",
+  "variant": "matched control: buried facts replaced by look-alikes that should clear or stay UNKNOWN",
+  "label_status": "Reviewed by Lakshmi before any SYN-005 run on 10/18/26",
+  "extraction_model": "gpt-4.1-mini",
+  "assessment_model": "gpt-4.1-mini",
+  "extraction_check": {
+    "qtcf_value": [],
+    "buried_major_surgery": [],
+    "biopsy_trap": [
+      {
+        "category": "biomarker",
+        "value": "ultrasound-guided core-needle biopsy of a segment VI liver lesion, 2026-07-22",
+        "source": "hospital_discharge_summary.pdf p2",
+        "date": "2026-07-22",
+        "quote_verified": true
+      },
+      {
+        "category": "biomarker",
+        "value": "Ultrasound-guided core-needle biopsy of a segment VI liver lesion",
+        "source": "hospital_discharge_summary.pdf p2",
+        "date": "2026-07-22",
+        "quote_verified": true
+      }
+    ],
+    "surgery_or_biopsy_date": [
+      {
+        "category": "biomarker",
+        "value": "ultrasound-guided core-needle biopsy of a segment VI liver lesion, 2026-07-22",
+        "source": "hospital_discharge_summary.pdf p2",
+        "date": "2026-07-22",
+        "quote_verified": true
+      },
+      {
+        "category": "biomarker",
+        "value": "Ultrasound-guided core-needle biopsy of a segment VI liver lesion",
+        "source": "hospital_discharge_summary.pdf p2",
+        "date": "2026-07-22",
+        "quote_verified": true
+      }
+    ],
+    "neuropathy_grade": [
+      {
+        "category": "biomarker",
+        "value": "peripheral sensory neuropathy grade 1",
+        "source": "toxicity_phone_note.pdf p1",
+        "date": "2026-07-28",
+        "quote_verified": true
+      },
+      {
+        "category": "performance_status",
+        "value": "peripheral sensory neuropathy grade 1",
+        "source": "toxicity_phone_note.pdf p1",
+        "date": "2026-07-28",
+        "quote_verified": true
+      }
+    ],
+    "alopecia_exception": [
+      {
+        "category": "biomarker",
+        "value": "alopecia grade 2",
+        "source": "toxicity_phone_note.pdf p1",
+        "date": "2026-07-28",
+        "quote_verified": true
+      },
+      {
+        "category": "prior_treatment",
+        "value": "hair thinning persists, alopecia grade 2",
+        "source": "toxicity_phone_note.pdf p1",
+        "date": "2026-07-28",
+        "quote_verified": true
+      }
+    ],
+    "serology": [
+      {
+        "category": "biomarker",
+        "value": "HIV-1/2 antigen/antibody Nonreactive",
+        "source": "serology_outside_lab.pdf p1",
+        "date": "2026-07-29",
+        "quote_verified": true
+      },
+      {
+        "category": "biomarker",
+        "value": "Hepatitis B surface antigen (HBsAg) Negative",
+        "source": "serology_outside_lab.pdf p1",
+        "date": "2026-07-29",
+        "quote_verified": true
+      },
+      {
+        "category": "biomarker",
+        "value": "Hepatitis B core antibody (HBcAb), total Negative",
+        "source": "serology_outside_lab.pdf p1",
+        "date": "2026-07-29",
+        "quote_verified": true
+      },
+      {
+        "category": "biomarker",
+        "value": "Hepatitis C antibody Nonreactive",
+        "source": "serology_outside_lab.pdf p1",
+        "date": "2026-07-29",
+        "quote_verified": true
+      },
+      {
+        "category": "lab",
+        "value": "HIV-1/2 antigen/antibody Nonreactive",
+        "source": "serology_outside_lab.pdf p1",
+        "date": "2026-07-29",
+        "quote_verified": true
+      },
+      {
+        "category": "lab",
+        "value": "Hepatitis B surface antigen (HBsAg) Negative",
+        "source": "serology_outside_lab.pdf p1",
+        "date": "2026-07-29",
+        "quote_verified": true
+      },
+      {
+        "category": "lab",
+        "value": "Hepatitis B core antibody (HBcAb), total Negative",
+        "source": "serology_outside_lab.pdf p1",
+        "date": "2026-07-29",
+        "quote_verified": true
+      },
+      {
+        "category": "lab",
+        "value": "Hepatitis C antibody Nonreactive",
+        "source": "serology_outside_lab.pdf p1",
+        "date": "2026-07-29",
+        "quote_verified": true
+      }
+    ],
+    "creatinine": [
+      {
+        "category": "lab",
+        "value": "Creatinine: 1.3 mg/dL",
+        "source": "lab_report.pdf p1",
+        "date": "2026-07-31",
+        "quote_verified": true
+      }
+    ],
+    "weight": [],
+    "scheduled_first_dose": [
+      {
+        "category": "planned_study_event",
+        "value": "cycle 1 day 1 of study treatment is scheduled for 2026-08-10",
+        "source": "trial_screening_letter.pdf p1",
+        "date": "2026-08-10",
+        "quote_verified": true
+      }
+    ]
+  },
+  "extraction_gaps": [
+    {
+      "source_file": "ecg_report.pdf",
+      "source_page": 1,
+      "line_number": 7,
+      "sentence_number": 1,
+      "text": "Resting 12-lead ECG measurements",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "ecg_report.pdf",
+      "source_page": 1,
+      "line_number": 10,
+      "sentence_number": 2,
+      "text": "Heart rate 74 bpm PR interval 164 ms QRS duration 92 ms QT interval 411 ms QTcF (Fridericia) 441 ms",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "ecg_report.pdf",
+      "source_page": 1,
+      "line_number": 20,
+      "sentence_number": 3,
+      "text": "Interpretation: Normal sinus rhythm.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "ecg_report.pdf",
+      "source_page": 1,
+      "line_number": 20,
+      "sentence_number": 4,
+      "text": "QTcF within normal limits.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "hospital_discharge_summary.pdf",
+      "source_page": 1,
+      "line_number": 8,
+      "sentence_number": 1,
+      "text": "Ms.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "hospital_discharge_summary.pdf",
+      "source_page": 1,
+      "line_number": 8,
+      "sentence_number": 2,
+      "text": "Lee was seen in the interventional radiology suite on 2026-07-22 for an outpatient procedure to obtain fresh tumor tissue for molecular testing.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "hospital_discharge_summary.pdf",
+      "source_page": 1,
+      "line_number": 8,
+      "sentence_number": 3,
+      "text": "She tolerated it well and went home the same day.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "hospital_discharge_summary.pdf",
+      "source_page": 1,
+      "line_number": 10,
+      "sentence_number": 4,
+      "text": "Procedure details are on page 2.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "hospital_discharge_summary.pdf",
+      "source_page": 2,
+      "line_number": 9,
+      "sentence_number": 2,
+      "text": "Anesthesia: local anesthetic with moderate sedation.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "hospital_discharge_summary.pdf",
+      "source_page": 2,
+      "line_number": 10,
+      "sentence_number": 3,
+      "text": "Complications: none.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "hospital_discharge_summary.pdf",
+      "source_page": 2,
+      "line_number": 10,
+      "sentence_number": 4,
+      "text": "Discharged the same day.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "lab_report.pdf",
+      "source_page": 1,
+      "line_number": 16,
+      "sentence_number": 9,
+      "text": "No transfusion or growth-factor support in the past 14 days.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "oncology_note.pdf",
+      "source_page": 1,
+      "line_number": 7,
+      "sentence_number": 1,
+      "text": "Clinic visit",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "oncology_note.pdf",
+      "source_page": 1,
+      "line_number": 10,
+      "sentence_number": 4,
+      "text": "Weight: 52 kg",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "oncology_note.pdf",
+      "source_page": 1,
+      "line_number": 14,
+      "sentence_number": 8,
+      "text": "Plan: referred for clinical trial screening.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "serology_outside_lab.pdf",
+      "source_page": 1,
+      "line_number": 2,
+      "sentence_number": 1,
+      "text": "Outside laboratory: infectious serology",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "serology_outside_lab.pdf",
+      "source_page": 1,
+      "line_number": 7,
+      "sentence_number": 2,
+      "text": "Serology panel",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "serology_outside_lab.pdf",
+      "source_page": 1,
+      "line_number": 23,
+      "sentence_number": 7,
+      "text": "Specimen collected 2026-07-29.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "serology_outside_lab.pdf",
+      "source_page": 1,
+      "line_number": 23,
+      "sentence_number": 8,
+      "text": "Reported by an outside reference laboratory.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "toxicity_phone_note.pdf",
+      "source_page": 1,
+      "line_number": 2,
+      "sentence_number": 1,
+      "text": "Telephone encounter: toxicity assessment",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "toxicity_phone_note.pdf",
+      "source_page": 1,
+      "line_number": 8,
+      "sentence_number": 2,
+      "text": "Telephone follow-up before trial screening.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "toxicity_phone_note.pdf",
+      "source_page": 1,
+      "line_number": 8,
+      "sentence_number": 7,
+      "text": "She reports no diarrhea, mouth sores or fatigue limiting activity.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "trial_screening_letter.pdf",
+      "source_page": 1,
+      "line_number": 8,
+      "sentence_number": 1,
+      "text": "The patient has been referred for clinical trial screening.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "trial_screening_letter.pdf",
+      "source_page": 1,
+      "line_number": 10,
+      "sentence_number": 3,
+      "text": "Final eligibility will be confirmed by the study team.",
+      "message": "Not captured by the tool, review manually"
+    }
+  ],
+  "results": {
+    "rule_baseline": {
+      "labels": 8,
+      "accuracy": 0.25,
+      "decidable_labels": 7,
+      "decided_correctly": 0.1429,
+      "unsafe_false_clearance": 0,
+      "false_exclusion": 0,
+      "unknown_to_meets": 0,
+      "confusion_matrix": {
+        "MEETS": {
+          "MEETS": 1,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 5,
+          "POTENTIAL_CONFLICT": 0
+        },
+        "DOES_NOT_MEET": {
+          "MEETS": 0,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 1,
+          "POTENTIAL_CONFLICT": 0
+        },
+        "UNKNOWN": {
+          "MEETS": 0,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 1,
+          "POTENTIAL_CONFLICT": 0
+        },
+        "POTENTIAL_CONFLICT": {
+          "MEETS": 0,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 0,
+          "POTENTIAL_CONFLICT": 0
+        }
+      },
+      "acceptable_rate": 0.875
+    },
+    "llm_assessor": {
+      "labels": 8,
+      "accuracy": 0.5,
+      "decidable_labels": 7,
+      "decided_correctly": 0.4286,
+      "unsafe_false_clearance": 0,
+      "false_exclusion": 0,
+      "unknown_to_meets": 0,
+      "confusion_matrix": {
+        "MEETS": {
+          "MEETS": 3,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 3,
+          "POTENTIAL_CONFLICT": 0
+        },
+        "DOES_NOT_MEET": {
+          "MEETS": 0,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 1,
+          "POTENTIAL_CONFLICT": 0
+        },
+        "UNKNOWN": {
+          "MEETS": 0,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 1,
+          "POTENTIAL_CONFLICT": 0
+        },
+        "POTENTIAL_CONFLICT": {
+          "MEETS": 0,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 0,
+          "POTENTIAL_CONFLICT": 0
+        }
+      },
+      "acceptable_rate": 1.0
+    }
+  },
+  "rows": [
+    {
+      "method": "rule_baseline",
+      "trial": "NCT07559760",
+      "criterion_id": "EXC-09",
+      "probe": "qtcf_below_threshold",
+      "expected": "MEETS",
+      "also_acceptable": [
+        "UNKNOWN"
+      ],
+      "predicted": "UNKNOWN",
+      "match": false,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment.",
+      "criterion_text": "QTcF ≥ 450 ms (men) or ≥ 470 ms (women) on resting 12-lead ECG.",
+      "patient_evidence": [],
+      "assessment_details": {
+        "criterion_id": "EXC-09",
+        "criterion_text": "QTcF ≥ 450 ms (men) or ≥ 470 ms (women) on resting 12-lead ECG.",
+        "criterion_type": "exclusion",
+        "status": "UNKNOWN",
+        "method": "rule",
+        "patient_evidence": [],
+        "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment.",
+        "final_conclusion": null,
+        "clearance_basis": null,
+        "window_evidence_index": null,
+        "parts": [],
+        "date_comparisons": []
+      }
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT06412198",
+      "criterion_id": "EXC-11",
+      "probe": "biopsy_trap",
+      "expected": "UNKNOWN",
+      "also_acceptable": [],
+      "predicted": "UNKNOWN",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [
+        "EXC-11: Computed time-window guard: missing selected dated event citation (missing dated administration or planned first-dose reference date)."
+      ],
+      "explanation": "Computed time-window guard: missing selected dated event citation (missing dated administration or planned first-dose reference date). Original reasoning: The supplied evidence does not safely establish this criterion without a live criterion assessment.",
+      "criterion_text": "Major surgery within 4 weeks of first dose of any study drug.",
+      "patient_evidence": [],
+      "assessment_details": {
+        "criterion_id": "EXC-11",
+        "criterion_text": "Major surgery within 4 weeks of first dose of any study drug.",
+        "criterion_type": "exclusion",
+        "status": "UNKNOWN",
+        "method": "rule",
+        "patient_evidence": [],
+        "explanation": "Computed time-window guard: missing selected dated event citation (missing dated administration or planned first-dose reference date). Original reasoning: The supplied evidence does not safely establish this criterion without a live criterion assessment.",
+        "final_conclusion": null,
+        "clearance_basis": null,
+        "window_evidence_index": null,
+        "parts": [],
+        "date_comparisons": []
+      }
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT07559760",
+      "criterion_id": "EXC-04",
+      "probe": "except_clause_alopecia",
+      "expected": "MEETS",
+      "also_acceptable": [
+        "UNKNOWN"
+      ],
+      "predicted": "UNKNOWN",
+      "match": false,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment.",
+      "criterion_text": "Toxicities from prior therapy not resolved to CTCAE v5.0 Grade ≤ 1 (except alopecia or other toxicities deemed by the investigator to pose no safety risk).",
+      "patient_evidence": [],
+      "assessment_details": {
+        "criterion_id": "EXC-04",
+        "criterion_text": "Toxicities from prior therapy not resolved to CTCAE v5.0 Grade ≤ 1 (except alopecia or other toxicities deemed by the investigator to pose no safety risk).",
+        "criterion_type": "exclusion",
+        "status": "UNKNOWN",
+        "method": "rule",
+        "patient_evidence": [],
+        "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment.",
+        "final_conclusion": null,
+        "clearance_basis": null,
+        "window_evidence_index": null,
+        "parts": [],
+        "date_comparisons": []
+      }
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT06412198",
+      "criterion_id": "INC-10",
+      "probe": "recovered_to_grade1",
+      "expected": "MEETS",
+      "also_acceptable": [
+        "UNKNOWN"
+      ],
+      "predicted": "UNKNOWN",
+      "match": false,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment.",
+      "criterion_text": "Recovery from the treatment-related adverse effects of prior therapy at the time of enrollment to ≤ Grade 1 (excluding alopecia and prior oxaliplatin-induced neuropathy).",
+      "patient_evidence": [],
+      "assessment_details": {
+        "criterion_id": "INC-10",
+        "criterion_text": "Recovery from the treatment-related adverse effects of prior therapy at the time of enrollment to ≤ Grade 1 (excluding alopecia and prior oxaliplatin-induced neuropathy).",
+        "criterion_type": "inclusion",
+        "status": "UNKNOWN",
+        "method": "rule",
+        "patient_evidence": [],
+        "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment.",
+        "final_conclusion": null,
+        "clearance_basis": null,
+        "window_evidence_index": null,
+        "parts": [],
+        "date_comparisons": []
+      }
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT07559760",
+      "criterion_id": "EXC-14",
+      "probe": "explicit_negative_serology",
+      "expected": "MEETS",
+      "also_acceptable": [
+        "UNKNOWN"
+      ],
+      "predicted": "UNKNOWN",
+      "match": false,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment.",
+      "criterion_text": "Known HIV-positive, active hepatitis B, or hepatitis C:",
+      "patient_evidence": [],
+      "assessment_details": {
+        "criterion_id": "EXC-14",
+        "criterion_text": "Known HIV-positive, active hepatitis B, or hepatitis C:",
+        "criterion_type": "exclusion",
+        "status": "UNKNOWN",
+        "method": "rule",
+        "patient_evidence": [],
+        "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment.",
+        "final_conclusion": null,
+        "clearance_basis": null,
+        "window_evidence_index": null,
+        "parts": [],
+        "date_comparisons": []
+      }
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT07559760",
+      "criterion_id": "INC-12",
+      "probe": "calculated_creatinine_clearance",
+      "expected": "DOES_NOT_MEET",
+      "also_acceptable": [
+        "UNKNOWN"
+      ],
+      "predicted": "UNKNOWN",
+      "match": false,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment.",
+      "criterion_text": "Renal: Creatinine clearance ≥ 50 mL/min (Cockcroft-Gault).",
+      "patient_evidence": [],
+      "assessment_details": {
+        "criterion_id": "INC-12",
+        "criterion_text": "Renal: Creatinine clearance ≥ 50 mL/min (Cockcroft-Gault).",
+        "criterion_type": "inclusion",
+        "status": "UNKNOWN",
+        "method": "rule",
+        "patient_evidence": [],
+        "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment.",
+        "final_conclusion": null,
+        "clearance_basis": null,
+        "window_evidence_index": null,
+        "parts": [],
+        "date_comparisons": []
+      }
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT07559760",
+      "criterion_id": "INC-01",
+      "probe": "sanity",
+      "expected": "MEETS",
+      "also_acceptable": [],
+      "predicted": "UNKNOWN",
+      "match": false,
+      "acceptable": false,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment.",
+      "criterion_text": "Male or female, aged 18-75 years.",
+      "patient_evidence": [],
+      "assessment_details": {
+        "criterion_id": "INC-01",
+        "criterion_text": "Male or female, aged 18-75 years.",
+        "criterion_type": "inclusion",
+        "status": "UNKNOWN",
+        "method": "rule",
+        "patient_evidence": [],
+        "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment.",
+        "final_conclusion": null,
+        "clearance_basis": null,
+        "window_evidence_index": null,
+        "parts": [],
+        "date_comparisons": []
+      }
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT07559760",
+      "criterion_id": "INC-07",
+      "probe": "sanity",
+      "expected": "MEETS",
+      "also_acceptable": [],
+      "predicted": "MEETS",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "Conservative offline comparison of all documented ECOG values; live LLM assessment was not requested.",
+      "criterion_text": "ECOG performance status 0-1.",
+      "patient_evidence": [
+        {
+          "category": "performance_status",
+          "value": "ECOG 1",
+          "normalized_value": "1",
+          "date": "2026-07-31",
+          "start_date": null,
+          "end_date": null,
+          "source_file": "oncology_note.pdf",
+          "source_page": 1,
+          "evidence_text": "Performance status: ECOG 1",
+          "quote_verified": true,
+          "source_kind": "other"
+        }
+      ],
+      "assessment_details": {
+        "criterion_id": "INC-07",
+        "criterion_text": "ECOG performance status 0-1.",
+        "criterion_type": "inclusion",
+        "status": "MEETS",
+        "method": "rule",
+        "patient_evidence": [
+          {
+            "category": "performance_status",
+            "value": "ECOG 1",
+            "normalized_value": "1",
+            "date": "2026-07-31",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "oncology_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Performance status: ECOG 1",
+            "quote_verified": true,
+            "source_kind": "other"
+          }
+        ],
+        "explanation": "Conservative offline comparison of all documented ECOG values; live LLM assessment was not requested.",
+        "final_conclusion": null,
+        "clearance_basis": null,
+        "window_evidence_index": null,
+        "parts": [],
+        "date_comparisons": []
+      }
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT07559760",
+      "criterion_id": "EXC-09",
+      "probe": "qtcf_below_threshold",
+      "expected": "MEETS",
+      "also_acceptable": [
+        "UNKNOWN"
+      ],
+      "predicted": "UNKNOWN",
+      "match": false,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "No evidence is provided regarding the QTcF interval on a resting 12-lead ECG. The patient's QTcF measurement is not documented, so it cannot be determined whether it meets or exceeds the exclusion threshold for women (≥ 470 ms).",
+      "criterion_text": "QTcF ≥ 450 ms (men) or ≥ 470 ms (women) on resting 12-lead ECG.",
+      "patient_evidence": [],
+      "assessment_details": {
+        "criterion_id": "EXC-09",
+        "criterion_text": "QTcF ≥ 450 ms (men) or ≥ 470 ms (women) on resting 12-lead ECG.",
+        "criterion_type": "exclusion",
+        "status": "UNKNOWN",
+        "method": "llm",
+        "patient_evidence": [],
+        "explanation": "No evidence is provided regarding the QTcF interval on a resting 12-lead ECG. The patient's QTcF measurement is not documented, so it cannot be determined whether it meets or exceeds the exclusion threshold for women (≥ 470 ms).",
+        "final_conclusion": "UNKNOWN",
+        "clearance_basis": null,
+        "window_evidence_index": null,
+        "parts": [],
+        "date_comparisons": []
+      }
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT06412198",
+      "criterion_id": "EXC-11",
+      "probe": "biopsy_trap",
+      "expected": "UNKNOWN",
+      "also_acceptable": [],
+      "predicted": "UNKNOWN",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [
+        "EXC-11: unsupported conclusion converted to UNKNOWN.",
+        "EXC-11: Exclusion clearance guard: cleared from absence. Converted to UNKNOWN.",
+        "EXC-11: Computed time-window guard: missing selected dated event citation (missing dated administration or planned first-dose reference date)."
+      ],
+      "explanation": "Computed time-window guard: missing selected dated event citation (missing dated administration or planned first-dose reference date). Original reasoning: There is no documented evidence of major surgery within 4 weeks before the planned first dose of study drug scheduled for 2026-08-10. The only documented procedure is an ultrasound-guided core-needle biopsy on 2026-07-22, which is not major surgery. Therefore, the exclusion criterion does not apply.",
+      "criterion_text": "Major surgery within 4 weeks of first dose of any study drug.",
+      "patient_evidence": [],
+      "assessment_details": {
+        "criterion_id": "EXC-11",
+        "criterion_text": "Major surgery within 4 weeks of first dose of any study drug.",
+        "criterion_type": "exclusion",
+        "status": "UNKNOWN",
+        "method": "llm",
+        "patient_evidence": [],
+        "explanation": "Computed time-window guard: missing selected dated event citation (missing dated administration or planned first-dose reference date). Original reasoning: There is no documented evidence of major surgery within 4 weeks before the planned first dose of study drug scheduled for 2026-08-10. The only documented procedure is an ultrasound-guided core-needle biopsy on 2026-07-22, which is not major surgery. Therefore, the exclusion criterion does not apply.",
+        "final_conclusion": "DOES_NOT_APPLY",
+        "clearance_basis": "absence",
+        "window_evidence_index": null,
+        "parts": [],
+        "date_comparisons": [
+          {
+            "from_date": "2026-07-22",
+            "to_date": "2026-08-10",
+            "claimed": "less_than",
+            "amount": 4,
+            "unit": "week"
+          }
+        ]
+      }
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT07559760",
+      "criterion_id": "EXC-04",
+      "probe": "except_clause_alopecia",
+      "expected": "MEETS",
+      "also_acceptable": [
+        "UNKNOWN"
+      ],
+      "predicted": "UNKNOWN",
+      "match": false,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [
+        "EXC-04: investigator-judgment criterion converted to UNKNOWN.",
+        "EXC-04: Compound criterion guard: combined UNKNOWN => UNKNOWN."
+      ],
+      "explanation": "Compound criterion guard: Part 1: Toxicities from prior therapy not resolved to CTCAE v5.0 Grade \u000264 1 (except alopecia or other toxicities deemed by the investigator to pose no safety risk). => UNKNOWN. Peripheral sensory neuropathy is grade 1, alopecia is grade 2 but allowed as exception, and other toxicities are grade 0 to 1. Thus, toxicities do not meet exclusion. Original reasoning: The patient has a documented peripheral sensory neuropathy toxicity from prior oxaliplatin therapy at CTCAE grade 1 (evidence indices 20, 32) which is acceptable as it is grade ≤ 1. Alopecia is grade 2 but it is an exception allowed by the criterion, so does not exclude the patient (evidence indices 21, 33). All other treatment-related toxicities are grade 0 to 1 (evidence index 34), meeting the requirement that toxicities must be resolved to grade ≤ 1 except alopecia. The patient's report that numbness has improved also supports that toxicities are resolved to acceptable grade (evidence index 30). Therefore, toxicities from prior therapy do not exclude the patient.",
+      "criterion_text": "Toxicities from prior therapy not resolved to CTCAE v5.0 Grade ≤ 1 (except alopecia or other toxicities deemed by the investigator to pose no safety risk).",
+      "patient_evidence": [
+        {
+          "category": "biomarker",
+          "value": "peripheral sensory neuropathy grade 1",
+          "normalized_value": "grade 1",
+          "date": "2026-07-28",
+          "start_date": null,
+          "end_date": null,
+          "source_file": "toxicity_phone_note.pdf",
+          "source_page": 1,
+          "evidence_text": "Assessed as peripheral sensory neuropathy grade 1.",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "performance_status",
+          "value": "peripheral sensory neuropathy grade 1",
+          "normalized_value": null,
+          "date": "2026-07-28",
+          "start_date": null,
+          "end_date": null,
+          "source_file": "toxicity_phone_note.pdf",
+          "source_page": 1,
+          "evidence_text": "Assessed as peripheral sensory neuropathy grade 1.",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "biomarker",
+          "value": "alopecia grade 2",
+          "normalized_value": "grade 2",
+          "date": "2026-07-28",
+          "start_date": null,
+          "end_date": null,
+          "source_file": "toxicity_phone_note.pdf",
+          "source_page": 1,
+          "evidence_text": "Hair thinning persists, alopecia grade 2.",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "prior_treatment",
+          "value": "hair thinning persists, alopecia grade 2",
+          "normalized_value": null,
+          "date": "2026-07-28",
+          "start_date": null,
+          "end_date": null,
+          "source_file": "toxicity_phone_note.pdf",
+          "source_page": 1,
+          "evidence_text": "Hair thinning persists, alopecia grade 2.",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "prior_treatment",
+          "value": "All other treatment-related toxicities are grade 0 to 1",
+          "normalized_value": null,
+          "date": "2026-07-28",
+          "start_date": null,
+          "end_date": null,
+          "source_file": "toxicity_phone_note.pdf",
+          "source_page": 1,
+          "evidence_text": "All other treatment-related toxicities are grade 0 to 1.",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "sex",
+          "value": "Ms. Lee",
+          "normalized_value": "female",
+          "date": "2026-07-28",
+          "start_date": null,
+          "end_date": null,
+          "source_file": "toxicity_phone_note.pdf",
+          "source_page": 1,
+          "evidence_text": "Ms. Lee reports that the numbness in her fingertips from oxaliplatin has improved; she can button clothing and write without difficulty.",
+          "quote_verified": true,
+          "source_kind": "other"
+        }
+      ],
+      "assessment_details": {
+        "criterion_id": "EXC-04",
+        "criterion_text": "Toxicities from prior therapy not resolved to CTCAE v5.0 Grade ≤ 1 (except alopecia or other toxicities deemed by the investigator to pose no safety risk).",
+        "criterion_type": "exclusion",
+        "status": "UNKNOWN",
+        "method": "llm",
+        "patient_evidence": [
+          {
+            "category": "biomarker",
+            "value": "peripheral sensory neuropathy grade 1",
+            "normalized_value": "grade 1",
+            "date": "2026-07-28",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "toxicity_phone_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Assessed as peripheral sensory neuropathy grade 1.",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "performance_status",
+            "value": "peripheral sensory neuropathy grade 1",
+            "normalized_value": null,
+            "date": "2026-07-28",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "toxicity_phone_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Assessed as peripheral sensory neuropathy grade 1.",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "biomarker",
+            "value": "alopecia grade 2",
+            "normalized_value": "grade 2",
+            "date": "2026-07-28",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "toxicity_phone_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Hair thinning persists, alopecia grade 2.",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "prior_treatment",
+            "value": "hair thinning persists, alopecia grade 2",
+            "normalized_value": null,
+            "date": "2026-07-28",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "toxicity_phone_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Hair thinning persists, alopecia grade 2.",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "prior_treatment",
+            "value": "All other treatment-related toxicities are grade 0 to 1",
+            "normalized_value": null,
+            "date": "2026-07-28",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "toxicity_phone_note.pdf",
+            "source_page": 1,
+            "evidence_text": "All other treatment-related toxicities are grade 0 to 1.",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "sex",
+            "value": "Ms. Lee",
+            "normalized_value": "female",
+            "date": "2026-07-28",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "toxicity_phone_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Ms. Lee reports that the numbness in her fingertips from oxaliplatin has improved; she can button clothing and write without difficulty.",
+            "quote_verified": true,
+            "source_kind": "other"
+          }
+        ],
+        "explanation": "Compound criterion guard: Part 1: Toxicities from prior therapy not resolved to CTCAE v5.0 Grade \u000264 1 (except alopecia or other toxicities deemed by the investigator to pose no safety risk). => UNKNOWN. Peripheral sensory neuropathy is grade 1, alopecia is grade 2 but allowed as exception, and other toxicities are grade 0 to 1. Thus, toxicities do not meet exclusion. Original reasoning: The patient has a documented peripheral sensory neuropathy toxicity from prior oxaliplatin therapy at CTCAE grade 1 (evidence indices 20, 32) which is acceptable as it is grade ≤ 1. Alopecia is grade 2 but it is an exception allowed by the criterion, so does not exclude the patient (evidence indices 21, 33). All other treatment-related toxicities are grade 0 to 1 (evidence index 34), meeting the requirement that toxicities must be resolved to grade ≤ 1 except alopecia. The patient's report that numbness has improved also supports that toxicities are resolved to acceptable grade (evidence index 30). Therefore, toxicities from prior therapy do not exclude the patient.",
+        "final_conclusion": "DOES_NOT_APPLY",
+        "clearance_basis": "explicit_negative",
+        "window_evidence_index": null,
+        "parts": [
+          {
+            "criterion_id": "EXC-04/part1",
+            "criterion_text": "Toxicities from prior therapy not resolved to CTCAE v5.0 Grade \u000264 1 (except alopecia or other toxicities deemed by the investigator to pose no safety risk).",
+            "criterion_type": "exclusion",
+            "status": "UNKNOWN",
+            "method": "llm",
+            "patient_evidence": [
+              {
+                "category": "biomarker",
+                "value": "peripheral sensory neuropathy grade 1",
+                "normalized_value": "grade 1",
+                "date": "2026-07-28",
+                "start_date": null,
+                "end_date": null,
+                "source_file": "toxicity_phone_note.pdf",
+                "source_page": 1,
+                "evidence_text": "Assessed as peripheral sensory neuropathy grade 1.",
+                "quote_verified": true,
+                "source_kind": "other"
+              },
+              {
+                "category": "performance_status",
+                "value": "peripheral sensory neuropathy grade 1",
+                "normalized_value": null,
+                "date": "2026-07-28",
+                "start_date": null,
+                "end_date": null,
+                "source_file": "toxicity_phone_note.pdf",
+                "source_page": 1,
+                "evidence_text": "Assessed as peripheral sensory neuropathy grade 1.",
+                "quote_verified": true,
+                "source_kind": "other"
+              },
+              {
+                "category": "biomarker",
+                "value": "alopecia grade 2",
+                "normalized_value": "grade 2",
+                "date": "2026-07-28",
+                "start_date": null,
+                "end_date": null,
+                "source_file": "toxicity_phone_note.pdf",
+                "source_page": 1,
+                "evidence_text": "Hair thinning persists, alopecia grade 2.",
+                "quote_verified": true,
+                "source_kind": "other"
+              },
+              {
+                "category": "prior_treatment",
+                "value": "hair thinning persists, alopecia grade 2",
+                "normalized_value": null,
+                "date": "2026-07-28",
+                "start_date": null,
+                "end_date": null,
+                "source_file": "toxicity_phone_note.pdf",
+                "source_page": 1,
+                "evidence_text": "Hair thinning persists, alopecia grade 2.",
+                "quote_verified": true,
+                "source_kind": "other"
+              },
+              {
+                "category": "prior_treatment",
+                "value": "All other treatment-related toxicities are grade 0 to 1",
+                "normalized_value": null,
+                "date": "2026-07-28",
+                "start_date": null,
+                "end_date": null,
+                "source_file": "toxicity_phone_note.pdf",
+                "source_page": 1,
+                "evidence_text": "All other treatment-related toxicities are grade 0 to 1.",
+                "quote_verified": true,
+                "source_kind": "other"
+              },
+              {
+                "category": "sex",
+                "value": "Ms. Lee",
+                "normalized_value": "female",
+                "date": "2026-07-28",
+                "start_date": null,
+                "end_date": null,
+                "source_file": "toxicity_phone_note.pdf",
+                "source_page": 1,
+                "evidence_text": "Ms. Lee reports that the numbness in her fingertips from oxaliplatin has improved; she can button clothing and write without difficulty.",
+                "quote_verified": true,
+                "source_kind": "other"
+              }
+            ],
+            "explanation": "Peripheral sensory neuropathy is grade 1, alopecia is grade 2 but allowed as exception, and other toxicities are grade 0 to 1. Thus, toxicities do not meet exclusion.",
+            "final_conclusion": null,
+            "clearance_basis": "explicit_negative",
+            "window_evidence_index": null,
+            "parts": [],
+            "date_comparisons": []
+          }
+        ],
+        "date_comparisons": []
+      }
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT06412198",
+      "criterion_id": "INC-10",
+      "probe": "recovered_to_grade1",
+      "expected": "MEETS",
+      "also_acceptable": [
+        "UNKNOWN"
+      ],
+      "predicted": "UNKNOWN",
+      "match": false,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [
+        "INC-10: Unsupported category-inference guard: hedged category link has no verified quote stating induce. Converted to UNKNOWN."
+      ],
+      "explanation": "Unsupported category-inference guard: hedged category link has no verified quote stating induce. Converted to UNKNOWN. Original reasoning: The criterion requires recovery from treatment-related adverse effects of prior therapy to ≤ Grade 1, excluding alopecia and prior oxaliplatin-induced neuropathy. Evidence shows peripheral sensory neuropathy grade 1, consistent with oxaliplatin-induced neuropathy (excluded from the ≤ Grade 1 requirement). Alopecia is grade 2 but excluded from the criterion. All other treatment-related toxicities are grade 0 to 1, meeting the requirement. The patient's report of improved numbness without difficulty supports recovery to ≤ Grade 1. Hence, the patient meets this inclusion criterion.",
+      "criterion_text": "Recovery from the treatment-related adverse effects of prior therapy at the time of enrollment to ≤ Grade 1 (excluding alopecia and prior oxaliplatin-induced neuropathy).",
+      "patient_evidence": [
+        {
+          "category": "biomarker",
+          "value": "peripheral sensory neuropathy grade 1",
+          "normalized_value": "grade 1",
+          "date": "2026-07-28",
+          "start_date": null,
+          "end_date": null,
+          "source_file": "toxicity_phone_note.pdf",
+          "source_page": 1,
+          "evidence_text": "Assessed as peripheral sensory neuropathy grade 1.",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "sex",
+          "value": "Ms. Lee",
+          "normalized_value": "female",
+          "date": "2026-07-28",
+          "start_date": null,
+          "end_date": null,
+          "source_file": "toxicity_phone_note.pdf",
+          "source_page": 1,
+          "evidence_text": "Ms. Lee reports that the numbness in her fingertips from oxaliplatin has improved; she can button clothing and write without difficulty.",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "prior_treatment",
+          "value": "oxaliplatin",
+          "normalized_value": null,
+          "date": "2026-07-28",
+          "start_date": null,
+          "end_date": null,
+          "source_file": "toxicity_phone_note.pdf",
+          "source_page": 1,
+          "evidence_text": "Ms. Lee reports that the numbness in her fingertips from oxaliplatin has improved; she can button clothing and write without difficulty.",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "performance_status",
+          "value": "peripheral sensory neuropathy grade 1",
+          "normalized_value": null,
+          "date": "2026-07-28",
+          "start_date": null,
+          "end_date": null,
+          "source_file": "toxicity_phone_note.pdf",
+          "source_page": 1,
+          "evidence_text": "Assessed as peripheral sensory neuropathy grade 1.",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "prior_treatment",
+          "value": "hair thinning persists, alopecia grade 2",
+          "normalized_value": null,
+          "date": "2026-07-28",
+          "start_date": null,
+          "end_date": null,
+          "source_file": "toxicity_phone_note.pdf",
+          "source_page": 1,
+          "evidence_text": "Hair thinning persists, alopecia grade 2.",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "prior_treatment",
+          "value": "All other treatment-related toxicities are grade 0 to 1",
+          "normalized_value": null,
+          "date": "2026-07-28",
+          "start_date": null,
+          "end_date": null,
+          "source_file": "toxicity_phone_note.pdf",
+          "source_page": 1,
+          "evidence_text": "All other treatment-related toxicities are grade 0 to 1.",
+          "quote_verified": true,
+          "source_kind": "other"
+        }
+      ],
+      "assessment_details": {
+        "criterion_id": "INC-10",
+        "criterion_text": "Recovery from the treatment-related adverse effects of prior therapy at the time of enrollment to ≤ Grade 1 (excluding alopecia and prior oxaliplatin-induced neuropathy).",
+        "criterion_type": "inclusion",
+        "status": "UNKNOWN",
+        "method": "llm",
+        "patient_evidence": [
+          {
+            "category": "biomarker",
+            "value": "peripheral sensory neuropathy grade 1",
+            "normalized_value": "grade 1",
+            "date": "2026-07-28",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "toxicity_phone_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Assessed as peripheral sensory neuropathy grade 1.",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "sex",
+            "value": "Ms. Lee",
+            "normalized_value": "female",
+            "date": "2026-07-28",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "toxicity_phone_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Ms. Lee reports that the numbness in her fingertips from oxaliplatin has improved; she can button clothing and write without difficulty.",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "prior_treatment",
+            "value": "oxaliplatin",
+            "normalized_value": null,
+            "date": "2026-07-28",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "toxicity_phone_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Ms. Lee reports that the numbness in her fingertips from oxaliplatin has improved; she can button clothing and write without difficulty.",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "performance_status",
+            "value": "peripheral sensory neuropathy grade 1",
+            "normalized_value": null,
+            "date": "2026-07-28",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "toxicity_phone_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Assessed as peripheral sensory neuropathy grade 1.",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "prior_treatment",
+            "value": "hair thinning persists, alopecia grade 2",
+            "normalized_value": null,
+            "date": "2026-07-28",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "toxicity_phone_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Hair thinning persists, alopecia grade 2.",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "prior_treatment",
+            "value": "All other treatment-related toxicities are grade 0 to 1",
+            "normalized_value": null,
+            "date": "2026-07-28",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "toxicity_phone_note.pdf",
+            "source_page": 1,
+            "evidence_text": "All other treatment-related toxicities are grade 0 to 1.",
+            "quote_verified": true,
+            "source_kind": "other"
+          }
+        ],
+        "explanation": "Unsupported category-inference guard: hedged category link has no verified quote stating induce. Converted to UNKNOWN. Original reasoning: The criterion requires recovery from treatment-related adverse effects of prior therapy to ≤ Grade 1, excluding alopecia and prior oxaliplatin-induced neuropathy. Evidence shows peripheral sensory neuropathy grade 1, consistent with oxaliplatin-induced neuropathy (excluded from the ≤ Grade 1 requirement). Alopecia is grade 2 but excluded from the criterion. All other treatment-related toxicities are grade 0 to 1, meeting the requirement. The patient's report of improved numbness without difficulty supports recovery to ≤ Grade 1. Hence, the patient meets this inclusion criterion.",
+        "final_conclusion": "MEETS",
+        "clearance_basis": null,
+        "window_evidence_index": null,
+        "parts": [],
+        "date_comparisons": []
+      }
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT07559760",
+      "criterion_id": "EXC-14",
+      "probe": "explicit_negative_serology",
+      "expected": "MEETS",
+      "also_acceptable": [
+        "UNKNOWN"
+      ],
+      "predicted": "MEETS",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The patient has test results showing Nonreactive or Negative status for HIV-1/2 antigen/antibody (indices 8,26), Hepatitis B surface antigen (HBsAg) and core antibody (HBcAb) (indices 9,10,27,28), and Hepatitis C antibody (indices 11,29). These negative test results indicate the patient is not known to be HIV-positive, nor have active hepatitis B or hepatitis C infection, thus the exclusion criterion does not apply.",
+      "criterion_text": "Known HIV-positive, active hepatitis B, or hepatitis C:",
+      "patient_evidence": [
+        {
+          "category": "biomarker",
+          "value": "HIV-1/2 antigen/antibody Nonreactive",
+          "normalized_value": "Nonreactive",
+          "date": "2026-07-29",
+          "start_date": null,
+          "end_date": null,
+          "source_file": "serology_outside_lab.pdf",
+          "source_page": 1,
+          "evidence_text": "HIV-1/2 antigen/antibody\nNonreactive",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "biomarker",
+          "value": "Hepatitis B surface antigen (HBsAg) Negative",
+          "normalized_value": "Negative",
+          "date": "2026-07-29",
+          "start_date": null,
+          "end_date": null,
+          "source_file": "serology_outside_lab.pdf",
+          "source_page": 1,
+          "evidence_text": "Hepatitis B surface antigen (HBsAg)\nNegative",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "biomarker",
+          "value": "Hepatitis B core antibody (HBcAb), total Negative",
+          "normalized_value": "Negative",
+          "date": "2026-07-29",
+          "start_date": null,
+          "end_date": null,
+          "source_file": "serology_outside_lab.pdf",
+          "source_page": 1,
+          "evidence_text": "Hepatitis B core antibody (HBcAb), total\nNegative",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "biomarker",
+          "value": "Hepatitis C antibody Nonreactive",
+          "normalized_value": "Nonreactive",
+          "date": "2026-07-29",
+          "start_date": null,
+          "end_date": null,
+          "source_file": "serology_outside_lab.pdf",
+          "source_page": 1,
+          "evidence_text": "Hepatitis C antibody\nNonreactive",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "lab",
+          "value": "HIV-1/2 antigen/antibody Nonreactive",
+          "normalized_value": "Nonreactive",
+          "date": "2026-07-29",
+          "start_date": null,
+          "end_date": null,
+          "source_file": "serology_outside_lab.pdf",
+          "source_page": 1,
+          "evidence_text": "HIV-1/2 antigen/antibody\nNonreactive\nNonreactive",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "lab",
+          "value": "Hepatitis B surface antigen (HBsAg) Negative",
+          "normalized_value": "Negative",
+          "date": "2026-07-29",
+          "start_date": null,
+          "end_date": null,
+          "source_file": "serology_outside_lab.pdf",
+          "source_page": 1,
+          "evidence_text": "Hepatitis B surface antigen (HBsAg)\nNegative\nNegative",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "lab",
+          "value": "Hepatitis B core antibody (HBcAb), total Negative",
+          "normalized_value": "Negative",
+          "date": "2026-07-29",
+          "start_date": null,
+          "end_date": null,
+          "source_file": "serology_outside_lab.pdf",
+          "source_page": 1,
+          "evidence_text": "Hepatitis B core antibody (HBcAb), total\nNegative\nNegative",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "lab",
+          "value": "Hepatitis C antibody Nonreactive",
+          "normalized_value": "Nonreactive",
+          "date": "2026-07-29",
+          "start_date": null,
+          "end_date": null,
+          "source_file": "serology_outside_lab.pdf",
+          "source_page": 1,
+          "evidence_text": "Hepatitis C antibody\nNonreactive\nNonreactive",
+          "quote_verified": true,
+          "source_kind": "other"
+        }
+      ],
+      "assessment_details": {
+        "criterion_id": "EXC-14",
+        "criterion_text": "Known HIV-positive, active hepatitis B, or hepatitis C:",
+        "criterion_type": "exclusion",
+        "status": "MEETS",
+        "method": "llm",
+        "patient_evidence": [
+          {
+            "category": "biomarker",
+            "value": "HIV-1/2 antigen/antibody Nonreactive",
+            "normalized_value": "Nonreactive",
+            "date": "2026-07-29",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "serology_outside_lab.pdf",
+            "source_page": 1,
+            "evidence_text": "HIV-1/2 antigen/antibody\nNonreactive",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "biomarker",
+            "value": "Hepatitis B surface antigen (HBsAg) Negative",
+            "normalized_value": "Negative",
+            "date": "2026-07-29",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "serology_outside_lab.pdf",
+            "source_page": 1,
+            "evidence_text": "Hepatitis B surface antigen (HBsAg)\nNegative",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "biomarker",
+            "value": "Hepatitis B core antibody (HBcAb), total Negative",
+            "normalized_value": "Negative",
+            "date": "2026-07-29",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "serology_outside_lab.pdf",
+            "source_page": 1,
+            "evidence_text": "Hepatitis B core antibody (HBcAb), total\nNegative",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "biomarker",
+            "value": "Hepatitis C antibody Nonreactive",
+            "normalized_value": "Nonreactive",
+            "date": "2026-07-29",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "serology_outside_lab.pdf",
+            "source_page": 1,
+            "evidence_text": "Hepatitis C antibody\nNonreactive",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "lab",
+            "value": "HIV-1/2 antigen/antibody Nonreactive",
+            "normalized_value": "Nonreactive",
+            "date": "2026-07-29",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "serology_outside_lab.pdf",
+            "source_page": 1,
+            "evidence_text": "HIV-1/2 antigen/antibody\nNonreactive\nNonreactive",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "lab",
+            "value": "Hepatitis B surface antigen (HBsAg) Negative",
+            "normalized_value": "Negative",
+            "date": "2026-07-29",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "serology_outside_lab.pdf",
+            "source_page": 1,
+            "evidence_text": "Hepatitis B surface antigen (HBsAg)\nNegative\nNegative",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "lab",
+            "value": "Hepatitis B core antibody (HBcAb), total Negative",
+            "normalized_value": "Negative",
+            "date": "2026-07-29",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "serology_outside_lab.pdf",
+            "source_page": 1,
+            "evidence_text": "Hepatitis B core antibody (HBcAb), total\nNegative\nNegative",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "lab",
+            "value": "Hepatitis C antibody Nonreactive",
+            "normalized_value": "Nonreactive",
+            "date": "2026-07-29",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "serology_outside_lab.pdf",
+            "source_page": 1,
+            "evidence_text": "Hepatitis C antibody\nNonreactive\nNonreactive",
+            "quote_verified": true,
+            "source_kind": "other"
+          }
+        ],
+        "explanation": "The patient has test results showing Nonreactive or Negative status for HIV-1/2 antigen/antibody (indices 8,26), Hepatitis B surface antigen (HBsAg) and core antibody (HBcAb) (indices 9,10,27,28), and Hepatitis C antibody (indices 11,29). These negative test results indicate the patient is not known to be HIV-positive, nor have active hepatitis B or hepatitis C infection, thus the exclusion criterion does not apply.",
+        "final_conclusion": "DOES_NOT_APPLY",
+        "clearance_basis": "explicit_negative",
+        "window_evidence_index": null,
+        "parts": [],
+        "date_comparisons": []
+      }
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT07559760",
+      "criterion_id": "INC-12",
+      "probe": "calculated_creatinine_clearance",
+      "expected": "DOES_NOT_MEET",
+      "also_acceptable": [
+        "UNKNOWN"
+      ],
+      "predicted": "UNKNOWN",
+      "match": false,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The criterion requires the patient's creatinine clearance to be >= 50 mL/min (Cockcroft-Gault formula). The evidence includes a serum creatinine measurement of 1.3 mg/dL but does not provide the creatinine clearance or sufficient information (weight, age, sex) to calculate it accurately using Cockcroft-Gault formula. Therefore, it is unknown if the patient meets this renal function criterion.",
+      "criterion_text": "Renal: Creatinine clearance ≥ 50 mL/min (Cockcroft-Gault).",
+      "patient_evidence": [
+        {
+          "category": "lab",
+          "value": "Creatinine: 1.3 mg/dL",
+          "normalized_value": "1.3 mg/dL",
+          "date": "2026-07-31",
+          "start_date": null,
+          "end_date": null,
+          "source_file": "lab_report.pdf",
+          "source_page": 1,
+          "evidence_text": "Creatinine: 1.3 mg/dL",
+          "quote_verified": true,
+          "source_kind": "other"
+        }
+      ],
+      "assessment_details": {
+        "criterion_id": "INC-12",
+        "criterion_text": "Renal: Creatinine clearance ≥ 50 mL/min (Cockcroft-Gault).",
+        "criterion_type": "inclusion",
+        "status": "UNKNOWN",
+        "method": "llm",
+        "patient_evidence": [
+          {
+            "category": "lab",
+            "value": "Creatinine: 1.3 mg/dL",
+            "normalized_value": "1.3 mg/dL",
+            "date": "2026-07-31",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "lab_report.pdf",
+            "source_page": 1,
+            "evidence_text": "Creatinine: 1.3 mg/dL",
+            "quote_verified": true,
+            "source_kind": "other"
+          }
+        ],
+        "explanation": "The criterion requires the patient's creatinine clearance to be >= 50 mL/min (Cockcroft-Gault formula). The evidence includes a serum creatinine measurement of 1.3 mg/dL but does not provide the creatinine clearance or sufficient information (weight, age, sex) to calculate it accurately using Cockcroft-Gault formula. Therefore, it is unknown if the patient meets this renal function criterion.",
+        "final_conclusion": "UNKNOWN",
+        "clearance_basis": null,
+        "window_evidence_index": null,
+        "parts": [],
+        "date_comparisons": []
+      }
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT07559760",
+      "criterion_id": "INC-01",
+      "probe": "sanity",
+      "expected": "MEETS",
+      "also_acceptable": [],
+      "predicted": "MEETS",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The patient is 67 years old, which is within the 18-75 year age range required. The patient is female, and the criterion allows male or female. Both age and sex requirements are met by the evidence.",
+      "criterion_text": "Male or female, aged 18-75 years.",
+      "patient_evidence": [
+        {
+          "category": "age",
+          "value": "67 years",
+          "normalized_value": "67 years",
+          "date": "2026-07-31",
+          "start_date": null,
+          "end_date": null,
+          "source_file": "oncology_note.pdf",
+          "source_page": 1,
+          "evidence_text": "Age: 67 years",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "sex",
+          "value": "Female",
+          "normalized_value": "Female",
+          "date": "2026-07-31",
+          "start_date": null,
+          "end_date": null,
+          "source_file": "oncology_note.pdf",
+          "source_page": 1,
+          "evidence_text": "Sex: Female",
+          "quote_verified": true,
+          "source_kind": "other"
+        }
+      ],
+      "assessment_details": {
+        "criterion_id": "INC-01",
+        "criterion_text": "Male or female, aged 18-75 years.",
+        "criterion_type": "inclusion",
+        "status": "MEETS",
+        "method": "llm",
+        "patient_evidence": [
+          {
+            "category": "age",
+            "value": "67 years",
+            "normalized_value": "67 years",
+            "date": "2026-07-31",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "oncology_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Age: 67 years",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "sex",
+            "value": "Female",
+            "normalized_value": "Female",
+            "date": "2026-07-31",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "oncology_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Sex: Female",
+            "quote_verified": true,
+            "source_kind": "other"
+          }
+        ],
+        "explanation": "The patient is 67 years old, which is within the 18-75 year age range required. The patient is female, and the criterion allows male or female. Both age and sex requirements are met by the evidence.",
+        "final_conclusion": "MEETS",
+        "clearance_basis": null,
+        "window_evidence_index": null,
+        "parts": [
+          {
+            "criterion_id": "INC-01/part1",
+            "criterion_text": "Male or female",
+            "criterion_type": "inclusion",
+            "status": "MEETS",
+            "method": "llm",
+            "patient_evidence": [
+              {
+                "category": "sex",
+                "value": "Female",
+                "normalized_value": "Female",
+                "date": "2026-07-31",
+                "start_date": null,
+                "end_date": null,
+                "source_file": "oncology_note.pdf",
+                "source_page": 1,
+                "evidence_text": "Sex: Female",
+                "quote_verified": true,
+                "source_kind": "other"
+              }
+            ],
+            "explanation": "Patient is documented as female on 2026-07-31, meeting the sex criterion.",
+            "final_conclusion": null,
+            "clearance_basis": null,
+            "window_evidence_index": null,
+            "parts": [],
+            "date_comparisons": []
+          },
+          {
+            "criterion_id": "INC-01/part2",
+            "criterion_text": "aged 18-75 years",
+            "criterion_type": "inclusion",
+            "status": "MEETS",
+            "method": "llm",
+            "patient_evidence": [
+              {
+                "category": "age",
+                "value": "67 years",
+                "normalized_value": "67 years",
+                "date": "2026-07-31",
+                "start_date": null,
+                "end_date": null,
+                "source_file": "oncology_note.pdf",
+                "source_page": 1,
+                "evidence_text": "Age: 67 years",
+                "quote_verified": true,
+                "source_kind": "other"
+              }
+            ],
+            "explanation": "Patient age is 67 years on 2026-07-31, which is within the required age range of 18-75 years.",
+            "final_conclusion": null,
+            "clearance_basis": null,
+            "window_evidence_index": null,
+            "parts": [],
+            "date_comparisons": [
+              {
+                "from_date": "1958-07-31",
+                "to_date": "2026-07-31",
+                "claimed": "within",
+                "amount": 75,
+                "unit": "year"
+              }
+            ]
+          }
+        ],
+        "date_comparisons": [
+          {
+            "from_date": "1958-07-31",
+            "to_date": "2026-07-31",
+            "claimed": "within",
+            "amount": 75,
+            "unit": "year"
+          }
+        ]
+      }
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT07559760",
+      "criterion_id": "INC-07",
+      "probe": "sanity",
+      "expected": "MEETS",
+      "also_acceptable": [],
+      "predicted": "MEETS",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The patient has an ECOG performance status of 1 (evidence index 4), which meets the inclusion criterion of ECOG performance status 0-1.",
+      "criterion_text": "ECOG performance status 0-1.",
+      "patient_evidence": [
+        {
+          "category": "performance_status",
+          "value": "ECOG 1",
+          "normalized_value": "1",
+          "date": "2026-07-31",
+          "start_date": null,
+          "end_date": null,
+          "source_file": "oncology_note.pdf",
+          "source_page": 1,
+          "evidence_text": "Performance status: ECOG 1",
+          "quote_verified": true,
+          "source_kind": "other"
+        }
+      ],
+      "assessment_details": {
+        "criterion_id": "INC-07",
+        "criterion_text": "ECOG performance status 0-1.",
+        "criterion_type": "inclusion",
+        "status": "MEETS",
+        "method": "llm",
+        "patient_evidence": [
+          {
+            "category": "performance_status",
+            "value": "ECOG 1",
+            "normalized_value": "1",
+            "date": "2026-07-31",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "oncology_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Performance status: ECOG 1",
+            "quote_verified": true,
+            "source_kind": "other"
+          }
+        ],
+        "explanation": "The patient has an ECOG performance status of 1 (evidence index 4), which meets the inclusion criterion of ECOG performance status 0-1.",
+        "final_conclusion": "MEETS",
+        "clearance_basis": null,
+        "window_evidence_index": null,
+        "parts": [],
+        "date_comparisons": []
+      }
+    }
+  ]
+}
