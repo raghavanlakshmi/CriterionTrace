@@ -33,31 +33,47 @@ synthetic patient SYN-001:
 | Method | Accuracy | Decidable criteria correct | Unsafe false clearance | UNKNOWN → MEETS | False exclusion |
 |---|---|---|---|---|---|
 | Rule baseline (no API calls) | 83% | 58% | **0** | **0** | **0** |
-| LLM assessor | **97%** | **92%** | **0** | **0** | **0** |
+| LLM assessor | **93%** | **83%** | **0** | **0** | **0** |
+
+After the round-3 safety rules, 1 in-sample and 4 held-out answers that were correct became `UNKNOWN`; none became unsafe.
 
 The rule baseline is deliberately conservative: it leaves anything it can't prove as `UNKNOWN`. The LLM
 assessor resolves most of those correctly without ever clearing a patient the evidence doesn't support.
 
 **Held-out check** — 21 labels from 4 trials never used while building the safety guards, committed before the run. First run: 9/10 decidable correct, 1 unsafe clearance (organ function marked met without liver tests). That failure became a new guard; the re-run scored 10/10 with 0 unsafe, but that figure is no longer held-out.
 
-**Buried-exclusion tests** — check whether an exclusion hidden in an old note, a medication list or a
-scanned fax is found, not cleared. Each patient has a matched control in which the hidden fact is
-replaced by a look-alike (pneumonia instead of pneumonitis, a steroid nasal spray instead of oral
-prednisone). Labels were committed before each blind run; each test ran 3 times with fresh extraction.
+**Buried-exclusion tests** — check whether an exclusion hidden in an old note, a table, page 2 of a
+discharge summary or a scanned fax is found, not cleared, and whether the tool still decides what the
+record can decide. Each patient has a matched control in which the hidden fact is replaced by a
+look-alike (pneumonia instead of pneumonitis, a liver biopsy instead of abdominal surgery). Labels were
+committed before each blind run; each test ran 3 times with fresh extraction. After each blind test,
+fixes were designed on its failures, so the next blind test always used a new patient.
 
-| Patient | What was hidden | Code | Blind? | Exact | Acceptable | Unsafe clearances |
+Blind results (code frozen before the patient was written):
+
+| Patient | What was hidden | Code tested | Exact | Acceptable | Unsafe clearances | False exclusions |
 |---|---|---|---|---|---|---|
-| SYN-002 | prior cancer in a 2023 note; prior targeted drug in an outside pharmacy list | original | yes (labels approved before run 1, committed after) | 38/42 | 41/42 | 0 |
-| SYN-003 | lymphoma and immunotherapy inside narrative paragraphs; an allowed skin cancer as a trap | round 1 fixes | yes | 20/30 | 26/30 | **4** |
-| SYN-003 | same | round 2 fixes | no, fixes were designed on it | 28/30 | 28/30 | 0 |
-| SYN-004 | lung history in a scanned fax; a steroid course; a mini-stroke (TIA) | round 2 fixes | yes | 24/42 | 33/42 | **5** |
+| SYN-002 | prior cancer in a 2023 note; prior targeted drug in an outside pharmacy list | original (labels approved before run 1, committed after) | 38/42 | 41/42 | 0 | 0 |
+| SYN-003 | lymphoma and immunotherapy inside narrative paragraphs; an allowed skin cancer as a trap | round 1 fixes | 20/30 | 26/30 | **4** | 0 |
+| SYN-004 | lung history in a scanned fax; a steroid course; a mini-stroke (TIA) | round 2 fixes | 24/42 | 33/42 | **5** | 1 |
+| SYN-005 | prolonged QTc in an ECG table; major surgery on page 2; unresolved neuropathy | round 3 fixes | 26/48 | 42/48 | **0** | 3 |
 
-What this shows: fixes designed on one patient held on that patient, but not on the next blind one.
-The scanned fax was read correctly in every run, and no decoy caused a false exclusion. All 5 unsafe
-clearances on SYN-004 came from one criterion: the model treated an allowed condition (thyroid hormone
-replacement for Hashimoto's) as proof the patient was clear of the whole autoimmune exclusion — the
-same mistake the round-2 fix blocked for cancer history, in a different wording. The next fixes target
-the general rule rather than the wording. [Full SYN-004 results](docs/syn004_blind_test.md).
+On SYN-005 the tool **decided correctly on 23 of 45** rows whose answer is MEETS or DOES_NOT_MEET; most
+of the rest were UNKNOWN (safe, but left for a human). It caught the major surgery 3/3 with a
+code-computed 19-day window and cleared negative HIV/hepatitis serologies 6/6. It missed the QTc value in
+5 of 6 runs (table layout), never calculated creatinine clearance (weight not extracted), and in all 3
+buried runs wrongly failed a recovery criterion whose exception explicitly allows oxaliplatin
+neuropathy.
+
+Development results after round 3 (fixes designed on these patients, so not blind): SYN-002 39/42,
+SYN-003 28/30, SYN-004 31/42, all with 0 unsafe clearances.
+
+What this shows: each round's fixes held on the patients they were designed on but not on the next
+blind one — until round 3, which replaced wording-specific guards with one general rule (an exclusion is
+cleared only when a cited, verified quote explicitly rules it out). That rule held on a new blind patient.
+The cost is caution: the tool now leaves about half of decidable criteria to the reviewer, and no guard
+yet checks the reasoning behind a false exclusion. Details:
+[SYN-004](docs/syn004_blind_test.md), [SYN-005](docs/syn005_blind_test.md).
 
 **Trial retrieval** — Recall@5 on the 16 gold cases that have a relevant trial:
 
@@ -71,7 +87,7 @@ promotes other trials that repeat the same terms. Fusing at the trial level inst
 recovers one of the two (0.94 in an offline check). With 16 cases this is a small-sample signal, and
 it is listed as the next retrieval change to test.
 
-**Tests** — 271 automated tests covering ingestion, quote verification, conflicts, missing evidence,
+**Tests** — 315 automated tests covering ingestion, quote verification, conflicts, missing evidence,
 exclusion direction, retrieval, prompt-injection defence and UI rendering. They run offline on every push.
 
 These are regression checks on synthetic data, not clinical validation.
@@ -134,7 +150,7 @@ To analyse new uploads or refresh the assessments live, copy `.env.example` to `
 `OPENAI_API_KEY`. A lightweight replay-only build for Streamlit Community Cloud lives in `deploy/`.
 
 ```bash
-python -m pytest -q                     # 271 tests, offline
+python -m pytest -q                     # 315 tests, offline
 python scripts/run_eval.py              # retrieval + extraction metrics
 python scripts/run_criterion_eval.py    # criterion metrics (add --llm for the live assessor)
 ```
@@ -160,7 +176,7 @@ Deeper write-ups: [Technical details](docs/TECHNICAL_DETAILS.md) ·
 Synthetic data only; not clinically validated and not for real enrollment decisions. No EHR integration,
 identity matching or consent handling. The trial snapshot is frozen at 2026-10-02 and will go stale as
 recruitment changes. OCR and handwriting still need human review.
-The model still tends to clear exclusions on absent or excepted evidence; code guards catch known patterns, and a blind test (SYN-004) showed new wordings can get past them.
+To stay safe, the tool leaves many decidable criteria `UNKNOWN` (23 of 45 decided correctly on the latest blind patient). It still misses some values laid out in tables, does not calculate derived values such as creatinine clearance, and can wrongly fail a criterion whose exception applies; no guard checks the reasoning behind an exclusion yet.
 
 ## License
 

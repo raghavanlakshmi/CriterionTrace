@@ -102,4 +102,41 @@ For each miss, find the layer:
 Report results as they come out, including anything worse than the development results. If a fix
 follows, SYN-005 is no longer blind and the after-fix result is reported separately.
 
+## Results (blind, three runs on frozen code `6da940d`)
+
+Labels were signed and committed (`ec2b627`) before the dry run and any live run. `src/` and `app.py`
+were unchanged; code and protected-input hashes were verified before and after every run.
+
+| Run | Variant | Decided correctly | Exact | Acceptable | Unsafe | False exclusions |
+|---|---|---|---|---|---|---|
+| 1 | SYN-005 | 4/8 | 4/8 | 6/8 | 0 | 1 |
+| 1 | Control | 4/7 | 5/8 | 8/8 | 0 | 0 |
+| 2 | SYN-005 | 5/8 | 5/8 | 7/8 | 0 | 1 |
+| 2 | Control | 3/7 | 4/8 | 8/8 | 0 | 0 |
+| 3 | SYN-005 | 3/8 | 3/8 | 5/8 | 0 | 1 |
+| 3 | Control | 4/7 | 5/8 | 8/8 | 0 | 0 |
+
+Total: decided correctly 23/45, exact 26/48, acceptable 42/48, **0 unsafe clearances**, 3 false
+exclusions. These are three repetitions of 16 labeled pairs, not independent cases.
+
+| Criterion | Correct decisions | What happened |
+|---|---|---|
+| Major surgery within 4 weeks | 3/3 | Found on page 2; code computed the 19-day window. Control biopsy stayed UNKNOWN 3/3. |
+| HIV / hepatitis B / C | 6/6 | Cleared on verified negative serologies. |
+| ECOG 0–1 | 6/6 | |
+| Age 18–75 | 5/6 | One run invented a 1949 birth date (age 77); the date-comparison guard blocked the wrong claim. |
+| Recovery to grade ≤ 1, excluding alopecia and oxaliplatin neuropathy | 2/6 | All 3 buried runs answered DOES_NOT_MEET, ignoring the neuropathy exception. No guard flag. |
+| QTcF ≥ 470 ms (women) | 1/6 | The ECG value was not extracted in 5 of 6 runs; label and value sit on separate lines in the table. |
+| Toxicity not resolved, except alopecia | 0/6 | UNKNOWN 6/6 (acceptable): the criterion's investigator-discretion clause always defers. |
+| Creatinine clearance ≥ 50 (Cockcroft-Gault ≈ 34.5) | 0/6 | UNKNOWN 6/6 (acceptable): weight was never extracted, and no code calculates derived values. |
+
+The finding: the general clearance rule from round 3 held on a patient it was not designed on (0 unsafe,
+compared with 4 on SYN-003 and 5 on SYN-004 in their blind runs). The remaining gaps are about
+usefulness, not safety: table extraction, derived calculations, and exception handling on the
+exclusion side, which no guard checks. Any fix designed from these results makes SYN-005 a development
+test; its after-fix results will be reported separately.
+
+Reports, evidence and logs are in `data/eval/syn005_runs/run1..3`, with the full layer audit in
+`layer_audit.json`.
+
 Synthetic data only. Not clinical validation.
