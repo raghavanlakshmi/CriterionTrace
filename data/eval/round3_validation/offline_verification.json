@@ -1,0 +1,9 @@
+{
+  "baseline_tests": 271,
+  "final_tests": 315,
+  "command": "python -B -m pytest -q -p no:cacheprovider",
+  "final_frozen_commit": "6da940d49021855cc3d03a26ece5efa001e60c5c",
+  "code_and_protected_hashes_verified": true,
+  "attempts_used": 2,
+  "no_further_tuning": true
+}

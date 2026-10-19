@@ -1,0 +1,1185 @@
+{
+  "patient": "SYN-003",
+  "variant": "buried exclusions (narrative)",
+  "label_status": "Reviewed by Lakshmi - 10/18/2026, before any run",
+  "extraction_model": "gpt-4.1-mini",
+  "assessment_model": "gpt-4.1-mini",
+  "extraction_check": {
+    "buried_malignancy": [
+      {
+        "category": "diagnosis",
+        "value": "classical Hodgkin lymphoma, stage IIA",
+        "source": "hematology_followup_2023.pdf p1",
+        "date": "February 2022",
+        "quote_verified": true
+      },
+      {
+        "category": "prior_treatment",
+        "value": "six cycles of ABVD completed in August 2022",
+        "source": "hematology_followup_2023.pdf p1",
+        "date": "August 2022",
+        "quote_verified": true
+      },
+      {
+        "category": "diagnosis",
+        "value": "complete metabolic response",
+        "source": "hematology_followup_2023.pdf p1",
+        "date": "October 2022",
+        "quote_verified": true
+      }
+    ],
+    "buried_pd1": [
+      {
+        "category": "prior_treatment",
+        "value": "pembrolizumab 200 mg every 3 weeks for four cycles from June to August 2024 on a basket study",
+        "source": "outside_oncology_consult_2024.pdf p1",
+        "date": "June to August 2024",
+        "quote_verified": true
+      },
+      {
+        "category": "prior_treatment",
+        "value": "pembrolizumab 200 mg every 3 weeks for four cycles from June to August 2024 on a basket study",
+        "source": "outside_oncology_consult_2024.pdf p1",
+        "date": "2024-11-20",
+        "quote_verified": true
+      }
+    ],
+    "excepted_cancer_trap": [
+      {
+        "category": "diagnosis",
+        "value": "Basal-cell carcinoma of the left cheek",
+        "source": "dermatology_note_2023.pdf p1",
+        "date": "2023-09-05",
+        "quote_verified": true
+      },
+      {
+        "category": "prior_treatment",
+        "value": "excised on 2023-09-05 with clear margins",
+        "source": "dermatology_note_2023.pdf p1",
+        "date": "2023-09-05",
+        "quote_verified": true
+      }
+    ],
+    "last_chemo_dose": [
+      {
+        "category": "prior_treatment",
+        "value": "FOLFIRI, Cycle 10 administered on 2026-04-08",
+        "source": "infusion_record.pdf p1",
+        "date": "2026-04-08",
+        "quote_verified": true
+      },
+      {
+        "category": "prior_treatment",
+        "value": "Chemotherapy administration Regimen: FOLFIRI Cycle 10 administered on 2026-04-08.",
+        "source": "infusion_record.pdf p1",
+        "date": "2026-04-08",
+        "quote_verified": true
+      }
+    ],
+    "scheduled_first_dose": [
+      {
+        "category": "planned_study_event",
+        "value": "cycle 1 day 1 of study treatment is scheduled for 2026-04-20",
+        "source": "trial_screening_letter.pdf p1",
+        "date": "2026-04-20",
+        "quote_verified": true
+      }
+    ]
+  },
+  "extraction_gaps": [
+    {
+      "source_file": "dermatology_note_2023.pdf",
+      "source_page": 1,
+      "line_number": 7,
+      "sentence_number": 2,
+      "text": "No further treatment needed.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "dermatology_note_2023.pdf",
+      "source_page": 1,
+      "line_number": 7,
+      "sentence_number": 3,
+      "text": "Annual skin checks recommended.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "hematology_followup_2023.pdf",
+      "source_page": 1,
+      "line_number": 6,
+      "sentence_number": 5,
+      "text": "She reports good energy and walks daily.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "hematology_followup_2023.pdf",
+      "source_page": 1,
+      "line_number": 6,
+      "sentence_number": 6,
+      "text": "Plan: annual survivorship visit and repeat ferritin in six months.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "infusion_record.pdf",
+      "source_page": 1,
+      "line_number": 8,
+      "sentence_number": 3,
+      "text": "No further cycles scheduled at this clinic.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "oncology_note.pdf",
+      "source_page": 1,
+      "line_number": 10,
+      "sentence_number": 5,
+      "text": "Treatment history continues on page 2.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "oncology_note.pdf",
+      "source_page": 2,
+      "line_number": 8,
+      "sentence_number": 3,
+      "text": "Referred for second-line clinical trial screening.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "outside_oncology_consult_2024.pdf",
+      "source_page": 1,
+      "line_number": 9,
+      "sentence_number": 6,
+      "text": "She will continue care with her local oncologist.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "trial_screening_letter.pdf",
+      "source_page": 1,
+      "line_number": 6,
+      "sentence_number": 1,
+      "text": "The patient has been referred for second-line clinical trial screening.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "trial_screening_letter.pdf",
+      "source_page": 1,
+      "line_number": 8,
+      "sentence_number": 3,
+      "text": "Final eligibility will be confirmed by the study team.",
+      "message": "Not captured by the tool, review manually"
+    }
+  ],
+  "results": {
+    "rule_baseline": {
+      "labels": 5,
+      "accuracy": 0.4,
+      "decidable_labels": 5,
+      "decided_correctly": 0.4,
+      "unsafe_false_clearance": 0,
+      "false_exclusion": 0,
+      "unknown_to_meets": 0,
+      "confusion_matrix": {
+        "MEETS": {
+          "MEETS": 2,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 0,
+          "POTENTIAL_CONFLICT": 0
+        },
+        "DOES_NOT_MEET": {
+          "MEETS": 0,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 3,
+          "POTENTIAL_CONFLICT": 0
+        },
+        "UNKNOWN": {
+          "MEETS": 0,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 0,
+          "POTENTIAL_CONFLICT": 0
+        },
+        "POTENTIAL_CONFLICT": {
+          "MEETS": 0,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 0,
+          "POTENTIAL_CONFLICT": 0
+        }
+      },
+      "acceptable_rate": 0.6
+    },
+    "llm_assessor": {
+      "labels": 5,
+      "accuracy": 0.8,
+      "decidable_labels": 5,
+      "decided_correctly": 0.8,
+      "unsafe_false_clearance": 0,
+      "false_exclusion": 0,
+      "unknown_to_meets": 0,
+      "confusion_matrix": {
+        "MEETS": {
+          "MEETS": 2,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 0,
+          "POTENTIAL_CONFLICT": 0
+        },
+        "DOES_NOT_MEET": {
+          "MEETS": 0,
+          "DOES_NOT_MEET": 2,
+          "UNKNOWN": 1,
+          "POTENTIAL_CONFLICT": 0
+        },
+        "UNKNOWN": {
+          "MEETS": 0,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 0,
+          "POTENTIAL_CONFLICT": 0
+        },
+        "POTENTIAL_CONFLICT": {
+          "MEETS": 0,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 0,
+          "POTENTIAL_CONFLICT": 0
+        }
+      },
+      "acceptable_rate": 0.8
+    }
+  },
+  "rows": [
+    {
+      "method": "rule_baseline",
+      "trial": "NCT07559760",
+      "criterion_id": "EXC-19",
+      "probe": "buried_malignancy",
+      "expected": "DOES_NOT_MEET",
+      "also_acceptable": [],
+      "predicted": "UNKNOWN",
+      "match": false,
+      "acceptable": false,
+      "judgment_call": false,
+      "flags": [
+        "EXC-19: Compound criterion guard: combined UNKNOWN, UNKNOWN => UNKNOWN."
+      ],
+      "explanation": "Compound criterion guard: Part 1: Other malignancies within 5 years, except adequately treated basal-cell carcinoma of skin or cervical carcinoma in situ. => UNKNOWN. Window part: The supplied evidence does not safely establish this criterion without a live criterion assessment. | Part 2: Other compound conditions => UNKNOWN. Other parts were not separately assessed. Original reasoning: The supplied evidence does not safely establish this criterion without a live criterion assessment.",
+      "criterion_text": "Other malignancies within 5 years, except adequately treated basal-cell carcinoma of skin or cervical carcinoma in situ.",
+      "patient_evidence": [],
+      "assessment_details": {
+        "criterion_id": "EXC-19",
+        "criterion_text": "Other malignancies within 5 years, except adequately treated basal-cell carcinoma of skin or cervical carcinoma in situ.",
+        "criterion_type": "exclusion",
+        "status": "UNKNOWN",
+        "method": "rule",
+        "patient_evidence": [],
+        "explanation": "Compound criterion guard: Part 1: Other malignancies within 5 years, except adequately treated basal-cell carcinoma of skin or cervical carcinoma in situ. => UNKNOWN. Window part: The supplied evidence does not safely establish this criterion without a live criterion assessment. | Part 2: Other compound conditions => UNKNOWN. Other parts were not separately assessed. Original reasoning: The supplied evidence does not safely establish this criterion without a live criterion assessment.",
+        "final_conclusion": null,
+        "clearance_basis": null,
+        "window_evidence_index": null,
+        "parts": [
+          {
+            "criterion_id": "EXC-19",
+            "criterion_text": "Other malignancies within 5 years, except adequately treated basal-cell carcinoma of skin or cervical carcinoma in situ.",
+            "criterion_type": "exclusion",
+            "status": "UNKNOWN",
+            "method": "rule",
+            "patient_evidence": [],
+            "explanation": "Window part: The supplied evidence does not safely establish this criterion without a live criterion assessment.",
+            "final_conclusion": null,
+            "clearance_basis": null,
+            "window_evidence_index": null,
+            "parts": [],
+            "date_comparisons": []
+          },
+          {
+            "criterion_id": "EXC-19",
+            "criterion_text": "Other compound conditions",
+            "criterion_type": "exclusion",
+            "status": "UNKNOWN",
+            "method": "rule",
+            "patient_evidence": [],
+            "explanation": "Other parts were not separately assessed.",
+            "final_conclusion": null,
+            "clearance_basis": null,
+            "window_evidence_index": null,
+            "parts": [],
+            "date_comparisons": []
+          }
+        ],
+        "date_comparisons": []
+      }
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT06412198",
+      "criterion_id": "EXC-01",
+      "probe": "buried_pd1",
+      "expected": "DOES_NOT_MEET",
+      "also_acceptable": [],
+      "predicted": "UNKNOWN",
+      "match": false,
+      "acceptable": false,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment.",
+      "criterion_text": "Prior PD1 or CTLA4 inhibition therapy",
+      "patient_evidence": [],
+      "assessment_details": {
+        "criterion_id": "EXC-01",
+        "criterion_text": "Prior PD1 or CTLA4 inhibition therapy",
+        "criterion_type": "exclusion",
+        "status": "UNKNOWN",
+        "method": "rule",
+        "patient_evidence": [],
+        "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment.",
+        "final_conclusion": null,
+        "clearance_basis": null,
+        "window_evidence_index": null,
+        "parts": [],
+        "date_comparisons": []
+      }
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT07559760",
+      "criterion_id": "EXC-05",
+      "probe": "washout_with_dates",
+      "expected": "DOES_NOT_MEET",
+      "also_acceptable": [
+        "UNKNOWN"
+      ],
+      "predicted": "UNKNOWN",
+      "match": false,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [
+        "EXC-05: Computed time-window guard: missing selected dated event citation (missing dated administration or planned first-dose reference date).",
+        "EXC-05: Compound criterion guard: combined UNKNOWN, UNKNOWN => UNKNOWN."
+      ],
+      "explanation": "Compound criterion guard: Part 1: Any anti-cancer therapy (chemotherapy, radiotherapy, biologics, targeted therapy, immunotherapy, etc.) within 4 weeks before first study-dose; major surgery (excluding biopsy) within 4 weeks that has not fully healed. => UNKNOWN. Computed time-window guard: missing selected dated event citation (missing dated administration or planned first-dose reference date). Original reasoning: Window part: The supplied evidence does not safely establish this criterion without a live criterion assessment. | Part 2: Other compound conditions => UNKNOWN. Other parts were not separately assessed. Original reasoning: The supplied evidence does not safely establish this criterion without a live criterion assessment.",
+      "criterion_text": "Any anti-cancer therapy (chemotherapy, radiotherapy, biologics, targeted therapy, immunotherapy, etc.) within 4 weeks before first study-dose; major surgery (excluding biopsy) within 4 weeks that has not fully healed.",
+      "patient_evidence": [],
+      "assessment_details": {
+        "criterion_id": "EXC-05",
+        "criterion_text": "Any anti-cancer therapy (chemotherapy, radiotherapy, biologics, targeted therapy, immunotherapy, etc.) within 4 weeks before first study-dose; major surgery (excluding biopsy) within 4 weeks that has not fully healed.",
+        "criterion_type": "exclusion",
+        "status": "UNKNOWN",
+        "method": "rule",
+        "patient_evidence": [],
+        "explanation": "Compound criterion guard: Part 1: Any anti-cancer therapy (chemotherapy, radiotherapy, biologics, targeted therapy, immunotherapy, etc.) within 4 weeks before first study-dose; major surgery (excluding biopsy) within 4 weeks that has not fully healed. => UNKNOWN. Computed time-window guard: missing selected dated event citation (missing dated administration or planned first-dose reference date). Original reasoning: Window part: The supplied evidence does not safely establish this criterion without a live criterion assessment. | Part 2: Other compound conditions => UNKNOWN. Other parts were not separately assessed. Original reasoning: The supplied evidence does not safely establish this criterion without a live criterion assessment.",
+        "final_conclusion": null,
+        "clearance_basis": null,
+        "window_evidence_index": null,
+        "parts": [
+          {
+            "criterion_id": "EXC-05",
+            "criterion_text": "Any anti-cancer therapy (chemotherapy, radiotherapy, biologics, targeted therapy, immunotherapy, etc.) within 4 weeks before first study-dose; major surgery (excluding biopsy) within 4 weeks that has not fully healed.",
+            "criterion_type": "exclusion",
+            "status": "UNKNOWN",
+            "method": "rule",
+            "patient_evidence": [],
+            "explanation": "Computed time-window guard: missing selected dated event citation (missing dated administration or planned first-dose reference date). Original reasoning: Window part: The supplied evidence does not safely establish this criterion without a live criterion assessment.",
+            "final_conclusion": null,
+            "clearance_basis": null,
+            "window_evidence_index": null,
+            "parts": [],
+            "date_comparisons": []
+          },
+          {
+            "criterion_id": "EXC-05",
+            "criterion_text": "Other compound conditions",
+            "criterion_type": "exclusion",
+            "status": "UNKNOWN",
+            "method": "rule",
+            "patient_evidence": [],
+            "explanation": "Other parts were not separately assessed.",
+            "final_conclusion": null,
+            "clearance_basis": null,
+            "window_evidence_index": null,
+            "parts": [],
+            "date_comparisons": []
+          }
+        ],
+        "date_comparisons": []
+      }
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT06412198",
+      "criterion_id": "INC-02",
+      "probe": "sanity",
+      "expected": "MEETS",
+      "also_acceptable": [],
+      "predicted": "MEETS",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "Explicit verified evidence matches the central condition or biomarker wording; human verification is required.",
+      "criterion_text": "Confirmed KRASG12C mutation status. If a molecular profiling report is not available, a representative paraffin-embedded tumor block or a minimum of 10 unstained slides will be requested for retrospective KRASG12C mutation testing.",
+      "patient_evidence": [
+        {
+          "category": "biomarker",
+          "value": "KRAS: G12C mutation detected",
+          "normalized_value": "KRAS G12C mutation",
+          "date": "2025-01-14",
+          "start_date": null,
+          "end_date": null,
+          "source_file": "pathology_report.pdf",
+          "source_page": 1,
+          "evidence_text": "KRAS: G12C mutation detected",
+          "quote_verified": true,
+          "source_kind": "other"
+        }
+      ],
+      "assessment_details": {
+        "criterion_id": "INC-02",
+        "criterion_text": "Confirmed KRASG12C mutation status. If a molecular profiling report is not available, a representative paraffin-embedded tumor block or a minimum of 10 unstained slides will be requested for retrospective KRASG12C mutation testing.",
+        "criterion_type": "inclusion",
+        "status": "MEETS",
+        "method": "rule",
+        "patient_evidence": [
+          {
+            "category": "biomarker",
+            "value": "KRAS: G12C mutation detected",
+            "normalized_value": "KRAS G12C mutation",
+            "date": "2025-01-14",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "pathology_report.pdf",
+            "source_page": 1,
+            "evidence_text": "KRAS: G12C mutation detected",
+            "quote_verified": true,
+            "source_kind": "other"
+          }
+        ],
+        "explanation": "Explicit verified evidence matches the central condition or biomarker wording; human verification is required.",
+        "final_conclusion": null,
+        "clearance_basis": null,
+        "window_evidence_index": null,
+        "parts": [],
+        "date_comparisons": []
+      }
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT07559760",
+      "criterion_id": "INC-02",
+      "probe": "sanity",
+      "expected": "MEETS",
+      "also_acceptable": [],
+      "predicted": "MEETS",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "Explicit verified evidence matches the central condition or biomarker wording; human verification is required.",
+      "criterion_text": "Histologically or cytologically confirmed colorectal adenocarcinoma.",
+      "patient_evidence": [
+        {
+          "category": "diagnosis",
+          "value": "Metastatic colorectal adenocarcinoma",
+          "normalized_value": null,
+          "date": "2026-04-06",
+          "start_date": null,
+          "end_date": null,
+          "source_file": "oncology_note.pdf",
+          "source_page": 1,
+          "evidence_text": "Diagnosis: Metastatic colorectal adenocarcinoma",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "diagnosis",
+          "value": "Specimen: liver biopsy, metastatic adenocarcinoma consistent with colorectal primary",
+          "normalized_value": null,
+          "date": "2025-01-14",
+          "start_date": null,
+          "end_date": null,
+          "source_file": "pathology_report.pdf",
+          "source_page": 1,
+          "evidence_text": "Specimen: liver biopsy, metastatic adenocarcinoma consistent with colorectal primary",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "diagnosis",
+          "value": "metastatic colorectal cancer",
+          "normalized_value": null,
+          "date": "2024-11-20",
+          "start_date": null,
+          "end_date": null,
+          "source_file": "outside_oncology_consult_2024.pdf",
+          "source_page": 1,
+          "evidence_text": "Ms. Doe was seen for a second opinion on metastatic colorectal cancer.",
+          "quote_verified": true,
+          "source_kind": "other"
+        }
+      ],
+      "assessment_details": {
+        "criterion_id": "INC-02",
+        "criterion_text": "Histologically or cytologically confirmed colorectal adenocarcinoma.",
+        "criterion_type": "inclusion",
+        "status": "MEETS",
+        "method": "rule",
+        "patient_evidence": [
+          {
+            "category": "diagnosis",
+            "value": "Metastatic colorectal adenocarcinoma",
+            "normalized_value": null,
+            "date": "2026-04-06",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "oncology_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Diagnosis: Metastatic colorectal adenocarcinoma",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "diagnosis",
+            "value": "Specimen: liver biopsy, metastatic adenocarcinoma consistent with colorectal primary",
+            "normalized_value": null,
+            "date": "2025-01-14",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "pathology_report.pdf",
+            "source_page": 1,
+            "evidence_text": "Specimen: liver biopsy, metastatic adenocarcinoma consistent with colorectal primary",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "diagnosis",
+            "value": "metastatic colorectal cancer",
+            "normalized_value": null,
+            "date": "2024-11-20",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "outside_oncology_consult_2024.pdf",
+            "source_page": 1,
+            "evidence_text": "Ms. Doe was seen for a second opinion on metastatic colorectal cancer.",
+            "quote_verified": true,
+            "source_kind": "other"
+          }
+        ],
+        "explanation": "Explicit verified evidence matches the central condition or biomarker wording; human verification is required.",
+        "final_conclusion": null,
+        "clearance_basis": null,
+        "window_evidence_index": null,
+        "parts": [],
+        "date_comparisons": []
+      }
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT07559760",
+      "criterion_id": "EXC-19",
+      "probe": "buried_malignancy",
+      "expected": "DOES_NOT_MEET",
+      "also_acceptable": [],
+      "predicted": "UNKNOWN",
+      "match": false,
+      "acceptable": false,
+      "judgment_call": false,
+      "flags": [
+        "EXC-19: Compound criterion guard: combined UNKNOWN, UNKNOWN => UNKNOWN."
+      ],
+      "explanation": "Compound criterion guard: Part 1: Other malignancies within 5 years, except adequately treated basal-cell carcinoma of skin or cervical carcinoma in situ. => UNKNOWN. Window part: The supplied evidence does not safely establish this criterion without a live criterion assessment. | Part 2: Other compound conditions => UNKNOWN. Other parts were not separately assessed. Original reasoning: The supplied evidence does not safely establish this criterion without a live criterion assessment.",
+      "criterion_text": "Other malignancies within 5 years, except adequately treated basal-cell carcinoma of skin or cervical carcinoma in situ.",
+      "patient_evidence": [],
+      "assessment_details": {
+        "criterion_id": "EXC-19",
+        "criterion_text": "Other malignancies within 5 years, except adequately treated basal-cell carcinoma of skin or cervical carcinoma in situ.",
+        "criterion_type": "exclusion",
+        "status": "UNKNOWN",
+        "method": "rule",
+        "patient_evidence": [],
+        "explanation": "Compound criterion guard: Part 1: Other malignancies within 5 years, except adequately treated basal-cell carcinoma of skin or cervical carcinoma in situ. => UNKNOWN. Window part: The supplied evidence does not safely establish this criterion without a live criterion assessment. | Part 2: Other compound conditions => UNKNOWN. Other parts were not separately assessed. Original reasoning: The supplied evidence does not safely establish this criterion without a live criterion assessment.",
+        "final_conclusion": null,
+        "clearance_basis": null,
+        "window_evidence_index": null,
+        "parts": [
+          {
+            "criterion_id": "EXC-19",
+            "criterion_text": "Other malignancies within 5 years, except adequately treated basal-cell carcinoma of skin or cervical carcinoma in situ.",
+            "criterion_type": "exclusion",
+            "status": "UNKNOWN",
+            "method": "rule",
+            "patient_evidence": [],
+            "explanation": "Window part: The supplied evidence does not safely establish this criterion without a live criterion assessment.",
+            "final_conclusion": null,
+            "clearance_basis": null,
+            "window_evidence_index": null,
+            "parts": [],
+            "date_comparisons": []
+          },
+          {
+            "criterion_id": "EXC-19",
+            "criterion_text": "Other compound conditions",
+            "criterion_type": "exclusion",
+            "status": "UNKNOWN",
+            "method": "rule",
+            "patient_evidence": [],
+            "explanation": "Other parts were not separately assessed.",
+            "final_conclusion": null,
+            "clearance_basis": null,
+            "window_evidence_index": null,
+            "parts": [],
+            "date_comparisons": []
+          }
+        ],
+        "date_comparisons": []
+      }
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT06412198",
+      "criterion_id": "EXC-01",
+      "probe": "buried_pd1",
+      "expected": "DOES_NOT_MEET",
+      "also_acceptable": [],
+      "predicted": "DOES_NOT_MEET",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [
+        "EXC-01: Compound criterion guard: combined DOES_NOT_MEET => DOES_NOT_MEET."
+      ],
+      "explanation": "Compound criterion guard: Part 1: Prior PD1 or CTLA4 inhibition therapy => DOES_NOT_MEET. The patient received pembrolizumab (a PD1 inhibitor) from June to August 2024. Original reasoning: The exclusion criterion is prior PD1 or CTLA4 inhibition therapy. The patient received pembrolizumab, which is a PD1 inhibitor, given 200 mg every 3 weeks for four cycles from June to August 2024 on a basket study, as documented in evidence 10 and 35. This meets the exclusion criterion of prior PD1 inhibition therapy.",
+      "criterion_text": "Prior PD1 or CTLA4 inhibition therapy",
+      "patient_evidence": [
+        {
+          "category": "prior_treatment",
+          "value": "pembrolizumab 200 mg every 3 weeks for four cycles from June to August 2024 on a basket study",
+          "normalized_value": null,
+          "date": "June to August 2024",
+          "start_date": "June 2024",
+          "end_date": "August 2024",
+          "source_file": "outside_oncology_consult_2024.pdf",
+          "source_page": 1,
+          "evidence_text": "Before her microsatellite status was confirmed, she received pembrolizumab 200 mg every 3 weeks for four cycles from June to August 2024 on a basket study, stopped for lack of response.",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "prior_treatment",
+          "value": "pembrolizumab 200 mg every 3 weeks for four cycles from June to August 2024 on a basket study",
+          "normalized_value": null,
+          "date": "2024-11-20",
+          "start_date": "2024-06",
+          "end_date": "2024-08",
+          "source_file": "outside_oncology_consult_2024.pdf",
+          "source_page": 1,
+          "evidence_text": "Before her microsatellite status was confirmed, she received pembrolizumab 200 mg every 3 weeks for four cycles from June to August 2024 on a basket study, stopped for lack of response.",
+          "quote_verified": true,
+          "source_kind": "other"
+        }
+      ],
+      "assessment_details": {
+        "criterion_id": "EXC-01",
+        "criterion_text": "Prior PD1 or CTLA4 inhibition therapy",
+        "criterion_type": "exclusion",
+        "status": "DOES_NOT_MEET",
+        "method": "llm",
+        "patient_evidence": [
+          {
+            "category": "prior_treatment",
+            "value": "pembrolizumab 200 mg every 3 weeks for four cycles from June to August 2024 on a basket study",
+            "normalized_value": null,
+            "date": "June to August 2024",
+            "start_date": "June 2024",
+            "end_date": "August 2024",
+            "source_file": "outside_oncology_consult_2024.pdf",
+            "source_page": 1,
+            "evidence_text": "Before her microsatellite status was confirmed, she received pembrolizumab 200 mg every 3 weeks for four cycles from June to August 2024 on a basket study, stopped for lack of response.",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "prior_treatment",
+            "value": "pembrolizumab 200 mg every 3 weeks for four cycles from June to August 2024 on a basket study",
+            "normalized_value": null,
+            "date": "2024-11-20",
+            "start_date": "2024-06",
+            "end_date": "2024-08",
+            "source_file": "outside_oncology_consult_2024.pdf",
+            "source_page": 1,
+            "evidence_text": "Before her microsatellite status was confirmed, she received pembrolizumab 200 mg every 3 weeks for four cycles from June to August 2024 on a basket study, stopped for lack of response.",
+            "quote_verified": true,
+            "source_kind": "other"
+          }
+        ],
+        "explanation": "Compound criterion guard: Part 1: Prior PD1 or CTLA4 inhibition therapy => DOES_NOT_MEET. The patient received pembrolizumab (a PD1 inhibitor) from June to August 2024. Original reasoning: The exclusion criterion is prior PD1 or CTLA4 inhibition therapy. The patient received pembrolizumab, which is a PD1 inhibitor, given 200 mg every 3 weeks for four cycles from June to August 2024 on a basket study, as documented in evidence 10 and 35. This meets the exclusion criterion of prior PD1 inhibition therapy.",
+        "final_conclusion": "APPLIES",
+        "clearance_basis": null,
+        "window_evidence_index": 0,
+        "parts": [
+          {
+            "criterion_id": "EXC-01/part1",
+            "criterion_text": "Prior PD1 or CTLA4 inhibition therapy",
+            "criterion_type": "exclusion",
+            "status": "DOES_NOT_MEET",
+            "method": "llm",
+            "patient_evidence": [
+              {
+                "category": "prior_treatment",
+                "value": "pembrolizumab 200 mg every 3 weeks for four cycles from June to August 2024 on a basket study",
+                "normalized_value": null,
+                "date": "June to August 2024",
+                "start_date": "June 2024",
+                "end_date": "August 2024",
+                "source_file": "outside_oncology_consult_2024.pdf",
+                "source_page": 1,
+                "evidence_text": "Before her microsatellite status was confirmed, she received pembrolizumab 200 mg every 3 weeks for four cycles from June to August 2024 on a basket study, stopped for lack of response.",
+                "quote_verified": true,
+                "source_kind": "other"
+              },
+              {
+                "category": "prior_treatment",
+                "value": "pembrolizumab 200 mg every 3 weeks for four cycles from June to August 2024 on a basket study",
+                "normalized_value": null,
+                "date": "2024-11-20",
+                "start_date": "2024-06",
+                "end_date": "2024-08",
+                "source_file": "outside_oncology_consult_2024.pdf",
+                "source_page": 1,
+                "evidence_text": "Before her microsatellite status was confirmed, she received pembrolizumab 200 mg every 3 weeks for four cycles from June to August 2024 on a basket study, stopped for lack of response.",
+                "quote_verified": true,
+                "source_kind": "other"
+              }
+            ],
+            "explanation": "The patient received pembrolizumab (a PD1 inhibitor) from June to August 2024.",
+            "final_conclusion": null,
+            "clearance_basis": null,
+            "window_evidence_index": 0,
+            "parts": [],
+            "date_comparisons": [
+              {
+                "from_date": "2024-08",
+                "to_date": "2026-04-20",
+                "claimed": "more_than",
+                "amount": 1,
+                "unit": "year"
+              }
+            ]
+          }
+        ],
+        "date_comparisons": [
+          {
+            "from_date": "2024-08",
+            "to_date": "2026-04-20",
+            "claimed": "more_than",
+            "amount": 1,
+            "unit": "year"
+          }
+        ]
+      }
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT07559760",
+      "criterion_id": "EXC-05",
+      "probe": "washout_with_dates",
+      "expected": "DOES_NOT_MEET",
+      "also_acceptable": [
+        "UNKNOWN"
+      ],
+      "predicted": "DOES_NOT_MEET",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [
+        "EXC-05/part1: Computed time-window guard: selected event 2026-04-08, planned first dose 2026-04-20; code-computed interval 12 days; window 4 weeks (starts 2026-03-23). Documented event is inside the window; the exclusion appears to apply. Planned dates require human verification.",
+        "EXC-05/part2: Exclusion clearance guard: no negative evidence cited; absence-based clearance without evidence about it. Converted to UNKNOWN.",
+        "EXC-05/part2: Unsupported category-inference guard: hedged category link has no verified quote stating major, recent, surgery. Converted to UNKNOWN.",
+        "EXC-05: Compound criterion guard: combined DOES_NOT_MEET, UNKNOWN => DOES_NOT_MEET."
+      ],
+      "explanation": "Compound criterion guard: Part 1: Any anti-cancer therapy (chemotherapy, radiotherapy, biologics, targeted therapy, immunotherapy, etc.) within 4 weeks before first study-dose => DOES_NOT_MEET. Computed time-window guard: selected event 2026-04-08, planned first dose 2026-04-20; code-computed interval 12 days; window 4 weeks (starts 2026-03-23). Documented event is inside the window; the exclusion appears to apply. Planned dates require human verification. Original reasoning: The patient received chemotherapy (FOLFIRI) with administration on 2026-04-08. The first study-dose is scheduled for 2026-04-20. The time interval between chemotherapy and first study-dose is within 4 weeks, meeting the exclusion criterion. | Part 2: Major surgery (excluding biopsy) within 4 weeks that has not fully healed => UNKNOWN. Unsupported category-inference guard: hedged category link has no verified quote stating major, recent, surgery. Converted to UNKNOWN. Original reasoning: The only recent surgery was excision of basal-cell carcinoma on 2023-09-05, which is well beyond 4 weeks before study dose and is unlikely to affect current eligibility for surgery-related exclusion. No evidence suggests recent major surgery within 4 weeks or incomplete healing. Original reasoning: The patient received chemotherapy (FOLFIRI) with the latest documented administration on 2026-04-08. The first study-dose is scheduled for 2026-04-20. This is within the 4-week exclusion window for anti-cancer therapy before the first study-dose. Additionally, the patient had major surgery (excision of basal-cell carcinoma) on 2023-09-05, which is far before the 4-week window and thus not relevant. Hence, the exclusion due to recent anti-cancer therapy applies. The window evidence index is 17 (FOLFIRI cycle 10 administration on 2026-04-08).",
+      "criterion_text": "Any anti-cancer therapy (chemotherapy, radiotherapy, biologics, targeted therapy, immunotherapy, etc.) within 4 weeks before first study-dose; major surgery (excluding biopsy) within 4 weeks that has not fully healed.",
+      "patient_evidence": [
+        {
+          "category": "prior_treatment",
+          "value": "FOLFIRI, Cycle 10 administered on 2026-04-08",
+          "normalized_value": null,
+          "date": "2026-04-08",
+          "start_date": "2026-04-08",
+          "end_date": "2026-04-08",
+          "source_file": "infusion_record.pdf",
+          "source_page": 1,
+          "evidence_text": "Regimen: FOLFIRI\nCycle 10 administered on 2026-04-08.",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "planned_study_event",
+          "value": "cycle 1 day 1 of study treatment is scheduled for 2026-04-20",
+          "normalized_value": "2026-04-20",
+          "date": "2026-04-20",
+          "start_date": "2026-04-20",
+          "end_date": null,
+          "source_file": "trial_screening_letter.pdf",
+          "source_page": 1,
+          "evidence_text": "If eligibility is confirmed, cycle 1 day 1 of study treatment is scheduled for 2026-04-20.",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "prior_treatment",
+          "value": "Chemotherapy administration Regimen: FOLFIRI Cycle 10 administered on 2026-04-08.",
+          "normalized_value": null,
+          "date": "2026-04-08",
+          "start_date": null,
+          "end_date": null,
+          "source_file": "infusion_record.pdf",
+          "source_page": 1,
+          "evidence_text": "Chemotherapy administration\nRegimen: FOLFIRI\nCycle 10 administered on 2026-04-08.",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "prior_treatment",
+          "value": "excised on 2023-09-05 with clear margins",
+          "normalized_value": null,
+          "date": "2023-09-05",
+          "start_date": "2023-09-05",
+          "end_date": "2023-09-05",
+          "source_file": "dermatology_note_2023.pdf",
+          "source_page": 1,
+          "evidence_text": "Basal-cell carcinoma of the left cheek, excised on 2023-09-05 with clear margins.",
+          "quote_verified": true,
+          "source_kind": "other"
+        }
+      ],
+      "assessment_details": {
+        "criterion_id": "EXC-05",
+        "criterion_text": "Any anti-cancer therapy (chemotherapy, radiotherapy, biologics, targeted therapy, immunotherapy, etc.) within 4 weeks before first study-dose; major surgery (excluding biopsy) within 4 weeks that has not fully healed.",
+        "criterion_type": "exclusion",
+        "status": "DOES_NOT_MEET",
+        "method": "llm",
+        "patient_evidence": [
+          {
+            "category": "prior_treatment",
+            "value": "FOLFIRI, Cycle 10 administered on 2026-04-08",
+            "normalized_value": null,
+            "date": "2026-04-08",
+            "start_date": "2026-04-08",
+            "end_date": "2026-04-08",
+            "source_file": "infusion_record.pdf",
+            "source_page": 1,
+            "evidence_text": "Regimen: FOLFIRI\nCycle 10 administered on 2026-04-08.",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "planned_study_event",
+            "value": "cycle 1 day 1 of study treatment is scheduled for 2026-04-20",
+            "normalized_value": "2026-04-20",
+            "date": "2026-04-20",
+            "start_date": "2026-04-20",
+            "end_date": null,
+            "source_file": "trial_screening_letter.pdf",
+            "source_page": 1,
+            "evidence_text": "If eligibility is confirmed, cycle 1 day 1 of study treatment is scheduled for 2026-04-20.",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "prior_treatment",
+            "value": "Chemotherapy administration Regimen: FOLFIRI Cycle 10 administered on 2026-04-08.",
+            "normalized_value": null,
+            "date": "2026-04-08",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "infusion_record.pdf",
+            "source_page": 1,
+            "evidence_text": "Chemotherapy administration\nRegimen: FOLFIRI\nCycle 10 administered on 2026-04-08.",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "prior_treatment",
+            "value": "excised on 2023-09-05 with clear margins",
+            "normalized_value": null,
+            "date": "2023-09-05",
+            "start_date": "2023-09-05",
+            "end_date": "2023-09-05",
+            "source_file": "dermatology_note_2023.pdf",
+            "source_page": 1,
+            "evidence_text": "Basal-cell carcinoma of the left cheek, excised on 2023-09-05 with clear margins.",
+            "quote_verified": true,
+            "source_kind": "other"
+          }
+        ],
+        "explanation": "Compound criterion guard: Part 1: Any anti-cancer therapy (chemotherapy, radiotherapy, biologics, targeted therapy, immunotherapy, etc.) within 4 weeks before first study-dose => DOES_NOT_MEET. Computed time-window guard: selected event 2026-04-08, planned first dose 2026-04-20; code-computed interval 12 days; window 4 weeks (starts 2026-03-23). Documented event is inside the window; the exclusion appears to apply. Planned dates require human verification. Original reasoning: The patient received chemotherapy (FOLFIRI) with administration on 2026-04-08. The first study-dose is scheduled for 2026-04-20. The time interval between chemotherapy and first study-dose is within 4 weeks, meeting the exclusion criterion. | Part 2: Major surgery (excluding biopsy) within 4 weeks that has not fully healed => UNKNOWN. Unsupported category-inference guard: hedged category link has no verified quote stating major, recent, surgery. Converted to UNKNOWN. Original reasoning: The only recent surgery was excision of basal-cell carcinoma on 2023-09-05, which is well beyond 4 weeks before study dose and is unlikely to affect current eligibility for surgery-related exclusion. No evidence suggests recent major surgery within 4 weeks or incomplete healing. Original reasoning: The patient received chemotherapy (FOLFIRI) with the latest documented administration on 2026-04-08. The first study-dose is scheduled for 2026-04-20. This is within the 4-week exclusion window for anti-cancer therapy before the first study-dose. Additionally, the patient had major surgery (excision of basal-cell carcinoma) on 2023-09-05, which is far before the 4-week window and thus not relevant. Hence, the exclusion due to recent anti-cancer therapy applies. The window evidence index is 17 (FOLFIRI cycle 10 administration on 2026-04-08).",
+        "final_conclusion": "APPLIES",
+        "clearance_basis": null,
+        "window_evidence_index": 0,
+        "parts": [
+          {
+            "criterion_id": "EXC-05/part1",
+            "criterion_text": "Any anti-cancer therapy (chemotherapy, radiotherapy, biologics, targeted therapy, immunotherapy, etc.) within 4 weeks before first study-dose",
+            "criterion_type": "exclusion",
+            "status": "DOES_NOT_MEET",
+            "method": "llm",
+            "patient_evidence": [
+              {
+                "category": "prior_treatment",
+                "value": "FOLFIRI, Cycle 10 administered on 2026-04-08",
+                "normalized_value": null,
+                "date": "2026-04-08",
+                "start_date": "2026-04-08",
+                "end_date": "2026-04-08",
+                "source_file": "infusion_record.pdf",
+                "source_page": 1,
+                "evidence_text": "Regimen: FOLFIRI\nCycle 10 administered on 2026-04-08.",
+                "quote_verified": true,
+                "source_kind": "other"
+              },
+              {
+                "category": "planned_study_event",
+                "value": "cycle 1 day 1 of study treatment is scheduled for 2026-04-20",
+                "normalized_value": "2026-04-20",
+                "date": "2026-04-20",
+                "start_date": "2026-04-20",
+                "end_date": null,
+                "source_file": "trial_screening_letter.pdf",
+                "source_page": 1,
+                "evidence_text": "If eligibility is confirmed, cycle 1 day 1 of study treatment is scheduled for 2026-04-20.",
+                "quote_verified": true,
+                "source_kind": "other"
+              },
+              {
+                "category": "prior_treatment",
+                "value": "Chemotherapy administration Regimen: FOLFIRI Cycle 10 administered on 2026-04-08.",
+                "normalized_value": null,
+                "date": "2026-04-08",
+                "start_date": null,
+                "end_date": null,
+                "source_file": "infusion_record.pdf",
+                "source_page": 1,
+                "evidence_text": "Chemotherapy administration\nRegimen: FOLFIRI\nCycle 10 administered on 2026-04-08.",
+                "quote_verified": true,
+                "source_kind": "other"
+              }
+            ],
+            "explanation": "Computed time-window guard: selected event 2026-04-08, planned first dose 2026-04-20; code-computed interval 12 days; window 4 weeks (starts 2026-03-23). Documented event is inside the window; the exclusion appears to apply. Planned dates require human verification. Original reasoning: The patient received chemotherapy (FOLFIRI) with administration on 2026-04-08. The first study-dose is scheduled for 2026-04-20. The time interval between chemotherapy and first study-dose is within 4 weeks, meeting the exclusion criterion.",
+            "final_conclusion": null,
+            "clearance_basis": null,
+            "window_evidence_index": 0,
+            "parts": [],
+            "date_comparisons": [
+              {
+                "from_date": "2026-04-08",
+                "to_date": "2026-04-20",
+                "claimed": "within",
+                "amount": 4,
+                "unit": "week"
+              }
+            ]
+          },
+          {
+            "criterion_id": "EXC-05/part2",
+            "criterion_text": "Major surgery (excluding biopsy) within 4 weeks that has not fully healed",
+            "criterion_type": "exclusion",
+            "status": "UNKNOWN",
+            "method": "llm",
+            "patient_evidence": [
+              {
+                "category": "prior_treatment",
+                "value": "excised on 2023-09-05 with clear margins",
+                "normalized_value": null,
+                "date": "2023-09-05",
+                "start_date": "2023-09-05",
+                "end_date": "2023-09-05",
+                "source_file": "dermatology_note_2023.pdf",
+                "source_page": 1,
+                "evidence_text": "Basal-cell carcinoma of the left cheek, excised on 2023-09-05 with clear margins.",
+                "quote_verified": true,
+                "source_kind": "other"
+              }
+            ],
+            "explanation": "Unsupported category-inference guard: hedged category link has no verified quote stating major, recent, surgery. Converted to UNKNOWN. Original reasoning: The only recent surgery was excision of basal-cell carcinoma on 2023-09-05, which is well beyond 4 weeks before study dose and is unlikely to affect current eligibility for surgery-related exclusion. No evidence suggests recent major surgery within 4 weeks or incomplete healing.",
+            "final_conclusion": null,
+            "clearance_basis": "explicit_negative",
+            "window_evidence_index": null,
+            "parts": [],
+            "date_comparisons": []
+          }
+        ],
+        "date_comparisons": [
+          {
+            "from_date": "2026-04-08",
+            "to_date": "2026-04-20",
+            "claimed": "within",
+            "amount": 4,
+            "unit": "week"
+          }
+        ]
+      }
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT06412198",
+      "criterion_id": "INC-02",
+      "probe": "sanity",
+      "expected": "MEETS",
+      "also_acceptable": [],
+      "predicted": "MEETS",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "Explicit verified evidence matches the central condition or biomarker wording; human verification is required.",
+      "criterion_text": "Confirmed KRASG12C mutation status. If a molecular profiling report is not available, a representative paraffin-embedded tumor block or a minimum of 10 unstained slides will be requested for retrospective KRASG12C mutation testing.",
+      "patient_evidence": [
+        {
+          "category": "biomarker",
+          "value": "KRAS: G12C mutation detected",
+          "normalized_value": "KRAS G12C mutation",
+          "date": "2025-01-14",
+          "start_date": null,
+          "end_date": null,
+          "source_file": "pathology_report.pdf",
+          "source_page": 1,
+          "evidence_text": "KRAS: G12C mutation detected",
+          "quote_verified": true,
+          "source_kind": "other"
+        }
+      ],
+      "assessment_details": {
+        "criterion_id": "INC-02",
+        "criterion_text": "Confirmed KRASG12C mutation status. If a molecular profiling report is not available, a representative paraffin-embedded tumor block or a minimum of 10 unstained slides will be requested for retrospective KRASG12C mutation testing.",
+        "criterion_type": "inclusion",
+        "status": "MEETS",
+        "method": "rule",
+        "patient_evidence": [
+          {
+            "category": "biomarker",
+            "value": "KRAS: G12C mutation detected",
+            "normalized_value": "KRAS G12C mutation",
+            "date": "2025-01-14",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "pathology_report.pdf",
+            "source_page": 1,
+            "evidence_text": "KRAS: G12C mutation detected",
+            "quote_verified": true,
+            "source_kind": "other"
+          }
+        ],
+        "explanation": "Explicit verified evidence matches the central condition or biomarker wording; human verification is required.",
+        "final_conclusion": null,
+        "clearance_basis": null,
+        "window_evidence_index": null,
+        "parts": [],
+        "date_comparisons": []
+      }
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT07559760",
+      "criterion_id": "INC-02",
+      "probe": "sanity",
+      "expected": "MEETS",
+      "also_acceptable": [],
+      "predicted": "MEETS",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "Explicit verified evidence matches the central condition or biomarker wording; human verification is required.",
+      "criterion_text": "Histologically or cytologically confirmed colorectal adenocarcinoma.",
+      "patient_evidence": [
+        {
+          "category": "diagnosis",
+          "value": "Metastatic colorectal adenocarcinoma",
+          "normalized_value": null,
+          "date": "2026-04-06",
+          "start_date": null,
+          "end_date": null,
+          "source_file": "oncology_note.pdf",
+          "source_page": 1,
+          "evidence_text": "Diagnosis: Metastatic colorectal adenocarcinoma",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "diagnosis",
+          "value": "Specimen: liver biopsy, metastatic adenocarcinoma consistent with colorectal primary",
+          "normalized_value": null,
+          "date": "2025-01-14",
+          "start_date": null,
+          "end_date": null,
+          "source_file": "pathology_report.pdf",
+          "source_page": 1,
+          "evidence_text": "Specimen: liver biopsy, metastatic adenocarcinoma consistent with colorectal primary",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "diagnosis",
+          "value": "metastatic colorectal cancer",
+          "normalized_value": null,
+          "date": "2024-11-20",
+          "start_date": null,
+          "end_date": null,
+          "source_file": "outside_oncology_consult_2024.pdf",
+          "source_page": 1,
+          "evidence_text": "Ms. Doe was seen for a second opinion on metastatic colorectal cancer.",
+          "quote_verified": true,
+          "source_kind": "other"
+        }
+      ],
+      "assessment_details": {
+        "criterion_id": "INC-02",
+        "criterion_text": "Histologically or cytologically confirmed colorectal adenocarcinoma.",
+        "criterion_type": "inclusion",
+        "status": "MEETS",
+        "method": "rule",
+        "patient_evidence": [
+          {
+            "category": "diagnosis",
+            "value": "Metastatic colorectal adenocarcinoma",
+            "normalized_value": null,
+            "date": "2026-04-06",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "oncology_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Diagnosis: Metastatic colorectal adenocarcinoma",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "diagnosis",
+            "value": "Specimen: liver biopsy, metastatic adenocarcinoma consistent with colorectal primary",
+            "normalized_value": null,
+            "date": "2025-01-14",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "pathology_report.pdf",
+            "source_page": 1,
+            "evidence_text": "Specimen: liver biopsy, metastatic adenocarcinoma consistent with colorectal primary",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "diagnosis",
+            "value": "metastatic colorectal cancer",
+            "normalized_value": null,
+            "date": "2024-11-20",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "outside_oncology_consult_2024.pdf",
+            "source_page": 1,
+            "evidence_text": "Ms. Doe was seen for a second opinion on metastatic colorectal cancer.",
+            "quote_verified": true,
+            "source_kind": "other"
+          }
+        ],
+        "explanation": "Explicit verified evidence matches the central condition or biomarker wording; human verification is required.",
+        "final_conclusion": null,
+        "clearance_basis": null,
+        "window_evidence_index": null,
+        "parts": [],
+        "date_comparisons": []
+      }
+    }
+  ]
+}

@@ -44,6 +44,8 @@ class EvidenceItem(BaseModel):
     value: str = Field(min_length=1)
     normalized_value: str | None = None
     date: str | None = None
+    start_date: str | None = None
+    end_date: str | None = None
     source_file: str = Field(min_length=1)
     source_page: int = Field(ge=1, strict=True)
     evidence_text: str = Field(min_length=1, description="Exact quote copied from source page text")
@@ -105,6 +107,15 @@ class TrialCriterion(BaseModel):
     text: str = Field(min_length=1)
 
 
+class DateComparison(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    from_date: str = Field(pattern=r"^\d{4}-\d{2}(?:-\d{2})?$")
+    to_date: str = Field(pattern=r"^\d{4}-\d{2}(?:-\d{2})?$")
+    claimed: Literal["within", "more_than", "less_than"]
+    amount: int = Field(ge=0)
+    unit: Literal["day", "days", "week", "weeks", "month", "months", "year", "years"]
+
+
 class CriterionAssessment(BaseModel):
     """Auditable prescreening result for one criterion."""
 
@@ -118,6 +129,10 @@ class CriterionAssessment(BaseModel):
     patient_evidence: list[EvidenceItem]
     explanation: str = Field(min_length=1)
     final_conclusion: Literal["APPLIES", "DOES_NOT_APPLY", "MEETS", "DOES_NOT_MEET", "UNKNOWN", "POTENTIAL_CONFLICT"] | None = None
+    clearance_basis: Literal["explicit_negative", "exception_only", "absence", "other"] | None = None
+    window_evidence_index: int | None = Field(default=None, ge=0, description="Selected event index within patient_evidence, mapped from the model input by code")
+    parts: list["CriterionAssessment"] = Field(default_factory=list)
+    date_comparisons: list[DateComparison] = Field(default_factory=list)
 
 
 class RetrievalChunk(BaseModel):

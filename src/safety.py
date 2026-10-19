@@ -1,4 +1,4 @@
-﻿"""Output guardrails for research-trial prescreening."""
+"""Output guardrails for research-trial prescreening."""
 
 from __future__ import annotations
 
@@ -7,6 +7,7 @@ import calendar
 from datetime import date, timedelta
 
 from .schemas import CriterionAssessment
+from .date_math import date_bounds, date_in_quote, window_start
 
 
 DISCLAIMER = (
@@ -85,6 +86,51 @@ def history_clearance_problem(item: CriterionAssessment) -> str | None:
         return "History clearance guard: excepted condition only; the exception does not clear the whole criterion."
     return "History clearance guard: absence of explicit scope-matching negative evidence does not clear this condition history."
 
+
+
+def quote_is_negative(quote: str) -> bool:
+    """Recognize a stated negative, excluding nonassessment and uncertain negation."""
+    for clause in re.split(r"[.;!?]|\bbut\b|\bhowever\b", quote, flags=re.I):
+        if re.search(r"\b(?:not|never|no)\b.*\b(?:documented|mentioned|recorded|assessed|evaluated|information|available)\b|"
+                     r"\b(?:cannot|can't|could not|not)\s+(?:be\s+)?(?:rule[ds]? out|exclude[ds]?)|\bnot only\b", clause, re.I):
+            continue
+        if re.search(r"\b(?:no|not|negative|without|denies|denied|ruled out|absent|free of|never|naive)\b", clause, re.I):
+            return True
+    return False
+
+
+def exclusion_clearance_problem(item: CriterionAssessment) -> str | None:
+    """Every model clearance requires a declared basis AND a verified negative."""
+    if item.method != "llm" or item.criterion_type != "exclusion" or item.status != "MEETS":
+        return None
+    if reason := history_clearance_problem(item):
+        return reason
+    if item.clearance_basis == "exception_only":
+        return "Exclusion clearance guard: cleared on an allowed condition only."
+    if item.clearance_basis == "absence":
+        return "Exclusion clearance guard: cleared from absence."
+    if item.clearance_basis != "explicit_negative":
+        return "Exclusion clearance guard: no explicit-negative basis declared (basis other or missing); absence-based clearance without evidence about it."
+    if not any(e.quote_verified and quote_is_negative(e.evidence_text) for e in item.patient_evidence):
+        return "Exclusion clearance guard: no negative evidence cited; absence-based clearance without evidence about it."
+    # A named exposure's negation cannot clear every exposure in a broader class
+    # or every alternative in an OR criterion. This is structural, not a drug list.
+    main = re.split(r"\bexcept\b|\bunless\b", item.criterion_text, flags=re.I)[0]
+    if PRIOR_EXPOSURE.search(main):
+        for branch in re.split(r"\bor\b", re.sub(r"\([^)]*\)", "", main), flags=re.I):
+            terms = _terms(branch) - {"inhibition", "inhibitor", "exposure", "diagnosis", "diagnosed"}
+            if not terms:
+                continue
+            covered = False
+            for fact in item.patient_evidence:
+                if not fact.quote_verified or not quote_is_negative(fact.evidence_text):
+                    continue
+                # Allow formatting-only gaps within identifiers (AB12 vs AB 12).
+                if any(term in _terms(fact.evidence_text) or re.search(r"\b" + r"\s*".join(re.escape(c) for c in term) + r"\b", fact.evidence_text, re.I) for term in terms):
+                    covered = True
+            if not covered:
+                return "Exclusion clearance guard: narrower negation does not address the full prior-condition or exposure scope."
+    return None
 
 def is_absence_inferred_clearance(item: CriterionAssessment) -> bool:
     """An LLM 'clear of exclusion' for a prior-exposure criterion needs an explicit negative in the record.
@@ -251,7 +297,8 @@ def time_window_problem(item: CriterionAssessment) -> str | None:
     if all(e.source_kind == "medication_list" or e.category == "current_medication"
            or MEDICATION_LIST.search(e.source_file + " " + e.evidence_text) for e in cited):
         return "Time-window decision cites only medication snapshots, not administration or stop dates."
-    if STUDY_REFERENCE.search(item.criterion_text) and not DATED_REFERENCE.search(_cited_text(item)):
+    has_reference = any(e.category == "planned_study_event" and e.date for e in cited)
+    if STUDY_REFERENCE.search(item.criterion_text) and not has_reference and not DATED_REFERENCE.search(_cited_text(item)):
         return "Time-window decision lacks an explicitly documented study reference date."
     return None
 
@@ -261,64 +308,51 @@ NUMBER_WORDS = dict(zip("one two three four five six seven eight nine ten eleven
 
 
 def computed_study_window(item: CriterionAssessment) -> tuple[str, str] | None:
-    """Compute a recent-therapy window from cited actual and planned events only."""
+    """The model selects a cited event; code validates dates and computes its window."""
     if item.criterion_type != "exclusion" or item.status == "POTENTIAL_CONFLICT":
         return None
     window = re.search(r"\bwithin\s+(\d+|" + "|".join(NUMBER_WORDS) + r")\s*[- ]?\s*(days?|weeks?|months?|years?)\b", item.criterion_text, re.I)
     if not window or not STUDY_REFERENCE.search(item.criterion_text):
         return None
-    # Only broad treatment windows; a specific drug or modality requires a
-    # clinically matched administration, which this arithmetic guard cannot infer.
-    treatment_scope = re.search(r"\b(?:anti[- ]?cancer (?:therapy|treatment)|systemic (?:therapy|treatment)|chemotherapy|therapy)\b", item.criterion_text, re.I)
-    if not treatment_scope:
-        return None
-    scope_text = re.sub(r"\([^)]*\)", "", item.criterion_text).split(";")[0]
-    if re.search(r"\b(?:radiation|radiotherapy|targeted|inhibitor|immunotherapy|antibod\w*)\b", scope_text, re.I):
-        return None
+    prefix = "Computed time-window guard: "
+    index = item.window_evidence_index
+    if index is None or index >= len(item.patient_evidence):
+        return "UNKNOWN", prefix + "missing selected dated event citation (missing dated administration or planned first-dose reference date)."
+    selected = item.patient_evidence[index]
+    event_date = selected.end_date or selected.date or selected.start_date
+    if not selected.quote_verified or not event_date or not date_in_quote(event_date, selected.evidence_text):
+        return "UNKNOWN", prefix + "selected event has no verified event date in its quote."
+    if (selected.source_kind == "medication_list" and not selected.end_date) or selected.category == "planned_study_event":
+        return "UNKNOWN", prefix + "selected record is a snapshot or planned event, not an actual dated event."
     cited = [e for e in item.patient_evidence if e.quote_verified]
-    references, events = [], []
-    for e in cited:
-        # Legacy evidence may contain an explicitly dated study-dose anchor in
-        # the same verified quote as the administration. Preserve that support.
-        for anchor in re.finditer("(?:" + STUDY_REFERENCE.pattern + r")\s*(?:date)?\s*(?:is|was|on|scheduled for|planned for|:|=)?\s*(\d{4}-\d{2}-\d{2})\b", e.evidence_text, re.I):
-            try:
-                references.append(date.fromisoformat(anchor.group(anchor.re.groups)))
-            except ValueError:
-                pass
-        if not e.date or e.date not in e.evidence_text:
-            continue
-        try:
-            day = date.fromisoformat(e.date)
-        except ValueError:
-            continue
-        if e.category == "planned_study_event" and re.search(r"first[ -]+(?:study[ -]+|trial[ -]+)?dose|cycle\s+1\s+day\s+1", e.evidence_text, re.I):
-            references.append(day)
-        elif e.category == "prior_treatment" and e.source_kind != "medication_list" and not MEDICATION_LIST.search(e.source_file):
-            if re.search(r"\b(?:administered|given|received|infused|last dose|stopped|discontinued)\b", e.evidence_text, re.I) and not re.search(r"\b(?:not|never)\s+(?:administered|given|received)|\b(?:planned|scheduled|discussed)\b", e.evidence_text, re.I):
-                events.append(day)
-    if not references or not events:
-        return "UNKNOWN", "Computed time-window guard: missing dated administration or planned first-dose reference date."
-    if len(set(references)) != 1:
-        return "UNKNOWN", "Computed time-window guard: conflicting planned first-dose reference dates; reviewer must reconcile them."
-    reference = references[0]
+    try:
+        bounds = date_bounds(event_date)
+        if bounds is None: raise ValueError("unsupported precision")
+        earliest, event = bounds
+        references = {date.fromisoformat(e.date) for e in cited if e.category == "planned_study_event" and e.date and e.date in e.evidence_text}
+    except ValueError:
+        return "UNKNOWN", prefix + "event or reference date is not a complete calendar date."
+    if not references:
+        return "UNKNOWN", prefix + "missing dated administration or planned first-dose reference date."
+    if len(references) != 1:
+        return "UNKNOWN", prefix + "conflicting planned first-dose reference dates; reviewer must reconcile them."
+    reference = next(iter(references))
     amount = int(window[1]) if window[1].isdigit() else NUMBER_WORDS[window[1].lower()]
     unit = window[2].lower()
-    if unit.startswith(('day', 'week')):
-        lower = reference - timedelta(days=amount * (7 if unit.startswith('week') else 1))
-    else:
-        months = amount * (12 if unit.startswith('year') else 1)
-        year, month = divmod(reference.year * 12 + reference.month - 1 - months, 12)
-        if year < 1:
-            return "UNKNOWN", "Computed time-window guard: unsupported calendar boundary."
-        month += 1
-        lower = date(year, month, min(reference.day, calendar.monthrange(year, month)[1]))
-    inside = [day for day in events if lower <= day <= reference]
-    event = max(inside or events)
+    try:
+        lower = window_start(reference, amount, unit)
+    except (ValueError, OverflowError):
+        return "UNKNOWN", prefix + "unsupported calendar boundary."
     interval = (reference - event).days
-    detail = f"Computed time-window guard: administration {event.isoformat()}, planned first dose {reference.isoformat()}; code-computed interval {interval} days; window {amount} {unit} (starts {lower.isoformat()})."
-    if inside:
-        return "DOES_NOT_MEET", detail + " Documented administration is inside the window; the exclusion appears to apply. Planned dates require human verification."
-    return "UNKNOWN", detail + " No cited administration is inside the window; absence of later therapy is not established."
+    detail = f"{prefix}selected event {event.isoformat()}, planned first dose {reference.isoformat()}; code-computed interval {interval} days; window {amount} {unit} (starts {lower.isoformat()})."
+    if earliest != event:
+        detail += f" Source precision {event_date}; possible event range {earliest} through {event}."
+        if (lower <= earliest <= reference) != (lower <= event <= reference):
+            return "UNKNOWN", detail + " Month-only date straddles the window boundary."
+    if lower <= event <= reference and lower <= earliest <= reference:
+        return "DOES_NOT_MEET", detail + " Documented event is inside the window; the exclusion appears to apply. Planned dates require human verification."
+    return "UNKNOWN", detail + " Outside the window; absence of later events is not established."
+
 
 def has_biomarker_treatment_reasoning(explanation: str) -> bool:
     """Flag inference language linking a test finding to treatment, not citations."""
@@ -381,18 +415,110 @@ def status_contradicts_explanation(item: CriterionAssessment) -> bool:
     return prose_status != item.status
 
 
-def review_assessments(assessments: list[CriterionAssessment]) -> tuple[list[CriterionAssessment], list[str]]:
+
+
+def date_comparison_problem(item: CriterionAssessment) -> str | None:
+    comparisons = [c.model_dump() for c in item.date_comparisons]
+    if not comparisons:
+        month = r"(?:January|February|March|April|May|June|July|August|September|October|November|December|Jan|Feb|Mar|Apr|Jun|Jul|Aug|Sep|Oct|Nov|Dec)"
+        date_text = r"(?:\d{4}-\d{2}(?:-\d{2})?|" + month + r"\s+(?:\d{1,2},?\s+)?\d{4})"
+        pattern = r"("+date_text+r").{0,80}?\b(more than|less than|within)\s+(\d+|"+"|".join(NUMBER_WORDS)+r")\s+(days?|weeks?|months?|years?)\s+(?:before|prior to)\s+("+date_text+r")"
+        for match in re.finditer(pattern, item.explanation, re.I):
+            amount = int(match[3]) if match[3].isdigit() else NUMBER_WORDS[match[3].lower()]
+            comparisons.append(dict(from_date=match[1],to_date=match[5],claimed=match[2].replace(" ","_"),amount=amount,unit=match[4]))
+    for comparison in comparisons:
+        start, end = date_bounds(comparison['from_date']), date_bounds(comparison['to_date'])
+        if not start or not end:
+            return "Date-comparison guard: explanation contains an unverifiable date comparison."
+        results = []
+        try:
+            for source in set(start):
+                for reference in set(end):
+                    lower = window_start(reference, comparison['amount'], comparison['unit'])
+                    if comparison['claimed'] == 'within': valid = lower <= source <= reference
+                    elif comparison['claimed'] == 'more_than': valid = source < lower
+                    else: valid = lower < source <= reference
+                    results.append(valid)
+        except (ValueError, OverflowError):
+            return "Date-comparison guard: explanation contains an unverifiable date comparison."
+        if not any(results):
+            return "Date-comparison guard: explanation contains an incorrect date comparison."
+        if not all(results):
+            return "Date-comparison guard: source date precision cannot verify the explanation's comparison."
+    return None
+
+
+def unsupported_category_inference(item: CriterionAssessment) -> tuple[bool, str] | None:
+    """A hedged category link is reasoning, not a source-supported diagnosis."""
+    candidates = []
+    for match in re.finditer(r"\b(?:likely|probably|suggests|consistent with|may represent)\s+(?:an?\s+)?([a-z][a-z-]*(?:\s+[a-z][a-z-]*){0,2})", item.explanation, re.I):
+        if re.search(r"\b(?:not|no)\s*$",item.explanation[max(0,match.start()-10):match.start()],re.I):
+            continue
+        phrase = re.split(r"\b(?:because|as|and|but|is|was|which|that)\b",match[1],flags=re.I)[0]
+        phrase = re.sub(r"[- ]related\b", "", phrase, flags=re.I)
+        candidates.extend(_terms(phrase))
+    unsupported = sorted({term for term in candidates if not any(
+        e.quote_verified and term in _terms(e.evidence_text) for e in item.patient_evidence)})
+    if not unsupported:
+        return None
+    depends = item.status in {"MEETS", "DOES_NOT_MEET"} and bool(set(unsupported) & _terms(item.criterion_text))
+    return depends, "Unsupported category-inference guard: hedged category link has no verified quote stating " + ", ".join(unsupported) + "."
+
+def is_compound_window(text: str) -> bool:
+    # Only top-level connectors; alternatives inside an example list in
+    # parentheses do not silently become separate clinical requirements.
+    stripped = re.sub(r"\([^)]*\)", "", text)
+    return bool(TIME_WINDOW.search(text) and re.search(r"\bor\b|;|\n\s*[-*]", stripped, re.I))
+
+
+def review_assessments(assessments: list[CriterionAssessment], *, _part: bool = False) -> tuple[list[CriterionAssessment], list[str]]:
     """Downgrade unsupported conclusions and return visible review flags."""
     reviewed, flags = [], []
     for item in assessments:
+        if not _part and item.criterion_type == "exclusion" and (item.parts or is_compound_window(item.criterion_text)):
+            children = list(item.parts)
+            if not children:
+                children = [item.model_copy(update={"parts": [], "explanation": "Window part: " + item.explanation})]
+                children.append(item.model_copy(update={"status": "UNKNOWN", "parts": [], "patient_evidence": [],
+                    "window_evidence_index": None, "criterion_text": "Other compound conditions",
+                    "final_conclusion": None, "explanation": "Other parts were not separately assessed."}))
+            if is_compound_window(item.criterion_text) and len(children) < 2:
+                children.append(item.model_copy(update={"status": "UNKNOWN", "parts": [], "patient_evidence": [],
+                    "window_evidence_index": None, "final_conclusion": None, "criterion_text": "Unaddressed compound parts",
+                    "explanation": "Compound criterion has more conditions than returned parts."}))
+            checked, child_flags = review_assessments(children, _part=True)
+            statuses = [p.status for p in checked]
+            status = "DOES_NOT_MEET" if "DOES_NOT_MEET" in statuses else ("MEETS" if statuses and all(s == "MEETS" for s in statuses) else "UNKNOWN")
+            if status_contradicts_explanation(item):
+                status = "UNKNOWN"
+                child_flags.append(f"{item.criterion_id}: status contradicts explanation; converted to UNKNOWN.")
+            if reason := date_comparison_problem(item):
+                status = "UNKNOWN"
+                child_flags.append(f"{item.criterion_id}: {reason} Converted to UNKNOWN.")
+            if inference := unsupported_category_inference(item):
+                depends, reason = inference
+                if depends: status = "UNKNOWN"
+                child_flags.append(f"{item.criterion_id}: {reason}" + (" Converted to UNKNOWN." if depends else " Review reasoning."))
+            if INVESTIGATOR_JUDGMENT.search(item.criterion_text):
+                status = "UNKNOWN"
+                child_flags.append(f"{item.criterion_id}: investigator-judgment criterion converted to UNKNOWN.")
+            if any(not e.quote_verified for e in item.patient_evidence):
+                status = "UNKNOWN"
+                child_flags.append(f"{item.criterion_id}: unverified source quote.")
+            explanation = "Compound criterion guard: " + " | ".join(f"Part {n}: {part.criterion_text} => {part.status}. {part.explanation}" for n, part in enumerate(checked, 1))
+            reviewed.append(item.model_copy(update={"status": status, "parts": checked,
+                "explanation": explanation + " Original reasoning: " + item.explanation}))
+            flags.extend(child_flags)
+            flags.append(f"{item.criterion_id}: Compound criterion guard: combined {', '.join(statuses)} => {status}.")
+            continue
         update = {}
+        if item.explanation.startswith("Conflict preservation guard:"):
+            flags.append(f"{item.criterion_id}: Conflict preservation guard: all differing verified values retained.")
+        computed = computed_study_window(item)
         if status_contradicts_explanation(item):
             update = {"status": "UNKNOWN", "explanation": "Status contradicts explanation. Converted to UNKNOWN. Original reasoning: " + item.explanation}
             flags.append(f"{item.criterion_id}: status contradicts explanation; converted to UNKNOWN.")
-        elif reason := history_clearance_problem(item):
-            update = {"status": "UNKNOWN", "explanation": f"{reason} Converted to UNKNOWN. Original reasoning: {item.explanation}"}
-            flags.append(f"{item.criterion_id}: {reason} Converted to UNKNOWN.")
-        elif reason := time_window_problem(item):
+        elif computed is None and (reason := time_window_problem(item)):
             update = {"status": "UNKNOWN", "explanation": f"{reason} Converted to UNKNOWN. Original reasoning: {item.explanation}"}
             flags.append(f"{item.criterion_id}: {reason} Converted to UNKNOWN.")
         elif item.status in {"MEETS", "DOES_NOT_MEET", "POTENTIAL_CONFLICT"} and INVESTIGATOR_JUDGMENT.search(item.criterion_text):
@@ -401,12 +527,6 @@ def review_assessments(assessments: list[CriterionAssessment]) -> tuple[list[Cri
         elif item.status in {"MEETS", "DOES_NOT_MEET", "POTENTIAL_CONFLICT"} and not item.patient_evidence and item.method == "llm":
             update = {"status": "UNKNOWN", "explanation": "No patient evidence supports this conclusion; converted to UNKNOWN."}
             flags.append(f"{item.criterion_id}: unsupported conclusion converted to UNKNOWN.")
-        elif is_absence_inferred_clearance(item):
-            update = {"status": "UNKNOWN", "explanation": "The record does not explicitly rule out this prior exposure; absence from a treatment list is not a negative. Converted to UNKNOWN."}
-            flags.append(f"{item.criterion_id}: absence-based clearance of a prior-exposure exclusion converted to UNKNOWN.")
-        elif is_unsupported_exclusion_clearance(item):
-            update = {"status": "UNKNOWN", "explanation": f"No cited evidence addresses this exclusion; absence of a record does not clear it. Converted to UNKNOWN. Original reasoning: {item.explanation}"}
-            flags.append(f"{item.criterion_id}: exclusion cleared without evidence about it; converted to UNKNOWN.")
         elif is_unstated_line_of_therapy(item):
             update = {"status": "UNKNOWN", "explanation": f"This criterion depends on the line of therapy, which the cited record does not state; converted to UNKNOWN. Original reasoning: {item.explanation}"}
             flags.append(f"{item.criterion_id}: line of therapy not documented; converted to UNKNOWN.")
@@ -416,12 +536,19 @@ def review_assessments(assessments: list[CriterionAssessment]) -> tuple[list[Cri
         elif is_conditional_or_option_rejection(item):
             update = {"status": "UNKNOWN", "explanation": f"This item is a conditional branch or one option among alternatives, so not meeting it does not show exclusion; reviewer decides applicability. Original reasoning: {item.explanation}"}
             flags.append(f"{item.criterion_id}: conditional or option sub-item; DOES_NOT_MEET converted to UNKNOWN.")
+        if reason := exclusion_clearance_problem(item):
+            if not update:
+                update = {"status": "UNKNOWN", "explanation": f"{reason} Converted to UNKNOWN. Original reasoning: {item.explanation}"}
+            flags.append(f"{item.criterion_id}: {reason} Converted to UNKNOWN.")
         # Arithmetic replaces a model conclusion only after consistency and
         # other guards; a detected contradiction must remain UNKNOWN.
-        if not status_contradicts_explanation(item) and (computed := computed_study_window(item)):
+        if not status_contradicts_explanation(item) and computed:
             status, detail = computed
             update = {"status": status, "explanation": detail + " Original reasoning: " + item.explanation}
             flags.append(f"{item.criterion_id}: {detail}")
+        if reason := date_comparison_problem(item):
+            update = {"status": "UNKNOWN", "explanation": reason + " Converted to UNKNOWN. Original reasoning: " + item.explanation}
+            flags.append(f"{item.criterion_id}: {reason} Converted to UNKNOWN.")
         if any(not evidence.quote_verified for evidence in item.patient_evidence):
             update = {"status": "UNKNOWN", "explanation": "A cited source quote was not verified; converted to UNKNOWN."}
             flags.append(f"{item.criterion_id}: unverified source quote.")
@@ -435,6 +562,11 @@ def review_assessments(assessments: list[CriterionAssessment]) -> tuple[list[Cri
             else:
                 update = {"status": "UNKNOWN", "explanation": "Biomarker-to-treatment inference has no cited treatment evidence; converted to UNKNOWN. Original reasoning: " + item.explanation}
                 flags.append(flag + "; no supported treatment citation, converted to UNKNOWN.")
+        if inference := unsupported_category_inference(item):
+            depends, reason = inference
+            if depends:
+                update = {"status": "UNKNOWN", "explanation": reason + " Converted to UNKNOWN. Original reasoning: " + item.explanation}
+            flags.append(f"{item.criterion_id}: {reason}" + (" Converted to UNKNOWN." if depends else " Review reasoning."))
         explanation = update.get('explanation', item.explanation)
         corrected = snapshot_explanation(item, explanation)
         if corrected != explanation:

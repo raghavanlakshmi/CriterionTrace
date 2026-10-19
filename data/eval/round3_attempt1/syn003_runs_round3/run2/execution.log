@@ -1,0 +1,38 @@
+
+== SYN-003: 8 documents, 9 pages
+   extracted 37 records (37 verified)
+   extraction · buried_malignancy: diagnosis: classical Hodgkin lymphoma, stage IIA (hematology_followup_2023.pdf p1, verified=True); prior_treatment: six cycles of ABVD completed in August 2022 (hematology_followup_2023.pdf p1, verified=True); diagnosis: complete metabolic response (hematology_followup_2023.pdf p1, verified=True)
+   extraction · buried_pd1: prior_treatment: pembrolizumab 200 mg every 3 weeks for four cycles from June to August 2024 on a basket study (outside_oncology_consult_2024.pdf p1, verified=True); prior_treatment: pembrolizumab 200 mg every 3 weeks for four cycles from June to August 2024 on a basket study (outside_oncology_consult_2024.pdf p1, verified=True)
+   extraction · excepted_cancer_trap: diagnosis: Basal-cell carcinoma of the left cheek (dermatology_note_2023.pdf p1, verified=True); prior_treatment: excised on 2023-09-05 with clear margins (dermatology_note_2023.pdf p1, verified=True)
+   extraction · last_chemo_dose: prior_treatment: FOLFIRI, Cycle 10 administered on 2026-04-08 (infusion_record.pdf p1, verified=True); prior_treatment: Chemotherapy administration Regimen: FOLFIRI Cycle 10 administered on 2026-04-08. (infusion_record.pdf p1, verified=True)
+   extraction · scheduled_first_dose: planned_study_event: cycle 1 day 1 of study treatment is scheduled for 2026-04-20 (trial_screening_letter.pdf p1, verified=True)
+   rule_baseline NCT07559760 EXC-19 expected DOES_NOT_MEET got UNKNOWN            MISS
+   rule_baseline NCT06412198 EXC-01 expected DOES_NOT_MEET got UNKNOWN            MISS
+   rule_baseline NCT07559760 EXC-05 expected DOES_NOT_MEET got UNKNOWN            ok
+   rule_baseline NCT06412198 INC-02 expected MEETS         got MEETS              ok
+   rule_baseline NCT07559760 INC-02 expected MEETS         got MEETS              ok
+   llm_assessor  NCT07559760 EXC-19 expected DOES_NOT_MEET got UNKNOWN            MISS
+   llm_assessor  NCT06412198 EXC-01 expected DOES_NOT_MEET got DOES_NOT_MEET      ok
+   llm_assessor  NCT07559760 EXC-05 expected DOES_NOT_MEET got DOES_NOT_MEET      ok
+   llm_assessor  NCT06412198 INC-02 expected MEETS         got MEETS              ok
+   llm_assessor  NCT07559760 INC-02 expected MEETS         got MEETS              ok
+   wrote SYN-003_buried_test_report.md / .json
+
+== SYN-003-control: 8 documents, 9 pages
+   extracted 37 records (37 verified)
+   extraction · buried_malignancy: NOT EXTRACTED
+   extraction · buried_pd1: prior_treatment: Pembrolizumab was discussed as a possible option on a basket study, but she declined and it was not started. (outside_oncology_consult_2024.pdf p1, verified=True)
+   extraction · excepted_cancer_trap: diagnosis: Basal-cell carcinoma of the left cheek (dermatology_note_2023.pdf p1, verified=True); prior_treatment: excised on 2023-09-05 with clear margins (dermatology_note_2023.pdf p1, verified=True)
+   extraction · last_chemo_dose: prior_treatment: FOLFIRI Cycle 10 administered on 2026-04-08 (infusion_record.pdf p1, verified=True); prior_treatment: Cycle 10 administered on 2026-04-08 (infusion_record.pdf p1, verified=True)
+   extraction · scheduled_first_dose: planned_study_event: cycle 1 day 1 of study treatment (trial_screening_letter.pdf p1, verified=True); planned_study_event: cycle 1 day 1 of study treatment is scheduled for 2026-04-20 (trial_screening_letter.pdf p1, verified=True)
+   rule_baseline NCT07559760 EXC-19 expected UNKNOWN       got UNKNOWN            ok
+   rule_baseline NCT06412198 EXC-01 expected UNKNOWN       got UNKNOWN            ok
+   rule_baseline NCT07559760 EXC-05 expected DOES_NOT_MEET got UNKNOWN            ok
+   rule_baseline NCT06412198 INC-02 expected MEETS         got MEETS              ok
+   rule_baseline NCT07559760 INC-02 expected MEETS         got MEETS              ok
+   llm_assessor  NCT07559760 EXC-19 expected UNKNOWN       got UNKNOWN            ok
+   llm_assessor  NCT06412198 EXC-01 expected UNKNOWN       got MEETS              MISS
+   llm_assessor  NCT07559760 EXC-05 expected DOES_NOT_MEET got UNKNOWN            ok
+   llm_assessor  NCT06412198 INC-02 expected MEETS         got MEETS              ok
+   llm_assessor  NCT07559760 INC-02 expected MEETS         got MEETS              ok
+   wrote SYN-003-control_buried_test_report.md / .json

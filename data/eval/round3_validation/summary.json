@@ -1,0 +1,362 @@
+{
+  "frozen_commit": "6da940d49021855cc3d03a26ece5efa001e60c5c",
+  "attempt_limit": 2,
+  "attempts_used": 2,
+  "offline_before": 271,
+  "offline_after": 315,
+  "prior": {
+    "002": {
+      "exact": 39,
+      "acceptable": 39,
+      "total": 42,
+      "unsafe": 0,
+      "false_exclusion": 0
+    },
+    "003": {
+      "exact": 28,
+      "acceptable": 28,
+      "total": 30,
+      "unsafe": 0,
+      "false_exclusion": 0
+    },
+    "004": {
+      "exact": 24,
+      "acceptable": 33,
+      "total": 42,
+      "unsafe": 5,
+      "false_exclusion": 1
+    }
+  },
+  "attempt1": {
+    "002": {
+      "exact": 29,
+      "acceptable": 29,
+      "total": 42,
+      "unsafe": 0,
+      "false_exclusion": 0
+    },
+    "003": {
+      "exact": 18,
+      "acceptable": 21,
+      "total": 30,
+      "unsafe": 3,
+      "false_exclusion": 0
+    },
+    "004": {
+      "exact": 33,
+      "acceptable": 39,
+      "total": 42,
+      "unsafe": 0,
+      "false_exclusion": 0
+    }
+  },
+  "final": {
+    "002": {
+      "exact": 39,
+      "acceptable": 39,
+      "total": 42,
+      "unsafe": 0,
+      "false_exclusion": 0
+    },
+    "003": {
+      "exact": 28,
+      "acceptable": 29,
+      "total": 30,
+      "unsafe": 0,
+      "false_exclusion": 1
+    },
+    "004": {
+      "exact": 31,
+      "acceptable": 40,
+      "total": 42,
+      "unsafe": 0,
+      "false_exclusion": 1
+    }
+  },
+  "syn001": {
+    "in_sample": {
+      "prior": {
+        "exact": 28,
+        "acceptable": 28,
+        "total": 29,
+        "unsafe": 0,
+        "false_exclusion": 0
+      },
+      "attempt1": {
+        "exact": 22,
+        "acceptable": 22,
+        "total": 29,
+        "unsafe": 3,
+        "false_exclusion": 0
+      },
+      "final": {
+        "exact": 27,
+        "acceptable": 27,
+        "total": 29,
+        "unsafe": 0,
+        "false_exclusion": 0
+      }
+    },
+    "held_out": {
+      "prior": {
+        "exact": 21,
+        "acceptable": 21,
+        "total": 21,
+        "unsafe": 0,
+        "false_exclusion": 0
+      },
+      "attempt1": {
+        "exact": 13,
+        "acceptable": 13,
+        "total": 21,
+        "unsafe": 1,
+        "false_exclusion": 0
+      },
+      "final": {
+        "exact": 17,
+        "acceptable": 17,
+        "total": 21,
+        "unsafe": 0,
+        "false_exclusion": 0
+      }
+    }
+  },
+  "brain_mri": {
+    "rows": [
+      {
+        "run": "run1",
+        "patient": "SYN-004-control",
+        "prior": "UNKNOWN",
+        "attempt1": "UNKNOWN",
+        "final": "UNKNOWN",
+        "basis": "absence",
+        "flags": [
+          "EXC-01: unsupported conclusion converted to UNKNOWN.",
+          "EXC-01: Exclusion clearance guard: cleared from absence. Converted to UNKNOWN."
+        ],
+        "explanation": "No patient evidence supports this conclusion; converted to UNKNOWN.",
+        "citations": []
+      },
+      {
+        "run": "run1",
+        "patient": "SYN-004",
+        "prior": "UNKNOWN",
+        "attempt1": "UNKNOWN",
+        "final": "UNKNOWN",
+        "basis": "absence",
+        "flags": [
+          "EXC-01: unsupported conclusion converted to UNKNOWN.",
+          "EXC-01: Exclusion clearance guard: cleared from absence. Converted to UNKNOWN."
+        ],
+        "explanation": "No patient evidence supports this conclusion; converted to UNKNOWN.",
+        "citations": []
+      },
+      {
+        "run": "run2",
+        "patient": "SYN-004-control",
+        "prior": "UNKNOWN",
+        "attempt1": "UNKNOWN",
+        "final": "UNKNOWN",
+        "basis": "absence",
+        "flags": [
+          "EXC-01: unsupported conclusion converted to UNKNOWN.",
+          "EXC-01: Exclusion clearance guard: cleared from absence. Converted to UNKNOWN."
+        ],
+        "explanation": "No patient evidence supports this conclusion; converted to UNKNOWN.",
+        "citations": []
+      },
+      {
+        "run": "run2",
+        "patient": "SYN-004",
+        "prior": "UNKNOWN",
+        "attempt1": "UNKNOWN",
+        "final": "UNKNOWN",
+        "basis": "explicit_negative",
+        "flags": [
+          "EXC-01: Exclusion clearance guard: no negative evidence cited; absence-based clearance without evidence about it. Converted to UNKNOWN."
+        ],
+        "explanation": "Exclusion clearance guard: no negative evidence cited; absence-based clearance without evidence about it. Converted to UNKNOWN. Original reasoning: The exclusion criterion requires active, untreated brain metastases. The patient has metastatic colorectal adenocarcinoma with liver metastases and no documentation of brain metastases is found in the provided evidence. Therefore, this exclusion does not apply.",
+        "citations": [
+          {
+            "category": "diagnosis",
+            "value": "Metastatic colorectal adenocarcinoma, liver metastases",
+            "normalized_value": null,
+            "date": "2026-06-05",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "oncology_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Diagnosis: Metastatic colorectal adenocarcinoma, liver metastases",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "planned_study_event",
+            "value": "cycle 1 day 1 of study treatment is scheduled for 2026-06-22",
+            "normalized_value": null,
+            "date": "2026-06-22",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "trial_screening_letter.pdf",
+            "source_page": 1,
+            "evidence_text": "If eligibility is confirmed, cycle 1 day 1 of study treatment is scheduled for 2026-06-22.",
+            "quote_verified": true,
+            "source_kind": "other"
+          }
+        ]
+      },
+      {
+        "run": "run3",
+        "patient": "SYN-004-control",
+        "prior": "UNKNOWN",
+        "attempt1": "UNKNOWN",
+        "final": "UNKNOWN",
+        "basis": "absence",
+        "flags": [
+          "EXC-01: Exclusion clearance guard: cleared from absence. Converted to UNKNOWN."
+        ],
+        "explanation": "Exclusion clearance guard: cleared from absence. Converted to UNKNOWN. Original reasoning: The patient has a diagnosis of metastatic colorectal adenocarcinoma with liver metastases as of 2026-06-05 and is scheduled for the first study treatment dose on 2026-06-22. There is no evidence in the supplied data indicating the presence of brain metastases, active or untreated, at any time. Thus, the exclusion criterion for active, untreated brain metastases does not apply to this patient.",
+        "citations": [
+          {
+            "category": "diagnosis",
+            "value": "Metastatic colorectal adenocarcinoma, liver metastases",
+            "normalized_value": null,
+            "date": "2026-06-05",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "oncology_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Diagnosis: Metastatic colorectal adenocarcinoma, liver metastases",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "planned_study_event",
+            "value": "cycle 1 day 1 of study treatment is scheduled for 2026-06-22",
+            "normalized_value": null,
+            "date": "2026-06-22",
+            "start_date": "2026-06-22",
+            "end_date": null,
+            "source_file": "trial_screening_letter.pdf",
+            "source_page": 1,
+            "evidence_text": "If eligibility is confirmed, cycle 1 day 1 of study treatment is scheduled for 2026-06-22.",
+            "quote_verified": true,
+            "source_kind": "other"
+          }
+        ]
+      },
+      {
+        "run": "run3",
+        "patient": "SYN-004",
+        "prior": "UNKNOWN",
+        "attempt1": "UNKNOWN",
+        "final": "UNKNOWN",
+        "basis": "absence",
+        "flags": [
+          "EXC-01: unsupported conclusion converted to UNKNOWN.",
+          "EXC-01: Exclusion clearance guard: cleared from absence. Converted to UNKNOWN."
+        ],
+        "explanation": "No patient evidence supports this conclusion; converted to UNKNOWN.",
+        "citations": []
+      }
+    ],
+    "pipeline_clearances": 0,
+    "total": 6,
+    "guard_only_status": "MEETS"
+  },
+  "guards": {
+    "Clearance basis / verified negative": {
+      "002": 6,
+      "003": 5,
+      "004": 21
+    },
+    "History scope": {
+      "002": 5,
+      "003": 3,
+      "004": 3
+    },
+    "Narrower scope": {
+      "002": 0,
+      "003": 3,
+      "004": 0
+    },
+    "Code-computed window": {
+      "002": 6,
+      "003": 6,
+      "004": 12
+    },
+    "Compound parts": {
+      "002": 12,
+      "003": 13,
+      "004": 13
+    },
+    "Date comparisons": {
+      "002": 1,
+      "003": 0,
+      "004": 6
+    },
+    "Unsupported category inference": {
+      "002": 4,
+      "003": 0,
+      "004": 1
+    },
+    "Status / explanation contradiction": {
+      "002": 0,
+      "003": 1,
+      "004": 0
+    },
+    "Legacy missing study reference": {
+      "002": 0,
+      "003": 0,
+      "004": 0
+    },
+    "Conflict preservation": {
+      "002": 0,
+      "003": 0,
+      "004": 0
+    },
+    "No patient citation": {
+      "002": 4,
+      "003": 0,
+      "004": 10
+    },
+    "Unverified quote": {
+      "002": 0,
+      "003": 0,
+      "004": 0
+    },
+    "Partial inclusion support": {
+      "002": 0,
+      "003": 0,
+      "004": 0
+    },
+    "Investigator judgment": {
+      "002": 0,
+      "003": 0,
+      "004": 0
+    }
+  },
+  "rule_baseline": {
+    "002": {
+      "exact": 27,
+      "acceptable": 27,
+      "total": 42,
+      "unsafe": 0,
+      "false_exclusion": 0
+    },
+    "003": {
+      "exact": 18,
+      "acceptable": 24,
+      "total": 30,
+      "unsafe": 0,
+      "false_exclusion": 0
+    },
+    "004": {
+      "exact": 27,
+      "acceptable": 36,
+      "total": 42,
+      "unsafe": 0,
+      "false_exclusion": 0
+    }
+  }
+}

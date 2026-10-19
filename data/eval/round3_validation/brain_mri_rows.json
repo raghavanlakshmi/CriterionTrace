@@ -1,0 +1,138 @@
+[
+  {
+    "run": "run1",
+    "patient": "SYN-004-control",
+    "prior": "UNKNOWN",
+    "attempt1": "UNKNOWN",
+    "final": "UNKNOWN",
+    "basis": "absence",
+    "flags": [
+      "EXC-01: unsupported conclusion converted to UNKNOWN.",
+      "EXC-01: Exclusion clearance guard: cleared from absence. Converted to UNKNOWN."
+    ],
+    "explanation": "No patient evidence supports this conclusion; converted to UNKNOWN.",
+    "citations": []
+  },
+  {
+    "run": "run1",
+    "patient": "SYN-004",
+    "prior": "UNKNOWN",
+    "attempt1": "UNKNOWN",
+    "final": "UNKNOWN",
+    "basis": "absence",
+    "flags": [
+      "EXC-01: unsupported conclusion converted to UNKNOWN.",
+      "EXC-01: Exclusion clearance guard: cleared from absence. Converted to UNKNOWN."
+    ],
+    "explanation": "No patient evidence supports this conclusion; converted to UNKNOWN.",
+    "citations": []
+  },
+  {
+    "run": "run2",
+    "patient": "SYN-004-control",
+    "prior": "UNKNOWN",
+    "attempt1": "UNKNOWN",
+    "final": "UNKNOWN",
+    "basis": "absence",
+    "flags": [
+      "EXC-01: unsupported conclusion converted to UNKNOWN.",
+      "EXC-01: Exclusion clearance guard: cleared from absence. Converted to UNKNOWN."
+    ],
+    "explanation": "No patient evidence supports this conclusion; converted to UNKNOWN.",
+    "citations": []
+  },
+  {
+    "run": "run2",
+    "patient": "SYN-004",
+    "prior": "UNKNOWN",
+    "attempt1": "UNKNOWN",
+    "final": "UNKNOWN",
+    "basis": "explicit_negative",
+    "flags": [
+      "EXC-01: Exclusion clearance guard: no negative evidence cited; absence-based clearance without evidence about it. Converted to UNKNOWN."
+    ],
+    "explanation": "Exclusion clearance guard: no negative evidence cited; absence-based clearance without evidence about it. Converted to UNKNOWN. Original reasoning: The exclusion criterion requires active, untreated brain metastases. The patient has metastatic colorectal adenocarcinoma with liver metastases and no documentation of brain metastases is found in the provided evidence. Therefore, this exclusion does not apply.",
+    "citations": [
+      {
+        "category": "diagnosis",
+        "value": "Metastatic colorectal adenocarcinoma, liver metastases",
+        "normalized_value": null,
+        "date": "2026-06-05",
+        "start_date": null,
+        "end_date": null,
+        "source_file": "oncology_note.pdf",
+        "source_page": 1,
+        "evidence_text": "Diagnosis: Metastatic colorectal adenocarcinoma, liver metastases",
+        "quote_verified": true,
+        "source_kind": "other"
+      },
+      {
+        "category": "planned_study_event",
+        "value": "cycle 1 day 1 of study treatment is scheduled for 2026-06-22",
+        "normalized_value": null,
+        "date": "2026-06-22",
+        "start_date": null,
+        "end_date": null,
+        "source_file": "trial_screening_letter.pdf",
+        "source_page": 1,
+        "evidence_text": "If eligibility is confirmed, cycle 1 day 1 of study treatment is scheduled for 2026-06-22.",
+        "quote_verified": true,
+        "source_kind": "other"
+      }
+    ]
+  },
+  {
+    "run": "run3",
+    "patient": "SYN-004-control",
+    "prior": "UNKNOWN",
+    "attempt1": "UNKNOWN",
+    "final": "UNKNOWN",
+    "basis": "absence",
+    "flags": [
+      "EXC-01: Exclusion clearance guard: cleared from absence. Converted to UNKNOWN."
+    ],
+    "explanation": "Exclusion clearance guard: cleared from absence. Converted to UNKNOWN. Original reasoning: The patient has a diagnosis of metastatic colorectal adenocarcinoma with liver metastases as of 2026-06-05 and is scheduled for the first study treatment dose on 2026-06-22. There is no evidence in the supplied data indicating the presence of brain metastases, active or untreated, at any time. Thus, the exclusion criterion for active, untreated brain metastases does not apply to this patient.",
+    "citations": [
+      {
+        "category": "diagnosis",
+        "value": "Metastatic colorectal adenocarcinoma, liver metastases",
+        "normalized_value": null,
+        "date": "2026-06-05",
+        "start_date": null,
+        "end_date": null,
+        "source_file": "oncology_note.pdf",
+        "source_page": 1,
+        "evidence_text": "Diagnosis: Metastatic colorectal adenocarcinoma, liver metastases",
+        "quote_verified": true,
+        "source_kind": "other"
+      },
+      {
+        "category": "planned_study_event",
+        "value": "cycle 1 day 1 of study treatment is scheduled for 2026-06-22",
+        "normalized_value": null,
+        "date": "2026-06-22",
+        "start_date": "2026-06-22",
+        "end_date": null,
+        "source_file": "trial_screening_letter.pdf",
+        "source_page": 1,
+        "evidence_text": "If eligibility is confirmed, cycle 1 day 1 of study treatment is scheduled for 2026-06-22.",
+        "quote_verified": true,
+        "source_kind": "other"
+      }
+    ]
+  },
+  {
+    "run": "run3",
+    "patient": "SYN-004",
+    "prior": "UNKNOWN",
+    "attempt1": "UNKNOWN",
+    "final": "UNKNOWN",
+    "basis": "absence",
+    "flags": [
+      "EXC-01: unsupported conclusion converted to UNKNOWN.",
+      "EXC-01: Exclusion clearance guard: cleared from absence. Converted to UNKNOWN."
+    ],
+    "explanation": "No patient evidence supports this conclusion; converted to UNKNOWN.",
+    "citations": []
+  }
+]

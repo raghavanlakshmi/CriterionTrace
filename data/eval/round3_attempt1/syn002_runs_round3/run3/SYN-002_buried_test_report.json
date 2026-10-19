@@ -1,0 +1,1343 @@
+{
+  "patient": "SYN-002",
+  "variant": "buried exclusions",
+  "label_status": "APPROVED by user in chat on 2026-10-17 before first live run; original expected labels unchanged",
+  "extraction_model": "gpt-4.1-mini",
+  "assessment_model": "gpt-4.1-mini",
+  "extraction_check": {
+    "buried_malignancy": [
+      {
+        "category": "comorbidity",
+        "value": "Hypertension",
+        "source": "primary_care_annual_visit_2023.pdf p2",
+        "date": "2023-05-16",
+        "quote_verified": true
+      },
+      {
+        "category": "comorbidity",
+        "value": "Hyperlipidemia",
+        "source": "primary_care_annual_visit_2023.pdf p2",
+        "date": "2023-05-16",
+        "quote_verified": true
+      },
+      {
+        "category": "comorbidity",
+        "value": "Gastroesophageal reflux disease",
+        "source": "primary_care_annual_visit_2023.pdf p2",
+        "date": "2023-05-16",
+        "quote_verified": true
+      },
+      {
+        "category": "diagnosis",
+        "value": "Prostate adenocarcinoma, Gleason 3+4=7",
+        "source": "primary_care_annual_visit_2023.pdf p2",
+        "date": "2023-05-16",
+        "quote_verified": true
+      },
+      {
+        "category": "prior_treatment",
+        "value": "Radical prostatectomy in March 2022",
+        "source": "primary_care_annual_visit_2023.pdf p2",
+        "date": "2023-05-16",
+        "quote_verified": true
+      },
+      {
+        "category": "current_medication",
+        "value": "Lisinopril",
+        "source": "primary_care_annual_visit_2023.pdf p2",
+        "date": "2023-05-16",
+        "quote_verified": true
+      },
+      {
+        "category": "current_medication",
+        "value": "Atorvastatin",
+        "source": "primary_care_annual_visit_2023.pdf p2",
+        "date": "2023-05-16",
+        "quote_verified": true
+      },
+      {
+        "category": "comorbidity",
+        "value": "Osteoarthritis, right knee",
+        "source": "primary_care_annual_visit_2023.pdf p2",
+        "date": "2023-05-16",
+        "quote_verified": true
+      }
+    ],
+    "buried_kras_inhibitor": [
+      {
+        "category": "biomarker",
+        "value": "Sotorasib 960 mg by mouth once daily (started 2025-06-10)",
+        "source": "outside_pharmacy_medication_list_2025.pdf p1",
+        "date": "2025-10-02",
+        "quote_verified": true
+      },
+      {
+        "category": "current_medication",
+        "value": "Lisinopril 20 mg by mouth once daily",
+        "source": "outside_pharmacy_medication_list_2025.pdf p1",
+        "date": "2025-10-02",
+        "quote_verified": true
+      },
+      {
+        "category": "current_medication",
+        "value": "Atorvastatin 40 mg by mouth once daily",
+        "source": "outside_pharmacy_medication_list_2025.pdf p1",
+        "date": "2025-10-02",
+        "quote_verified": true
+      },
+      {
+        "category": "current_medication",
+        "value": "Omeprazole 20 mg by mouth once daily",
+        "source": "outside_pharmacy_medication_list_2025.pdf p1",
+        "date": "2025-10-02",
+        "quote_verified": true
+      },
+      {
+        "category": "current_medication",
+        "value": "Ondansetron 8 mg by mouth every 8 hours as needed for nausea",
+        "source": "outside_pharmacy_medication_list_2025.pdf p1",
+        "date": "2025-10-02",
+        "quote_verified": true
+      },
+      {
+        "category": "current_medication",
+        "value": "Loperamide 2 mg by mouth as needed for diarrhea",
+        "source": "outside_pharmacy_medication_list_2025.pdf p1",
+        "date": "2025-10-02",
+        "quote_verified": true
+      }
+    ],
+    "family_history_decoy": [],
+    "last_chemo_dose": [
+      {
+        "category": "prior_treatment",
+        "value": "FOLFIRI",
+        "source": "infusion_record.pdf p1",
+        "date": "2026-03-20",
+        "quote_verified": true
+      },
+      {
+        "category": "prior_treatment",
+        "value": "Cycle 8 administered on 2026-03-20",
+        "source": "infusion_record.pdf p1",
+        "date": "2026-03-20",
+        "quote_verified": true
+      }
+    ]
+  },
+  "extraction_gaps": [
+    {
+      "source_file": "infusion_record.pdf",
+      "source_page": 1,
+      "line_number": 8,
+      "sentence_number": 3,
+      "text": "Further cycles on hold pending clinical trial screening.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "oncology_note.pdf",
+      "source_page": 1,
+      "line_number": 10,
+      "sentence_number": 5,
+      "text": "Transferred care to this clinic in March 2026.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "oncology_note.pdf",
+      "source_page": 1,
+      "line_number": 11,
+      "sentence_number": 6,
+      "text": "Treatment history and performance status continue on page 2.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "oncology_note.pdf",
+      "source_page": 2,
+      "line_number": 8,
+      "sentence_number": 3,
+      "text": "Referred for clinical trial prescreening.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "primary_care_annual_visit_2023.pdf",
+      "source_page": 1,
+      "line_number": 6,
+      "sentence_number": 1,
+      "text": "Reason for visit: annual physical examination",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "primary_care_annual_visit_2023.pdf",
+      "source_page": 1,
+      "line_number": 7,
+      "sentence_number": 2,
+      "text": "Blood pressure: 132/84 mmHg",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "primary_care_annual_visit_2023.pdf",
+      "source_page": 1,
+      "line_number": 8,
+      "sentence_number": 3,
+      "text": "Weight: 84 kg",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "primary_care_annual_visit_2023.pdf",
+      "source_page": 1,
+      "line_number": 9,
+      "sentence_number": 4,
+      "text": "No new complaints today.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "primary_care_annual_visit_2023.pdf",
+      "source_page": 1,
+      "line_number": 10,
+      "sentence_number": 5,
+      "text": "Past medical history and family history continue on page 2.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "primary_care_annual_visit_2023.pdf",
+      "source_page": 2,
+      "line_number": 14,
+      "sentence_number": 2,
+      "text": "Family history: mother diagnosed with breast cancer at age 70",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "primary_care_annual_visit_2023.pdf",
+      "source_page": 2,
+      "line_number": 15,
+      "sentence_number": 3,
+      "text": "Family history: father with coronary artery disease",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "primary_care_annual_visit_2023.pdf",
+      "source_page": 3,
+      "line_number": 6,
+      "sentence_number": 1,
+      "text": "Continue current medications.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "primary_care_annual_visit_2023.pdf",
+      "source_page": 3,
+      "line_number": 7,
+      "sentence_number": 2,
+      "text": "Influenza vaccine given today.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "primary_care_annual_visit_2023.pdf",
+      "source_page": 3,
+      "line_number": 8,
+      "sentence_number": 3,
+      "text": "Colonoscopy referral placed.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "primary_care_annual_visit_2023.pdf",
+      "source_page": 3,
+      "line_number": 9,
+      "sentence_number": 4,
+      "text": "Return in 12 months.",
+      "message": "Not captured by the tool, review manually"
+    }
+  ],
+  "results": {
+    "rule_baseline": {
+      "labels": 7,
+      "accuracy": 0.4286,
+      "decidable_labels": 6,
+      "decided_correctly": 0.3333,
+      "unsafe_false_clearance": 0,
+      "false_exclusion": 0,
+      "unknown_to_meets": 0,
+      "confusion_matrix": {
+        "MEETS": {
+          "MEETS": 2,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 1,
+          "POTENTIAL_CONFLICT": 0
+        },
+        "DOES_NOT_MEET": {
+          "MEETS": 0,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 3,
+          "POTENTIAL_CONFLICT": 0
+        },
+        "UNKNOWN": {
+          "MEETS": 0,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 1,
+          "POTENTIAL_CONFLICT": 0
+        },
+        "POTENTIAL_CONFLICT": {
+          "MEETS": 0,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 0,
+          "POTENTIAL_CONFLICT": 0
+        }
+      },
+      "acceptable_rate": 0.4286
+    },
+    "llm_assessor": {
+      "labels": 7,
+      "accuracy": 0.4286,
+      "decidable_labels": 6,
+      "decided_correctly": 0.3333,
+      "unsafe_false_clearance": 0,
+      "false_exclusion": 0,
+      "unknown_to_meets": 0,
+      "confusion_matrix": {
+        "MEETS": {
+          "MEETS": 2,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 1,
+          "POTENTIAL_CONFLICT": 0
+        },
+        "DOES_NOT_MEET": {
+          "MEETS": 0,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 3,
+          "POTENTIAL_CONFLICT": 0
+        },
+        "UNKNOWN": {
+          "MEETS": 0,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 1,
+          "POTENTIAL_CONFLICT": 0
+        },
+        "POTENTIAL_CONFLICT": {
+          "MEETS": 0,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 0,
+          "POTENTIAL_CONFLICT": 0
+        }
+      },
+      "acceptable_rate": 0.4286
+    }
+  },
+  "rows": [
+    {
+      "method": "rule_baseline",
+      "trial": "NCT07559760",
+      "criterion_id": "EXC-19",
+      "probe": "buried_malignancy",
+      "expected": "DOES_NOT_MEET",
+      "also_acceptable": [],
+      "predicted": "UNKNOWN",
+      "match": false,
+      "acceptable": false,
+      "judgment_call": false,
+      "flags": [
+        "EXC-19: Compound criterion guard: combined UNKNOWN, UNKNOWN => UNKNOWN."
+      ],
+      "explanation": "Compound criterion guard: Part 1: Other malignancies within 5 years, except adequately treated basal-cell carcinoma of skin or cervical carcinoma in situ. => UNKNOWN. Window part: The supplied evidence does not safely establish this criterion without a live criterion assessment. | Part 2: Other compound conditions => UNKNOWN. Other parts were not separately assessed. Original reasoning: The supplied evidence does not safely establish this criterion without a live criterion assessment.",
+      "criterion_text": "Other malignancies within 5 years, except adequately treated basal-cell carcinoma of skin or cervical carcinoma in situ.",
+      "patient_evidence": [],
+      "assessment_details": {
+        "criterion_id": "EXC-19",
+        "criterion_text": "Other malignancies within 5 years, except adequately treated basal-cell carcinoma of skin or cervical carcinoma in situ.",
+        "criterion_type": "exclusion",
+        "status": "UNKNOWN",
+        "method": "rule",
+        "patient_evidence": [],
+        "explanation": "Compound criterion guard: Part 1: Other malignancies within 5 years, except adequately treated basal-cell carcinoma of skin or cervical carcinoma in situ. => UNKNOWN. Window part: The supplied evidence does not safely establish this criterion without a live criterion assessment. | Part 2: Other compound conditions => UNKNOWN. Other parts were not separately assessed. Original reasoning: The supplied evidence does not safely establish this criterion without a live criterion assessment.",
+        "final_conclusion": null,
+        "clearance_basis": null,
+        "window_evidence_index": null,
+        "parts": [
+          {
+            "criterion_id": "EXC-19",
+            "criterion_text": "Other malignancies within 5 years, except adequately treated basal-cell carcinoma of skin or cervical carcinoma in situ.",
+            "criterion_type": "exclusion",
+            "status": "UNKNOWN",
+            "method": "rule",
+            "patient_evidence": [],
+            "explanation": "Window part: The supplied evidence does not safely establish this criterion without a live criterion assessment.",
+            "final_conclusion": null,
+            "clearance_basis": null,
+            "window_evidence_index": null,
+            "parts": [],
+            "date_comparisons": []
+          },
+          {
+            "criterion_id": "EXC-19",
+            "criterion_text": "Other compound conditions",
+            "criterion_type": "exclusion",
+            "status": "UNKNOWN",
+            "method": "rule",
+            "patient_evidence": [],
+            "explanation": "Other parts were not separately assessed.",
+            "final_conclusion": null,
+            "clearance_basis": null,
+            "window_evidence_index": null,
+            "parts": [],
+            "date_comparisons": []
+          }
+        ],
+        "date_comparisons": []
+      }
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT06412198",
+      "criterion_id": "EXC-02",
+      "probe": "buried_kras_inhibitor",
+      "expected": "DOES_NOT_MEET",
+      "also_acceptable": [],
+      "predicted": "UNKNOWN",
+      "match": false,
+      "acceptable": false,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment.",
+      "criterion_text": "Prior KRASG12C inhibition therapy",
+      "patient_evidence": [],
+      "assessment_details": {
+        "criterion_id": "EXC-02",
+        "criterion_text": "Prior KRASG12C inhibition therapy",
+        "criterion_type": "exclusion",
+        "status": "UNKNOWN",
+        "method": "rule",
+        "patient_evidence": [],
+        "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment.",
+        "final_conclusion": null,
+        "clearance_basis": null,
+        "window_evidence_index": null,
+        "parts": [],
+        "date_comparisons": []
+      }
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT06252649",
+      "criterion_id": "EXC-03",
+      "probe": "buried_kras_inhibitor",
+      "expected": "DOES_NOT_MEET",
+      "also_acceptable": [],
+      "predicted": "UNKNOWN",
+      "match": false,
+      "acceptable": false,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment.",
+      "criterion_text": "Previous treatment with a KRAS p.G12C inhibitor",
+      "patient_evidence": [],
+      "assessment_details": {
+        "criterion_id": "EXC-03",
+        "criterion_text": "Previous treatment with a KRAS p.G12C inhibitor",
+        "criterion_type": "exclusion",
+        "status": "UNKNOWN",
+        "method": "rule",
+        "patient_evidence": [],
+        "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment.",
+        "final_conclusion": null,
+        "clearance_basis": null,
+        "window_evidence_index": null,
+        "parts": [],
+        "date_comparisons": []
+      }
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT06412198",
+      "criterion_id": "INC-01",
+      "probe": "sanity",
+      "expected": "MEETS",
+      "also_acceptable": [],
+      "predicted": "UNKNOWN",
+      "match": false,
+      "acceptable": false,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The matched fact covers only part of this criterion; its additional requirements are not documented.",
+      "criterion_text": "Histologically confirmed diagnosis of advanced/metastatic microsatellite stable colorectal cancer with KRASG12C mutation with 1+ prior line(s) of therapy",
+      "patient_evidence": [
+        {
+          "category": "biomarker",
+          "value": "KRAS: G12C mutation detected",
+          "normalized_value": null,
+          "date": "2024-02-12",
+          "start_date": null,
+          "end_date": null,
+          "source_file": "pathology_report.pdf",
+          "source_page": 1,
+          "evidence_text": "KRAS: G12C mutation detected",
+          "quote_verified": true,
+          "source_kind": "other"
+        }
+      ],
+      "assessment_details": {
+        "criterion_id": "INC-01",
+        "criterion_text": "Histologically confirmed diagnosis of advanced/metastatic microsatellite stable colorectal cancer with KRASG12C mutation with 1+ prior line(s) of therapy",
+        "criterion_type": "inclusion",
+        "status": "UNKNOWN",
+        "method": "rule",
+        "patient_evidence": [
+          {
+            "category": "biomarker",
+            "value": "KRAS: G12C mutation detected",
+            "normalized_value": null,
+            "date": "2024-02-12",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "pathology_report.pdf",
+            "source_page": 1,
+            "evidence_text": "KRAS: G12C mutation detected",
+            "quote_verified": true,
+            "source_kind": "other"
+          }
+        ],
+        "explanation": "The matched fact covers only part of this criterion; its additional requirements are not documented.",
+        "final_conclusion": null,
+        "clearance_basis": null,
+        "window_evidence_index": null,
+        "parts": [],
+        "date_comparisons": []
+      }
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT06412198",
+      "criterion_id": "INC-02",
+      "probe": "sanity",
+      "expected": "MEETS",
+      "also_acceptable": [],
+      "predicted": "MEETS",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "Explicit verified evidence matches the central condition or biomarker wording; human verification is required.",
+      "criterion_text": "Confirmed KRASG12C mutation status. If a molecular profiling report is not available, a representative paraffin-embedded tumor block or a minimum of 10 unstained slides will be requested for retrospective KRASG12C mutation testing.",
+      "patient_evidence": [
+        {
+          "category": "biomarker",
+          "value": "KRAS: G12C mutation detected",
+          "normalized_value": null,
+          "date": "2024-02-12",
+          "start_date": null,
+          "end_date": null,
+          "source_file": "pathology_report.pdf",
+          "source_page": 1,
+          "evidence_text": "KRAS: G12C mutation detected",
+          "quote_verified": true,
+          "source_kind": "other"
+        }
+      ],
+      "assessment_details": {
+        "criterion_id": "INC-02",
+        "criterion_text": "Confirmed KRASG12C mutation status. If a molecular profiling report is not available, a representative paraffin-embedded tumor block or a minimum of 10 unstained slides will be requested for retrospective KRASG12C mutation testing.",
+        "criterion_type": "inclusion",
+        "status": "MEETS",
+        "method": "rule",
+        "patient_evidence": [
+          {
+            "category": "biomarker",
+            "value": "KRAS: G12C mutation detected",
+            "normalized_value": null,
+            "date": "2024-02-12",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "pathology_report.pdf",
+            "source_page": 1,
+            "evidence_text": "KRAS: G12C mutation detected",
+            "quote_verified": true,
+            "source_kind": "other"
+          }
+        ],
+        "explanation": "Explicit verified evidence matches the central condition or biomarker wording; human verification is required.",
+        "final_conclusion": null,
+        "clearance_basis": null,
+        "window_evidence_index": null,
+        "parts": [],
+        "date_comparisons": []
+      }
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT07559760",
+      "criterion_id": "INC-02",
+      "probe": "sanity",
+      "expected": "MEETS",
+      "also_acceptable": [],
+      "predicted": "MEETS",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "Explicit verified evidence matches the central condition or biomarker wording; human verification is required.",
+      "criterion_text": "Histologically or cytologically confirmed colorectal adenocarcinoma.",
+      "patient_evidence": [
+        {
+          "category": "diagnosis",
+          "value": "Metastatic colorectal adenocarcinoma",
+          "normalized_value": "Metastatic colorectal adenocarcinoma",
+          "date": "2026-03-30",
+          "start_date": null,
+          "end_date": null,
+          "source_file": "oncology_note.pdf",
+          "source_page": 1,
+          "evidence_text": "Diagnosis: Metastatic colorectal adenocarcinoma",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "diagnosis",
+          "value": "Specimen: liver biopsy, metastatic adenocarcinoma consistent with colorectal primary",
+          "normalized_value": null,
+          "date": "2024-02-12",
+          "start_date": null,
+          "end_date": null,
+          "source_file": "pathology_report.pdf",
+          "source_page": 1,
+          "evidence_text": "Specimen: liver biopsy, metastatic adenocarcinoma consistent with colorectal primary",
+          "quote_verified": true,
+          "source_kind": "other"
+        }
+      ],
+      "assessment_details": {
+        "criterion_id": "INC-02",
+        "criterion_text": "Histologically or cytologically confirmed colorectal adenocarcinoma.",
+        "criterion_type": "inclusion",
+        "status": "MEETS",
+        "method": "rule",
+        "patient_evidence": [
+          {
+            "category": "diagnosis",
+            "value": "Metastatic colorectal adenocarcinoma",
+            "normalized_value": "Metastatic colorectal adenocarcinoma",
+            "date": "2026-03-30",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "oncology_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Diagnosis: Metastatic colorectal adenocarcinoma",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "diagnosis",
+            "value": "Specimen: liver biopsy, metastatic adenocarcinoma consistent with colorectal primary",
+            "normalized_value": null,
+            "date": "2024-02-12",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "pathology_report.pdf",
+            "source_page": 1,
+            "evidence_text": "Specimen: liver biopsy, metastatic adenocarcinoma consistent with colorectal primary",
+            "quote_verified": true,
+            "source_kind": "other"
+          }
+        ],
+        "explanation": "Explicit verified evidence matches the central condition or biomarker wording; human verification is required.",
+        "final_conclusion": null,
+        "clearance_basis": null,
+        "window_evidence_index": null,
+        "parts": [],
+        "date_comparisons": []
+      }
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT07559760",
+      "criterion_id": "EXC-05",
+      "probe": "washout",
+      "expected": "UNKNOWN",
+      "also_acceptable": [
+        "DOES_NOT_MEET"
+      ],
+      "predicted": "UNKNOWN",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": true,
+      "flags": [
+        "EXC-05: Computed time-window guard: missing selected dated event citation (missing dated administration or planned first-dose reference date).",
+        "EXC-05: Compound criterion guard: combined UNKNOWN, UNKNOWN => UNKNOWN."
+      ],
+      "explanation": "Compound criterion guard: Part 1: Any anti-cancer therapy (chemotherapy, radiotherapy, biologics, targeted therapy, immunotherapy, etc.) within 4 weeks before first study-dose; major surgery (excluding biopsy) within 4 weeks that has not fully healed. => UNKNOWN. Computed time-window guard: missing selected dated event citation (missing dated administration or planned first-dose reference date). Original reasoning: Window part: The supplied evidence does not safely establish this criterion without a live criterion assessment. | Part 2: Other compound conditions => UNKNOWN. Other parts were not separately assessed. Original reasoning: The supplied evidence does not safely establish this criterion without a live criterion assessment.",
+      "criterion_text": "Any anti-cancer therapy (chemotherapy, radiotherapy, biologics, targeted therapy, immunotherapy, etc.) within 4 weeks before first study-dose; major surgery (excluding biopsy) within 4 weeks that has not fully healed.",
+      "patient_evidence": [],
+      "assessment_details": {
+        "criterion_id": "EXC-05",
+        "criterion_text": "Any anti-cancer therapy (chemotherapy, radiotherapy, biologics, targeted therapy, immunotherapy, etc.) within 4 weeks before first study-dose; major surgery (excluding biopsy) within 4 weeks that has not fully healed.",
+        "criterion_type": "exclusion",
+        "status": "UNKNOWN",
+        "method": "rule",
+        "patient_evidence": [],
+        "explanation": "Compound criterion guard: Part 1: Any anti-cancer therapy (chemotherapy, radiotherapy, biologics, targeted therapy, immunotherapy, etc.) within 4 weeks before first study-dose; major surgery (excluding biopsy) within 4 weeks that has not fully healed. => UNKNOWN. Computed time-window guard: missing selected dated event citation (missing dated administration or planned first-dose reference date). Original reasoning: Window part: The supplied evidence does not safely establish this criterion without a live criterion assessment. | Part 2: Other compound conditions => UNKNOWN. Other parts were not separately assessed. Original reasoning: The supplied evidence does not safely establish this criterion without a live criterion assessment.",
+        "final_conclusion": null,
+        "clearance_basis": null,
+        "window_evidence_index": null,
+        "parts": [
+          {
+            "criterion_id": "EXC-05",
+            "criterion_text": "Any anti-cancer therapy (chemotherapy, radiotherapy, biologics, targeted therapy, immunotherapy, etc.) within 4 weeks before first study-dose; major surgery (excluding biopsy) within 4 weeks that has not fully healed.",
+            "criterion_type": "exclusion",
+            "status": "UNKNOWN",
+            "method": "rule",
+            "patient_evidence": [],
+            "explanation": "Computed time-window guard: missing selected dated event citation (missing dated administration or planned first-dose reference date). Original reasoning: Window part: The supplied evidence does not safely establish this criterion without a live criterion assessment.",
+            "final_conclusion": null,
+            "clearance_basis": null,
+            "window_evidence_index": null,
+            "parts": [],
+            "date_comparisons": []
+          },
+          {
+            "criterion_id": "EXC-05",
+            "criterion_text": "Other compound conditions",
+            "criterion_type": "exclusion",
+            "status": "UNKNOWN",
+            "method": "rule",
+            "patient_evidence": [],
+            "explanation": "Other parts were not separately assessed.",
+            "final_conclusion": null,
+            "clearance_basis": null,
+            "window_evidence_index": null,
+            "parts": [],
+            "date_comparisons": []
+          }
+        ],
+        "date_comparisons": []
+      }
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT07559760",
+      "criterion_id": "EXC-19",
+      "probe": "buried_malignancy",
+      "expected": "DOES_NOT_MEET",
+      "also_acceptable": [],
+      "predicted": "UNKNOWN",
+      "match": false,
+      "acceptable": false,
+      "judgment_call": false,
+      "flags": [
+        "EXC-19: Compound criterion guard: combined UNKNOWN, UNKNOWN => UNKNOWN."
+      ],
+      "explanation": "Compound criterion guard: Part 1: Other malignancies within 5 years, except adequately treated basal-cell carcinoma of skin or cervical carcinoma in situ. => UNKNOWN. The patient had prostate adenocarcinoma diagnosed and treated with radical prostatectomy in March 2022, which is within 5 years. There is no documented information ruling out this malignancy or indicating it was adequately treated or an exception applies. | Part 2: Unaddressed compound parts => UNKNOWN. Compound criterion has more conditions than returned parts. Original reasoning: The criterion excludes patients with other malignancies within 5 years except for adequately treated basal-cell carcinoma of the skin or cervical carcinoma in situ. The evidence shows a diagnosis of prostate adenocarcinoma treated with radical prostatectomy in March 2022. This malignancy is within 5 years but there is no information about adequacy of treatment or current status. Therefore, it is unknown whether this exclusion applies or not.",
+      "criterion_text": "Other malignancies within 5 years, except adequately treated basal-cell carcinoma of skin or cervical carcinoma in situ.",
+      "patient_evidence": [],
+      "assessment_details": {
+        "criterion_id": "EXC-19",
+        "criterion_text": "Other malignancies within 5 years, except adequately treated basal-cell carcinoma of skin or cervical carcinoma in situ.",
+        "criterion_type": "exclusion",
+        "status": "UNKNOWN",
+        "method": "llm",
+        "patient_evidence": [],
+        "explanation": "Compound criterion guard: Part 1: Other malignancies within 5 years, except adequately treated basal-cell carcinoma of skin or cervical carcinoma in situ. => UNKNOWN. The patient had prostate adenocarcinoma diagnosed and treated with radical prostatectomy in March 2022, which is within 5 years. There is no documented information ruling out this malignancy or indicating it was adequately treated or an exception applies. | Part 2: Unaddressed compound parts => UNKNOWN. Compound criterion has more conditions than returned parts. Original reasoning: The criterion excludes patients with other malignancies within 5 years except for adequately treated basal-cell carcinoma of the skin or cervical carcinoma in situ. The evidence shows a diagnosis of prostate adenocarcinoma treated with radical prostatectomy in March 2022. This malignancy is within 5 years but there is no information about adequacy of treatment or current status. Therefore, it is unknown whether this exclusion applies or not.",
+        "final_conclusion": "UNKNOWN",
+        "clearance_basis": null,
+        "window_evidence_index": null,
+        "parts": [
+          {
+            "criterion_id": "EXC-19/part1",
+            "criterion_text": "Other malignancies within 5 years, except adequately treated basal-cell carcinoma of skin or cervical carcinoma in situ.",
+            "criterion_type": "exclusion",
+            "status": "UNKNOWN",
+            "method": "llm",
+            "patient_evidence": [
+              {
+                "category": "prior_treatment",
+                "value": "Radical prostatectomy in March 2022",
+                "normalized_value": null,
+                "date": "2023-05-16",
+                "start_date": "2022-03",
+                "end_date": null,
+                "source_file": "primary_care_annual_visit_2023.pdf",
+                "source_page": 2,
+                "evidence_text": "Hypertension, on lisinopril Hyperlipidemia, on atorvastatin Gastroesophageal reflux disease Prostate adenocarcinoma, Gleason 3+4=7, treated with radical prostatectomy in March 2022; PSA undetectable at last check Osteoarthritis, right knee Cataract surgery, left eye, 2019 Appendectomy, 1988",
+                "quote_verified": true,
+                "source_kind": "other"
+              }
+            ],
+            "explanation": "The patient had prostate adenocarcinoma diagnosed and treated with radical prostatectomy in March 2022, which is within 5 years. There is no documented information ruling out this malignancy or indicating it was adequately treated or an exception applies.",
+            "final_conclusion": null,
+            "clearance_basis": null,
+            "window_evidence_index": null,
+            "parts": [],
+            "date_comparisons": [
+              {
+                "from_date": "2022-03-01",
+                "to_date": "2026-03-30",
+                "claimed": "within",
+                "amount": 5,
+                "unit": "year"
+              }
+            ]
+          },
+          {
+            "criterion_id": "EXC-19",
+            "criterion_text": "Unaddressed compound parts",
+            "criterion_type": "exclusion",
+            "status": "UNKNOWN",
+            "method": "llm",
+            "patient_evidence": [],
+            "explanation": "Compound criterion has more conditions than returned parts.",
+            "final_conclusion": null,
+            "clearance_basis": null,
+            "window_evidence_index": null,
+            "parts": [],
+            "date_comparisons": [
+              {
+                "from_date": "2022-03-01",
+                "to_date": "2026-03-30",
+                "claimed": "within",
+                "amount": 5,
+                "unit": "year"
+              }
+            ]
+          }
+        ],
+        "date_comparisons": [
+          {
+            "from_date": "2022-03-01",
+            "to_date": "2026-03-30",
+            "claimed": "within",
+            "amount": 5,
+            "unit": "year"
+          }
+        ]
+      }
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT06412198",
+      "criterion_id": "EXC-02",
+      "probe": "buried_kras_inhibitor",
+      "expected": "DOES_NOT_MEET",
+      "also_acceptable": [],
+      "predicted": "UNKNOWN",
+      "match": false,
+      "acceptable": false,
+      "judgment_call": false,
+      "flags": [
+        "EXC-02: status contradicts explanation; converted to UNKNOWN.",
+        "EXC-02: Compound criterion guard: combined DOES_NOT_MEET => UNKNOWN."
+      ],
+      "explanation": "Compound criterion guard: Part 1: Prior KRASG12C inhibition therapy => DOES_NOT_MEET. The patient was on Sotorasib, a KRASG12C inhibitor, starting 2025-06-10, indicating prior KRASG12C inhibition therapy. Original reasoning: The patient has documented use of Sotorasib starting 2025-06-10, which is a KRASG12C inhibitor, indicating prior KRASG12C inhibition therapy. Therefore, the exclusion criteria applies.",
+      "criterion_text": "Prior KRASG12C inhibition therapy",
+      "patient_evidence": [
+        {
+          "category": "biomarker",
+          "value": "Sotorasib 960 mg by mouth once daily (started 2025-06-10)",
+          "normalized_value": "Sotorasib 960 mg by mouth once daily",
+          "date": "2025-10-02",
+          "start_date": "2025-06-10",
+          "end_date": null,
+          "source_file": "outside_pharmacy_medication_list_2025.pdf",
+          "source_page": 1,
+          "evidence_text": "Lisinopril 20 mg by mouth once daily Atorvastatin 40 mg by mouth once daily Omeprazole 20 mg by mouth once daily Sotorasib 960 mg by mouth once daily (started 2025-06-10) Ondansetron 8 mg by mouth every 8 hours as needed for nausea Loperamide 2 mg by mouth as needed for diarrhea",
+          "quote_verified": true,
+          "source_kind": "medication_list"
+        }
+      ],
+      "assessment_details": {
+        "criterion_id": "EXC-02",
+        "criterion_text": "Prior KRASG12C inhibition therapy",
+        "criterion_type": "exclusion",
+        "status": "UNKNOWN",
+        "method": "llm",
+        "patient_evidence": [
+          {
+            "category": "biomarker",
+            "value": "Sotorasib 960 mg by mouth once daily (started 2025-06-10)",
+            "normalized_value": "Sotorasib 960 mg by mouth once daily",
+            "date": "2025-10-02",
+            "start_date": "2025-06-10",
+            "end_date": null,
+            "source_file": "outside_pharmacy_medication_list_2025.pdf",
+            "source_page": 1,
+            "evidence_text": "Lisinopril 20 mg by mouth once daily Atorvastatin 40 mg by mouth once daily Omeprazole 20 mg by mouth once daily Sotorasib 960 mg by mouth once daily (started 2025-06-10) Ondansetron 8 mg by mouth every 8 hours as needed for nausea Loperamide 2 mg by mouth as needed for diarrhea",
+            "quote_verified": true,
+            "source_kind": "medication_list"
+          }
+        ],
+        "explanation": "Compound criterion guard: Part 1: Prior KRASG12C inhibition therapy => DOES_NOT_MEET. The patient was on Sotorasib, a KRASG12C inhibitor, starting 2025-06-10, indicating prior KRASG12C inhibition therapy. Original reasoning: The patient has documented use of Sotorasib starting 2025-06-10, which is a KRASG12C inhibitor, indicating prior KRASG12C inhibition therapy. Therefore, the exclusion criteria applies.",
+        "final_conclusion": "APPLIES",
+        "clearance_basis": null,
+        "window_evidence_index": 0,
+        "parts": [
+          {
+            "criterion_id": "EXC-02/part1",
+            "criterion_text": "Prior KRASG12C inhibition therapy",
+            "criterion_type": "exclusion",
+            "status": "DOES_NOT_MEET",
+            "method": "llm",
+            "patient_evidence": [
+              {
+                "category": "biomarker",
+                "value": "Sotorasib 960 mg by mouth once daily (started 2025-06-10)",
+                "normalized_value": "Sotorasib 960 mg by mouth once daily",
+                "date": "2025-10-02",
+                "start_date": "2025-06-10",
+                "end_date": null,
+                "source_file": "outside_pharmacy_medication_list_2025.pdf",
+                "source_page": 1,
+                "evidence_text": "Lisinopril 20 mg by mouth once daily Atorvastatin 40 mg by mouth once daily Omeprazole 20 mg by mouth once daily Sotorasib 960 mg by mouth once daily (started 2025-06-10) Ondansetron 8 mg by mouth every 8 hours as needed for nausea Loperamide 2 mg by mouth as needed for diarrhea",
+                "quote_verified": true,
+                "source_kind": "medication_list"
+              }
+            ],
+            "explanation": "The patient was on Sotorasib, a KRASG12C inhibitor, starting 2025-06-10, indicating prior KRASG12C inhibition therapy.",
+            "final_conclusion": null,
+            "clearance_basis": null,
+            "window_evidence_index": 0,
+            "parts": [],
+            "date_comparisons": []
+          }
+        ],
+        "date_comparisons": []
+      }
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT06252649",
+      "criterion_id": "EXC-03",
+      "probe": "buried_kras_inhibitor",
+      "expected": "DOES_NOT_MEET",
+      "also_acceptable": [],
+      "predicted": "UNKNOWN",
+      "match": false,
+      "acceptable": false,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment.",
+      "criterion_text": "Previous treatment with a KRAS p.G12C inhibitor",
+      "patient_evidence": [],
+      "assessment_details": {
+        "criterion_id": "EXC-03",
+        "criterion_text": "Previous treatment with a KRAS p.G12C inhibitor",
+        "criterion_type": "exclusion",
+        "status": "UNKNOWN",
+        "method": "rule",
+        "patient_evidence": [],
+        "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment.",
+        "final_conclusion": null,
+        "clearance_basis": null,
+        "window_evidence_index": null,
+        "parts": [],
+        "date_comparisons": []
+      }
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT06412198",
+      "criterion_id": "INC-01",
+      "probe": "sanity",
+      "expected": "MEETS",
+      "also_acceptable": [],
+      "predicted": "UNKNOWN",
+      "match": false,
+      "acceptable": false,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The matched fact covers only part of this criterion; its additional requirements are not documented.",
+      "criterion_text": "Histologically confirmed diagnosis of advanced/metastatic microsatellite stable colorectal cancer with KRASG12C mutation with 1+ prior line(s) of therapy",
+      "patient_evidence": [
+        {
+          "category": "biomarker",
+          "value": "KRAS: G12C mutation detected",
+          "normalized_value": null,
+          "date": "2024-02-12",
+          "start_date": null,
+          "end_date": null,
+          "source_file": "pathology_report.pdf",
+          "source_page": 1,
+          "evidence_text": "KRAS: G12C mutation detected",
+          "quote_verified": true,
+          "source_kind": "other"
+        }
+      ],
+      "assessment_details": {
+        "criterion_id": "INC-01",
+        "criterion_text": "Histologically confirmed diagnosis of advanced/metastatic microsatellite stable colorectal cancer with KRASG12C mutation with 1+ prior line(s) of therapy",
+        "criterion_type": "inclusion",
+        "status": "UNKNOWN",
+        "method": "rule",
+        "patient_evidence": [
+          {
+            "category": "biomarker",
+            "value": "KRAS: G12C mutation detected",
+            "normalized_value": null,
+            "date": "2024-02-12",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "pathology_report.pdf",
+            "source_page": 1,
+            "evidence_text": "KRAS: G12C mutation detected",
+            "quote_verified": true,
+            "source_kind": "other"
+          }
+        ],
+        "explanation": "The matched fact covers only part of this criterion; its additional requirements are not documented.",
+        "final_conclusion": null,
+        "clearance_basis": null,
+        "window_evidence_index": null,
+        "parts": [],
+        "date_comparisons": []
+      }
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT06412198",
+      "criterion_id": "INC-02",
+      "probe": "sanity",
+      "expected": "MEETS",
+      "also_acceptable": [],
+      "predicted": "MEETS",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "Explicit verified evidence matches the central condition or biomarker wording; human verification is required.",
+      "criterion_text": "Confirmed KRASG12C mutation status. If a molecular profiling report is not available, a representative paraffin-embedded tumor block or a minimum of 10 unstained slides will be requested for retrospective KRASG12C mutation testing.",
+      "patient_evidence": [
+        {
+          "category": "biomarker",
+          "value": "KRAS: G12C mutation detected",
+          "normalized_value": null,
+          "date": "2024-02-12",
+          "start_date": null,
+          "end_date": null,
+          "source_file": "pathology_report.pdf",
+          "source_page": 1,
+          "evidence_text": "KRAS: G12C mutation detected",
+          "quote_verified": true,
+          "source_kind": "other"
+        }
+      ],
+      "assessment_details": {
+        "criterion_id": "INC-02",
+        "criterion_text": "Confirmed KRASG12C mutation status. If a molecular profiling report is not available, a representative paraffin-embedded tumor block or a minimum of 10 unstained slides will be requested for retrospective KRASG12C mutation testing.",
+        "criterion_type": "inclusion",
+        "status": "MEETS",
+        "method": "rule",
+        "patient_evidence": [
+          {
+            "category": "biomarker",
+            "value": "KRAS: G12C mutation detected",
+            "normalized_value": null,
+            "date": "2024-02-12",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "pathology_report.pdf",
+            "source_page": 1,
+            "evidence_text": "KRAS: G12C mutation detected",
+            "quote_verified": true,
+            "source_kind": "other"
+          }
+        ],
+        "explanation": "Explicit verified evidence matches the central condition or biomarker wording; human verification is required.",
+        "final_conclusion": null,
+        "clearance_basis": null,
+        "window_evidence_index": null,
+        "parts": [],
+        "date_comparisons": []
+      }
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT07559760",
+      "criterion_id": "INC-02",
+      "probe": "sanity",
+      "expected": "MEETS",
+      "also_acceptable": [],
+      "predicted": "MEETS",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The patient has a diagnosis of metastatic colorectal adenocarcinoma (index 2), and a liver biopsy specimen shows metastatic adenocarcinoma consistent with colorectal primary (index 27). This confirms histological or cytological confirmation of colorectal adenocarcinoma as required by the criterion.",
+      "criterion_text": "Histologically or cytologically confirmed colorectal adenocarcinoma.",
+      "patient_evidence": [
+        {
+          "category": "diagnosis",
+          "value": "Metastatic colorectal adenocarcinoma",
+          "normalized_value": "Metastatic colorectal adenocarcinoma",
+          "date": "2026-03-30",
+          "start_date": null,
+          "end_date": null,
+          "source_file": "oncology_note.pdf",
+          "source_page": 1,
+          "evidence_text": "Diagnosis: Metastatic colorectal adenocarcinoma",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "diagnosis",
+          "value": "Specimen: liver biopsy, metastatic adenocarcinoma consistent with colorectal primary",
+          "normalized_value": null,
+          "date": "2024-02-12",
+          "start_date": null,
+          "end_date": null,
+          "source_file": "pathology_report.pdf",
+          "source_page": 1,
+          "evidence_text": "Specimen: liver biopsy, metastatic adenocarcinoma consistent with colorectal primary",
+          "quote_verified": true,
+          "source_kind": "other"
+        }
+      ],
+      "assessment_details": {
+        "criterion_id": "INC-02",
+        "criterion_text": "Histologically or cytologically confirmed colorectal adenocarcinoma.",
+        "criterion_type": "inclusion",
+        "status": "MEETS",
+        "method": "llm",
+        "patient_evidence": [
+          {
+            "category": "diagnosis",
+            "value": "Metastatic colorectal adenocarcinoma",
+            "normalized_value": "Metastatic colorectal adenocarcinoma",
+            "date": "2026-03-30",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "oncology_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Diagnosis: Metastatic colorectal adenocarcinoma",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "diagnosis",
+            "value": "Specimen: liver biopsy, metastatic adenocarcinoma consistent with colorectal primary",
+            "normalized_value": null,
+            "date": "2024-02-12",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "pathology_report.pdf",
+            "source_page": 1,
+            "evidence_text": "Specimen: liver biopsy, metastatic adenocarcinoma consistent with colorectal primary",
+            "quote_verified": true,
+            "source_kind": "other"
+          }
+        ],
+        "explanation": "The patient has a diagnosis of metastatic colorectal adenocarcinoma (index 2), and a liver biopsy specimen shows metastatic adenocarcinoma consistent with colorectal primary (index 27). This confirms histological or cytological confirmation of colorectal adenocarcinoma as required by the criterion.",
+        "final_conclusion": "MEETS",
+        "clearance_basis": null,
+        "window_evidence_index": null,
+        "parts": [],
+        "date_comparisons": []
+      }
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT07559760",
+      "criterion_id": "EXC-05",
+      "probe": "washout",
+      "expected": "UNKNOWN",
+      "also_acceptable": [
+        "DOES_NOT_MEET"
+      ],
+      "predicted": "UNKNOWN",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": true,
+      "flags": [
+        "EXC-05/part1: Computed time-window guard: missing dated administration or planned first-dose reference date.",
+        "EXC-05/part1: Date-comparison guard: explanation contains an unverifiable date comparison. Converted to UNKNOWN.",
+        "EXC-05/part2: Exclusion clearance guard: no negative evidence cited; absence-based clearance without evidence about it. Converted to UNKNOWN.",
+        "EXC-05/part2: Date-comparison guard: explanation contains an unverifiable date comparison. Converted to UNKNOWN.",
+        "EXC-05: Date-comparison guard: explanation contains an unverifiable date comparison. Converted to UNKNOWN.",
+        "EXC-05: Compound criterion guard: combined UNKNOWN, UNKNOWN => UNKNOWN."
+      ],
+      "explanation": "Compound criterion guard: Part 1: Any anti-cancer therapy (chemotherapy, radiotherapy, biologics, targeted therapy, immunotherapy, etc.) within 4 weeks before first study-dose => UNKNOWN. Date-comparison guard: explanation contains an unverifiable date comparison. Converted to UNKNOWN. Original reasoning: FOLFIRI chemotherapy cycle 8 was administered on 2026-03-20. The first study dose date is not documented, so it is unknown if this therapy was within 4 weeks before first study dose. | Part 2: major surgery (excluding biopsy) within 4 weeks that has not fully healed => UNKNOWN. Date-comparison guard: explanation contains an unverifiable date comparison. Converted to UNKNOWN. Original reasoning: Radical prostatectomy was performed in March 2022, which is more than 4 weeks before the study; no evidence of recent major surgery or incomplete healing. Original reasoning: The criterion excludes patients who received any anti-cancer therapy within 4 weeks before the first study dose, or major surgery within 4 weeks that has not fully healed. The last documented anti-cancer therapy (FOLFIRI cycle 8) was administered on 2026-03-20 and the reference date (first study dose) is not explicitly provided, so the timing relative to first study dose cannot be confirmed. The radical prostatectomy was performed in March 2022, which is well outside the 4-week window. No evidence documents major surgery within 4 weeks or its healing status. Thus, the exclusion status is unknown due to insufficient evidence on timing of last anti-cancer therapy relative to study-dose and lack of information on surgery healing.",
+      "criterion_text": "Any anti-cancer therapy (chemotherapy, radiotherapy, biologics, targeted therapy, immunotherapy, etc.) within 4 weeks before first study-dose; major surgery (excluding biopsy) within 4 weeks that has not fully healed.",
+      "patient_evidence": [
+        {
+          "category": "prior_treatment",
+          "value": "FOLFIRI",
+          "normalized_value": "FOLFIRI",
+          "date": "2026-03-20",
+          "start_date": null,
+          "end_date": null,
+          "source_file": "infusion_record.pdf",
+          "source_page": 1,
+          "evidence_text": "Regimen: FOLFIRI\nCycle 8 administered on 2026-03-20.",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "prior_treatment",
+          "value": "Cycle 8 administered on 2026-03-20",
+          "normalized_value": null,
+          "date": "2026-03-20",
+          "start_date": "2026-03-20",
+          "end_date": "2026-03-20",
+          "source_file": "infusion_record.pdf",
+          "source_page": 1,
+          "evidence_text": "Cycle 8 administered on 2026-03-20.",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "prior_treatment",
+          "value": "Radical prostatectomy in March 2022",
+          "normalized_value": null,
+          "date": "2023-05-16",
+          "start_date": "2022-03",
+          "end_date": null,
+          "source_file": "primary_care_annual_visit_2023.pdf",
+          "source_page": 2,
+          "evidence_text": "Hypertension, on lisinopril Hyperlipidemia, on atorvastatin Gastroesophageal reflux disease Prostate adenocarcinoma, Gleason 3+4=7, treated with radical prostatectomy in March 2022; PSA undetectable at last check Osteoarthritis, right knee Cataract surgery, left eye, 2019 Appendectomy, 1988",
+          "quote_verified": true,
+          "source_kind": "other"
+        }
+      ],
+      "assessment_details": {
+        "criterion_id": "EXC-05",
+        "criterion_text": "Any anti-cancer therapy (chemotherapy, radiotherapy, biologics, targeted therapy, immunotherapy, etc.) within 4 weeks before first study-dose; major surgery (excluding biopsy) within 4 weeks that has not fully healed.",
+        "criterion_type": "exclusion",
+        "status": "UNKNOWN",
+        "method": "llm",
+        "patient_evidence": [
+          {
+            "category": "prior_treatment",
+            "value": "FOLFIRI",
+            "normalized_value": "FOLFIRI",
+            "date": "2026-03-20",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "infusion_record.pdf",
+            "source_page": 1,
+            "evidence_text": "Regimen: FOLFIRI\nCycle 8 administered on 2026-03-20.",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "prior_treatment",
+            "value": "Cycle 8 administered on 2026-03-20",
+            "normalized_value": null,
+            "date": "2026-03-20",
+            "start_date": "2026-03-20",
+            "end_date": "2026-03-20",
+            "source_file": "infusion_record.pdf",
+            "source_page": 1,
+            "evidence_text": "Cycle 8 administered on 2026-03-20.",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "prior_treatment",
+            "value": "Radical prostatectomy in March 2022",
+            "normalized_value": null,
+            "date": "2023-05-16",
+            "start_date": "2022-03",
+            "end_date": null,
+            "source_file": "primary_care_annual_visit_2023.pdf",
+            "source_page": 2,
+            "evidence_text": "Hypertension, on lisinopril Hyperlipidemia, on atorvastatin Gastroesophageal reflux disease Prostate adenocarcinoma, Gleason 3+4=7, treated with radical prostatectomy in March 2022; PSA undetectable at last check Osteoarthritis, right knee Cataract surgery, left eye, 2019 Appendectomy, 1988",
+            "quote_verified": true,
+            "source_kind": "other"
+          }
+        ],
+        "explanation": "Compound criterion guard: Part 1: Any anti-cancer therapy (chemotherapy, radiotherapy, biologics, targeted therapy, immunotherapy, etc.) within 4 weeks before first study-dose => UNKNOWN. Date-comparison guard: explanation contains an unverifiable date comparison. Converted to UNKNOWN. Original reasoning: FOLFIRI chemotherapy cycle 8 was administered on 2026-03-20. The first study dose date is not documented, so it is unknown if this therapy was within 4 weeks before first study dose. | Part 2: major surgery (excluding biopsy) within 4 weeks that has not fully healed => UNKNOWN. Date-comparison guard: explanation contains an unverifiable date comparison. Converted to UNKNOWN. Original reasoning: Radical prostatectomy was performed in March 2022, which is more than 4 weeks before the study; no evidence of recent major surgery or incomplete healing. Original reasoning: The criterion excludes patients who received any anti-cancer therapy within 4 weeks before the first study dose, or major surgery within 4 weeks that has not fully healed. The last documented anti-cancer therapy (FOLFIRI cycle 8) was administered on 2026-03-20 and the reference date (first study dose) is not explicitly provided, so the timing relative to first study dose cannot be confirmed. The radical prostatectomy was performed in March 2022, which is well outside the 4-week window. No evidence documents major surgery within 4 weeks or its healing status. Thus, the exclusion status is unknown due to insufficient evidence on timing of last anti-cancer therapy relative to study-dose and lack of information on surgery healing.",
+        "final_conclusion": "UNKNOWN",
+        "clearance_basis": null,
+        "window_evidence_index": 1,
+        "parts": [
+          {
+            "criterion_id": "EXC-05/part1",
+            "criterion_text": "Any anti-cancer therapy (chemotherapy, radiotherapy, biologics, targeted therapy, immunotherapy, etc.) within 4 weeks before first study-dose",
+            "criterion_type": "exclusion",
+            "status": "UNKNOWN",
+            "method": "llm",
+            "patient_evidence": [
+              {
+                "category": "prior_treatment",
+                "value": "FOLFIRI",
+                "normalized_value": "FOLFIRI",
+                "date": "2026-03-20",
+                "start_date": null,
+                "end_date": null,
+                "source_file": "infusion_record.pdf",
+                "source_page": 1,
+                "evidence_text": "Regimen: FOLFIRI\nCycle 8 administered on 2026-03-20.",
+                "quote_verified": true,
+                "source_kind": "other"
+              },
+              {
+                "category": "prior_treatment",
+                "value": "Cycle 8 administered on 2026-03-20",
+                "normalized_value": null,
+                "date": "2026-03-20",
+                "start_date": "2026-03-20",
+                "end_date": "2026-03-20",
+                "source_file": "infusion_record.pdf",
+                "source_page": 1,
+                "evidence_text": "Cycle 8 administered on 2026-03-20.",
+                "quote_verified": true,
+                "source_kind": "other"
+              }
+            ],
+            "explanation": "Date-comparison guard: explanation contains an unverifiable date comparison. Converted to UNKNOWN. Original reasoning: FOLFIRI chemotherapy cycle 8 was administered on 2026-03-20. The first study dose date is not documented, so it is unknown if this therapy was within 4 weeks before first study dose.",
+            "final_conclusion": null,
+            "clearance_basis": null,
+            "window_evidence_index": 1,
+            "parts": [],
+            "date_comparisons": [
+              {
+                "from_date": "2026-03-20",
+                "to_date": "",
+                "claimed": "within",
+                "amount": 4,
+                "unit": "week"
+              }
+            ]
+          },
+          {
+            "criterion_id": "EXC-05/part2",
+            "criterion_text": "major surgery (excluding biopsy) within 4 weeks that has not fully healed",
+            "criterion_type": "exclusion",
+            "status": "UNKNOWN",
+            "method": "llm",
+            "patient_evidence": [
+              {
+                "category": "prior_treatment",
+                "value": "Radical prostatectomy in March 2022",
+                "normalized_value": null,
+                "date": "2023-05-16",
+                "start_date": "2022-03",
+                "end_date": null,
+                "source_file": "primary_care_annual_visit_2023.pdf",
+                "source_page": 2,
+                "evidence_text": "Hypertension, on lisinopril Hyperlipidemia, on atorvastatin Gastroesophageal reflux disease Prostate adenocarcinoma, Gleason 3+4=7, treated with radical prostatectomy in March 2022; PSA undetectable at last check Osteoarthritis, right knee Cataract surgery, left eye, 2019 Appendectomy, 1988",
+                "quote_verified": true,
+                "source_kind": "other"
+              }
+            ],
+            "explanation": "Date-comparison guard: explanation contains an unverifiable date comparison. Converted to UNKNOWN. Original reasoning: Radical prostatectomy was performed in March 2022, which is more than 4 weeks before the study; no evidence of recent major surgery or incomplete healing.",
+            "final_conclusion": null,
+            "clearance_basis": "explicit_negative",
+            "window_evidence_index": null,
+            "parts": [],
+            "date_comparisons": [
+              {
+                "from_date": "2022-03",
+                "to_date": "",
+                "claimed": "more_than",
+                "amount": 4,
+                "unit": "week"
+              }
+            ]
+          }
+        ],
+        "date_comparisons": [
+          {
+            "from_date": "2026-03-20",
+            "to_date": "",
+            "claimed": "within",
+            "amount": 4,
+            "unit": "week"
+          }
+        ]
+      }
+    }
+  ]
+}

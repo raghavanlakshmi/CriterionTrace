@@ -1,0 +1,66 @@
+
+== SYN-002: 6 documents, 9 pages
+   extracted 34 records (34 verified)
+   extraction · buried_malignancy: comorbidity: Hypertension (primary_care_annual_visit_2023.pdf p2, verified=True); comorbidity: Hyperlipidemia (primary_care_annual_visit_2023.pdf p2, verified=True); comorbidity: Gastroesophageal reflux disease (primary_care_annual_visit_2023.pdf p2, verified=True); prior_treatment: Prostate adenocarcinoma, Gleason 3+4=7, treated with radical prostatectomy in March 2022 (primary_care_annual_visit_2023.pdf p2, verified=True); comorbidity: Osteoarthritis, right knee (primary_care_annual_visit_2023.pdf p2, verified=True); comorbidity: Hypertension, on lisinopril (primary_care_annual_visit_2023.pdf p2, verified=True); comorbidity: Hyperlipidemia, on atorvastatin (primary_care_annual_visit_2023.pdf p2, verified=True)
+   extraction · buried_kras_inhibitor: current_medication: Lisinopril 20 mg by mouth once daily (outside_pharmacy_medication_list_2025.pdf p1, verified=True); current_medication: Atorvastatin 40 mg by mouth once daily (outside_pharmacy_medication_list_2025.pdf p1, verified=True); current_medication: Omeprazole 20 mg by mouth once daily (outside_pharmacy_medication_list_2025.pdf p1, verified=True); current_medication: Sotorasib 960 mg by mouth once daily (started 2025-06-10) (outside_pharmacy_medication_list_2025.pdf p1, verified=True); current_medication: Ondansetron 8 mg by mouth every 8 hours as needed for nausea (outside_pharmacy_medication_list_2025.pdf p1, verified=True); current_medication: Loperamide 2 mg by mouth as needed for diarrhea (outside_pharmacy_medication_list_2025.pdf p1, verified=True)
+   extraction · family_history_decoy: NOT EXTRACTED
+   extraction · last_chemo_dose: prior_treatment: Regimen: FOLFIRI
+Cycle 8 administered on 2026-03-20 (infusion_record.pdf p1, verified=True); prior_treatment: Cycle 8 administered on 2026-03-20 (infusion_record.pdf p1, verified=True)
+   rule_baseline NCT07559760 EXC-19 expected DOES_NOT_MEET got UNKNOWN            MISS
+   rule_baseline NCT06412198 EXC-02 expected DOES_NOT_MEET got UNKNOWN            MISS
+   rule_baseline NCT06252649 EXC-03 expected DOES_NOT_MEET got UNKNOWN            MISS
+   rule_baseline NCT06412198 INC-01 expected MEETS         got UNKNOWN            MISS
+   rule_baseline NCT06412198 INC-02 expected MEETS         got MEETS              ok
+   rule_baseline NCT07559760 INC-02 expected MEETS         got MEETS              ok
+   rule_baseline NCT07559760 EXC-05 expected UNKNOWN       got UNKNOWN            ok
+   llm_assessor  NCT07559760 EXC-19 expected DOES_NOT_MEET got UNKNOWN            MISS
+   llm_assessor  NCT06412198 EXC-02 expected DOES_NOT_MEET got DOES_NOT_MEET      ok
+   llm_assessor  NCT06252649 EXC-03 expected DOES_NOT_MEET got DOES_NOT_MEET      ok
+   llm_assessor  NCT06412198 INC-01 expected MEETS         got MEETS              ok
+   llm_assessor  NCT06412198 INC-02 expected MEETS         got MEETS              ok
+   llm_assessor  NCT07559760 INC-02 expected MEETS         got MEETS              ok
+   llm_assessor  NCT07559760 EXC-05 expected UNKNOWN       got UNKNOWN            ok
+   wrote SYN-002_buried_test_report.md / .json
+
+== SYN-002-control: 6 documents, 9 pages
+Unverified quote: primary_care_annual_visit_2023.pdf, page 2
+Unverified quote: primary_care_annual_visit_2023.pdf, page 2
+Unverified quote: primary_care_annual_visit_2023.pdf, page 2
+Unverified quote: primary_care_annual_visit_2023.pdf, page 2
+Unverified quote: primary_care_annual_visit_2023.pdf, page 2
+Unverified quote: primary_care_annual_visit_2023.pdf, page 2
+Unverified quote: primary_care_annual_visit_2023.pdf, page 2
+Unverified quote: primary_care_annual_visit_2023.pdf, page 2
+Unverified quote: primary_care_annual_visit_2023.pdf, page 2
+Unverified quote: primary_care_annual_visit_2023.pdf, page 2
+Unverified quote: primary_care_annual_visit_2023.pdf, page 2
+Unverified quote: primary_care_annual_visit_2023.pdf, page 2
+Unverified quote: primary_care_annual_visit_2023.pdf, page 2
+Unverified quote: primary_care_annual_visit_2023.pdf, page 2
+Unverified quote: primary_care_annual_visit_2023.pdf, page 2
+Unverified quote: primary_care_annual_visit_2023.pdf, page 2
+   extracted 35 records (31 verified)
+Unverified quote: primary_care_annual_visit_2023.pdf, page 2
+Unverified quote: primary_care_annual_visit_2023.pdf, page 2
+Unverified quote: primary_care_annual_visit_2023.pdf, page 2
+Unverified quote: primary_care_annual_visit_2023.pdf, page 2
+   extraction · buried_malignancy: NOT EXTRACTED
+   extraction · buried_kras_inhibitor: NOT EXTRACTED
+   extraction · family_history_decoy: NOT EXTRACTED
+   extraction · last_chemo_dose: prior_treatment: FOLFIRI
+Cycle 8 administered on 2026-03-20. (infusion_record.pdf p1, verified=True); prior_treatment: Cycle 8 administered on 2026-03-20. (infusion_record.pdf p1, verified=True)
+   rule_baseline NCT07559760 EXC-19 expected UNKNOWN       got UNKNOWN            ok
+   rule_baseline NCT06412198 EXC-02 expected UNKNOWN       got UNKNOWN            ok
+   rule_baseline NCT06252649 EXC-03 expected UNKNOWN       got UNKNOWN            ok
+   rule_baseline NCT06412198 INC-01 expected MEETS         got UNKNOWN            MISS
+   rule_baseline NCT06412198 INC-02 expected MEETS         got MEETS              ok
+   rule_baseline NCT07559760 INC-02 expected MEETS         got MEETS              ok
+   rule_baseline NCT07559760 EXC-05 expected UNKNOWN       got UNKNOWN            ok
+   llm_assessor  NCT07559760 EXC-19 expected UNKNOWN       got UNKNOWN            ok
+   llm_assessor  NCT06412198 EXC-02 expected UNKNOWN       got UNKNOWN            ok
+   llm_assessor  NCT06252649 EXC-03 expected UNKNOWN       got UNKNOWN            ok
+   llm_assessor  NCT06412198 INC-01 expected MEETS         got MEETS              ok
+   llm_assessor  NCT06412198 INC-02 expected MEETS         got MEETS              ok
+   llm_assessor  NCT07559760 INC-02 expected MEETS         got MEETS              ok
+   llm_assessor  NCT07559760 EXC-05 expected UNKNOWN       got UNKNOWN            ok
+   wrote SYN-002-control_buried_test_report.md / .json

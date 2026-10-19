@@ -24,7 +24,7 @@ def test_label_and_final_conclusion_agree(kind, status, explanation, conclusion,
         source_file='record.txt', source_page=1, quote_verified=True)
     item = CriterionAssessment(criterion_id='EXC-01' if kind == 'exclusion' else 'INC-01',
         criterion_text='Marker', criterion_type=kind, status=status, method='llm',
-        patient_evidence=[fact], explanation=explanation, final_conclusion=conclusion)
+        patient_evidence=[fact], explanation=explanation, final_conclusion=conclusion, clearance_basis="explicit_negative")
     reviewed, flags = review_assessments([item])
     assert reviewed[0].status == expected
     if expected == 'UNKNOWN':

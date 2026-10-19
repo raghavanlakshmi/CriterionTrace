@@ -156,7 +156,8 @@ def run_variant(variant: str, args, criteria, client) -> dict:
                          "judgment_call": label["judgment_call"], "flags": flags,
                          "explanation": reviewed[0].explanation,
                          "criterion_text": criterion.text,
-                         "patient_evidence": [e.model_dump(mode="json") for e in reviewed[0].patient_evidence]})
+                         "patient_evidence": [e.model_dump(mode="json") for e in reviewed[0].patient_evidence],
+                         "assessment_details": reviewed[0].model_dump(mode="json")})
             print(f"   {name:13} {label['trial']} {label['criterion_id']:6} expected {label['expected']:13} got {predicted:18} {'ok' if ok else 'MISS'}")
         results[name] = score(pairs) | {"acceptable_rate": round(sum(acceptable_pairs) / len(acceptable_pairs), 4)}
 

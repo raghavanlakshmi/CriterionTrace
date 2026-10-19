@@ -1,0 +1,59 @@
+
+== SYN-004: 9 documents, 9 pages
+   wrote SYN-004_buried_test_pages.json (OCR text kept for review)
+Undocumented date removed: pulmonology_consult_2025_scanned.pdf, page 1
+   extracted 52 records (52 verified)
+   extraction · buried_pneumonitis_ocr: diagnosis: drug-induced interstitial pneumonitis, felt to be oxaliplatin-related (pulmonology_consult_2025_scanned.pdf p1, verified=True)
+   extraction · pneumonia_trap: NOT EXTRACTED
+   extraction · buried_steroid: prior_treatment: prednisone 40 mg by mouth once daily for 5 days (2026-06-14 through 2026-06-18) (ed_discharge_summary.pdf p1, verified=True); prior_treatment: prednisone 40 mg by mouth once daily for 5 days (2026-06-14 through 2026-06-18) (ed_discharge_summary.pdf p1, verified=True); prior_treatment: Oxaliplatin was permanently discontinued (pulmonology_consult_2025_scanned.pdf p1, verified=True); prior_treatment: prednisone taper in April 2025 (pulmonology_consult_2025_scanned.pdf p1, verified=True)
+   extraction · steroid_last_dose: prior_treatment: prednisone 40 mg by mouth once daily for 5 days (2026-06-14 through 2026-06-18) (ed_discharge_summary.pdf p1, verified=True); prior_treatment: prednisone 40 mg by mouth once daily for 5 days (2026-06-14 through 2026-06-18) (ed_discharge_summary.pdf p1, verified=True)
+   extraction · inhaled_topical_steroid_trap: current_medication: Fluticasone nasal spray, 50 mcg, 2 sprays each nostril daily, Allergic rhinitis, Active (medication_reconciliation.pdf p1, verified=True); current_medication: Hydrocortisone 1% cream, Topical, as needed, Eczema, Active (medication_reconciliation.pdf p1, verified=True); current_medication: Fluticasone nasal spray 50 mcg, 2 sprays each nostril daily for Allergic rhinitis (medication_reconciliation.pdf p1, verified=True); current_medication: Hydrocortisone 1% cream topical as needed for Eczema (medication_reconciliation.pdf p1, verified=True)
+   extraction · buried_tia: diagnosis: transient ischemic attack on 2026-02-09 (neurology_note_2026.pdf p1, verified=True)
+   extraction · vertigo_trap: NOT EXTRACTED
+   extraction · autoimmune_exception_trap: comorbidity: Hashimoto thyroiditis on levothyroxine replacement (oncology_note.pdf p1, verified=True); comorbidity: gout (oncology_note.pdf p1, verified=True)
+   extraction · brain_mri: NOT EXTRACTED
+   extraction · scheduled_first_dose: planned_study_event: cycle 1 day 1 of study treatment is scheduled for 2026-06-22 (trial_screening_letter.pdf p1, verified=True)
+   rule_baseline NCT06252649 EXC-04 expected DOES_NOT_MEET got UNKNOWN            MISS
+   rule_baseline NCT06412198 EXC-03 expected DOES_NOT_MEET got UNKNOWN            ok
+   rule_baseline NCT07559760 EXC-08 expected DOES_NOT_MEET got UNKNOWN            MISS
+   rule_baseline NCT06412198 EXC-04 expected UNKNOWN       got UNKNOWN            ok
+   rule_baseline NCT06252649 EXC-01 expected MEETS         got UNKNOWN            ok
+   rule_baseline NCT06252649 INC-01 expected MEETS         got MEETS              ok
+   rule_baseline NCT06412198 INC-11 expected MEETS         got MEETS              ok
+   llm_assessor  NCT06252649 EXC-04 expected DOES_NOT_MEET got DOES_NOT_MEET      ok
+   llm_assessor  NCT06412198 EXC-03 expected DOES_NOT_MEET got DOES_NOT_MEET      ok
+   llm_assessor  NCT07559760 EXC-08 expected DOES_NOT_MEET got UNKNOWN            MISS
+   llm_assessor  NCT06412198 EXC-04 expected UNKNOWN       got UNKNOWN            ok
+   llm_assessor  NCT06252649 EXC-01 expected MEETS         got UNKNOWN            ok
+   llm_assessor  NCT06252649 INC-01 expected MEETS         got MEETS              ok
+   llm_assessor  NCT06412198 INC-11 expected MEETS         got MEETS              ok
+   wrote SYN-004_buried_test_report.md / .json
+
+== SYN-004-control: 9 documents, 9 pages
+   wrote SYN-004-control_buried_test_pages.json (OCR text kept for review)
+   extracted 46 records (46 verified)
+   extraction · buried_pneumonitis_ocr: NOT EXTRACTED
+   extraction · pneumonia_trap: diagnosis: community-acquired pneumonia (pulmonology_consult_2025_scanned.pdf p1, verified=True)
+   extraction · buried_steroid: NOT EXTRACTED
+   extraction · steroid_last_dose: prior_treatment: colchicine 0.6 mg by mouth twice daily for 5 days (2026-06-14 through 2026-06-18) (ed_discharge_summary.pdf p1, verified=True)
+   extraction · inhaled_topical_steroid_trap: current_medication: Fluticasone nasal spray, 50 mcg, 2 sprays each nostril daily, Allergic rhinitis, Active (medication_reconciliation.pdf p1, verified=True); current_medication: Hydrocortisone 1% cream, Topical, as needed, Eczema, Active (medication_reconciliation.pdf p1, verified=True); current_medication: Fluticasone nasal spray 50 mcg, 2 sprays each nostril daily for Allergic rhinitis Active (medication_reconciliation.pdf p1, verified=True); current_medication: Hydrocortisone 1% cream Topical, as needed for Eczema Active (medication_reconciliation.pdf p1, verified=True)
+   extraction · buried_tia: NOT EXTRACTED
+   extraction · vertigo_trap: NOT EXTRACTED
+   extraction · autoimmune_exception_trap: comorbidity: Hashimoto thyroiditis on levothyroxine replacement; gout (oncology_note.pdf p1, verified=True); comorbidity: Hashimoto thyroiditis on levothyroxine replacement (oncology_note.pdf p1, verified=True); comorbidity: gout (oncology_note.pdf p1, verified=True)
+   extraction · brain_mri: NOT EXTRACTED
+   extraction · scheduled_first_dose: planned_study_event: cycle 1 day 1 of study treatment is scheduled for 2026-06-22 (trial_screening_letter.pdf p1, verified=True)
+   rule_baseline NCT06252649 EXC-04 expected UNKNOWN       got UNKNOWN            ok
+   rule_baseline NCT06412198 EXC-03 expected UNKNOWN       got UNKNOWN            ok
+   rule_baseline NCT07559760 EXC-08 expected UNKNOWN       got UNKNOWN            ok
+   rule_baseline NCT06412198 EXC-04 expected UNKNOWN       got UNKNOWN            ok
+   rule_baseline NCT06252649 EXC-01 expected MEETS         got UNKNOWN            ok
+   rule_baseline NCT06252649 INC-01 expected MEETS         got MEETS              ok
+   rule_baseline NCT06412198 INC-11 expected MEETS         got MEETS              ok
+   llm_assessor  NCT06252649 EXC-04 expected UNKNOWN       got UNKNOWN            ok
+   llm_assessor  NCT06412198 EXC-03 expected UNKNOWN       got UNKNOWN            ok
+   llm_assessor  NCT07559760 EXC-08 expected UNKNOWN       got UNKNOWN            ok
+   llm_assessor  NCT06412198 EXC-04 expected UNKNOWN       got UNKNOWN            ok
+   llm_assessor  NCT06252649 EXC-01 expected MEETS         got UNKNOWN            ok
+   llm_assessor  NCT06252649 INC-01 expected MEETS         got MEETS              ok
+   llm_assessor  NCT06412198 INC-11 expected MEETS         got MEETS              ok
+   wrote SYN-004-control_buried_test_report.md / .json

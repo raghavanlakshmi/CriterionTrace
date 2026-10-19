@@ -24,7 +24,7 @@ def test_mutation_alone_cannot_establish_treatment(link):
 
 
 def test_cited_medication_keeps_status_but_requires_review():
-    result, flags = assess('ABC V123D suggests inhibitor therapy.', [record('current_medication', 'Targeted drug listed')])
+    result, flags = assess('ABC V123D suggests inhibitor therapy.', [record('current_medication', 'Targeted inhibitor drug listed')])
     assert result[0].status == 'DOES_NOT_MEET'
     assert any('review the explanation' in f for f in flags)
 
