@@ -1,0 +1,60 @@
+
+== SYN-005: 8 documents, 9 pages
+   extracted 30 records (30 verified)
+   extraction · qtcf_value: NOT EXTRACTED
+   extraction · buried_major_surgery: prior_treatment: exploratory laparotomy with small-bowel resection and primary anastomosis, 2026-07-22, under general anesthesia (hospital_discharge_summary.pdf p2, verified=True)
+   extraction · biopsy_trap: NOT EXTRACTED
+   extraction · surgery_or_biopsy_date: prior_treatment: exploratory laparotomy with small-bowel resection and primary anastomosis, 2026-07-22, under general anesthesia (hospital_discharge_summary.pdf p2, verified=True)
+   extraction · neuropathy_grade: lab: oxaliplatin-induced peripheral sensory neuropathy grade 2 (toxicity_phone_note.pdf p1, verified=True)
+   extraction · alopecia_exception: lab: alopecia grade 2 (toxicity_phone_note.pdf p1, verified=True)
+   extraction · serology: lab: HIV-1/2 antigen/antibody Nonreactive (serology_outside_lab.pdf p1, verified=True); lab: Hepatitis B surface antigen (HBsAg) Negative (serology_outside_lab.pdf p1, verified=True); lab: Hepatitis B core antibody (HBcAb), total Negative (serology_outside_lab.pdf p1, verified=True); lab: Hepatitis C antibody Nonreactive (serology_outside_lab.pdf p1, verified=True)
+   extraction · creatinine: lab: Creatinine: 1.3 mg/dL (lab_report.pdf p1, verified=True)
+   extraction · weight: NOT EXTRACTED
+   extraction · scheduled_first_dose: planned_study_event: cycle 1 day 1 of study treatment scheduled for 2026-08-10 (trial_screening_letter.pdf p1, verified=True)
+   rule_baseline NCT07559760 EXC-09 expected DOES_NOT_MEET got UNKNOWN            MISS
+   rule_baseline NCT06412198 EXC-11 expected DOES_NOT_MEET got UNKNOWN            MISS
+   rule_baseline NCT07559760 EXC-04 expected DOES_NOT_MEET got UNKNOWN            ok
+   rule_baseline NCT06412198 INC-10 expected MEETS         got UNKNOWN            ok
+   rule_baseline NCT07559760 EXC-14 expected MEETS         got UNKNOWN            ok
+   rule_baseline NCT07559760 INC-12 expected DOES_NOT_MEET got UNKNOWN            ok
+   rule_baseline NCT07559760 INC-01 expected MEETS         got UNKNOWN            MISS
+   rule_baseline NCT07559760 INC-07 expected MEETS         got MEETS              ok
+   llm_assessor  NCT07559760 EXC-09 expected DOES_NOT_MEET got UNKNOWN            MISS
+   llm_assessor  NCT06412198 EXC-11 expected DOES_NOT_MEET got DOES_NOT_MEET      ok
+   llm_assessor  NCT07559760 EXC-04 expected DOES_NOT_MEET got UNKNOWN            ok
+   llm_assessor  NCT06412198 INC-10 expected MEETS         got DOES_NOT_MEET      MISS
+   llm_assessor  NCT07559760 EXC-14 expected MEETS         got MEETS              ok
+   llm_assessor  NCT07559760 INC-12 expected DOES_NOT_MEET got UNKNOWN            ok
+   llm_assessor  NCT07559760 INC-01 expected MEETS         got UNKNOWN            MISS
+   llm_assessor  NCT07559760 INC-07 expected MEETS         got MEETS              ok
+   wrote SYN-005_buried_test_report.md / .json
+
+== SYN-005-control: 8 documents, 9 pages
+   extracted 29 records (29 verified)
+   extraction · qtcf_value: NOT EXTRACTED
+   extraction · buried_major_surgery: NOT EXTRACTED
+   extraction · biopsy_trap: biomarker: ultrasound-guided core-needle biopsy of a segment VI liver lesion, 2026-07-22 (hospital_discharge_summary.pdf p2, verified=True); biomarker: ultrasound-guided core-needle biopsy of a segment VI liver lesion (hospital_discharge_summary.pdf p2, verified=True)
+   extraction · surgery_or_biopsy_date: biomarker: ultrasound-guided core-needle biopsy of a segment VI liver lesion, 2026-07-22 (hospital_discharge_summary.pdf p2, verified=True); biomarker: ultrasound-guided core-needle biopsy of a segment VI liver lesion (hospital_discharge_summary.pdf p2, verified=True)
+   extraction · neuropathy_grade: comorbidity: peripheral sensory neuropathy grade 1 (toxicity_phone_note.pdf p1, verified=True)
+   extraction · alopecia_exception: comorbidity: alopecia grade 2 (toxicity_phone_note.pdf p1, verified=True)
+   extraction · serology: lab: Nonreactive (serology_outside_lab.pdf p1, verified=True); lab: Negative (serology_outside_lab.pdf p1, verified=True); lab: Negative (serology_outside_lab.pdf p1, verified=True); lab: Nonreactive (serology_outside_lab.pdf p1, verified=True)
+   extraction · creatinine: lab: Creatinine: 1.3 mg/dL (lab_report.pdf p1, verified=True)
+   extraction · weight: NOT EXTRACTED
+   extraction · scheduled_first_dose: planned_study_event: cycle 1 day 1 of study treatment scheduled for 2026-08-10 (trial_screening_letter.pdf p1, verified=True)
+   rule_baseline NCT07559760 EXC-09 expected MEETS         got UNKNOWN            ok
+   rule_baseline NCT06412198 EXC-11 expected UNKNOWN       got UNKNOWN            ok
+   rule_baseline NCT07559760 EXC-04 expected MEETS         got UNKNOWN            ok
+   rule_baseline NCT06412198 INC-10 expected MEETS         got UNKNOWN            ok
+   rule_baseline NCT07559760 EXC-14 expected MEETS         got UNKNOWN            ok
+   rule_baseline NCT07559760 INC-12 expected DOES_NOT_MEET got UNKNOWN            ok
+   rule_baseline NCT07559760 INC-01 expected MEETS         got UNKNOWN            MISS
+   rule_baseline NCT07559760 INC-07 expected MEETS         got MEETS              ok
+   llm_assessor  NCT07559760 EXC-09 expected MEETS         got UNKNOWN            ok
+   llm_assessor  NCT06412198 EXC-11 expected UNKNOWN       got UNKNOWN            ok
+   llm_assessor  NCT07559760 EXC-04 expected MEETS         got UNKNOWN            ok
+   llm_assessor  NCT06412198 INC-10 expected MEETS         got MEETS              ok
+   llm_assessor  NCT07559760 EXC-14 expected MEETS         got MEETS              ok
+   llm_assessor  NCT07559760 INC-12 expected DOES_NOT_MEET got UNKNOWN            ok
+   llm_assessor  NCT07559760 INC-01 expected MEETS         got MEETS              ok
+   llm_assessor  NCT07559760 INC-07 expected MEETS         got MEETS              ok
+   wrote SYN-005-control_buried_test_report.md / .json

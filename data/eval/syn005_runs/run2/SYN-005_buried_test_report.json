@@ -1,0 +1,1592 @@
+{
+  "patient": "SYN-005",
+  "variant": "blind test on frozen round-3 code: buried exclusions plus decidable criteria",
+  "label_status": "Reviewed by Lakshmi before any SYN-005 run on 10/18/26",
+  "extraction_model": "gpt-4.1-mini",
+  "assessment_model": "gpt-4.1-mini",
+  "extraction_check": {
+    "qtcf_value": [
+      {
+        "category": "lab",
+        "value": "Heart rate 74 bpm",
+        "source": "ecg_report.pdf p1",
+        "date": "2026-07-30",
+        "quote_verified": true
+      },
+      {
+        "category": "lab",
+        "value": "PR interval 164 ms",
+        "source": "ecg_report.pdf p1",
+        "date": "2026-07-30",
+        "quote_verified": true
+      },
+      {
+        "category": "lab",
+        "value": "QRS duration 92 ms",
+        "source": "ecg_report.pdf p1",
+        "date": "2026-07-30",
+        "quote_verified": true
+      },
+      {
+        "category": "lab",
+        "value": "QT interval 446 ms",
+        "source": "ecg_report.pdf p1",
+        "date": "2026-07-30",
+        "quote_verified": true
+      },
+      {
+        "category": "lab",
+        "value": "QTcF (Fridericia) 478 ms",
+        "source": "ecg_report.pdf p1",
+        "date": "2026-07-30",
+        "quote_verified": true
+      }
+    ],
+    "buried_major_surgery": [
+      {
+        "category": "prior_treatment",
+        "value": "exploratory laparotomy with small-bowel resection and primary anastomosis, 2026-07-22, under general anesthesia",
+        "source": "hospital_discharge_summary.pdf p2",
+        "date": "2026-07-22",
+        "quote_verified": true
+      }
+    ],
+    "biopsy_trap": [],
+    "surgery_or_biopsy_date": [
+      {
+        "category": "prior_treatment",
+        "value": "exploratory laparotomy with small-bowel resection and primary anastomosis, 2026-07-22, under general anesthesia",
+        "source": "hospital_discharge_summary.pdf p2",
+        "date": "2026-07-22",
+        "quote_verified": true
+      }
+    ],
+    "neuropathy_grade": [
+      {
+        "category": "prior_treatment",
+        "value": "oxaliplatin-induced peripheral sensory neuropathy grade 2",
+        "source": "toxicity_phone_note.pdf p1",
+        "date": "2026-07-28",
+        "quote_verified": true
+      }
+    ],
+    "alopecia_exception": [
+      {
+        "category": "prior_treatment",
+        "value": "alopecia grade 2",
+        "source": "toxicity_phone_note.pdf p1",
+        "date": "2026-07-28",
+        "quote_verified": true
+      }
+    ],
+    "serology": [
+      {
+        "category": "lab",
+        "value": "HIV-1/2 antigen/antibody Nonreactive",
+        "source": "serology_outside_lab.pdf p1",
+        "date": "2026-07-29",
+        "quote_verified": true
+      },
+      {
+        "category": "lab",
+        "value": "Hepatitis B surface antigen (HBsAg) Negative",
+        "source": "serology_outside_lab.pdf p1",
+        "date": "2026-07-29",
+        "quote_verified": true
+      },
+      {
+        "category": "lab",
+        "value": "Hepatitis B core antibody (HBcAb), total Negative",
+        "source": "serology_outside_lab.pdf p1",
+        "date": "2026-07-29",
+        "quote_verified": true
+      },
+      {
+        "category": "lab",
+        "value": "Hepatitis C antibody Nonreactive",
+        "source": "serology_outside_lab.pdf p1",
+        "date": "2026-07-29",
+        "quote_verified": true
+      }
+    ],
+    "creatinine": [
+      {
+        "category": "lab",
+        "value": "Creatinine: 1.3 mg/dL",
+        "source": "lab_report.pdf p1",
+        "date": "2026-07-31",
+        "quote_verified": true
+      },
+      {
+        "category": "lab",
+        "value": "Creatinine: 1.3 mg/dL",
+        "source": "lab_report.pdf p1",
+        "date": "2026-07-31",
+        "quote_verified": false
+      }
+    ],
+    "weight": [],
+    "scheduled_first_dose": [
+      {
+        "category": "planned_study_event",
+        "value": "cycle 1 day 1 of study treatment is scheduled for 2026-08-10",
+        "source": "trial_screening_letter.pdf p1",
+        "date": "2026-08-10",
+        "quote_verified": true
+      }
+    ]
+  },
+  "extraction_gaps": [
+    {
+      "source_file": "ecg_report.pdf",
+      "source_page": 1,
+      "line_number": 7,
+      "sentence_number": 1,
+      "text": "Resting 12-lead ECG measurements",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "ecg_report.pdf",
+      "source_page": 1,
+      "line_number": 20,
+      "sentence_number": 3,
+      "text": "Interpretation: Sinus rhythm.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "ecg_report.pdf",
+      "source_page": 1,
+      "line_number": 20,
+      "sentence_number": 4,
+      "text": "Prolonged QTc.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "hospital_discharge_summary.pdf",
+      "source_page": 1,
+      "line_number": 8,
+      "sentence_number": 3,
+      "text": "She went to the operating room the next day.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "hospital_discharge_summary.pdf",
+      "source_page": 1,
+      "line_number": 8,
+      "sentence_number": 4,
+      "text": "Her recovery was uncomplicated and she was discharged on postoperative day 5.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "hospital_discharge_summary.pdf",
+      "source_page": 1,
+      "line_number": 11,
+      "sentence_number": 5,
+      "text": "Procedure details are on page 2.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "hospital_discharge_summary.pdf",
+      "source_page": 2,
+      "line_number": 10,
+      "sentence_number": 3,
+      "text": "Wound: midline incision, healing; staples to be removed at follow-up.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "hospital_discharge_summary.pdf",
+      "source_page": 2,
+      "line_number": 11,
+      "sentence_number": 4,
+      "text": "Discharged 2026-07-27.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "hospital_discharge_summary.pdf",
+      "source_page": 2,
+      "line_number": 11,
+      "sentence_number": 5,
+      "text": "No lifting over 10 pounds for 6 weeks.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "lab_report.pdf",
+      "source_page": 1,
+      "line_number": 16,
+      "sentence_number": 9,
+      "text": "No transfusion or growth-factor support in the past 14 days.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "oncology_note.pdf",
+      "source_page": 1,
+      "line_number": 7,
+      "sentence_number": 1,
+      "text": "Clinic visit",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "oncology_note.pdf",
+      "source_page": 1,
+      "line_number": 10,
+      "sentence_number": 4,
+      "text": "Weight: 52 kg",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "oncology_note.pdf",
+      "source_page": 1,
+      "line_number": 14,
+      "sentence_number": 8,
+      "text": "Plan: referred for clinical trial screening.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "serology_outside_lab.pdf",
+      "source_page": 1,
+      "line_number": 2,
+      "sentence_number": 1,
+      "text": "Outside laboratory: infectious serology",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "serology_outside_lab.pdf",
+      "source_page": 1,
+      "line_number": 7,
+      "sentence_number": 2,
+      "text": "Serology panel",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "serology_outside_lab.pdf",
+      "source_page": 1,
+      "line_number": 23,
+      "sentence_number": 7,
+      "text": "Specimen collected 2026-07-29.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "serology_outside_lab.pdf",
+      "source_page": 1,
+      "line_number": 23,
+      "sentence_number": 8,
+      "text": "Reported by an outside reference laboratory.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "toxicity_phone_note.pdf",
+      "source_page": 1,
+      "line_number": 2,
+      "sentence_number": 1,
+      "text": "Telephone encounter: toxicity assessment",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "toxicity_phone_note.pdf",
+      "source_page": 1,
+      "line_number": 10,
+      "sentence_number": 7,
+      "text": "She reports no diarrhea, mouth sores or fatigue limiting activity.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "toxicity_phone_note.pdf",
+      "source_page": 1,
+      "line_number": 10,
+      "sentence_number": 8,
+      "text": "All other treatment-related toxicities are grade 0 to 1.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "trial_screening_letter.pdf",
+      "source_page": 1,
+      "line_number": 8,
+      "sentence_number": 1,
+      "text": "The patient has been referred for clinical trial screening.",
+      "message": "Not captured by the tool, review manually"
+    },
+    {
+      "source_file": "trial_screening_letter.pdf",
+      "source_page": 1,
+      "line_number": 10,
+      "sentence_number": 3,
+      "text": "Final eligibility will be confirmed by the study team.",
+      "message": "Not captured by the tool, review manually"
+    }
+  ],
+  "results": {
+    "rule_baseline": {
+      "labels": 8,
+      "accuracy": 0.125,
+      "decidable_labels": 8,
+      "decided_correctly": 0.125,
+      "unsafe_false_clearance": 0,
+      "false_exclusion": 0,
+      "unknown_to_meets": 0,
+      "confusion_matrix": {
+        "MEETS": {
+          "MEETS": 1,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 3,
+          "POTENTIAL_CONFLICT": 0
+        },
+        "DOES_NOT_MEET": {
+          "MEETS": 0,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 4,
+          "POTENTIAL_CONFLICT": 0
+        },
+        "UNKNOWN": {
+          "MEETS": 0,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 0,
+          "POTENTIAL_CONFLICT": 0
+        },
+        "POTENTIAL_CONFLICT": {
+          "MEETS": 0,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 0,
+          "POTENTIAL_CONFLICT": 0
+        }
+      },
+      "acceptable_rate": 0.625
+    },
+    "llm_assessor": {
+      "labels": 8,
+      "accuracy": 0.625,
+      "decidable_labels": 8,
+      "decided_correctly": 0.625,
+      "unsafe_false_clearance": 0,
+      "false_exclusion": 1,
+      "unknown_to_meets": 0,
+      "confusion_matrix": {
+        "MEETS": {
+          "MEETS": 3,
+          "DOES_NOT_MEET": 1,
+          "UNKNOWN": 0,
+          "POTENTIAL_CONFLICT": 0
+        },
+        "DOES_NOT_MEET": {
+          "MEETS": 0,
+          "DOES_NOT_MEET": 2,
+          "UNKNOWN": 2,
+          "POTENTIAL_CONFLICT": 0
+        },
+        "UNKNOWN": {
+          "MEETS": 0,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 0,
+          "POTENTIAL_CONFLICT": 0
+        },
+        "POTENTIAL_CONFLICT": {
+          "MEETS": 0,
+          "DOES_NOT_MEET": 0,
+          "UNKNOWN": 0,
+          "POTENTIAL_CONFLICT": 0
+        }
+      },
+      "acceptable_rate": 0.875
+    }
+  },
+  "rows": [
+    {
+      "method": "rule_baseline",
+      "trial": "NCT07559760",
+      "criterion_id": "EXC-09",
+      "probe": "buried_qtcf",
+      "expected": "DOES_NOT_MEET",
+      "also_acceptable": [],
+      "predicted": "UNKNOWN",
+      "match": false,
+      "acceptable": false,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment.",
+      "criterion_text": "QTcF ≥ 450 ms (men) or ≥ 470 ms (women) on resting 12-lead ECG.",
+      "patient_evidence": [],
+      "assessment_details": {
+        "criterion_id": "EXC-09",
+        "criterion_text": "QTcF ≥ 450 ms (men) or ≥ 470 ms (women) on resting 12-lead ECG.",
+        "criterion_type": "exclusion",
+        "status": "UNKNOWN",
+        "method": "rule",
+        "patient_evidence": [],
+        "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment.",
+        "final_conclusion": null,
+        "clearance_basis": null,
+        "window_evidence_index": null,
+        "parts": [],
+        "date_comparisons": []
+      }
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT06412198",
+      "criterion_id": "EXC-11",
+      "probe": "buried_major_surgery",
+      "expected": "DOES_NOT_MEET",
+      "also_acceptable": [],
+      "predicted": "UNKNOWN",
+      "match": false,
+      "acceptable": false,
+      "judgment_call": false,
+      "flags": [
+        "EXC-11: Computed time-window guard: missing selected dated event citation (missing dated administration or planned first-dose reference date)."
+      ],
+      "explanation": "Computed time-window guard: missing selected dated event citation (missing dated administration or planned first-dose reference date). Original reasoning: The supplied evidence does not safely establish this criterion without a live criterion assessment.",
+      "criterion_text": "Major surgery within 4 weeks of first dose of any study drug.",
+      "patient_evidence": [],
+      "assessment_details": {
+        "criterion_id": "EXC-11",
+        "criterion_text": "Major surgery within 4 weeks of first dose of any study drug.",
+        "criterion_type": "exclusion",
+        "status": "UNKNOWN",
+        "method": "rule",
+        "patient_evidence": [],
+        "explanation": "Computed time-window guard: missing selected dated event citation (missing dated administration or planned first-dose reference date). Original reasoning: The supplied evidence does not safely establish this criterion without a live criterion assessment.",
+        "final_conclusion": null,
+        "clearance_basis": null,
+        "window_evidence_index": null,
+        "parts": [],
+        "date_comparisons": []
+      }
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT07559760",
+      "criterion_id": "EXC-04",
+      "probe": "buried_toxicity_except_clause",
+      "expected": "DOES_NOT_MEET",
+      "also_acceptable": [
+        "UNKNOWN"
+      ],
+      "predicted": "UNKNOWN",
+      "match": false,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment.",
+      "criterion_text": "Toxicities from prior therapy not resolved to CTCAE v5.0 Grade ≤ 1 (except alopecia or other toxicities deemed by the investigator to pose no safety risk).",
+      "patient_evidence": [],
+      "assessment_details": {
+        "criterion_id": "EXC-04",
+        "criterion_text": "Toxicities from prior therapy not resolved to CTCAE v5.0 Grade ≤ 1 (except alopecia or other toxicities deemed by the investigator to pose no safety risk).",
+        "criterion_type": "exclusion",
+        "status": "UNKNOWN",
+        "method": "rule",
+        "patient_evidence": [],
+        "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment.",
+        "final_conclusion": null,
+        "clearance_basis": null,
+        "window_evidence_index": null,
+        "parts": [],
+        "date_comparisons": []
+      }
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT06412198",
+      "criterion_id": "INC-10",
+      "probe": "exception_applies_inclusion",
+      "expected": "MEETS",
+      "also_acceptable": [
+        "UNKNOWN"
+      ],
+      "predicted": "UNKNOWN",
+      "match": false,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment.",
+      "criterion_text": "Recovery from the treatment-related adverse effects of prior therapy at the time of enrollment to ≤ Grade 1 (excluding alopecia and prior oxaliplatin-induced neuropathy).",
+      "patient_evidence": [],
+      "assessment_details": {
+        "criterion_id": "INC-10",
+        "criterion_text": "Recovery from the treatment-related adverse effects of prior therapy at the time of enrollment to ≤ Grade 1 (excluding alopecia and prior oxaliplatin-induced neuropathy).",
+        "criterion_type": "inclusion",
+        "status": "UNKNOWN",
+        "method": "rule",
+        "patient_evidence": [],
+        "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment.",
+        "final_conclusion": null,
+        "clearance_basis": null,
+        "window_evidence_index": null,
+        "parts": [],
+        "date_comparisons": []
+      }
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT07559760",
+      "criterion_id": "EXC-14",
+      "probe": "explicit_negative_serology",
+      "expected": "MEETS",
+      "also_acceptable": [
+        "UNKNOWN"
+      ],
+      "predicted": "UNKNOWN",
+      "match": false,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment.",
+      "criterion_text": "Known HIV-positive, active hepatitis B, or hepatitis C:",
+      "patient_evidence": [],
+      "assessment_details": {
+        "criterion_id": "EXC-14",
+        "criterion_text": "Known HIV-positive, active hepatitis B, or hepatitis C:",
+        "criterion_type": "exclusion",
+        "status": "UNKNOWN",
+        "method": "rule",
+        "patient_evidence": [],
+        "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment.",
+        "final_conclusion": null,
+        "clearance_basis": null,
+        "window_evidence_index": null,
+        "parts": [],
+        "date_comparisons": []
+      }
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT07559760",
+      "criterion_id": "INC-12",
+      "probe": "calculated_creatinine_clearance",
+      "expected": "DOES_NOT_MEET",
+      "also_acceptable": [
+        "UNKNOWN"
+      ],
+      "predicted": "UNKNOWN",
+      "match": false,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment.",
+      "criterion_text": "Renal: Creatinine clearance ≥ 50 mL/min (Cockcroft-Gault).",
+      "patient_evidence": [],
+      "assessment_details": {
+        "criterion_id": "INC-12",
+        "criterion_text": "Renal: Creatinine clearance ≥ 50 mL/min (Cockcroft-Gault).",
+        "criterion_type": "inclusion",
+        "status": "UNKNOWN",
+        "method": "rule",
+        "patient_evidence": [],
+        "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment.",
+        "final_conclusion": null,
+        "clearance_basis": null,
+        "window_evidence_index": null,
+        "parts": [],
+        "date_comparisons": []
+      }
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT07559760",
+      "criterion_id": "INC-01",
+      "probe": "sanity",
+      "expected": "MEETS",
+      "also_acceptable": [],
+      "predicted": "UNKNOWN",
+      "match": false,
+      "acceptable": false,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment.",
+      "criterion_text": "Male or female, aged 18-75 years.",
+      "patient_evidence": [],
+      "assessment_details": {
+        "criterion_id": "INC-01",
+        "criterion_text": "Male or female, aged 18-75 years.",
+        "criterion_type": "inclusion",
+        "status": "UNKNOWN",
+        "method": "rule",
+        "patient_evidence": [],
+        "explanation": "The supplied evidence does not safely establish this criterion without a live criterion assessment.",
+        "final_conclusion": null,
+        "clearance_basis": null,
+        "window_evidence_index": null,
+        "parts": [],
+        "date_comparisons": []
+      }
+    },
+    {
+      "method": "rule_baseline",
+      "trial": "NCT07559760",
+      "criterion_id": "INC-07",
+      "probe": "sanity",
+      "expected": "MEETS",
+      "also_acceptable": [],
+      "predicted": "MEETS",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "Conservative offline comparison of all documented ECOG values; live LLM assessment was not requested.",
+      "criterion_text": "ECOG performance status 0-1.",
+      "patient_evidence": [
+        {
+          "category": "performance_status",
+          "value": "ECOG 1",
+          "normalized_value": "ECOG 1",
+          "date": "2026-07-31",
+          "start_date": null,
+          "end_date": null,
+          "source_file": "oncology_note.pdf",
+          "source_page": 1,
+          "evidence_text": "Performance status: ECOG 1",
+          "quote_verified": true,
+          "source_kind": "other"
+        }
+      ],
+      "assessment_details": {
+        "criterion_id": "INC-07",
+        "criterion_text": "ECOG performance status 0-1.",
+        "criterion_type": "inclusion",
+        "status": "MEETS",
+        "method": "rule",
+        "patient_evidence": [
+          {
+            "category": "performance_status",
+            "value": "ECOG 1",
+            "normalized_value": "ECOG 1",
+            "date": "2026-07-31",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "oncology_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Performance status: ECOG 1",
+            "quote_verified": true,
+            "source_kind": "other"
+          }
+        ],
+        "explanation": "Conservative offline comparison of all documented ECOG values; live LLM assessment was not requested.",
+        "final_conclusion": null,
+        "clearance_basis": null,
+        "window_evidence_index": null,
+        "parts": [],
+        "date_comparisons": []
+      }
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT07559760",
+      "criterion_id": "EXC-09",
+      "probe": "buried_qtcf",
+      "expected": "DOES_NOT_MEET",
+      "also_acceptable": [],
+      "predicted": "DOES_NOT_MEET",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The patient is female (evidence index 1). The QTcF on resting 12-lead ECG is documented as 478 ms (evidence indexes 19 and 23), which is greater than the exclusion threshold of 470 ms for women. Therefore, the exclusion criterion applies.",
+      "criterion_text": "QTcF ≥ 450 ms (men) or ≥ 470 ms (women) on resting 12-lead ECG.",
+      "patient_evidence": [
+        {
+          "category": "lab",
+          "value": "Heart rate 74 bpm",
+          "normalized_value": null,
+          "date": "2026-07-30",
+          "start_date": null,
+          "end_date": null,
+          "source_file": "ecg_report.pdf",
+          "source_page": 1,
+          "evidence_text": "Heart rate 74 bpm PR interval 164 ms QRS duration 92 ms QT interval 446 ms QTcF (Fridericia) 478 ms",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "lab",
+          "value": "QTcF (Fridericia) 478 ms",
+          "normalized_value": null,
+          "date": "2026-07-30",
+          "start_date": null,
+          "end_date": null,
+          "source_file": "ecg_report.pdf",
+          "source_page": 1,
+          "evidence_text": "Heart rate 74 bpm PR interval 164 ms QRS duration 92 ms QT interval 446 ms QTcF (Fridericia) 478 ms",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "sex",
+          "value": "Female",
+          "normalized_value": null,
+          "date": "2026-07-31",
+          "start_date": null,
+          "end_date": null,
+          "source_file": "oncology_note.pdf",
+          "source_page": 1,
+          "evidence_text": "Sex: Female",
+          "quote_verified": true,
+          "source_kind": "other"
+        }
+      ],
+      "assessment_details": {
+        "criterion_id": "EXC-09",
+        "criterion_text": "QTcF ≥ 450 ms (men) or ≥ 470 ms (women) on resting 12-lead ECG.",
+        "criterion_type": "exclusion",
+        "status": "DOES_NOT_MEET",
+        "method": "llm",
+        "patient_evidence": [
+          {
+            "category": "lab",
+            "value": "Heart rate 74 bpm",
+            "normalized_value": null,
+            "date": "2026-07-30",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "ecg_report.pdf",
+            "source_page": 1,
+            "evidence_text": "Heart rate 74 bpm PR interval 164 ms QRS duration 92 ms QT interval 446 ms QTcF (Fridericia) 478 ms",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "lab",
+            "value": "QTcF (Fridericia) 478 ms",
+            "normalized_value": null,
+            "date": "2026-07-30",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "ecg_report.pdf",
+            "source_page": 1,
+            "evidence_text": "Heart rate 74 bpm PR interval 164 ms QRS duration 92 ms QT interval 446 ms QTcF (Fridericia) 478 ms",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "sex",
+            "value": "Female",
+            "normalized_value": null,
+            "date": "2026-07-31",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "oncology_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Sex: Female",
+            "quote_verified": true,
+            "source_kind": "other"
+          }
+        ],
+        "explanation": "The patient is female (evidence index 1). The QTcF on resting 12-lead ECG is documented as 478 ms (evidence indexes 19 and 23), which is greater than the exclusion threshold of 470 ms for women. Therefore, the exclusion criterion applies.",
+        "final_conclusion": "APPLIES",
+        "clearance_basis": null,
+        "window_evidence_index": 1,
+        "parts": [],
+        "date_comparisons": [
+          {
+            "from_date": "2026-07-30",
+            "to_date": "2026-08-10",
+            "claimed": "within",
+            "amount": 11,
+            "unit": "days"
+          }
+        ]
+      }
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT06412198",
+      "criterion_id": "EXC-11",
+      "probe": "buried_major_surgery",
+      "expected": "DOES_NOT_MEET",
+      "also_acceptable": [],
+      "predicted": "DOES_NOT_MEET",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [
+        "EXC-11: Computed time-window guard: selected event 2026-07-22, planned first dose 2026-08-10; code-computed interval 19 days; window 4 weeks (starts 2026-07-13). Documented event is inside the window; the exclusion appears to apply. Planned dates require human verification."
+      ],
+      "explanation": "Computed time-window guard: selected event 2026-07-22, planned first dose 2026-08-10; code-computed interval 19 days; window 4 weeks (starts 2026-07-13). Documented event is inside the window; the exclusion appears to apply. Planned dates require human verification. Original reasoning: The patient underwent major surgery (exploratory laparotomy with small-bowel resection and primary anastomosis) on 2026-07-22. The first dose of any study drug is scheduled for 2026-08-10, which is within 4 weeks of the surgery (19 days after surgery). Therefore, this exclusion criterion applies.",
+      "criterion_text": "Major surgery within 4 weeks of first dose of any study drug.",
+      "patient_evidence": [
+        {
+          "category": "prior_treatment",
+          "value": "exploratory laparotomy with small-bowel resection and primary anastomosis, 2026-07-22, under general anesthesia",
+          "normalized_value": null,
+          "date": "2026-07-22",
+          "start_date": null,
+          "end_date": null,
+          "source_file": "hospital_discharge_summary.pdf",
+          "source_page": 2,
+          "evidence_text": "Procedure: exploratory laparotomy with small-bowel resection and primary anastomosis, 2026-07-22, under general anesthesia.",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "planned_study_event",
+          "value": "cycle 1 day 1 of study treatment is scheduled for 2026-08-10",
+          "normalized_value": "2026-08-10",
+          "date": "2026-08-10",
+          "start_date": "2026-08-10",
+          "end_date": null,
+          "source_file": "trial_screening_letter.pdf",
+          "source_page": 1,
+          "evidence_text": "If eligibility is confirmed, cycle 1 day 1 of study treatment is scheduled for 2026-08-10.",
+          "quote_verified": true,
+          "source_kind": "other"
+        }
+      ],
+      "assessment_details": {
+        "criterion_id": "EXC-11",
+        "criterion_text": "Major surgery within 4 weeks of first dose of any study drug.",
+        "criterion_type": "exclusion",
+        "status": "DOES_NOT_MEET",
+        "method": "llm",
+        "patient_evidence": [
+          {
+            "category": "prior_treatment",
+            "value": "exploratory laparotomy with small-bowel resection and primary anastomosis, 2026-07-22, under general anesthesia",
+            "normalized_value": null,
+            "date": "2026-07-22",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "hospital_discharge_summary.pdf",
+            "source_page": 2,
+            "evidence_text": "Procedure: exploratory laparotomy with small-bowel resection and primary anastomosis, 2026-07-22, under general anesthesia.",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "planned_study_event",
+            "value": "cycle 1 day 1 of study treatment is scheduled for 2026-08-10",
+            "normalized_value": "2026-08-10",
+            "date": "2026-08-10",
+            "start_date": "2026-08-10",
+            "end_date": null,
+            "source_file": "trial_screening_letter.pdf",
+            "source_page": 1,
+            "evidence_text": "If eligibility is confirmed, cycle 1 day 1 of study treatment is scheduled for 2026-08-10.",
+            "quote_verified": true,
+            "source_kind": "other"
+          }
+        ],
+        "explanation": "Computed time-window guard: selected event 2026-07-22, planned first dose 2026-08-10; code-computed interval 19 days; window 4 weeks (starts 2026-07-13). Documented event is inside the window; the exclusion appears to apply. Planned dates require human verification. Original reasoning: The patient underwent major surgery (exploratory laparotomy with small-bowel resection and primary anastomosis) on 2026-07-22. The first dose of any study drug is scheduled for 2026-08-10, which is within 4 weeks of the surgery (19 days after surgery). Therefore, this exclusion criterion applies.",
+        "final_conclusion": "APPLIES",
+        "clearance_basis": null,
+        "window_evidence_index": 0,
+        "parts": [],
+        "date_comparisons": [
+          {
+            "from_date": "2026-07-22",
+            "to_date": "2026-08-10",
+            "claimed": "within",
+            "amount": 4,
+            "unit": "week"
+          }
+        ]
+      }
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT07559760",
+      "criterion_id": "EXC-04",
+      "probe": "buried_toxicity_except_clause",
+      "expected": "DOES_NOT_MEET",
+      "also_acceptable": [
+        "UNKNOWN"
+      ],
+      "predicted": "UNKNOWN",
+      "match": false,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [
+        "EXC-04/part1: investigator-judgment criterion converted to UNKNOWN.",
+        "EXC-04: investigator-judgment criterion converted to UNKNOWN.",
+        "EXC-04: Compound criterion guard: combined UNKNOWN => UNKNOWN."
+      ],
+      "explanation": "Compound criterion guard: Part 1: Toxicities from prior therapy not resolved to CTCAE v5.0 Grade ≤ 1 (except alopecia or other toxicities deemed by the investigator to pose no safety risk). => UNKNOWN. This criterion depends on investigator judgment and cannot be settled from records; converted to UNKNOWN. Original reasoning: Evidence shows the patient has oxaliplatin-induced peripheral sensory neuropathy grade 2 persistent at screening. This toxicity is not alopecia and exceeds grade 1, so the exclusion applies. Original reasoning: The patient has documented toxicities from prior therapy oxaliplatin, specifically peripheral sensory neuropathy assessed as grade 2, limiting activities of daily living, persisting at the time of screening. This toxicity is not alopecia and has not resolved to CTCAE v5.0 Grade ≤ 1, thus meeting the exclusion criterion.",
+      "criterion_text": "Toxicities from prior therapy not resolved to CTCAE v5.0 Grade ≤ 1 (except alopecia or other toxicities deemed by the investigator to pose no safety risk).",
+      "patient_evidence": [
+        {
+          "category": "prior_treatment",
+          "value": "oxaliplatin",
+          "normalized_value": null,
+          "date": "2026-07-28",
+          "start_date": null,
+          "end_date": null,
+          "source_file": "toxicity_phone_note.pdf",
+          "source_page": 1,
+          "evidence_text": "Telephone follow-up before trial screening. Ms. Lee reports persistent numbness and tingling in both hands and feet since oxaliplatin; she has trouble buttoning clothing and uses a handrail on stairs.",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "sex",
+          "value": "Ms. Lee",
+          "normalized_value": "female",
+          "date": "2026-07-28",
+          "start_date": null,
+          "end_date": null,
+          "source_file": "toxicity_phone_note.pdf",
+          "source_page": 1,
+          "evidence_text": "Telephone follow-up before trial screening. Ms. Lee reports persistent numbness and tingling in both hands and feet since oxaliplatin; she has trouble buttoning clothing and uses a handrail on stairs.",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "prior_treatment",
+          "value": "oxaliplatin",
+          "normalized_value": null,
+          "date": "2026-07-28",
+          "start_date": null,
+          "end_date": null,
+          "source_file": "toxicity_phone_note.pdf",
+          "source_page": 1,
+          "evidence_text": "Ms. Lee reports persistent numbness and tingling in both hands and feet since oxaliplatin; she has trouble buttoning clothing and uses a handrail on stairs.",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "prior_treatment",
+          "value": "oxaliplatin-induced peripheral sensory neuropathy grade 2",
+          "normalized_value": null,
+          "date": "2026-07-28",
+          "start_date": null,
+          "end_date": null,
+          "source_file": "toxicity_phone_note.pdf",
+          "source_page": 1,
+          "evidence_text": "Assessed as oxaliplatin-induced peripheral sensory neuropathy grade 2, limiting instrumental activities of daily living.",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "prior_treatment",
+          "value": "alopecia grade 2",
+          "normalized_value": null,
+          "date": "2026-07-28",
+          "start_date": null,
+          "end_date": null,
+          "source_file": "toxicity_phone_note.pdf",
+          "source_page": 1,
+          "evidence_text": "Hair thinning persists, alopecia grade 2.",
+          "quote_verified": true,
+          "source_kind": "other"
+        }
+      ],
+      "assessment_details": {
+        "criterion_id": "EXC-04",
+        "criterion_text": "Toxicities from prior therapy not resolved to CTCAE v5.0 Grade ≤ 1 (except alopecia or other toxicities deemed by the investigator to pose no safety risk).",
+        "criterion_type": "exclusion",
+        "status": "UNKNOWN",
+        "method": "llm",
+        "patient_evidence": [
+          {
+            "category": "prior_treatment",
+            "value": "oxaliplatin",
+            "normalized_value": null,
+            "date": "2026-07-28",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "toxicity_phone_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Telephone follow-up before trial screening. Ms. Lee reports persistent numbness and tingling in both hands and feet since oxaliplatin; she has trouble buttoning clothing and uses a handrail on stairs.",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "sex",
+            "value": "Ms. Lee",
+            "normalized_value": "female",
+            "date": "2026-07-28",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "toxicity_phone_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Telephone follow-up before trial screening. Ms. Lee reports persistent numbness and tingling in both hands and feet since oxaliplatin; she has trouble buttoning clothing and uses a handrail on stairs.",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "prior_treatment",
+            "value": "oxaliplatin",
+            "normalized_value": null,
+            "date": "2026-07-28",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "toxicity_phone_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Ms. Lee reports persistent numbness and tingling in both hands and feet since oxaliplatin; she has trouble buttoning clothing and uses a handrail on stairs.",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "prior_treatment",
+            "value": "oxaliplatin-induced peripheral sensory neuropathy grade 2",
+            "normalized_value": null,
+            "date": "2026-07-28",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "toxicity_phone_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Assessed as oxaliplatin-induced peripheral sensory neuropathy grade 2, limiting instrumental activities of daily living.",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "prior_treatment",
+            "value": "alopecia grade 2",
+            "normalized_value": null,
+            "date": "2026-07-28",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "toxicity_phone_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Hair thinning persists, alopecia grade 2.",
+            "quote_verified": true,
+            "source_kind": "other"
+          }
+        ],
+        "explanation": "Compound criterion guard: Part 1: Toxicities from prior therapy not resolved to CTCAE v5.0 Grade ≤ 1 (except alopecia or other toxicities deemed by the investigator to pose no safety risk). => UNKNOWN. This criterion depends on investigator judgment and cannot be settled from records; converted to UNKNOWN. Original reasoning: Evidence shows the patient has oxaliplatin-induced peripheral sensory neuropathy grade 2 persistent at screening. This toxicity is not alopecia and exceeds grade 1, so the exclusion applies. Original reasoning: The patient has documented toxicities from prior therapy oxaliplatin, specifically peripheral sensory neuropathy assessed as grade 2, limiting activities of daily living, persisting at the time of screening. This toxicity is not alopecia and has not resolved to CTCAE v5.0 Grade ≤ 1, thus meeting the exclusion criterion.",
+        "final_conclusion": "APPLIES",
+        "clearance_basis": null,
+        "window_evidence_index": 0,
+        "parts": [
+          {
+            "criterion_id": "EXC-04/part1",
+            "criterion_text": "Toxicities from prior therapy not resolved to CTCAE v5.0 Grade ≤ 1 (except alopecia or other toxicities deemed by the investigator to pose no safety risk).",
+            "criterion_type": "exclusion",
+            "status": "UNKNOWN",
+            "method": "llm",
+            "patient_evidence": [
+              {
+                "category": "prior_treatment",
+                "value": "oxaliplatin",
+                "normalized_value": null,
+                "date": "2026-07-28",
+                "start_date": null,
+                "end_date": null,
+                "source_file": "toxicity_phone_note.pdf",
+                "source_page": 1,
+                "evidence_text": "Telephone follow-up before trial screening. Ms. Lee reports persistent numbness and tingling in both hands and feet since oxaliplatin; she has trouble buttoning clothing and uses a handrail on stairs.",
+                "quote_verified": true,
+                "source_kind": "other"
+              },
+              {
+                "category": "sex",
+                "value": "Ms. Lee",
+                "normalized_value": "female",
+                "date": "2026-07-28",
+                "start_date": null,
+                "end_date": null,
+                "source_file": "toxicity_phone_note.pdf",
+                "source_page": 1,
+                "evidence_text": "Telephone follow-up before trial screening. Ms. Lee reports persistent numbness and tingling in both hands and feet since oxaliplatin; she has trouble buttoning clothing and uses a handrail on stairs.",
+                "quote_verified": true,
+                "source_kind": "other"
+              },
+              {
+                "category": "prior_treatment",
+                "value": "oxaliplatin",
+                "normalized_value": null,
+                "date": "2026-07-28",
+                "start_date": null,
+                "end_date": null,
+                "source_file": "toxicity_phone_note.pdf",
+                "source_page": 1,
+                "evidence_text": "Ms. Lee reports persistent numbness and tingling in both hands and feet since oxaliplatin; she has trouble buttoning clothing and uses a handrail on stairs.",
+                "quote_verified": true,
+                "source_kind": "other"
+              },
+              {
+                "category": "prior_treatment",
+                "value": "oxaliplatin-induced peripheral sensory neuropathy grade 2",
+                "normalized_value": null,
+                "date": "2026-07-28",
+                "start_date": null,
+                "end_date": null,
+                "source_file": "toxicity_phone_note.pdf",
+                "source_page": 1,
+                "evidence_text": "Assessed as oxaliplatin-induced peripheral sensory neuropathy grade 2, limiting instrumental activities of daily living.",
+                "quote_verified": true,
+                "source_kind": "other"
+              },
+              {
+                "category": "prior_treatment",
+                "value": "alopecia grade 2",
+                "normalized_value": null,
+                "date": "2026-07-28",
+                "start_date": null,
+                "end_date": null,
+                "source_file": "toxicity_phone_note.pdf",
+                "source_page": 1,
+                "evidence_text": "Hair thinning persists, alopecia grade 2.",
+                "quote_verified": true,
+                "source_kind": "other"
+              }
+            ],
+            "explanation": "This criterion depends on investigator judgment and cannot be settled from records; converted to UNKNOWN. Original reasoning: Evidence shows the patient has oxaliplatin-induced peripheral sensory neuropathy grade 2 persistent at screening. This toxicity is not alopecia and exceeds grade 1, so the exclusion applies.",
+            "final_conclusion": null,
+            "clearance_basis": null,
+            "window_evidence_index": 0,
+            "parts": [],
+            "date_comparisons": []
+          }
+        ],
+        "date_comparisons": []
+      }
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT06412198",
+      "criterion_id": "INC-10",
+      "probe": "exception_applies_inclusion",
+      "expected": "MEETS",
+      "also_acceptable": [
+        "UNKNOWN"
+      ],
+      "predicted": "DOES_NOT_MEET",
+      "match": false,
+      "acceptable": false,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The patient reports persistent numbness and tingling in both hands and feet since oxaliplatin treatment, with difficulty buttoning clothing and using handrails, indicating ongoing grade 2 oxaliplatin-induced peripheral sensory neuropathy (index 41). This clearly shows the patient has not recovered to ≤ Grade 1 for these treatment-related adverse effects.",
+      "criterion_text": "Recovery from the treatment-related adverse effects of prior therapy at the time of enrollment to ≤ Grade 1 (excluding alopecia and prior oxaliplatin-induced neuropathy).",
+      "patient_evidence": [
+        {
+          "category": "sex",
+          "value": "Ms. Lee",
+          "normalized_value": "female",
+          "date": "2026-07-28",
+          "start_date": null,
+          "end_date": null,
+          "source_file": "toxicity_phone_note.pdf",
+          "source_page": 1,
+          "evidence_text": "Telephone follow-up before trial screening. Ms. Lee reports persistent numbness and tingling in both hands and feet since oxaliplatin; she has trouble buttoning clothing and uses a handrail on stairs.",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "prior_treatment",
+          "value": "oxaliplatin",
+          "normalized_value": null,
+          "date": "2026-07-28",
+          "start_date": null,
+          "end_date": null,
+          "source_file": "toxicity_phone_note.pdf",
+          "source_page": 1,
+          "evidence_text": "Ms. Lee reports persistent numbness and tingling in both hands and feet since oxaliplatin; she has trouble buttoning clothing and uses a handrail on stairs.",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "prior_treatment",
+          "value": "oxaliplatin-induced peripheral sensory neuropathy grade 2",
+          "normalized_value": null,
+          "date": "2026-07-28",
+          "start_date": null,
+          "end_date": null,
+          "source_file": "toxicity_phone_note.pdf",
+          "source_page": 1,
+          "evidence_text": "Assessed as oxaliplatin-induced peripheral sensory neuropathy grade 2, limiting instrumental activities of daily living.",
+          "quote_verified": true,
+          "source_kind": "other"
+        }
+      ],
+      "assessment_details": {
+        "criterion_id": "INC-10",
+        "criterion_text": "Recovery from the treatment-related adverse effects of prior therapy at the time of enrollment to ≤ Grade 1 (excluding alopecia and prior oxaliplatin-induced neuropathy).",
+        "criterion_type": "inclusion",
+        "status": "DOES_NOT_MEET",
+        "method": "llm",
+        "patient_evidence": [
+          {
+            "category": "sex",
+            "value": "Ms. Lee",
+            "normalized_value": "female",
+            "date": "2026-07-28",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "toxicity_phone_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Telephone follow-up before trial screening. Ms. Lee reports persistent numbness and tingling in both hands and feet since oxaliplatin; she has trouble buttoning clothing and uses a handrail on stairs.",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "prior_treatment",
+            "value": "oxaliplatin",
+            "normalized_value": null,
+            "date": "2026-07-28",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "toxicity_phone_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Ms. Lee reports persistent numbness and tingling in both hands and feet since oxaliplatin; she has trouble buttoning clothing and uses a handrail on stairs.",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "prior_treatment",
+            "value": "oxaliplatin-induced peripheral sensory neuropathy grade 2",
+            "normalized_value": null,
+            "date": "2026-07-28",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "toxicity_phone_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Assessed as oxaliplatin-induced peripheral sensory neuropathy grade 2, limiting instrumental activities of daily living.",
+            "quote_verified": true,
+            "source_kind": "other"
+          }
+        ],
+        "explanation": "The patient reports persistent numbness and tingling in both hands and feet since oxaliplatin treatment, with difficulty buttoning clothing and using handrails, indicating ongoing grade 2 oxaliplatin-induced peripheral sensory neuropathy (index 41). This clearly shows the patient has not recovered to ≤ Grade 1 for these treatment-related adverse effects.",
+        "final_conclusion": "DOES_NOT_MEET",
+        "clearance_basis": null,
+        "window_evidence_index": null,
+        "parts": [],
+        "date_comparisons": []
+      }
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT07559760",
+      "criterion_id": "EXC-14",
+      "probe": "explicit_negative_serology",
+      "expected": "MEETS",
+      "also_acceptable": [
+        "UNKNOWN"
+      ],
+      "predicted": "MEETS",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The patient has documented laboratory tests for HIV-1/2 antigen/antibody showing Nonreactive (index 35), Hepatitis B surface antigen (HBsAg) Negative (index 36), Hepatitis B core antibody (HBcAb), total Negative (index 37), and Hepatitis C antibody Nonreactive (index 38). These results indicate the patient is not known to be HIV-positive, does not have active hepatitis B, and does not have hepatitis C, thus the exclusion criterion does not apply.",
+      "criterion_text": "Known HIV-positive, active hepatitis B, or hepatitis C:",
+      "patient_evidence": [
+        {
+          "category": "lab",
+          "value": "HIV-1/2 antigen/antibody Nonreactive",
+          "normalized_value": "Nonreactive",
+          "date": "2026-07-29",
+          "start_date": null,
+          "end_date": null,
+          "source_file": "serology_outside_lab.pdf",
+          "source_page": 1,
+          "evidence_text": "HIV-1/2 antigen/antibody\nNonreactive\nNonreactive",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "lab",
+          "value": "Hepatitis B surface antigen (HBsAg) Negative",
+          "normalized_value": "Negative",
+          "date": "2026-07-29",
+          "start_date": null,
+          "end_date": null,
+          "source_file": "serology_outside_lab.pdf",
+          "source_page": 1,
+          "evidence_text": "Hepatitis B surface antigen (HBsAg)\nNegative\nNegative",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "lab",
+          "value": "Hepatitis B core antibody (HBcAb), total Negative",
+          "normalized_value": "Negative",
+          "date": "2026-07-29",
+          "start_date": null,
+          "end_date": null,
+          "source_file": "serology_outside_lab.pdf",
+          "source_page": 1,
+          "evidence_text": "Hepatitis B core antibody (HBcAb), total\nNegative\nNegative",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "lab",
+          "value": "Hepatitis C antibody Nonreactive",
+          "normalized_value": "Nonreactive",
+          "date": "2026-07-29",
+          "start_date": null,
+          "end_date": null,
+          "source_file": "serology_outside_lab.pdf",
+          "source_page": 1,
+          "evidence_text": "Hepatitis C antibody\nNonreactive\nNonreactive",
+          "quote_verified": true,
+          "source_kind": "other"
+        }
+      ],
+      "assessment_details": {
+        "criterion_id": "EXC-14",
+        "criterion_text": "Known HIV-positive, active hepatitis B, or hepatitis C:",
+        "criterion_type": "exclusion",
+        "status": "MEETS",
+        "method": "llm",
+        "patient_evidence": [
+          {
+            "category": "lab",
+            "value": "HIV-1/2 antigen/antibody Nonreactive",
+            "normalized_value": "Nonreactive",
+            "date": "2026-07-29",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "serology_outside_lab.pdf",
+            "source_page": 1,
+            "evidence_text": "HIV-1/2 antigen/antibody\nNonreactive\nNonreactive",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "lab",
+            "value": "Hepatitis B surface antigen (HBsAg) Negative",
+            "normalized_value": "Negative",
+            "date": "2026-07-29",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "serology_outside_lab.pdf",
+            "source_page": 1,
+            "evidence_text": "Hepatitis B surface antigen (HBsAg)\nNegative\nNegative",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "lab",
+            "value": "Hepatitis B core antibody (HBcAb), total Negative",
+            "normalized_value": "Negative",
+            "date": "2026-07-29",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "serology_outside_lab.pdf",
+            "source_page": 1,
+            "evidence_text": "Hepatitis B core antibody (HBcAb), total\nNegative\nNegative",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "lab",
+            "value": "Hepatitis C antibody Nonreactive",
+            "normalized_value": "Nonreactive",
+            "date": "2026-07-29",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "serology_outside_lab.pdf",
+            "source_page": 1,
+            "evidence_text": "Hepatitis C antibody\nNonreactive\nNonreactive",
+            "quote_verified": true,
+            "source_kind": "other"
+          }
+        ],
+        "explanation": "The patient has documented laboratory tests for HIV-1/2 antigen/antibody showing Nonreactive (index 35), Hepatitis B surface antigen (HBsAg) Negative (index 36), Hepatitis B core antibody (HBcAb), total Negative (index 37), and Hepatitis C antibody Nonreactive (index 38). These results indicate the patient is not known to be HIV-positive, does not have active hepatitis B, and does not have hepatitis C, thus the exclusion criterion does not apply.",
+        "final_conclusion": "DOES_NOT_APPLY",
+        "clearance_basis": "explicit_negative",
+        "window_evidence_index": null,
+        "parts": [],
+        "date_comparisons": []
+      }
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT07559760",
+      "criterion_id": "INC-12",
+      "probe": "calculated_creatinine_clearance",
+      "expected": "DOES_NOT_MEET",
+      "also_acceptable": [
+        "UNKNOWN"
+      ],
+      "predicted": "UNKNOWN",
+      "match": false,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The criterion requires renal function measured by creatinine clearance (Cockcroft-Gault) >= 50 mL/min. The evidence provides a creatinine value (1.3 mg/dL) but does not provide the creatinine clearance or equivalent calculation. Without the creatinine clearance value or data required to compute it (such as weight, age beyond what is given, and serum creatinine), the criterion cannot be confirmed as met or unmet based on this evidence alone.",
+      "criterion_text": "Renal: Creatinine clearance ≥ 50 mL/min (Cockcroft-Gault).",
+      "patient_evidence": [
+        {
+          "category": "lab",
+          "value": "Creatinine: 1.3 mg/dL",
+          "normalized_value": "1.3 mg/dL",
+          "date": "2026-07-31",
+          "start_date": null,
+          "end_date": null,
+          "source_file": "lab_report.pdf",
+          "source_page": 1,
+          "evidence_text": "Creatinine: 1.3 mg/dL",
+          "quote_verified": true,
+          "source_kind": "other"
+        }
+      ],
+      "assessment_details": {
+        "criterion_id": "INC-12",
+        "criterion_text": "Renal: Creatinine clearance ≥ 50 mL/min (Cockcroft-Gault).",
+        "criterion_type": "inclusion",
+        "status": "UNKNOWN",
+        "method": "llm",
+        "patient_evidence": [
+          {
+            "category": "lab",
+            "value": "Creatinine: 1.3 mg/dL",
+            "normalized_value": "1.3 mg/dL",
+            "date": "2026-07-31",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "lab_report.pdf",
+            "source_page": 1,
+            "evidence_text": "Creatinine: 1.3 mg/dL",
+            "quote_verified": true,
+            "source_kind": "other"
+          }
+        ],
+        "explanation": "The criterion requires renal function measured by creatinine clearance (Cockcroft-Gault) >= 50 mL/min. The evidence provides a creatinine value (1.3 mg/dL) but does not provide the creatinine clearance or equivalent calculation. Without the creatinine clearance value or data required to compute it (such as weight, age beyond what is given, and serum creatinine), the criterion cannot be confirmed as met or unmet based on this evidence alone.",
+        "final_conclusion": "UNKNOWN",
+        "clearance_basis": null,
+        "window_evidence_index": null,
+        "parts": [],
+        "date_comparisons": []
+      }
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT07559760",
+      "criterion_id": "INC-01",
+      "probe": "sanity",
+      "expected": "MEETS",
+      "also_acceptable": [],
+      "predicted": "MEETS",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The patient is documented to be female (evidence 1) and aged 67 years (evidence 0), fulfilling the criterion of being male or female and between 18 and 75 years of age.",
+      "criterion_text": "Male or female, aged 18-75 years.",
+      "patient_evidence": [
+        {
+          "category": "age",
+          "value": "67 years",
+          "normalized_value": null,
+          "date": "2026-07-31",
+          "start_date": null,
+          "end_date": null,
+          "source_file": "oncology_note.pdf",
+          "source_page": 1,
+          "evidence_text": "Age: 67 years",
+          "quote_verified": true,
+          "source_kind": "other"
+        },
+        {
+          "category": "sex",
+          "value": "Female",
+          "normalized_value": null,
+          "date": "2026-07-31",
+          "start_date": null,
+          "end_date": null,
+          "source_file": "oncology_note.pdf",
+          "source_page": 1,
+          "evidence_text": "Sex: Female",
+          "quote_verified": true,
+          "source_kind": "other"
+        }
+      ],
+      "assessment_details": {
+        "criterion_id": "INC-01",
+        "criterion_text": "Male or female, aged 18-75 years.",
+        "criterion_type": "inclusion",
+        "status": "MEETS",
+        "method": "llm",
+        "patient_evidence": [
+          {
+            "category": "age",
+            "value": "67 years",
+            "normalized_value": null,
+            "date": "2026-07-31",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "oncology_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Age: 67 years",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "sex",
+            "value": "Female",
+            "normalized_value": null,
+            "date": "2026-07-31",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "oncology_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Sex: Female",
+            "quote_verified": true,
+            "source_kind": "other"
+          }
+        ],
+        "explanation": "The patient is documented to be female (evidence 1) and aged 67 years (evidence 0), fulfilling the criterion of being male or female and between 18 and 75 years of age.",
+        "final_conclusion": "MEETS",
+        "clearance_basis": null,
+        "window_evidence_index": null,
+        "parts": [],
+        "date_comparisons": [
+          {
+            "from_date": "2026-07-31",
+            "to_date": "2026-07-31",
+            "claimed": "within",
+            "amount": 75,
+            "unit": "years"
+          }
+        ]
+      }
+    },
+    {
+      "method": "llm_assessor",
+      "trial": "NCT07559760",
+      "criterion_id": "INC-07",
+      "probe": "sanity",
+      "expected": "MEETS",
+      "also_acceptable": [],
+      "predicted": "MEETS",
+      "match": true,
+      "acceptable": true,
+      "judgment_call": false,
+      "flags": [],
+      "explanation": "The patient has an ECOG performance status documented as ECOG 1, which falls within the required range of 0-1 for this inclusion criterion.",
+      "criterion_text": "ECOG performance status 0-1.",
+      "patient_evidence": [
+        {
+          "category": "performance_status",
+          "value": "ECOG 1",
+          "normalized_value": "ECOG 1",
+          "date": "2026-07-31",
+          "start_date": null,
+          "end_date": null,
+          "source_file": "oncology_note.pdf",
+          "source_page": 1,
+          "evidence_text": "Performance status: ECOG 1",
+          "quote_verified": true,
+          "source_kind": "other"
+        }
+      ],
+      "assessment_details": {
+        "criterion_id": "INC-07",
+        "criterion_text": "ECOG performance status 0-1.",
+        "criterion_type": "inclusion",
+        "status": "MEETS",
+        "method": "llm",
+        "patient_evidence": [
+          {
+            "category": "performance_status",
+            "value": "ECOG 1",
+            "normalized_value": "ECOG 1",
+            "date": "2026-07-31",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "oncology_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Performance status: ECOG 1",
+            "quote_verified": true,
+            "source_kind": "other"
+          }
+        ],
+        "explanation": "The patient has an ECOG performance status documented as ECOG 1, which falls within the required range of 0-1 for this inclusion criterion.",
+        "final_conclusion": "MEETS",
+        "clearance_basis": null,
+        "window_evidence_index": null,
+        "parts": [],
+        "date_comparisons": []
+      }
+    }
+  ]
+}

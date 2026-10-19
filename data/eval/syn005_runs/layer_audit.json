@@ -1,0 +1,3506 @@
+[
+  {
+    "run": 1,
+    "variant": "SYN-005",
+    "verified_probe_counts": {
+      "qtcf_value": 0,
+      "buried_major_surgery": 1,
+      "biopsy_trap": 0,
+      "surgery_or_biopsy_date": 1,
+      "neuropathy_grade": 1,
+      "alopecia_exception": 1,
+      "serology": 4,
+      "creatinine": 1,
+      "weight": 0,
+      "scheduled_first_dose": 1
+    },
+    "extraction_gaps": [
+      {
+        "source_file": "ecg_report.pdf",
+        "source_page": 1,
+        "line_number": 7,
+        "sentence_number": 1,
+        "text": "Resting 12-lead ECG measurements",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "ecg_report.pdf",
+        "source_page": 1,
+        "line_number": 10,
+        "sentence_number": 2,
+        "text": "Heart rate 74 bpm PR interval 164 ms QRS duration 92 ms QT interval 446 ms QTcF (Fridericia) 478 ms",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "ecg_report.pdf",
+        "source_page": 1,
+        "line_number": 20,
+        "sentence_number": 3,
+        "text": "Interpretation: Sinus rhythm.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "ecg_report.pdf",
+        "source_page": 1,
+        "line_number": 20,
+        "sentence_number": 4,
+        "text": "Prolonged QTc.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "hospital_discharge_summary.pdf",
+        "source_page": 1,
+        "line_number": 8,
+        "sentence_number": 3,
+        "text": "She went to the operating room the next day.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "hospital_discharge_summary.pdf",
+        "source_page": 1,
+        "line_number": 8,
+        "sentence_number": 4,
+        "text": "Her recovery was uncomplicated and she was discharged on postoperative day 5.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "hospital_discharge_summary.pdf",
+        "source_page": 1,
+        "line_number": 11,
+        "sentence_number": 5,
+        "text": "Procedure details are on page 2.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "hospital_discharge_summary.pdf",
+        "source_page": 2,
+        "line_number": 10,
+        "sentence_number": 3,
+        "text": "Wound: midline incision, healing; staples to be removed at follow-up.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "hospital_discharge_summary.pdf",
+        "source_page": 2,
+        "line_number": 11,
+        "sentence_number": 4,
+        "text": "Discharged 2026-07-27.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "hospital_discharge_summary.pdf",
+        "source_page": 2,
+        "line_number": 11,
+        "sentence_number": 5,
+        "text": "No lifting over 10 pounds for 6 weeks.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "lab_report.pdf",
+        "source_page": 1,
+        "line_number": 16,
+        "sentence_number": 9,
+        "text": "No transfusion or growth-factor support in the past 14 days.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "oncology_note.pdf",
+        "source_page": 1,
+        "line_number": 7,
+        "sentence_number": 1,
+        "text": "Clinic visit",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "oncology_note.pdf",
+        "source_page": 1,
+        "line_number": 10,
+        "sentence_number": 4,
+        "text": "Weight: 52 kg",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "oncology_note.pdf",
+        "source_page": 1,
+        "line_number": 14,
+        "sentence_number": 8,
+        "text": "Plan: referred for clinical trial screening.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "serology_outside_lab.pdf",
+        "source_page": 1,
+        "line_number": 2,
+        "sentence_number": 1,
+        "text": "Outside laboratory: infectious serology",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "serology_outside_lab.pdf",
+        "source_page": 1,
+        "line_number": 7,
+        "sentence_number": 2,
+        "text": "Serology panel",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "serology_outside_lab.pdf",
+        "source_page": 1,
+        "line_number": 23,
+        "sentence_number": 7,
+        "text": "Specimen collected 2026-07-29.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "serology_outside_lab.pdf",
+        "source_page": 1,
+        "line_number": 23,
+        "sentence_number": 8,
+        "text": "Reported by an outside reference laboratory.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "toxicity_phone_note.pdf",
+        "source_page": 1,
+        "line_number": 2,
+        "sentence_number": 1,
+        "text": "Telephone encounter: toxicity assessment",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "toxicity_phone_note.pdf",
+        "source_page": 1,
+        "line_number": 10,
+        "sentence_number": 7,
+        "text": "She reports no diarrhea, mouth sores or fatigue limiting activity.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "toxicity_phone_note.pdf",
+        "source_page": 1,
+        "line_number": 10,
+        "sentence_number": 8,
+        "text": "All other treatment-related toxicities are grade 0 to 1.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "trial_screening_letter.pdf",
+        "source_page": 1,
+        "line_number": 8,
+        "sentence_number": 1,
+        "text": "The patient has been referred for clinical trial screening.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "trial_screening_letter.pdf",
+        "source_page": 1,
+        "line_number": 10,
+        "sentence_number": 3,
+        "text": "Final eligibility will be confirmed by the study team.",
+        "message": "Not captured by the tool, review manually"
+      }
+    ],
+    "misses": [
+      {
+        "method": "llm_assessor",
+        "trial": "NCT07559760",
+        "criterion_id": "EXC-09",
+        "probe": "buried_qtcf",
+        "expected": "DOES_NOT_MEET",
+        "also_acceptable": [],
+        "predicted": "UNKNOWN",
+        "match": false,
+        "acceptable": false,
+        "judgment_call": false,
+        "flags": [],
+        "explanation": "No evidence of QTcF measurement on resting 12-lead ECG is provided in the patient's records. The exclusion criterion requires a QTcF value to assess eligibility, and since this information is missing, the status is UNKNOWN.",
+        "criterion_text": "QTcF ≥ 450 ms (men) or ≥ 470 ms (women) on resting 12-lead ECG.",
+        "patient_evidence": [],
+        "assessment_details": {
+          "criterion_id": "EXC-09",
+          "criterion_text": "QTcF ≥ 450 ms (men) or ≥ 470 ms (women) on resting 12-lead ECG.",
+          "criterion_type": "exclusion",
+          "status": "UNKNOWN",
+          "method": "llm",
+          "patient_evidence": [],
+          "explanation": "No evidence of QTcF measurement on resting 12-lead ECG is provided in the patient's records. The exclusion criterion requires a QTcF value to assess eligibility, and since this information is missing, the status is UNKNOWN.",
+          "final_conclusion": "UNKNOWN",
+          "clearance_basis": null,
+          "window_evidence_index": null,
+          "parts": [],
+          "date_comparisons": []
+        }
+      },
+      {
+        "method": "llm_assessor",
+        "trial": "NCT07559760",
+        "criterion_id": "EXC-04",
+        "probe": "buried_toxicity_except_clause",
+        "expected": "DOES_NOT_MEET",
+        "also_acceptable": [
+          "UNKNOWN"
+        ],
+        "predicted": "UNKNOWN",
+        "match": false,
+        "acceptable": true,
+        "judgment_call": false,
+        "flags": [
+          "EXC-04: investigator-judgment criterion converted to UNKNOWN."
+        ],
+        "explanation": "This criterion depends on investigator judgment and cannot be settled from records; converted to UNKNOWN. Original reasoning: Patient has documented oxaliplatin-induced peripheral sensory neuropathy graded as CTCAE v5.0 Grade 2, which limits instrumental activities of daily living. This toxicity is not alopecia, and Grade 2 is greater than the allowed maximum of Grade 1 for resolved toxicities. Alopecia Grade 2 is present but alopecia is excepted in the criterion. Therefore, the exclusion applies due to unresolved toxicities from prior therapy above Grade 1.",
+        "criterion_text": "Toxicities from prior therapy not resolved to CTCAE v5.0 Grade ≤ 1 (except alopecia or other toxicities deemed by the investigator to pose no safety risk).",
+        "patient_evidence": [
+          {
+            "category": "sex",
+            "value": "Ms. Lee",
+            "normalized_value": null,
+            "date": "2026-07-28",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "toxicity_phone_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Telephone follow-up before trial screening. Ms. Lee reports persistent numbness and tingling in both hands and feet since oxaliplatin; she has trouble buttoning clothing and uses a handrail on stairs.",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "prior_treatment",
+            "value": "oxaliplatin",
+            "normalized_value": null,
+            "date": "2026-07-28",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "toxicity_phone_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Telephone follow-up before trial screening. Ms. Lee reports persistent numbness and tingling in both hands and feet since oxaliplatin; she has trouble buttoning clothing and uses a handrail on stairs.",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "comorbidity",
+            "value": "oxaliplatin-induced peripheral sensory neuropathy grade 2, limiting instrumental activities of daily living",
+            "normalized_value": null,
+            "date": "2026-07-28",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "toxicity_phone_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Assessed as oxaliplatin-induced peripheral sensory neuropathy grade 2, limiting instrumental activities of daily living.",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "comorbidity",
+            "value": "alopecia grade 2",
+            "normalized_value": null,
+            "date": "2026-07-28",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "toxicity_phone_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Hair thinning persists, alopecia grade 2.",
+            "quote_verified": true,
+            "source_kind": "other"
+          }
+        ],
+        "assessment_details": {
+          "criterion_id": "EXC-04",
+          "criterion_text": "Toxicities from prior therapy not resolved to CTCAE v5.0 Grade ≤ 1 (except alopecia or other toxicities deemed by the investigator to pose no safety risk).",
+          "criterion_type": "exclusion",
+          "status": "UNKNOWN",
+          "method": "llm",
+          "patient_evidence": [
+            {
+              "category": "sex",
+              "value": "Ms. Lee",
+              "normalized_value": null,
+              "date": "2026-07-28",
+              "start_date": null,
+              "end_date": null,
+              "source_file": "toxicity_phone_note.pdf",
+              "source_page": 1,
+              "evidence_text": "Telephone follow-up before trial screening. Ms. Lee reports persistent numbness and tingling in both hands and feet since oxaliplatin; she has trouble buttoning clothing and uses a handrail on stairs.",
+              "quote_verified": true,
+              "source_kind": "other"
+            },
+            {
+              "category": "prior_treatment",
+              "value": "oxaliplatin",
+              "normalized_value": null,
+              "date": "2026-07-28",
+              "start_date": null,
+              "end_date": null,
+              "source_file": "toxicity_phone_note.pdf",
+              "source_page": 1,
+              "evidence_text": "Telephone follow-up before trial screening. Ms. Lee reports persistent numbness and tingling in both hands and feet since oxaliplatin; she has trouble buttoning clothing and uses a handrail on stairs.",
+              "quote_verified": true,
+              "source_kind": "other"
+            },
+            {
+              "category": "comorbidity",
+              "value": "oxaliplatin-induced peripheral sensory neuropathy grade 2, limiting instrumental activities of daily living",
+              "normalized_value": null,
+              "date": "2026-07-28",
+              "start_date": null,
+              "end_date": null,
+              "source_file": "toxicity_phone_note.pdf",
+              "source_page": 1,
+              "evidence_text": "Assessed as oxaliplatin-induced peripheral sensory neuropathy grade 2, limiting instrumental activities of daily living.",
+              "quote_verified": true,
+              "source_kind": "other"
+            },
+            {
+              "category": "comorbidity",
+              "value": "alopecia grade 2",
+              "normalized_value": null,
+              "date": "2026-07-28",
+              "start_date": null,
+              "end_date": null,
+              "source_file": "toxicity_phone_note.pdf",
+              "source_page": 1,
+              "evidence_text": "Hair thinning persists, alopecia grade 2.",
+              "quote_verified": true,
+              "source_kind": "other"
+            }
+          ],
+          "explanation": "This criterion depends on investigator judgment and cannot be settled from records; converted to UNKNOWN. Original reasoning: Patient has documented oxaliplatin-induced peripheral sensory neuropathy graded as CTCAE v5.0 Grade 2, which limits instrumental activities of daily living. This toxicity is not alopecia, and Grade 2 is greater than the allowed maximum of Grade 1 for resolved toxicities. Alopecia Grade 2 is present but alopecia is excepted in the criterion. Therefore, the exclusion applies due to unresolved toxicities from prior therapy above Grade 1.",
+          "final_conclusion": "APPLIES",
+          "clearance_basis": null,
+          "window_evidence_index": null,
+          "parts": [],
+          "date_comparisons": []
+        }
+      },
+      {
+        "method": "llm_assessor",
+        "trial": "NCT06412198",
+        "criterion_id": "INC-10",
+        "probe": "exception_applies_inclusion",
+        "expected": "MEETS",
+        "also_acceptable": [
+          "UNKNOWN"
+        ],
+        "predicted": "DOES_NOT_MEET",
+        "match": false,
+        "acceptable": false,
+        "judgment_call": false,
+        "flags": [],
+        "explanation": "The patient has persistent numbness and tingling in both hands and feet since oxaliplatin treatment, with documented oxaliplatin-induced peripheral sensory neuropathy grade 2 that limits instrumental activities of daily living. This neuropathy is explicitly excluded from the recovery requirement, but other treatment-related adverse effects must be ≤ Grade 1. The patient has not recovered from this neuropathy to ≤ Grade 1 at enrollment, which means the criterion is not met.",
+        "criterion_text": "Recovery from the treatment-related adverse effects of prior therapy at the time of enrollment to ≤ Grade 1 (excluding alopecia and prior oxaliplatin-induced neuropathy).",
+        "patient_evidence": [
+          {
+            "category": "sex",
+            "value": "Ms. Lee",
+            "normalized_value": null,
+            "date": "2026-07-28",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "toxicity_phone_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Telephone follow-up before trial screening. Ms. Lee reports persistent numbness and tingling in both hands and feet since oxaliplatin; she has trouble buttoning clothing and uses a handrail on stairs.",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "prior_treatment",
+            "value": "oxaliplatin",
+            "normalized_value": null,
+            "date": "2026-07-28",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "toxicity_phone_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Telephone follow-up before trial screening. Ms. Lee reports persistent numbness and tingling in both hands and feet since oxaliplatin; she has trouble buttoning clothing and uses a handrail on stairs.",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "comorbidity",
+            "value": "oxaliplatin-induced peripheral sensory neuropathy grade 2, limiting instrumental activities of daily living",
+            "normalized_value": null,
+            "date": "2026-07-28",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "toxicity_phone_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Assessed as oxaliplatin-induced peripheral sensory neuropathy grade 2, limiting instrumental activities of daily living.",
+            "quote_verified": true,
+            "source_kind": "other"
+          }
+        ],
+        "assessment_details": {
+          "criterion_id": "INC-10",
+          "criterion_text": "Recovery from the treatment-related adverse effects of prior therapy at the time of enrollment to ≤ Grade 1 (excluding alopecia and prior oxaliplatin-induced neuropathy).",
+          "criterion_type": "inclusion",
+          "status": "DOES_NOT_MEET",
+          "method": "llm",
+          "patient_evidence": [
+            {
+              "category": "sex",
+              "value": "Ms. Lee",
+              "normalized_value": null,
+              "date": "2026-07-28",
+              "start_date": null,
+              "end_date": null,
+              "source_file": "toxicity_phone_note.pdf",
+              "source_page": 1,
+              "evidence_text": "Telephone follow-up before trial screening. Ms. Lee reports persistent numbness and tingling in both hands and feet since oxaliplatin; she has trouble buttoning clothing and uses a handrail on stairs.",
+              "quote_verified": true,
+              "source_kind": "other"
+            },
+            {
+              "category": "prior_treatment",
+              "value": "oxaliplatin",
+              "normalized_value": null,
+              "date": "2026-07-28",
+              "start_date": null,
+              "end_date": null,
+              "source_file": "toxicity_phone_note.pdf",
+              "source_page": 1,
+              "evidence_text": "Telephone follow-up before trial screening. Ms. Lee reports persistent numbness and tingling in both hands and feet since oxaliplatin; she has trouble buttoning clothing and uses a handrail on stairs.",
+              "quote_verified": true,
+              "source_kind": "other"
+            },
+            {
+              "category": "comorbidity",
+              "value": "oxaliplatin-induced peripheral sensory neuropathy grade 2, limiting instrumental activities of daily living",
+              "normalized_value": null,
+              "date": "2026-07-28",
+              "start_date": null,
+              "end_date": null,
+              "source_file": "toxicity_phone_note.pdf",
+              "source_page": 1,
+              "evidence_text": "Assessed as oxaliplatin-induced peripheral sensory neuropathy grade 2, limiting instrumental activities of daily living.",
+              "quote_verified": true,
+              "source_kind": "other"
+            }
+          ],
+          "explanation": "The patient has persistent numbness and tingling in both hands and feet since oxaliplatin treatment, with documented oxaliplatin-induced peripheral sensory neuropathy grade 2 that limits instrumental activities of daily living. This neuropathy is explicitly excluded from the recovery requirement, but other treatment-related adverse effects must be ≤ Grade 1. The patient has not recovered from this neuropathy to ≤ Grade 1 at enrollment, which means the criterion is not met.",
+          "final_conclusion": "DOES_NOT_MEET",
+          "clearance_basis": null,
+          "window_evidence_index": null,
+          "parts": [],
+          "date_comparisons": []
+        }
+      },
+      {
+        "method": "llm_assessor",
+        "trial": "NCT07559760",
+        "criterion_id": "INC-12",
+        "probe": "calculated_creatinine_clearance",
+        "expected": "DOES_NOT_MEET",
+        "also_acceptable": [
+          "UNKNOWN"
+        ],
+        "predicted": "UNKNOWN",
+        "match": false,
+        "acceptable": true,
+        "judgment_call": false,
+        "flags": [],
+        "explanation": "The criterion requires creatinine clearance calculated by Cockcroft-Gault formula to be ≥ 50 mL/min. The evidence includes a serum creatinine value (1.3 mg/dL) but does not provide the actual creatinine clearance or sufficient information (weight, exact formula calculation) to determine the clearance. Therefore, it is unknown whether the patient meets this renal function criterion.",
+        "criterion_text": "Renal: Creatinine clearance ≥ 50 mL/min (Cockcroft-Gault).",
+        "patient_evidence": [
+          {
+            "category": "lab",
+            "value": "Creatinine: 1.3 mg/dL",
+            "normalized_value": null,
+            "date": "2026-07-31",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "lab_report.pdf",
+            "source_page": 1,
+            "evidence_text": "Creatinine: 1.3 mg/dL",
+            "quote_verified": true,
+            "source_kind": "other"
+          }
+        ],
+        "assessment_details": {
+          "criterion_id": "INC-12",
+          "criterion_text": "Renal: Creatinine clearance ≥ 50 mL/min (Cockcroft-Gault).",
+          "criterion_type": "inclusion",
+          "status": "UNKNOWN",
+          "method": "llm",
+          "patient_evidence": [
+            {
+              "category": "lab",
+              "value": "Creatinine: 1.3 mg/dL",
+              "normalized_value": null,
+              "date": "2026-07-31",
+              "start_date": null,
+              "end_date": null,
+              "source_file": "lab_report.pdf",
+              "source_page": 1,
+              "evidence_text": "Creatinine: 1.3 mg/dL",
+              "quote_verified": true,
+              "source_kind": "other"
+            }
+          ],
+          "explanation": "The criterion requires creatinine clearance calculated by Cockcroft-Gault formula to be ≥ 50 mL/min. The evidence includes a serum creatinine value (1.3 mg/dL) but does not provide the actual creatinine clearance or sufficient information (weight, exact formula calculation) to determine the clearance. Therefore, it is unknown whether the patient meets this renal function criterion.",
+          "final_conclusion": "UNKNOWN",
+          "clearance_basis": null,
+          "window_evidence_index": null,
+          "parts": [],
+          "date_comparisons": []
+        }
+      }
+    ]
+  },
+  {
+    "run": 1,
+    "variant": "SYN-005-control",
+    "verified_probe_counts": {
+      "qtcf_value": 0,
+      "buried_major_surgery": 0,
+      "biopsy_trap": 1,
+      "surgery_or_biopsy_date": 1,
+      "neuropathy_grade": 1,
+      "alopecia_exception": 1,
+      "serology": 8,
+      "creatinine": 1,
+      "weight": 0,
+      "scheduled_first_dose": 1
+    },
+    "extraction_gaps": [
+      {
+        "source_file": "ecg_report.pdf",
+        "source_page": 1,
+        "line_number": 7,
+        "sentence_number": 1,
+        "text": "Resting 12-lead ECG measurements",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "ecg_report.pdf",
+        "source_page": 1,
+        "line_number": 10,
+        "sentence_number": 2,
+        "text": "Heart rate 74 bpm PR interval 164 ms QRS duration 92 ms QT interval 411 ms QTcF (Fridericia) 441 ms",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "ecg_report.pdf",
+        "source_page": 1,
+        "line_number": 20,
+        "sentence_number": 3,
+        "text": "Interpretation: Normal sinus rhythm.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "ecg_report.pdf",
+        "source_page": 1,
+        "line_number": 20,
+        "sentence_number": 4,
+        "text": "QTcF within normal limits.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "hospital_discharge_summary.pdf",
+        "source_page": 1,
+        "line_number": 8,
+        "sentence_number": 1,
+        "text": "Ms.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "hospital_discharge_summary.pdf",
+        "source_page": 1,
+        "line_number": 8,
+        "sentence_number": 2,
+        "text": "Lee was seen in the interventional radiology suite on 2026-07-22 for an outpatient procedure to obtain fresh tumor tissue for molecular testing.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "hospital_discharge_summary.pdf",
+        "source_page": 1,
+        "line_number": 8,
+        "sentence_number": 3,
+        "text": "She tolerated it well and went home the same day.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "hospital_discharge_summary.pdf",
+        "source_page": 1,
+        "line_number": 10,
+        "sentence_number": 4,
+        "text": "Procedure details are on page 2.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "hospital_discharge_summary.pdf",
+        "source_page": 2,
+        "line_number": 9,
+        "sentence_number": 2,
+        "text": "Anesthesia: local anesthetic with moderate sedation.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "hospital_discharge_summary.pdf",
+        "source_page": 2,
+        "line_number": 10,
+        "sentence_number": 3,
+        "text": "Complications: none.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "hospital_discharge_summary.pdf",
+        "source_page": 2,
+        "line_number": 10,
+        "sentence_number": 4,
+        "text": "Discharged the same day.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "lab_report.pdf",
+        "source_page": 1,
+        "line_number": 16,
+        "sentence_number": 9,
+        "text": "No transfusion or growth-factor support in the past 14 days.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "oncology_note.pdf",
+        "source_page": 1,
+        "line_number": 7,
+        "sentence_number": 1,
+        "text": "Clinic visit",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "oncology_note.pdf",
+        "source_page": 1,
+        "line_number": 10,
+        "sentence_number": 4,
+        "text": "Weight: 52 kg",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "oncology_note.pdf",
+        "source_page": 1,
+        "line_number": 14,
+        "sentence_number": 8,
+        "text": "Plan: referred for clinical trial screening.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "serology_outside_lab.pdf",
+        "source_page": 1,
+        "line_number": 2,
+        "sentence_number": 1,
+        "text": "Outside laboratory: infectious serology",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "serology_outside_lab.pdf",
+        "source_page": 1,
+        "line_number": 7,
+        "sentence_number": 2,
+        "text": "Serology panel",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "serology_outside_lab.pdf",
+        "source_page": 1,
+        "line_number": 23,
+        "sentence_number": 7,
+        "text": "Specimen collected 2026-07-29.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "serology_outside_lab.pdf",
+        "source_page": 1,
+        "line_number": 23,
+        "sentence_number": 8,
+        "text": "Reported by an outside reference laboratory.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "toxicity_phone_note.pdf",
+        "source_page": 1,
+        "line_number": 2,
+        "sentence_number": 1,
+        "text": "Telephone encounter: toxicity assessment",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "toxicity_phone_note.pdf",
+        "source_page": 1,
+        "line_number": 8,
+        "sentence_number": 2,
+        "text": "Telephone follow-up before trial screening.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "toxicity_phone_note.pdf",
+        "source_page": 1,
+        "line_number": 8,
+        "sentence_number": 3,
+        "text": "Ms.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "toxicity_phone_note.pdf",
+        "source_page": 1,
+        "line_number": 8,
+        "sentence_number": 4,
+        "text": "Lee reports that the numbness in her fingertips from oxaliplatin has improved; she can button clothing and write without difficulty.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "toxicity_phone_note.pdf",
+        "source_page": 1,
+        "line_number": 8,
+        "sentence_number": 7,
+        "text": "She reports no diarrhea, mouth sores or fatigue limiting activity.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "toxicity_phone_note.pdf",
+        "source_page": 1,
+        "line_number": 8,
+        "sentence_number": 8,
+        "text": "All other treatment-related toxicities are grade 0 to 1.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "trial_screening_letter.pdf",
+        "source_page": 1,
+        "line_number": 8,
+        "sentence_number": 1,
+        "text": "The patient has been referred for clinical trial screening.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "trial_screening_letter.pdf",
+        "source_page": 1,
+        "line_number": 10,
+        "sentence_number": 3,
+        "text": "Final eligibility will be confirmed by the study team.",
+        "message": "Not captured by the tool, review manually"
+      }
+    ],
+    "misses": [
+      {
+        "method": "llm_assessor",
+        "trial": "NCT07559760",
+        "criterion_id": "EXC-09",
+        "probe": "qtcf_below_threshold",
+        "expected": "MEETS",
+        "also_acceptable": [
+          "UNKNOWN"
+        ],
+        "predicted": "UNKNOWN",
+        "match": false,
+        "acceptable": true,
+        "judgment_call": false,
+        "flags": [],
+        "explanation": "No evidence is provided for QTcF measurement on a resting 12-lead ECG to assess if QTcF is ≥ 470 ms for this female patient. Therefore, it cannot be determined if the exclusion criterion applies.",
+        "criterion_text": "QTcF ≥ 450 ms (men) or ≥ 470 ms (women) on resting 12-lead ECG.",
+        "patient_evidence": [],
+        "assessment_details": {
+          "criterion_id": "EXC-09",
+          "criterion_text": "QTcF ≥ 450 ms (men) or ≥ 470 ms (women) on resting 12-lead ECG.",
+          "criterion_type": "exclusion",
+          "status": "UNKNOWN",
+          "method": "llm",
+          "patient_evidence": [],
+          "explanation": "No evidence is provided for QTcF measurement on a resting 12-lead ECG to assess if QTcF is ≥ 470 ms for this female patient. Therefore, it cannot be determined if the exclusion criterion applies.",
+          "final_conclusion": "UNKNOWN",
+          "clearance_basis": null,
+          "window_evidence_index": null,
+          "parts": [],
+          "date_comparisons": []
+        }
+      },
+      {
+        "method": "llm_assessor",
+        "trial": "NCT07559760",
+        "criterion_id": "EXC-04",
+        "probe": "except_clause_alopecia",
+        "expected": "MEETS",
+        "also_acceptable": [
+          "UNKNOWN"
+        ],
+        "predicted": "UNKNOWN",
+        "match": false,
+        "acceptable": true,
+        "judgment_call": false,
+        "flags": [
+          "EXC-04: investigator-judgment criterion converted to UNKNOWN.",
+          "EXC-04: Exclusion clearance guard: no negative evidence cited; absence-based clearance without evidence about it. Converted to UNKNOWN."
+        ],
+        "explanation": "This criterion depends on investigator judgment and cannot be settled from records; converted to UNKNOWN. Original reasoning: The criterion excludes patients whose toxicities from prior therapy are not resolved to CTCAE v5.0 Grade ≤ 1, except alopecia or other toxicities deemed by the investigator to pose no safety risk. Evidence shows peripheral sensory neuropathy grade 1, which meets the ≤ Grade 1 requirement, and alopecia grade 2, which is exempted by the criterion as alopecia regardless of higher grade. There is no evidence of any other unresolved toxicity above Grade 1. Investigator judgment exceptions are not applicable here as there is no documentation of other toxicities.",
+        "criterion_text": "Toxicities from prior therapy not resolved to CTCAE v5.0 Grade ≤ 1 (except alopecia or other toxicities deemed by the investigator to pose no safety risk).",
+        "patient_evidence": [
+          {
+            "category": "biomarker",
+            "value": "Peripheral sensory neuropathy grade 1",
+            "normalized_value": "grade 1",
+            "date": "2026-07-28",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "toxicity_phone_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Assessed as peripheral sensory neuropathy grade 1.",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "biomarker",
+            "value": "Alopecia grade 2",
+            "normalized_value": "grade 2",
+            "date": "2026-07-28",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "toxicity_phone_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Hair thinning persists, alopecia grade 2.",
+            "quote_verified": true,
+            "source_kind": "other"
+          }
+        ],
+        "assessment_details": {
+          "criterion_id": "EXC-04",
+          "criterion_text": "Toxicities from prior therapy not resolved to CTCAE v5.0 Grade ≤ 1 (except alopecia or other toxicities deemed by the investigator to pose no safety risk).",
+          "criterion_type": "exclusion",
+          "status": "UNKNOWN",
+          "method": "llm",
+          "patient_evidence": [
+            {
+              "category": "biomarker",
+              "value": "Peripheral sensory neuropathy grade 1",
+              "normalized_value": "grade 1",
+              "date": "2026-07-28",
+              "start_date": null,
+              "end_date": null,
+              "source_file": "toxicity_phone_note.pdf",
+              "source_page": 1,
+              "evidence_text": "Assessed as peripheral sensory neuropathy grade 1.",
+              "quote_verified": true,
+              "source_kind": "other"
+            },
+            {
+              "category": "biomarker",
+              "value": "Alopecia grade 2",
+              "normalized_value": "grade 2",
+              "date": "2026-07-28",
+              "start_date": null,
+              "end_date": null,
+              "source_file": "toxicity_phone_note.pdf",
+              "source_page": 1,
+              "evidence_text": "Hair thinning persists, alopecia grade 2.",
+              "quote_verified": true,
+              "source_kind": "other"
+            }
+          ],
+          "explanation": "This criterion depends on investigator judgment and cannot be settled from records; converted to UNKNOWN. Original reasoning: The criterion excludes patients whose toxicities from prior therapy are not resolved to CTCAE v5.0 Grade ≤ 1, except alopecia or other toxicities deemed by the investigator to pose no safety risk. Evidence shows peripheral sensory neuropathy grade 1, which meets the ≤ Grade 1 requirement, and alopecia grade 2, which is exempted by the criterion as alopecia regardless of higher grade. There is no evidence of any other unresolved toxicity above Grade 1. Investigator judgment exceptions are not applicable here as there is no documentation of other toxicities.",
+          "final_conclusion": "DOES_NOT_APPLY",
+          "clearance_basis": "explicit_negative",
+          "window_evidence_index": null,
+          "parts": [],
+          "date_comparisons": []
+        }
+      },
+      {
+        "method": "llm_assessor",
+        "trial": "NCT07559760",
+        "criterion_id": "INC-12",
+        "probe": "calculated_creatinine_clearance",
+        "expected": "DOES_NOT_MEET",
+        "also_acceptable": [
+          "UNKNOWN"
+        ],
+        "predicted": "UNKNOWN",
+        "match": false,
+        "acceptable": true,
+        "judgment_call": false,
+        "flags": [],
+        "explanation": "The criterion requires a Creatinine clearance ≥ 50 mL/min (Cockcroft-Gault). The provided evidence includes a serum creatinine value (1.3 mg/dL) but does not include the patient's weight or directly calculated creatinine clearance using Cockcroft-Gault formula. Without the creatinine clearance value or sufficient data to calculate it, the criterion status is UNKNOWN.",
+        "criterion_text": "Renal: Creatinine clearance ≥ 50 mL/min (Cockcroft-Gault).",
+        "patient_evidence": [
+          {
+            "category": "lab",
+            "value": "Creatinine: 1.3 mg/dL",
+            "normalized_value": "1.3 mg/dL",
+            "date": "2026-07-31",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "lab_report.pdf",
+            "source_page": 1,
+            "evidence_text": "Creatinine: 1.3 mg/dL",
+            "quote_verified": true,
+            "source_kind": "other"
+          }
+        ],
+        "assessment_details": {
+          "criterion_id": "INC-12",
+          "criterion_text": "Renal: Creatinine clearance ≥ 50 mL/min (Cockcroft-Gault).",
+          "criterion_type": "inclusion",
+          "status": "UNKNOWN",
+          "method": "llm",
+          "patient_evidence": [
+            {
+              "category": "lab",
+              "value": "Creatinine: 1.3 mg/dL",
+              "normalized_value": "1.3 mg/dL",
+              "date": "2026-07-31",
+              "start_date": null,
+              "end_date": null,
+              "source_file": "lab_report.pdf",
+              "source_page": 1,
+              "evidence_text": "Creatinine: 1.3 mg/dL",
+              "quote_verified": true,
+              "source_kind": "other"
+            }
+          ],
+          "explanation": "The criterion requires a Creatinine clearance ≥ 50 mL/min (Cockcroft-Gault). The provided evidence includes a serum creatinine value (1.3 mg/dL) but does not include the patient's weight or directly calculated creatinine clearance using Cockcroft-Gault formula. Without the creatinine clearance value or sufficient data to calculate it, the criterion status is UNKNOWN.",
+          "final_conclusion": "UNKNOWN",
+          "clearance_basis": null,
+          "window_evidence_index": null,
+          "parts": [],
+          "date_comparisons": []
+        }
+      }
+    ]
+  },
+  {
+    "run": 2,
+    "variant": "SYN-005",
+    "verified_probe_counts": {
+      "qtcf_value": 5,
+      "buried_major_surgery": 1,
+      "biopsy_trap": 0,
+      "surgery_or_biopsy_date": 1,
+      "neuropathy_grade": 1,
+      "alopecia_exception": 1,
+      "serology": 4,
+      "creatinine": 1,
+      "weight": 0,
+      "scheduled_first_dose": 1
+    },
+    "extraction_gaps": [
+      {
+        "source_file": "ecg_report.pdf",
+        "source_page": 1,
+        "line_number": 7,
+        "sentence_number": 1,
+        "text": "Resting 12-lead ECG measurements",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "ecg_report.pdf",
+        "source_page": 1,
+        "line_number": 20,
+        "sentence_number": 3,
+        "text": "Interpretation: Sinus rhythm.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "ecg_report.pdf",
+        "source_page": 1,
+        "line_number": 20,
+        "sentence_number": 4,
+        "text": "Prolonged QTc.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "hospital_discharge_summary.pdf",
+        "source_page": 1,
+        "line_number": 8,
+        "sentence_number": 3,
+        "text": "She went to the operating room the next day.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "hospital_discharge_summary.pdf",
+        "source_page": 1,
+        "line_number": 8,
+        "sentence_number": 4,
+        "text": "Her recovery was uncomplicated and she was discharged on postoperative day 5.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "hospital_discharge_summary.pdf",
+        "source_page": 1,
+        "line_number": 11,
+        "sentence_number": 5,
+        "text": "Procedure details are on page 2.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "hospital_discharge_summary.pdf",
+        "source_page": 2,
+        "line_number": 10,
+        "sentence_number": 3,
+        "text": "Wound: midline incision, healing; staples to be removed at follow-up.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "hospital_discharge_summary.pdf",
+        "source_page": 2,
+        "line_number": 11,
+        "sentence_number": 4,
+        "text": "Discharged 2026-07-27.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "hospital_discharge_summary.pdf",
+        "source_page": 2,
+        "line_number": 11,
+        "sentence_number": 5,
+        "text": "No lifting over 10 pounds for 6 weeks.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "lab_report.pdf",
+        "source_page": 1,
+        "line_number": 16,
+        "sentence_number": 9,
+        "text": "No transfusion or growth-factor support in the past 14 days.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "oncology_note.pdf",
+        "source_page": 1,
+        "line_number": 7,
+        "sentence_number": 1,
+        "text": "Clinic visit",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "oncology_note.pdf",
+        "source_page": 1,
+        "line_number": 10,
+        "sentence_number": 4,
+        "text": "Weight: 52 kg",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "oncology_note.pdf",
+        "source_page": 1,
+        "line_number": 14,
+        "sentence_number": 8,
+        "text": "Plan: referred for clinical trial screening.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "serology_outside_lab.pdf",
+        "source_page": 1,
+        "line_number": 2,
+        "sentence_number": 1,
+        "text": "Outside laboratory: infectious serology",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "serology_outside_lab.pdf",
+        "source_page": 1,
+        "line_number": 7,
+        "sentence_number": 2,
+        "text": "Serology panel",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "serology_outside_lab.pdf",
+        "source_page": 1,
+        "line_number": 23,
+        "sentence_number": 7,
+        "text": "Specimen collected 2026-07-29.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "serology_outside_lab.pdf",
+        "source_page": 1,
+        "line_number": 23,
+        "sentence_number": 8,
+        "text": "Reported by an outside reference laboratory.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "toxicity_phone_note.pdf",
+        "source_page": 1,
+        "line_number": 2,
+        "sentence_number": 1,
+        "text": "Telephone encounter: toxicity assessment",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "toxicity_phone_note.pdf",
+        "source_page": 1,
+        "line_number": 10,
+        "sentence_number": 7,
+        "text": "She reports no diarrhea, mouth sores or fatigue limiting activity.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "toxicity_phone_note.pdf",
+        "source_page": 1,
+        "line_number": 10,
+        "sentence_number": 8,
+        "text": "All other treatment-related toxicities are grade 0 to 1.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "trial_screening_letter.pdf",
+        "source_page": 1,
+        "line_number": 8,
+        "sentence_number": 1,
+        "text": "The patient has been referred for clinical trial screening.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "trial_screening_letter.pdf",
+        "source_page": 1,
+        "line_number": 10,
+        "sentence_number": 3,
+        "text": "Final eligibility will be confirmed by the study team.",
+        "message": "Not captured by the tool, review manually"
+      }
+    ],
+    "misses": [
+      {
+        "method": "llm_assessor",
+        "trial": "NCT07559760",
+        "criterion_id": "EXC-04",
+        "probe": "buried_toxicity_except_clause",
+        "expected": "DOES_NOT_MEET",
+        "also_acceptable": [
+          "UNKNOWN"
+        ],
+        "predicted": "UNKNOWN",
+        "match": false,
+        "acceptable": true,
+        "judgment_call": false,
+        "flags": [
+          "EXC-04/part1: investigator-judgment criterion converted to UNKNOWN.",
+          "EXC-04: investigator-judgment criterion converted to UNKNOWN.",
+          "EXC-04: Compound criterion guard: combined UNKNOWN => UNKNOWN."
+        ],
+        "explanation": "Compound criterion guard: Part 1: Toxicities from prior therapy not resolved to CTCAE v5.0 Grade ≤ 1 (except alopecia or other toxicities deemed by the investigator to pose no safety risk). => UNKNOWN. This criterion depends on investigator judgment and cannot be settled from records; converted to UNKNOWN. Original reasoning: Evidence shows the patient has oxaliplatin-induced peripheral sensory neuropathy grade 2 persistent at screening. This toxicity is not alopecia and exceeds grade 1, so the exclusion applies. Original reasoning: The patient has documented toxicities from prior therapy oxaliplatin, specifically peripheral sensory neuropathy assessed as grade 2, limiting activities of daily living, persisting at the time of screening. This toxicity is not alopecia and has not resolved to CTCAE v5.0 Grade ≤ 1, thus meeting the exclusion criterion.",
+        "criterion_text": "Toxicities from prior therapy not resolved to CTCAE v5.0 Grade ≤ 1 (except alopecia or other toxicities deemed by the investigator to pose no safety risk).",
+        "patient_evidence": [
+          {
+            "category": "prior_treatment",
+            "value": "oxaliplatin",
+            "normalized_value": null,
+            "date": "2026-07-28",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "toxicity_phone_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Telephone follow-up before trial screening. Ms. Lee reports persistent numbness and tingling in both hands and feet since oxaliplatin; she has trouble buttoning clothing and uses a handrail on stairs.",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "sex",
+            "value": "Ms. Lee",
+            "normalized_value": "female",
+            "date": "2026-07-28",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "toxicity_phone_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Telephone follow-up before trial screening. Ms. Lee reports persistent numbness and tingling in both hands and feet since oxaliplatin; she has trouble buttoning clothing and uses a handrail on stairs.",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "prior_treatment",
+            "value": "oxaliplatin",
+            "normalized_value": null,
+            "date": "2026-07-28",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "toxicity_phone_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Ms. Lee reports persistent numbness and tingling in both hands and feet since oxaliplatin; she has trouble buttoning clothing and uses a handrail on stairs.",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "prior_treatment",
+            "value": "oxaliplatin-induced peripheral sensory neuropathy grade 2",
+            "normalized_value": null,
+            "date": "2026-07-28",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "toxicity_phone_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Assessed as oxaliplatin-induced peripheral sensory neuropathy grade 2, limiting instrumental activities of daily living.",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "prior_treatment",
+            "value": "alopecia grade 2",
+            "normalized_value": null,
+            "date": "2026-07-28",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "toxicity_phone_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Hair thinning persists, alopecia grade 2.",
+            "quote_verified": true,
+            "source_kind": "other"
+          }
+        ],
+        "assessment_details": {
+          "criterion_id": "EXC-04",
+          "criterion_text": "Toxicities from prior therapy not resolved to CTCAE v5.0 Grade ≤ 1 (except alopecia or other toxicities deemed by the investigator to pose no safety risk).",
+          "criterion_type": "exclusion",
+          "status": "UNKNOWN",
+          "method": "llm",
+          "patient_evidence": [
+            {
+              "category": "prior_treatment",
+              "value": "oxaliplatin",
+              "normalized_value": null,
+              "date": "2026-07-28",
+              "start_date": null,
+              "end_date": null,
+              "source_file": "toxicity_phone_note.pdf",
+              "source_page": 1,
+              "evidence_text": "Telephone follow-up before trial screening. Ms. Lee reports persistent numbness and tingling in both hands and feet since oxaliplatin; she has trouble buttoning clothing and uses a handrail on stairs.",
+              "quote_verified": true,
+              "source_kind": "other"
+            },
+            {
+              "category": "sex",
+              "value": "Ms. Lee",
+              "normalized_value": "female",
+              "date": "2026-07-28",
+              "start_date": null,
+              "end_date": null,
+              "source_file": "toxicity_phone_note.pdf",
+              "source_page": 1,
+              "evidence_text": "Telephone follow-up before trial screening. Ms. Lee reports persistent numbness and tingling in both hands and feet since oxaliplatin; she has trouble buttoning clothing and uses a handrail on stairs.",
+              "quote_verified": true,
+              "source_kind": "other"
+            },
+            {
+              "category": "prior_treatment",
+              "value": "oxaliplatin",
+              "normalized_value": null,
+              "date": "2026-07-28",
+              "start_date": null,
+              "end_date": null,
+              "source_file": "toxicity_phone_note.pdf",
+              "source_page": 1,
+              "evidence_text": "Ms. Lee reports persistent numbness and tingling in both hands and feet since oxaliplatin; she has trouble buttoning clothing and uses a handrail on stairs.",
+              "quote_verified": true,
+              "source_kind": "other"
+            },
+            {
+              "category": "prior_treatment",
+              "value": "oxaliplatin-induced peripheral sensory neuropathy grade 2",
+              "normalized_value": null,
+              "date": "2026-07-28",
+              "start_date": null,
+              "end_date": null,
+              "source_file": "toxicity_phone_note.pdf",
+              "source_page": 1,
+              "evidence_text": "Assessed as oxaliplatin-induced peripheral sensory neuropathy grade 2, limiting instrumental activities of daily living.",
+              "quote_verified": true,
+              "source_kind": "other"
+            },
+            {
+              "category": "prior_treatment",
+              "value": "alopecia grade 2",
+              "normalized_value": null,
+              "date": "2026-07-28",
+              "start_date": null,
+              "end_date": null,
+              "source_file": "toxicity_phone_note.pdf",
+              "source_page": 1,
+              "evidence_text": "Hair thinning persists, alopecia grade 2.",
+              "quote_verified": true,
+              "source_kind": "other"
+            }
+          ],
+          "explanation": "Compound criterion guard: Part 1: Toxicities from prior therapy not resolved to CTCAE v5.0 Grade ≤ 1 (except alopecia or other toxicities deemed by the investigator to pose no safety risk). => UNKNOWN. This criterion depends on investigator judgment and cannot be settled from records; converted to UNKNOWN. Original reasoning: Evidence shows the patient has oxaliplatin-induced peripheral sensory neuropathy grade 2 persistent at screening. This toxicity is not alopecia and exceeds grade 1, so the exclusion applies. Original reasoning: The patient has documented toxicities from prior therapy oxaliplatin, specifically peripheral sensory neuropathy assessed as grade 2, limiting activities of daily living, persisting at the time of screening. This toxicity is not alopecia and has not resolved to CTCAE v5.0 Grade ≤ 1, thus meeting the exclusion criterion.",
+          "final_conclusion": "APPLIES",
+          "clearance_basis": null,
+          "window_evidence_index": 0,
+          "parts": [
+            {
+              "criterion_id": "EXC-04/part1",
+              "criterion_text": "Toxicities from prior therapy not resolved to CTCAE v5.0 Grade ≤ 1 (except alopecia or other toxicities deemed by the investigator to pose no safety risk).",
+              "criterion_type": "exclusion",
+              "status": "UNKNOWN",
+              "method": "llm",
+              "patient_evidence": [
+                {
+                  "category": "prior_treatment",
+                  "value": "oxaliplatin",
+                  "normalized_value": null,
+                  "date": "2026-07-28",
+                  "start_date": null,
+                  "end_date": null,
+                  "source_file": "toxicity_phone_note.pdf",
+                  "source_page": 1,
+                  "evidence_text": "Telephone follow-up before trial screening. Ms. Lee reports persistent numbness and tingling in both hands and feet since oxaliplatin; she has trouble buttoning clothing and uses a handrail on stairs.",
+                  "quote_verified": true,
+                  "source_kind": "other"
+                },
+                {
+                  "category": "sex",
+                  "value": "Ms. Lee",
+                  "normalized_value": "female",
+                  "date": "2026-07-28",
+                  "start_date": null,
+                  "end_date": null,
+                  "source_file": "toxicity_phone_note.pdf",
+                  "source_page": 1,
+                  "evidence_text": "Telephone follow-up before trial screening. Ms. Lee reports persistent numbness and tingling in both hands and feet since oxaliplatin; she has trouble buttoning clothing and uses a handrail on stairs.",
+                  "quote_verified": true,
+                  "source_kind": "other"
+                },
+                {
+                  "category": "prior_treatment",
+                  "value": "oxaliplatin",
+                  "normalized_value": null,
+                  "date": "2026-07-28",
+                  "start_date": null,
+                  "end_date": null,
+                  "source_file": "toxicity_phone_note.pdf",
+                  "source_page": 1,
+                  "evidence_text": "Ms. Lee reports persistent numbness and tingling in both hands and feet since oxaliplatin; she has trouble buttoning clothing and uses a handrail on stairs.",
+                  "quote_verified": true,
+                  "source_kind": "other"
+                },
+                {
+                  "category": "prior_treatment",
+                  "value": "oxaliplatin-induced peripheral sensory neuropathy grade 2",
+                  "normalized_value": null,
+                  "date": "2026-07-28",
+                  "start_date": null,
+                  "end_date": null,
+                  "source_file": "toxicity_phone_note.pdf",
+                  "source_page": 1,
+                  "evidence_text": "Assessed as oxaliplatin-induced peripheral sensory neuropathy grade 2, limiting instrumental activities of daily living.",
+                  "quote_verified": true,
+                  "source_kind": "other"
+                },
+                {
+                  "category": "prior_treatment",
+                  "value": "alopecia grade 2",
+                  "normalized_value": null,
+                  "date": "2026-07-28",
+                  "start_date": null,
+                  "end_date": null,
+                  "source_file": "toxicity_phone_note.pdf",
+                  "source_page": 1,
+                  "evidence_text": "Hair thinning persists, alopecia grade 2.",
+                  "quote_verified": true,
+                  "source_kind": "other"
+                }
+              ],
+              "explanation": "This criterion depends on investigator judgment and cannot be settled from records; converted to UNKNOWN. Original reasoning: Evidence shows the patient has oxaliplatin-induced peripheral sensory neuropathy grade 2 persistent at screening. This toxicity is not alopecia and exceeds grade 1, so the exclusion applies.",
+              "final_conclusion": null,
+              "clearance_basis": null,
+              "window_evidence_index": 0,
+              "parts": [],
+              "date_comparisons": []
+            }
+          ],
+          "date_comparisons": []
+        }
+      },
+      {
+        "method": "llm_assessor",
+        "trial": "NCT06412198",
+        "criterion_id": "INC-10",
+        "probe": "exception_applies_inclusion",
+        "expected": "MEETS",
+        "also_acceptable": [
+          "UNKNOWN"
+        ],
+        "predicted": "DOES_NOT_MEET",
+        "match": false,
+        "acceptable": false,
+        "judgment_call": false,
+        "flags": [],
+        "explanation": "The patient reports persistent numbness and tingling in both hands and feet since oxaliplatin treatment, with difficulty buttoning clothing and using handrails, indicating ongoing grade 2 oxaliplatin-induced peripheral sensory neuropathy (index 41). This clearly shows the patient has not recovered to ≤ Grade 1 for these treatment-related adverse effects.",
+        "criterion_text": "Recovery from the treatment-related adverse effects of prior therapy at the time of enrollment to ≤ Grade 1 (excluding alopecia and prior oxaliplatin-induced neuropathy).",
+        "patient_evidence": [
+          {
+            "category": "sex",
+            "value": "Ms. Lee",
+            "normalized_value": "female",
+            "date": "2026-07-28",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "toxicity_phone_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Telephone follow-up before trial screening. Ms. Lee reports persistent numbness and tingling in both hands and feet since oxaliplatin; she has trouble buttoning clothing and uses a handrail on stairs.",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "prior_treatment",
+            "value": "oxaliplatin",
+            "normalized_value": null,
+            "date": "2026-07-28",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "toxicity_phone_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Ms. Lee reports persistent numbness and tingling in both hands and feet since oxaliplatin; she has trouble buttoning clothing and uses a handrail on stairs.",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "prior_treatment",
+            "value": "oxaliplatin-induced peripheral sensory neuropathy grade 2",
+            "normalized_value": null,
+            "date": "2026-07-28",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "toxicity_phone_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Assessed as oxaliplatin-induced peripheral sensory neuropathy grade 2, limiting instrumental activities of daily living.",
+            "quote_verified": true,
+            "source_kind": "other"
+          }
+        ],
+        "assessment_details": {
+          "criterion_id": "INC-10",
+          "criterion_text": "Recovery from the treatment-related adverse effects of prior therapy at the time of enrollment to ≤ Grade 1 (excluding alopecia and prior oxaliplatin-induced neuropathy).",
+          "criterion_type": "inclusion",
+          "status": "DOES_NOT_MEET",
+          "method": "llm",
+          "patient_evidence": [
+            {
+              "category": "sex",
+              "value": "Ms. Lee",
+              "normalized_value": "female",
+              "date": "2026-07-28",
+              "start_date": null,
+              "end_date": null,
+              "source_file": "toxicity_phone_note.pdf",
+              "source_page": 1,
+              "evidence_text": "Telephone follow-up before trial screening. Ms. Lee reports persistent numbness and tingling in both hands and feet since oxaliplatin; she has trouble buttoning clothing and uses a handrail on stairs.",
+              "quote_verified": true,
+              "source_kind": "other"
+            },
+            {
+              "category": "prior_treatment",
+              "value": "oxaliplatin",
+              "normalized_value": null,
+              "date": "2026-07-28",
+              "start_date": null,
+              "end_date": null,
+              "source_file": "toxicity_phone_note.pdf",
+              "source_page": 1,
+              "evidence_text": "Ms. Lee reports persistent numbness and tingling in both hands and feet since oxaliplatin; she has trouble buttoning clothing and uses a handrail on stairs.",
+              "quote_verified": true,
+              "source_kind": "other"
+            },
+            {
+              "category": "prior_treatment",
+              "value": "oxaliplatin-induced peripheral sensory neuropathy grade 2",
+              "normalized_value": null,
+              "date": "2026-07-28",
+              "start_date": null,
+              "end_date": null,
+              "source_file": "toxicity_phone_note.pdf",
+              "source_page": 1,
+              "evidence_text": "Assessed as oxaliplatin-induced peripheral sensory neuropathy grade 2, limiting instrumental activities of daily living.",
+              "quote_verified": true,
+              "source_kind": "other"
+            }
+          ],
+          "explanation": "The patient reports persistent numbness and tingling in both hands and feet since oxaliplatin treatment, with difficulty buttoning clothing and using handrails, indicating ongoing grade 2 oxaliplatin-induced peripheral sensory neuropathy (index 41). This clearly shows the patient has not recovered to ≤ Grade 1 for these treatment-related adverse effects.",
+          "final_conclusion": "DOES_NOT_MEET",
+          "clearance_basis": null,
+          "window_evidence_index": null,
+          "parts": [],
+          "date_comparisons": []
+        }
+      },
+      {
+        "method": "llm_assessor",
+        "trial": "NCT07559760",
+        "criterion_id": "INC-12",
+        "probe": "calculated_creatinine_clearance",
+        "expected": "DOES_NOT_MEET",
+        "also_acceptable": [
+          "UNKNOWN"
+        ],
+        "predicted": "UNKNOWN",
+        "match": false,
+        "acceptable": true,
+        "judgment_call": false,
+        "flags": [],
+        "explanation": "The criterion requires renal function measured by creatinine clearance (Cockcroft-Gault) >= 50 mL/min. The evidence provides a creatinine value (1.3 mg/dL) but does not provide the creatinine clearance or equivalent calculation. Without the creatinine clearance value or data required to compute it (such as weight, age beyond what is given, and serum creatinine), the criterion cannot be confirmed as met or unmet based on this evidence alone.",
+        "criterion_text": "Renal: Creatinine clearance ≥ 50 mL/min (Cockcroft-Gault).",
+        "patient_evidence": [
+          {
+            "category": "lab",
+            "value": "Creatinine: 1.3 mg/dL",
+            "normalized_value": "1.3 mg/dL",
+            "date": "2026-07-31",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "lab_report.pdf",
+            "source_page": 1,
+            "evidence_text": "Creatinine: 1.3 mg/dL",
+            "quote_verified": true,
+            "source_kind": "other"
+          }
+        ],
+        "assessment_details": {
+          "criterion_id": "INC-12",
+          "criterion_text": "Renal: Creatinine clearance ≥ 50 mL/min (Cockcroft-Gault).",
+          "criterion_type": "inclusion",
+          "status": "UNKNOWN",
+          "method": "llm",
+          "patient_evidence": [
+            {
+              "category": "lab",
+              "value": "Creatinine: 1.3 mg/dL",
+              "normalized_value": "1.3 mg/dL",
+              "date": "2026-07-31",
+              "start_date": null,
+              "end_date": null,
+              "source_file": "lab_report.pdf",
+              "source_page": 1,
+              "evidence_text": "Creatinine: 1.3 mg/dL",
+              "quote_verified": true,
+              "source_kind": "other"
+            }
+          ],
+          "explanation": "The criterion requires renal function measured by creatinine clearance (Cockcroft-Gault) >= 50 mL/min. The evidence provides a creatinine value (1.3 mg/dL) but does not provide the creatinine clearance or equivalent calculation. Without the creatinine clearance value or data required to compute it (such as weight, age beyond what is given, and serum creatinine), the criterion cannot be confirmed as met or unmet based on this evidence alone.",
+          "final_conclusion": "UNKNOWN",
+          "clearance_basis": null,
+          "window_evidence_index": null,
+          "parts": [],
+          "date_comparisons": []
+        }
+      }
+    ]
+  },
+  {
+    "run": 2,
+    "variant": "SYN-005-control",
+    "verified_probe_counts": {
+      "qtcf_value": 0,
+      "buried_major_surgery": 0,
+      "biopsy_trap": 2,
+      "surgery_or_biopsy_date": 2,
+      "neuropathy_grade": 2,
+      "alopecia_exception": 2,
+      "serology": 8,
+      "creatinine": 1,
+      "weight": 0,
+      "scheduled_first_dose": 1
+    },
+    "extraction_gaps": [
+      {
+        "source_file": "ecg_report.pdf",
+        "source_page": 1,
+        "line_number": 7,
+        "sentence_number": 1,
+        "text": "Resting 12-lead ECG measurements",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "ecg_report.pdf",
+        "source_page": 1,
+        "line_number": 10,
+        "sentence_number": 2,
+        "text": "Heart rate 74 bpm PR interval 164 ms QRS duration 92 ms QT interval 411 ms QTcF (Fridericia) 441 ms",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "ecg_report.pdf",
+        "source_page": 1,
+        "line_number": 20,
+        "sentence_number": 3,
+        "text": "Interpretation: Normal sinus rhythm.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "ecg_report.pdf",
+        "source_page": 1,
+        "line_number": 20,
+        "sentence_number": 4,
+        "text": "QTcF within normal limits.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "hospital_discharge_summary.pdf",
+        "source_page": 1,
+        "line_number": 8,
+        "sentence_number": 1,
+        "text": "Ms.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "hospital_discharge_summary.pdf",
+        "source_page": 1,
+        "line_number": 8,
+        "sentence_number": 2,
+        "text": "Lee was seen in the interventional radiology suite on 2026-07-22 for an outpatient procedure to obtain fresh tumor tissue for molecular testing.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "hospital_discharge_summary.pdf",
+        "source_page": 1,
+        "line_number": 8,
+        "sentence_number": 3,
+        "text": "She tolerated it well and went home the same day.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "hospital_discharge_summary.pdf",
+        "source_page": 1,
+        "line_number": 10,
+        "sentence_number": 4,
+        "text": "Procedure details are on page 2.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "hospital_discharge_summary.pdf",
+        "source_page": 2,
+        "line_number": 9,
+        "sentence_number": 2,
+        "text": "Anesthesia: local anesthetic with moderate sedation.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "hospital_discharge_summary.pdf",
+        "source_page": 2,
+        "line_number": 10,
+        "sentence_number": 3,
+        "text": "Complications: none.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "hospital_discharge_summary.pdf",
+        "source_page": 2,
+        "line_number": 10,
+        "sentence_number": 4,
+        "text": "Discharged the same day.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "lab_report.pdf",
+        "source_page": 1,
+        "line_number": 16,
+        "sentence_number": 9,
+        "text": "No transfusion or growth-factor support in the past 14 days.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "oncology_note.pdf",
+        "source_page": 1,
+        "line_number": 7,
+        "sentence_number": 1,
+        "text": "Clinic visit",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "oncology_note.pdf",
+        "source_page": 1,
+        "line_number": 10,
+        "sentence_number": 4,
+        "text": "Weight: 52 kg",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "oncology_note.pdf",
+        "source_page": 1,
+        "line_number": 14,
+        "sentence_number": 8,
+        "text": "Plan: referred for clinical trial screening.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "serology_outside_lab.pdf",
+        "source_page": 1,
+        "line_number": 2,
+        "sentence_number": 1,
+        "text": "Outside laboratory: infectious serology",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "serology_outside_lab.pdf",
+        "source_page": 1,
+        "line_number": 7,
+        "sentence_number": 2,
+        "text": "Serology panel",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "serology_outside_lab.pdf",
+        "source_page": 1,
+        "line_number": 23,
+        "sentence_number": 7,
+        "text": "Specimen collected 2026-07-29.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "serology_outside_lab.pdf",
+        "source_page": 1,
+        "line_number": 23,
+        "sentence_number": 8,
+        "text": "Reported by an outside reference laboratory.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "toxicity_phone_note.pdf",
+        "source_page": 1,
+        "line_number": 2,
+        "sentence_number": 1,
+        "text": "Telephone encounter: toxicity assessment",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "toxicity_phone_note.pdf",
+        "source_page": 1,
+        "line_number": 8,
+        "sentence_number": 2,
+        "text": "Telephone follow-up before trial screening.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "toxicity_phone_note.pdf",
+        "source_page": 1,
+        "line_number": 8,
+        "sentence_number": 7,
+        "text": "She reports no diarrhea, mouth sores or fatigue limiting activity.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "trial_screening_letter.pdf",
+        "source_page": 1,
+        "line_number": 8,
+        "sentence_number": 1,
+        "text": "The patient has been referred for clinical trial screening.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "trial_screening_letter.pdf",
+        "source_page": 1,
+        "line_number": 10,
+        "sentence_number": 3,
+        "text": "Final eligibility will be confirmed by the study team.",
+        "message": "Not captured by the tool, review manually"
+      }
+    ],
+    "misses": [
+      {
+        "method": "llm_assessor",
+        "trial": "NCT07559760",
+        "criterion_id": "EXC-09",
+        "probe": "qtcf_below_threshold",
+        "expected": "MEETS",
+        "also_acceptable": [
+          "UNKNOWN"
+        ],
+        "predicted": "UNKNOWN",
+        "match": false,
+        "acceptable": true,
+        "judgment_call": false,
+        "flags": [],
+        "explanation": "No evidence is provided regarding the QTcF interval on a resting 12-lead ECG. The patient's QTcF measurement is not documented, so it cannot be determined whether it meets or exceeds the exclusion threshold for women (≥ 470 ms).",
+        "criterion_text": "QTcF ≥ 450 ms (men) or ≥ 470 ms (women) on resting 12-lead ECG.",
+        "patient_evidence": [],
+        "assessment_details": {
+          "criterion_id": "EXC-09",
+          "criterion_text": "QTcF ≥ 450 ms (men) or ≥ 470 ms (women) on resting 12-lead ECG.",
+          "criterion_type": "exclusion",
+          "status": "UNKNOWN",
+          "method": "llm",
+          "patient_evidence": [],
+          "explanation": "No evidence is provided regarding the QTcF interval on a resting 12-lead ECG. The patient's QTcF measurement is not documented, so it cannot be determined whether it meets or exceeds the exclusion threshold for women (≥ 470 ms).",
+          "final_conclusion": "UNKNOWN",
+          "clearance_basis": null,
+          "window_evidence_index": null,
+          "parts": [],
+          "date_comparisons": []
+        }
+      },
+      {
+        "method": "llm_assessor",
+        "trial": "NCT07559760",
+        "criterion_id": "EXC-04",
+        "probe": "except_clause_alopecia",
+        "expected": "MEETS",
+        "also_acceptable": [
+          "UNKNOWN"
+        ],
+        "predicted": "UNKNOWN",
+        "match": false,
+        "acceptable": true,
+        "judgment_call": false,
+        "flags": [
+          "EXC-04: investigator-judgment criterion converted to UNKNOWN.",
+          "EXC-04: Compound criterion guard: combined UNKNOWN => UNKNOWN."
+        ],
+        "explanation": "Compound criterion guard: Part 1: Toxicities from prior therapy not resolved to CTCAE v5.0 Grade \u000264 1 (except alopecia or other toxicities deemed by the investigator to pose no safety risk). => UNKNOWN. Peripheral sensory neuropathy is grade 1, alopecia is grade 2 but allowed as exception, and other toxicities are grade 0 to 1. Thus, toxicities do not meet exclusion. Original reasoning: The patient has a documented peripheral sensory neuropathy toxicity from prior oxaliplatin therapy at CTCAE grade 1 (evidence indices 20, 32) which is acceptable as it is grade ≤ 1. Alopecia is grade 2 but it is an exception allowed by the criterion, so does not exclude the patient (evidence indices 21, 33). All other treatment-related toxicities are grade 0 to 1 (evidence index 34), meeting the requirement that toxicities must be resolved to grade ≤ 1 except alopecia. The patient's report that numbness has improved also supports that toxicities are resolved to acceptable grade (evidence index 30). Therefore, toxicities from prior therapy do not exclude the patient.",
+        "criterion_text": "Toxicities from prior therapy not resolved to CTCAE v5.0 Grade ≤ 1 (except alopecia or other toxicities deemed by the investigator to pose no safety risk).",
+        "patient_evidence": [
+          {
+            "category": "biomarker",
+            "value": "peripheral sensory neuropathy grade 1",
+            "normalized_value": "grade 1",
+            "date": "2026-07-28",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "toxicity_phone_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Assessed as peripheral sensory neuropathy grade 1.",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "performance_status",
+            "value": "peripheral sensory neuropathy grade 1",
+            "normalized_value": null,
+            "date": "2026-07-28",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "toxicity_phone_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Assessed as peripheral sensory neuropathy grade 1.",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "biomarker",
+            "value": "alopecia grade 2",
+            "normalized_value": "grade 2",
+            "date": "2026-07-28",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "toxicity_phone_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Hair thinning persists, alopecia grade 2.",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "prior_treatment",
+            "value": "hair thinning persists, alopecia grade 2",
+            "normalized_value": null,
+            "date": "2026-07-28",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "toxicity_phone_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Hair thinning persists, alopecia grade 2.",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "prior_treatment",
+            "value": "All other treatment-related toxicities are grade 0 to 1",
+            "normalized_value": null,
+            "date": "2026-07-28",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "toxicity_phone_note.pdf",
+            "source_page": 1,
+            "evidence_text": "All other treatment-related toxicities are grade 0 to 1.",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "sex",
+            "value": "Ms. Lee",
+            "normalized_value": "female",
+            "date": "2026-07-28",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "toxicity_phone_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Ms. Lee reports that the numbness in her fingertips from oxaliplatin has improved; she can button clothing and write without difficulty.",
+            "quote_verified": true,
+            "source_kind": "other"
+          }
+        ],
+        "assessment_details": {
+          "criterion_id": "EXC-04",
+          "criterion_text": "Toxicities from prior therapy not resolved to CTCAE v5.0 Grade ≤ 1 (except alopecia or other toxicities deemed by the investigator to pose no safety risk).",
+          "criterion_type": "exclusion",
+          "status": "UNKNOWN",
+          "method": "llm",
+          "patient_evidence": [
+            {
+              "category": "biomarker",
+              "value": "peripheral sensory neuropathy grade 1",
+              "normalized_value": "grade 1",
+              "date": "2026-07-28",
+              "start_date": null,
+              "end_date": null,
+              "source_file": "toxicity_phone_note.pdf",
+              "source_page": 1,
+              "evidence_text": "Assessed as peripheral sensory neuropathy grade 1.",
+              "quote_verified": true,
+              "source_kind": "other"
+            },
+            {
+              "category": "performance_status",
+              "value": "peripheral sensory neuropathy grade 1",
+              "normalized_value": null,
+              "date": "2026-07-28",
+              "start_date": null,
+              "end_date": null,
+              "source_file": "toxicity_phone_note.pdf",
+              "source_page": 1,
+              "evidence_text": "Assessed as peripheral sensory neuropathy grade 1.",
+              "quote_verified": true,
+              "source_kind": "other"
+            },
+            {
+              "category": "biomarker",
+              "value": "alopecia grade 2",
+              "normalized_value": "grade 2",
+              "date": "2026-07-28",
+              "start_date": null,
+              "end_date": null,
+              "source_file": "toxicity_phone_note.pdf",
+              "source_page": 1,
+              "evidence_text": "Hair thinning persists, alopecia grade 2.",
+              "quote_verified": true,
+              "source_kind": "other"
+            },
+            {
+              "category": "prior_treatment",
+              "value": "hair thinning persists, alopecia grade 2",
+              "normalized_value": null,
+              "date": "2026-07-28",
+              "start_date": null,
+              "end_date": null,
+              "source_file": "toxicity_phone_note.pdf",
+              "source_page": 1,
+              "evidence_text": "Hair thinning persists, alopecia grade 2.",
+              "quote_verified": true,
+              "source_kind": "other"
+            },
+            {
+              "category": "prior_treatment",
+              "value": "All other treatment-related toxicities are grade 0 to 1",
+              "normalized_value": null,
+              "date": "2026-07-28",
+              "start_date": null,
+              "end_date": null,
+              "source_file": "toxicity_phone_note.pdf",
+              "source_page": 1,
+              "evidence_text": "All other treatment-related toxicities are grade 0 to 1.",
+              "quote_verified": true,
+              "source_kind": "other"
+            },
+            {
+              "category": "sex",
+              "value": "Ms. Lee",
+              "normalized_value": "female",
+              "date": "2026-07-28",
+              "start_date": null,
+              "end_date": null,
+              "source_file": "toxicity_phone_note.pdf",
+              "source_page": 1,
+              "evidence_text": "Ms. Lee reports that the numbness in her fingertips from oxaliplatin has improved; she can button clothing and write without difficulty.",
+              "quote_verified": true,
+              "source_kind": "other"
+            }
+          ],
+          "explanation": "Compound criterion guard: Part 1: Toxicities from prior therapy not resolved to CTCAE v5.0 Grade \u000264 1 (except alopecia or other toxicities deemed by the investigator to pose no safety risk). => UNKNOWN. Peripheral sensory neuropathy is grade 1, alopecia is grade 2 but allowed as exception, and other toxicities are grade 0 to 1. Thus, toxicities do not meet exclusion. Original reasoning: The patient has a documented peripheral sensory neuropathy toxicity from prior oxaliplatin therapy at CTCAE grade 1 (evidence indices 20, 32) which is acceptable as it is grade ≤ 1. Alopecia is grade 2 but it is an exception allowed by the criterion, so does not exclude the patient (evidence indices 21, 33). All other treatment-related toxicities are grade 0 to 1 (evidence index 34), meeting the requirement that toxicities must be resolved to grade ≤ 1 except alopecia. The patient's report that numbness has improved also supports that toxicities are resolved to acceptable grade (evidence index 30). Therefore, toxicities from prior therapy do not exclude the patient.",
+          "final_conclusion": "DOES_NOT_APPLY",
+          "clearance_basis": "explicit_negative",
+          "window_evidence_index": null,
+          "parts": [
+            {
+              "criterion_id": "EXC-04/part1",
+              "criterion_text": "Toxicities from prior therapy not resolved to CTCAE v5.0 Grade \u000264 1 (except alopecia or other toxicities deemed by the investigator to pose no safety risk).",
+              "criterion_type": "exclusion",
+              "status": "UNKNOWN",
+              "method": "llm",
+              "patient_evidence": [
+                {
+                  "category": "biomarker",
+                  "value": "peripheral sensory neuropathy grade 1",
+                  "normalized_value": "grade 1",
+                  "date": "2026-07-28",
+                  "start_date": null,
+                  "end_date": null,
+                  "source_file": "toxicity_phone_note.pdf",
+                  "source_page": 1,
+                  "evidence_text": "Assessed as peripheral sensory neuropathy grade 1.",
+                  "quote_verified": true,
+                  "source_kind": "other"
+                },
+                {
+                  "category": "performance_status",
+                  "value": "peripheral sensory neuropathy grade 1",
+                  "normalized_value": null,
+                  "date": "2026-07-28",
+                  "start_date": null,
+                  "end_date": null,
+                  "source_file": "toxicity_phone_note.pdf",
+                  "source_page": 1,
+                  "evidence_text": "Assessed as peripheral sensory neuropathy grade 1.",
+                  "quote_verified": true,
+                  "source_kind": "other"
+                },
+                {
+                  "category": "biomarker",
+                  "value": "alopecia grade 2",
+                  "normalized_value": "grade 2",
+                  "date": "2026-07-28",
+                  "start_date": null,
+                  "end_date": null,
+                  "source_file": "toxicity_phone_note.pdf",
+                  "source_page": 1,
+                  "evidence_text": "Hair thinning persists, alopecia grade 2.",
+                  "quote_verified": true,
+                  "source_kind": "other"
+                },
+                {
+                  "category": "prior_treatment",
+                  "value": "hair thinning persists, alopecia grade 2",
+                  "normalized_value": null,
+                  "date": "2026-07-28",
+                  "start_date": null,
+                  "end_date": null,
+                  "source_file": "toxicity_phone_note.pdf",
+                  "source_page": 1,
+                  "evidence_text": "Hair thinning persists, alopecia grade 2.",
+                  "quote_verified": true,
+                  "source_kind": "other"
+                },
+                {
+                  "category": "prior_treatment",
+                  "value": "All other treatment-related toxicities are grade 0 to 1",
+                  "normalized_value": null,
+                  "date": "2026-07-28",
+                  "start_date": null,
+                  "end_date": null,
+                  "source_file": "toxicity_phone_note.pdf",
+                  "source_page": 1,
+                  "evidence_text": "All other treatment-related toxicities are grade 0 to 1.",
+                  "quote_verified": true,
+                  "source_kind": "other"
+                },
+                {
+                  "category": "sex",
+                  "value": "Ms. Lee",
+                  "normalized_value": "female",
+                  "date": "2026-07-28",
+                  "start_date": null,
+                  "end_date": null,
+                  "source_file": "toxicity_phone_note.pdf",
+                  "source_page": 1,
+                  "evidence_text": "Ms. Lee reports that the numbness in her fingertips from oxaliplatin has improved; she can button clothing and write without difficulty.",
+                  "quote_verified": true,
+                  "source_kind": "other"
+                }
+              ],
+              "explanation": "Peripheral sensory neuropathy is grade 1, alopecia is grade 2 but allowed as exception, and other toxicities are grade 0 to 1. Thus, toxicities do not meet exclusion.",
+              "final_conclusion": null,
+              "clearance_basis": "explicit_negative",
+              "window_evidence_index": null,
+              "parts": [],
+              "date_comparisons": []
+            }
+          ],
+          "date_comparisons": []
+        }
+      },
+      {
+        "method": "llm_assessor",
+        "trial": "NCT06412198",
+        "criterion_id": "INC-10",
+        "probe": "recovered_to_grade1",
+        "expected": "MEETS",
+        "also_acceptable": [
+          "UNKNOWN"
+        ],
+        "predicted": "UNKNOWN",
+        "match": false,
+        "acceptable": true,
+        "judgment_call": false,
+        "flags": [
+          "INC-10: Unsupported category-inference guard: hedged category link has no verified quote stating induce. Converted to UNKNOWN."
+        ],
+        "explanation": "Unsupported category-inference guard: hedged category link has no verified quote stating induce. Converted to UNKNOWN. Original reasoning: The criterion requires recovery from treatment-related adverse effects of prior therapy to ≤ Grade 1, excluding alopecia and prior oxaliplatin-induced neuropathy. Evidence shows peripheral sensory neuropathy grade 1, consistent with oxaliplatin-induced neuropathy (excluded from the ≤ Grade 1 requirement). Alopecia is grade 2 but excluded from the criterion. All other treatment-related toxicities are grade 0 to 1, meeting the requirement. The patient's report of improved numbness without difficulty supports recovery to ≤ Grade 1. Hence, the patient meets this inclusion criterion.",
+        "criterion_text": "Recovery from the treatment-related adverse effects of prior therapy at the time of enrollment to ≤ Grade 1 (excluding alopecia and prior oxaliplatin-induced neuropathy).",
+        "patient_evidence": [
+          {
+            "category": "biomarker",
+            "value": "peripheral sensory neuropathy grade 1",
+            "normalized_value": "grade 1",
+            "date": "2026-07-28",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "toxicity_phone_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Assessed as peripheral sensory neuropathy grade 1.",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "sex",
+            "value": "Ms. Lee",
+            "normalized_value": "female",
+            "date": "2026-07-28",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "toxicity_phone_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Ms. Lee reports that the numbness in her fingertips from oxaliplatin has improved; she can button clothing and write without difficulty.",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "prior_treatment",
+            "value": "oxaliplatin",
+            "normalized_value": null,
+            "date": "2026-07-28",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "toxicity_phone_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Ms. Lee reports that the numbness in her fingertips from oxaliplatin has improved; she can button clothing and write without difficulty.",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "performance_status",
+            "value": "peripheral sensory neuropathy grade 1",
+            "normalized_value": null,
+            "date": "2026-07-28",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "toxicity_phone_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Assessed as peripheral sensory neuropathy grade 1.",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "prior_treatment",
+            "value": "hair thinning persists, alopecia grade 2",
+            "normalized_value": null,
+            "date": "2026-07-28",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "toxicity_phone_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Hair thinning persists, alopecia grade 2.",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "prior_treatment",
+            "value": "All other treatment-related toxicities are grade 0 to 1",
+            "normalized_value": null,
+            "date": "2026-07-28",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "toxicity_phone_note.pdf",
+            "source_page": 1,
+            "evidence_text": "All other treatment-related toxicities are grade 0 to 1.",
+            "quote_verified": true,
+            "source_kind": "other"
+          }
+        ],
+        "assessment_details": {
+          "criterion_id": "INC-10",
+          "criterion_text": "Recovery from the treatment-related adverse effects of prior therapy at the time of enrollment to ≤ Grade 1 (excluding alopecia and prior oxaliplatin-induced neuropathy).",
+          "criterion_type": "inclusion",
+          "status": "UNKNOWN",
+          "method": "llm",
+          "patient_evidence": [
+            {
+              "category": "biomarker",
+              "value": "peripheral sensory neuropathy grade 1",
+              "normalized_value": "grade 1",
+              "date": "2026-07-28",
+              "start_date": null,
+              "end_date": null,
+              "source_file": "toxicity_phone_note.pdf",
+              "source_page": 1,
+              "evidence_text": "Assessed as peripheral sensory neuropathy grade 1.",
+              "quote_verified": true,
+              "source_kind": "other"
+            },
+            {
+              "category": "sex",
+              "value": "Ms. Lee",
+              "normalized_value": "female",
+              "date": "2026-07-28",
+              "start_date": null,
+              "end_date": null,
+              "source_file": "toxicity_phone_note.pdf",
+              "source_page": 1,
+              "evidence_text": "Ms. Lee reports that the numbness in her fingertips from oxaliplatin has improved; she can button clothing and write without difficulty.",
+              "quote_verified": true,
+              "source_kind": "other"
+            },
+            {
+              "category": "prior_treatment",
+              "value": "oxaliplatin",
+              "normalized_value": null,
+              "date": "2026-07-28",
+              "start_date": null,
+              "end_date": null,
+              "source_file": "toxicity_phone_note.pdf",
+              "source_page": 1,
+              "evidence_text": "Ms. Lee reports that the numbness in her fingertips from oxaliplatin has improved; she can button clothing and write without difficulty.",
+              "quote_verified": true,
+              "source_kind": "other"
+            },
+            {
+              "category": "performance_status",
+              "value": "peripheral sensory neuropathy grade 1",
+              "normalized_value": null,
+              "date": "2026-07-28",
+              "start_date": null,
+              "end_date": null,
+              "source_file": "toxicity_phone_note.pdf",
+              "source_page": 1,
+              "evidence_text": "Assessed as peripheral sensory neuropathy grade 1.",
+              "quote_verified": true,
+              "source_kind": "other"
+            },
+            {
+              "category": "prior_treatment",
+              "value": "hair thinning persists, alopecia grade 2",
+              "normalized_value": null,
+              "date": "2026-07-28",
+              "start_date": null,
+              "end_date": null,
+              "source_file": "toxicity_phone_note.pdf",
+              "source_page": 1,
+              "evidence_text": "Hair thinning persists, alopecia grade 2.",
+              "quote_verified": true,
+              "source_kind": "other"
+            },
+            {
+              "category": "prior_treatment",
+              "value": "All other treatment-related toxicities are grade 0 to 1",
+              "normalized_value": null,
+              "date": "2026-07-28",
+              "start_date": null,
+              "end_date": null,
+              "source_file": "toxicity_phone_note.pdf",
+              "source_page": 1,
+              "evidence_text": "All other treatment-related toxicities are grade 0 to 1.",
+              "quote_verified": true,
+              "source_kind": "other"
+            }
+          ],
+          "explanation": "Unsupported category-inference guard: hedged category link has no verified quote stating induce. Converted to UNKNOWN. Original reasoning: The criterion requires recovery from treatment-related adverse effects of prior therapy to ≤ Grade 1, excluding alopecia and prior oxaliplatin-induced neuropathy. Evidence shows peripheral sensory neuropathy grade 1, consistent with oxaliplatin-induced neuropathy (excluded from the ≤ Grade 1 requirement). Alopecia is grade 2 but excluded from the criterion. All other treatment-related toxicities are grade 0 to 1, meeting the requirement. The patient's report of improved numbness without difficulty supports recovery to ≤ Grade 1. Hence, the patient meets this inclusion criterion.",
+          "final_conclusion": "MEETS",
+          "clearance_basis": null,
+          "window_evidence_index": null,
+          "parts": [],
+          "date_comparisons": []
+        }
+      },
+      {
+        "method": "llm_assessor",
+        "trial": "NCT07559760",
+        "criterion_id": "INC-12",
+        "probe": "calculated_creatinine_clearance",
+        "expected": "DOES_NOT_MEET",
+        "also_acceptable": [
+          "UNKNOWN"
+        ],
+        "predicted": "UNKNOWN",
+        "match": false,
+        "acceptable": true,
+        "judgment_call": false,
+        "flags": [],
+        "explanation": "The criterion requires the patient's creatinine clearance to be >= 50 mL/min (Cockcroft-Gault formula). The evidence includes a serum creatinine measurement of 1.3 mg/dL but does not provide the creatinine clearance or sufficient information (weight, age, sex) to calculate it accurately using Cockcroft-Gault formula. Therefore, it is unknown if the patient meets this renal function criterion.",
+        "criterion_text": "Renal: Creatinine clearance ≥ 50 mL/min (Cockcroft-Gault).",
+        "patient_evidence": [
+          {
+            "category": "lab",
+            "value": "Creatinine: 1.3 mg/dL",
+            "normalized_value": "1.3 mg/dL",
+            "date": "2026-07-31",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "lab_report.pdf",
+            "source_page": 1,
+            "evidence_text": "Creatinine: 1.3 mg/dL",
+            "quote_verified": true,
+            "source_kind": "other"
+          }
+        ],
+        "assessment_details": {
+          "criterion_id": "INC-12",
+          "criterion_text": "Renal: Creatinine clearance ≥ 50 mL/min (Cockcroft-Gault).",
+          "criterion_type": "inclusion",
+          "status": "UNKNOWN",
+          "method": "llm",
+          "patient_evidence": [
+            {
+              "category": "lab",
+              "value": "Creatinine: 1.3 mg/dL",
+              "normalized_value": "1.3 mg/dL",
+              "date": "2026-07-31",
+              "start_date": null,
+              "end_date": null,
+              "source_file": "lab_report.pdf",
+              "source_page": 1,
+              "evidence_text": "Creatinine: 1.3 mg/dL",
+              "quote_verified": true,
+              "source_kind": "other"
+            }
+          ],
+          "explanation": "The criterion requires the patient's creatinine clearance to be >= 50 mL/min (Cockcroft-Gault formula). The evidence includes a serum creatinine measurement of 1.3 mg/dL but does not provide the creatinine clearance or sufficient information (weight, age, sex) to calculate it accurately using Cockcroft-Gault formula. Therefore, it is unknown if the patient meets this renal function criterion.",
+          "final_conclusion": "UNKNOWN",
+          "clearance_basis": null,
+          "window_evidence_index": null,
+          "parts": [],
+          "date_comparisons": []
+        }
+      }
+    ]
+  },
+  {
+    "run": 3,
+    "variant": "SYN-005",
+    "verified_probe_counts": {
+      "qtcf_value": 0,
+      "buried_major_surgery": 1,
+      "biopsy_trap": 0,
+      "surgery_or_biopsy_date": 1,
+      "neuropathy_grade": 1,
+      "alopecia_exception": 1,
+      "serology": 4,
+      "creatinine": 1,
+      "weight": 0,
+      "scheduled_first_dose": 1
+    },
+    "extraction_gaps": [
+      {
+        "source_file": "ecg_report.pdf",
+        "source_page": 1,
+        "line_number": 7,
+        "sentence_number": 1,
+        "text": "Resting 12-lead ECG measurements",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "ecg_report.pdf",
+        "source_page": 1,
+        "line_number": 10,
+        "sentence_number": 2,
+        "text": "Heart rate 74 bpm PR interval 164 ms QRS duration 92 ms QT interval 446 ms QTcF (Fridericia) 478 ms",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "ecg_report.pdf",
+        "source_page": 1,
+        "line_number": 20,
+        "sentence_number": 3,
+        "text": "Interpretation: Sinus rhythm.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "ecg_report.pdf",
+        "source_page": 1,
+        "line_number": 20,
+        "sentence_number": 4,
+        "text": "Prolonged QTc.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "hospital_discharge_summary.pdf",
+        "source_page": 1,
+        "line_number": 8,
+        "sentence_number": 3,
+        "text": "She went to the operating room the next day.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "hospital_discharge_summary.pdf",
+        "source_page": 1,
+        "line_number": 8,
+        "sentence_number": 4,
+        "text": "Her recovery was uncomplicated and she was discharged on postoperative day 5.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "hospital_discharge_summary.pdf",
+        "source_page": 1,
+        "line_number": 11,
+        "sentence_number": 5,
+        "text": "Procedure details are on page 2.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "hospital_discharge_summary.pdf",
+        "source_page": 2,
+        "line_number": 10,
+        "sentence_number": 3,
+        "text": "Wound: midline incision, healing; staples to be removed at follow-up.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "hospital_discharge_summary.pdf",
+        "source_page": 2,
+        "line_number": 11,
+        "sentence_number": 4,
+        "text": "Discharged 2026-07-27.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "hospital_discharge_summary.pdf",
+        "source_page": 2,
+        "line_number": 11,
+        "sentence_number": 5,
+        "text": "No lifting over 10 pounds for 6 weeks.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "lab_report.pdf",
+        "source_page": 1,
+        "line_number": 16,
+        "sentence_number": 9,
+        "text": "No transfusion or growth-factor support in the past 14 days.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "oncology_note.pdf",
+        "source_page": 1,
+        "line_number": 7,
+        "sentence_number": 1,
+        "text": "Clinic visit",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "oncology_note.pdf",
+        "source_page": 1,
+        "line_number": 10,
+        "sentence_number": 4,
+        "text": "Weight: 52 kg",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "oncology_note.pdf",
+        "source_page": 1,
+        "line_number": 14,
+        "sentence_number": 8,
+        "text": "Plan: referred for clinical trial screening.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "serology_outside_lab.pdf",
+        "source_page": 1,
+        "line_number": 2,
+        "sentence_number": 1,
+        "text": "Outside laboratory: infectious serology",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "serology_outside_lab.pdf",
+        "source_page": 1,
+        "line_number": 7,
+        "sentence_number": 2,
+        "text": "Serology panel",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "serology_outside_lab.pdf",
+        "source_page": 1,
+        "line_number": 23,
+        "sentence_number": 7,
+        "text": "Specimen collected 2026-07-29.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "serology_outside_lab.pdf",
+        "source_page": 1,
+        "line_number": 23,
+        "sentence_number": 8,
+        "text": "Reported by an outside reference laboratory.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "toxicity_phone_note.pdf",
+        "source_page": 1,
+        "line_number": 2,
+        "sentence_number": 1,
+        "text": "Telephone encounter: toxicity assessment",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "toxicity_phone_note.pdf",
+        "source_page": 1,
+        "line_number": 10,
+        "sentence_number": 7,
+        "text": "She reports no diarrhea, mouth sores or fatigue limiting activity.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "toxicity_phone_note.pdf",
+        "source_page": 1,
+        "line_number": 10,
+        "sentence_number": 8,
+        "text": "All other treatment-related toxicities are grade 0 to 1.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "trial_screening_letter.pdf",
+        "source_page": 1,
+        "line_number": 8,
+        "sentence_number": 1,
+        "text": "The patient has been referred for clinical trial screening.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "trial_screening_letter.pdf",
+        "source_page": 1,
+        "line_number": 10,
+        "sentence_number": 3,
+        "text": "Final eligibility will be confirmed by the study team.",
+        "message": "Not captured by the tool, review manually"
+      }
+    ],
+    "misses": [
+      {
+        "method": "llm_assessor",
+        "trial": "NCT07559760",
+        "criterion_id": "EXC-09",
+        "probe": "buried_qtcf",
+        "expected": "DOES_NOT_MEET",
+        "also_acceptable": [],
+        "predicted": "UNKNOWN",
+        "match": false,
+        "acceptable": false,
+        "judgment_call": false,
+        "flags": [],
+        "explanation": "No evidence is provided for QTcF measurement on a resting 12-lead ECG, which is required to assess the QTcF interval for exclusion. Patient sex is female, but no QTcF value is documented to compare against the threshold of >=470 ms for women.",
+        "criterion_text": "QTcF ≥ 450 ms (men) or ≥ 470 ms (women) on resting 12-lead ECG.",
+        "patient_evidence": [],
+        "assessment_details": {
+          "criterion_id": "EXC-09",
+          "criterion_text": "QTcF ≥ 450 ms (men) or ≥ 470 ms (women) on resting 12-lead ECG.",
+          "criterion_type": "exclusion",
+          "status": "UNKNOWN",
+          "method": "llm",
+          "patient_evidence": [],
+          "explanation": "No evidence is provided for QTcF measurement on a resting 12-lead ECG, which is required to assess the QTcF interval for exclusion. Patient sex is female, but no QTcF value is documented to compare against the threshold of >=470 ms for women.",
+          "final_conclusion": "UNKNOWN",
+          "clearance_basis": null,
+          "window_evidence_index": null,
+          "parts": [],
+          "date_comparisons": []
+        }
+      },
+      {
+        "method": "llm_assessor",
+        "trial": "NCT07559760",
+        "criterion_id": "EXC-04",
+        "probe": "buried_toxicity_except_clause",
+        "expected": "DOES_NOT_MEET",
+        "also_acceptable": [
+          "UNKNOWN"
+        ],
+        "predicted": "UNKNOWN",
+        "match": false,
+        "acceptable": true,
+        "judgment_call": false,
+        "flags": [
+          "EXC-04: investigator-judgment criterion converted to UNKNOWN.",
+          "EXC-04: Compound criterion guard: combined UNKNOWN => UNKNOWN."
+        ],
+        "explanation": "Compound criterion guard: Part 1: Toxicities from prior therapy not resolved to CTCAE v5.0 Grade \u000264 1 (except alopecia or other toxicities deemed by the investigator to pose no safety risk). => UNKNOWN. Evidence of oxaliplatin-induced peripheral sensory neuropathy Grade 2 persists and limits activities of daily living, thus the toxicity is not resolved to Grade ≤1. Alopecia grade 2 is noted but exempted by the criterion. Original reasoning: The patient has oxaliplatin-induced peripheral sensory neuropathy graded as CTCAE v5.0 Grade 2 (evidence indices 16, 27, 28). The toxicity is not resolved to Grade ≤1, and this neuropathy limits instrumental activities of daily living. Alopecia is present at Grade 2 (index 29) but is explicitly excepted from the exclusion. Therefore, the exclusion for unresolved toxicities from prior therapy applies due to the persistent Grade 2 neuropathy.",
+        "criterion_text": "Toxicities from prior therapy not resolved to CTCAE v5.0 Grade ≤ 1 (except alopecia or other toxicities deemed by the investigator to pose no safety risk).",
+        "patient_evidence": [
+          {
+            "category": "prior_treatment",
+            "value": "oxaliplatin",
+            "normalized_value": null,
+            "date": "2026-07-28",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "toxicity_phone_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Ms. Lee reports persistent numbness and tingling in both\nhands and feet since oxaliplatin; she has trouble buttoning clothing and uses a handrail on stairs.",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "sex",
+            "value": "Ms. Lee",
+            "normalized_value": "female",
+            "date": "2026-07-28",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "toxicity_phone_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Nursing telephone note\nTelephone follow-up before trial screening. Ms. Lee reports persistent numbness and tingling in both\nhands and feet since oxaliplatin; she has trouble buttoning clothing and uses a handrail on stairs.",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "lab",
+            "value": "oxaliplatin-induced peripheral sensory neuropathy grade 2",
+            "normalized_value": "grade 2 peripheral sensory neuropathy",
+            "date": "2026-07-28",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "toxicity_phone_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Assessed as oxaliplatin-induced peripheral sensory neuropathy grade 2, limiting instrumental activities of daily living.",
+            "quote_verified": true,
+            "source_kind": "other"
+          }
+        ],
+        "assessment_details": {
+          "criterion_id": "EXC-04",
+          "criterion_text": "Toxicities from prior therapy not resolved to CTCAE v5.0 Grade ≤ 1 (except alopecia or other toxicities deemed by the investigator to pose no safety risk).",
+          "criterion_type": "exclusion",
+          "status": "UNKNOWN",
+          "method": "llm",
+          "patient_evidence": [
+            {
+              "category": "prior_treatment",
+              "value": "oxaliplatin",
+              "normalized_value": null,
+              "date": "2026-07-28",
+              "start_date": null,
+              "end_date": null,
+              "source_file": "toxicity_phone_note.pdf",
+              "source_page": 1,
+              "evidence_text": "Ms. Lee reports persistent numbness and tingling in both\nhands and feet since oxaliplatin; she has trouble buttoning clothing and uses a handrail on stairs.",
+              "quote_verified": true,
+              "source_kind": "other"
+            },
+            {
+              "category": "sex",
+              "value": "Ms. Lee",
+              "normalized_value": "female",
+              "date": "2026-07-28",
+              "start_date": null,
+              "end_date": null,
+              "source_file": "toxicity_phone_note.pdf",
+              "source_page": 1,
+              "evidence_text": "Nursing telephone note\nTelephone follow-up before trial screening. Ms. Lee reports persistent numbness and tingling in both\nhands and feet since oxaliplatin; she has trouble buttoning clothing and uses a handrail on stairs.",
+              "quote_verified": true,
+              "source_kind": "other"
+            },
+            {
+              "category": "lab",
+              "value": "oxaliplatin-induced peripheral sensory neuropathy grade 2",
+              "normalized_value": "grade 2 peripheral sensory neuropathy",
+              "date": "2026-07-28",
+              "start_date": null,
+              "end_date": null,
+              "source_file": "toxicity_phone_note.pdf",
+              "source_page": 1,
+              "evidence_text": "Assessed as oxaliplatin-induced peripheral sensory neuropathy grade 2, limiting instrumental activities of daily living.",
+              "quote_verified": true,
+              "source_kind": "other"
+            }
+          ],
+          "explanation": "Compound criterion guard: Part 1: Toxicities from prior therapy not resolved to CTCAE v5.0 Grade \u000264 1 (except alopecia or other toxicities deemed by the investigator to pose no safety risk). => UNKNOWN. Evidence of oxaliplatin-induced peripheral sensory neuropathy Grade 2 persists and limits activities of daily living, thus the toxicity is not resolved to Grade ≤1. Alopecia grade 2 is noted but exempted by the criterion. Original reasoning: The patient has oxaliplatin-induced peripheral sensory neuropathy graded as CTCAE v5.0 Grade 2 (evidence indices 16, 27, 28). The toxicity is not resolved to Grade ≤1, and this neuropathy limits instrumental activities of daily living. Alopecia is present at Grade 2 (index 29) but is explicitly excepted from the exclusion. Therefore, the exclusion for unresolved toxicities from prior therapy applies due to the persistent Grade 2 neuropathy.",
+          "final_conclusion": "APPLIES",
+          "clearance_basis": null,
+          "window_evidence_index": null,
+          "parts": [
+            {
+              "criterion_id": "EXC-04/part1",
+              "criterion_text": "Toxicities from prior therapy not resolved to CTCAE v5.0 Grade \u000264 1 (except alopecia or other toxicities deemed by the investigator to pose no safety risk).",
+              "criterion_type": "exclusion",
+              "status": "UNKNOWN",
+              "method": "llm",
+              "patient_evidence": [
+                {
+                  "category": "prior_treatment",
+                  "value": "oxaliplatin",
+                  "normalized_value": null,
+                  "date": "2026-07-28",
+                  "start_date": null,
+                  "end_date": null,
+                  "source_file": "toxicity_phone_note.pdf",
+                  "source_page": 1,
+                  "evidence_text": "Ms. Lee reports persistent numbness and tingling in both\nhands and feet since oxaliplatin; she has trouble buttoning clothing and uses a handrail on stairs.",
+                  "quote_verified": true,
+                  "source_kind": "other"
+                },
+                {
+                  "category": "sex",
+                  "value": "Ms. Lee",
+                  "normalized_value": "female",
+                  "date": "2026-07-28",
+                  "start_date": null,
+                  "end_date": null,
+                  "source_file": "toxicity_phone_note.pdf",
+                  "source_page": 1,
+                  "evidence_text": "Nursing telephone note\nTelephone follow-up before trial screening. Ms. Lee reports persistent numbness and tingling in both\nhands and feet since oxaliplatin; she has trouble buttoning clothing and uses a handrail on stairs.",
+                  "quote_verified": true,
+                  "source_kind": "other"
+                },
+                {
+                  "category": "lab",
+                  "value": "oxaliplatin-induced peripheral sensory neuropathy grade 2",
+                  "normalized_value": "grade 2 peripheral sensory neuropathy",
+                  "date": "2026-07-28",
+                  "start_date": null,
+                  "end_date": null,
+                  "source_file": "toxicity_phone_note.pdf",
+                  "source_page": 1,
+                  "evidence_text": "Assessed as oxaliplatin-induced peripheral sensory neuropathy grade 2, limiting instrumental activities of daily living.",
+                  "quote_verified": true,
+                  "source_kind": "other"
+                }
+              ],
+              "explanation": "Evidence of oxaliplatin-induced peripheral sensory neuropathy Grade 2 persists and limits activities of daily living, thus the toxicity is not resolved to Grade ≤1. Alopecia grade 2 is noted but exempted by the criterion.",
+              "final_conclusion": null,
+              "clearance_basis": null,
+              "window_evidence_index": null,
+              "parts": [],
+              "date_comparisons": []
+            }
+          ],
+          "date_comparisons": []
+        }
+      },
+      {
+        "method": "llm_assessor",
+        "trial": "NCT06412198",
+        "criterion_id": "INC-10",
+        "probe": "exception_applies_inclusion",
+        "expected": "MEETS",
+        "also_acceptable": [
+          "UNKNOWN"
+        ],
+        "predicted": "DOES_NOT_MEET",
+        "match": false,
+        "acceptable": false,
+        "judgment_call": false,
+        "flags": [],
+        "explanation": "The patient has persistent numbness and tingling in both hands and feet since oxaliplatin treatment, indicating oxaliplatin-induced peripheral sensory neuropathy grade 2 which limits activities of daily living. This neuropathy is a treatment-related adverse effect from prior therapy and is above the allowed maximum severity (Grade 1) at enrollment time. Alopecia grade 2 is noted but alopecia is excluded from this criterion. Since the neuropathy is specifically excluded from the grading exception and the patient has grade 2 neuropathy, the patient does not meet the recovery criterion required for inclusion.",
+        "criterion_text": "Recovery from the treatment-related adverse effects of prior therapy at the time of enrollment to ≤ Grade 1 (excluding alopecia and prior oxaliplatin-induced neuropathy).",
+        "patient_evidence": [
+          {
+            "category": "prior_treatment",
+            "value": "oxaliplatin",
+            "normalized_value": null,
+            "date": "2026-07-28",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "toxicity_phone_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Ms. Lee reports persistent numbness and tingling in both\nhands and feet since oxaliplatin; she has trouble buttoning clothing and uses a handrail on stairs.",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "sex",
+            "value": "Ms. Lee",
+            "normalized_value": "female",
+            "date": "2026-07-28",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "toxicity_phone_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Nursing telephone note\nTelephone follow-up before trial screening. Ms. Lee reports persistent numbness and tingling in both\nhands and feet since oxaliplatin; she has trouble buttoning clothing and uses a handrail on stairs.",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "lab",
+            "value": "oxaliplatin-induced peripheral sensory neuropathy grade 2",
+            "normalized_value": "grade 2 peripheral sensory neuropathy",
+            "date": "2026-07-28",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "toxicity_phone_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Assessed as oxaliplatin-induced peripheral sensory neuropathy grade 2, limiting instrumental activities of daily living.",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "lab",
+            "value": "alopecia grade 2",
+            "normalized_value": "grade 2 alopecia",
+            "date": "2026-07-28",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "toxicity_phone_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Hair thinning persists, alopecia grade 2.",
+            "quote_verified": true,
+            "source_kind": "other"
+          }
+        ],
+        "assessment_details": {
+          "criterion_id": "INC-10",
+          "criterion_text": "Recovery from the treatment-related adverse effects of prior therapy at the time of enrollment to ≤ Grade 1 (excluding alopecia and prior oxaliplatin-induced neuropathy).",
+          "criterion_type": "inclusion",
+          "status": "DOES_NOT_MEET",
+          "method": "llm",
+          "patient_evidence": [
+            {
+              "category": "prior_treatment",
+              "value": "oxaliplatin",
+              "normalized_value": null,
+              "date": "2026-07-28",
+              "start_date": null,
+              "end_date": null,
+              "source_file": "toxicity_phone_note.pdf",
+              "source_page": 1,
+              "evidence_text": "Ms. Lee reports persistent numbness and tingling in both\nhands and feet since oxaliplatin; she has trouble buttoning clothing and uses a handrail on stairs.",
+              "quote_verified": true,
+              "source_kind": "other"
+            },
+            {
+              "category": "sex",
+              "value": "Ms. Lee",
+              "normalized_value": "female",
+              "date": "2026-07-28",
+              "start_date": null,
+              "end_date": null,
+              "source_file": "toxicity_phone_note.pdf",
+              "source_page": 1,
+              "evidence_text": "Nursing telephone note\nTelephone follow-up before trial screening. Ms. Lee reports persistent numbness and tingling in both\nhands and feet since oxaliplatin; she has trouble buttoning clothing and uses a handrail on stairs.",
+              "quote_verified": true,
+              "source_kind": "other"
+            },
+            {
+              "category": "lab",
+              "value": "oxaliplatin-induced peripheral sensory neuropathy grade 2",
+              "normalized_value": "grade 2 peripheral sensory neuropathy",
+              "date": "2026-07-28",
+              "start_date": null,
+              "end_date": null,
+              "source_file": "toxicity_phone_note.pdf",
+              "source_page": 1,
+              "evidence_text": "Assessed as oxaliplatin-induced peripheral sensory neuropathy grade 2, limiting instrumental activities of daily living.",
+              "quote_verified": true,
+              "source_kind": "other"
+            },
+            {
+              "category": "lab",
+              "value": "alopecia grade 2",
+              "normalized_value": "grade 2 alopecia",
+              "date": "2026-07-28",
+              "start_date": null,
+              "end_date": null,
+              "source_file": "toxicity_phone_note.pdf",
+              "source_page": 1,
+              "evidence_text": "Hair thinning persists, alopecia grade 2.",
+              "quote_verified": true,
+              "source_kind": "other"
+            }
+          ],
+          "explanation": "The patient has persistent numbness and tingling in both hands and feet since oxaliplatin treatment, indicating oxaliplatin-induced peripheral sensory neuropathy grade 2 which limits activities of daily living. This neuropathy is a treatment-related adverse effect from prior therapy and is above the allowed maximum severity (Grade 1) at enrollment time. Alopecia grade 2 is noted but alopecia is excluded from this criterion. Since the neuropathy is specifically excluded from the grading exception and the patient has grade 2 neuropathy, the patient does not meet the recovery criterion required for inclusion.",
+          "final_conclusion": "DOES_NOT_MEET",
+          "clearance_basis": null,
+          "window_evidence_index": null,
+          "parts": [],
+          "date_comparisons": []
+        }
+      },
+      {
+        "method": "llm_assessor",
+        "trial": "NCT07559760",
+        "criterion_id": "INC-12",
+        "probe": "calculated_creatinine_clearance",
+        "expected": "DOES_NOT_MEET",
+        "also_acceptable": [
+          "UNKNOWN"
+        ],
+        "predicted": "UNKNOWN",
+        "match": false,
+        "acceptable": true,
+        "judgment_call": false,
+        "flags": [],
+        "explanation": "The criterion requires a creatinine clearance of at least 50 mL/min calculated by the Cockcroft-Gault formula. The evidence includes a single creatinine lab value of 1.3 mg/dL, but no documented creatinine clearance value or sufficient details (such as weight or further renal function parameters) to calculate creatinine clearance by Cockcroft-Gault. Therefore, it is unknown if the patient meets the criterion.",
+        "criterion_text": "Renal: Creatinine clearance ≥ 50 mL/min (Cockcroft-Gault).",
+        "patient_evidence": [
+          {
+            "category": "lab",
+            "value": "Creatinine: 1.3 mg/dL",
+            "normalized_value": null,
+            "date": "2026-07-31",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "lab_report.pdf",
+            "source_page": 1,
+            "evidence_text": "Creatinine: 1.3 mg/dL",
+            "quote_verified": true,
+            "source_kind": "other"
+          }
+        ],
+        "assessment_details": {
+          "criterion_id": "INC-12",
+          "criterion_text": "Renal: Creatinine clearance ≥ 50 mL/min (Cockcroft-Gault).",
+          "criterion_type": "inclusion",
+          "status": "UNKNOWN",
+          "method": "llm",
+          "patient_evidence": [
+            {
+              "category": "lab",
+              "value": "Creatinine: 1.3 mg/dL",
+              "normalized_value": null,
+              "date": "2026-07-31",
+              "start_date": null,
+              "end_date": null,
+              "source_file": "lab_report.pdf",
+              "source_page": 1,
+              "evidence_text": "Creatinine: 1.3 mg/dL",
+              "quote_verified": true,
+              "source_kind": "other"
+            }
+          ],
+          "explanation": "The criterion requires a creatinine clearance of at least 50 mL/min calculated by the Cockcroft-Gault formula. The evidence includes a single creatinine lab value of 1.3 mg/dL, but no documented creatinine clearance value or sufficient details (such as weight or further renal function parameters) to calculate creatinine clearance by Cockcroft-Gault. Therefore, it is unknown if the patient meets the criterion.",
+          "final_conclusion": "UNKNOWN",
+          "clearance_basis": null,
+          "window_evidence_index": null,
+          "parts": [],
+          "date_comparisons": []
+        }
+      },
+      {
+        "method": "llm_assessor",
+        "trial": "NCT07559760",
+        "criterion_id": "INC-01",
+        "probe": "sanity",
+        "expected": "MEETS",
+        "also_acceptable": [],
+        "predicted": "UNKNOWN",
+        "match": false,
+        "acceptable": false,
+        "judgment_call": false,
+        "flags": [
+          "INC-01: Date-comparison guard: explanation contains an incorrect date comparison. Converted to UNKNOWN."
+        ],
+        "explanation": "Date-comparison guard: explanation contains an incorrect date comparison. Converted to UNKNOWN. Original reasoning: The patient is female as documented in multiple records (evidence indices 1, 19, 21, 27). The patient's age is documented as 67 years (evidence index 0), which falls within the inclusion age range of 18-75 years. Both sex and age criteria are clearly met per the provided evidence.",
+        "criterion_text": "Male or female, aged 18-75 years.",
+        "patient_evidence": [
+          {
+            "category": "age",
+            "value": "67 years",
+            "normalized_value": null,
+            "date": "2026-07-31",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "oncology_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Age: 67 years",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "sex",
+            "value": "Female",
+            "normalized_value": null,
+            "date": "2026-07-31",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "oncology_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Sex: Female",
+            "quote_verified": true,
+            "source_kind": "other"
+          }
+        ],
+        "assessment_details": {
+          "criterion_id": "INC-01",
+          "criterion_text": "Male or female, aged 18-75 years.",
+          "criterion_type": "inclusion",
+          "status": "UNKNOWN",
+          "method": "llm",
+          "patient_evidence": [
+            {
+              "category": "age",
+              "value": "67 years",
+              "normalized_value": null,
+              "date": "2026-07-31",
+              "start_date": null,
+              "end_date": null,
+              "source_file": "oncology_note.pdf",
+              "source_page": 1,
+              "evidence_text": "Age: 67 years",
+              "quote_verified": true,
+              "source_kind": "other"
+            },
+            {
+              "category": "sex",
+              "value": "Female",
+              "normalized_value": null,
+              "date": "2026-07-31",
+              "start_date": null,
+              "end_date": null,
+              "source_file": "oncology_note.pdf",
+              "source_page": 1,
+              "evidence_text": "Sex: Female",
+              "quote_verified": true,
+              "source_kind": "other"
+            }
+          ],
+          "explanation": "Date-comparison guard: explanation contains an incorrect date comparison. Converted to UNKNOWN. Original reasoning: The patient is female as documented in multiple records (evidence indices 1, 19, 21, 27). The patient's age is documented as 67 years (evidence index 0), which falls within the inclusion age range of 18-75 years. Both sex and age criteria are clearly met per the provided evidence.",
+          "final_conclusion": "MEETS",
+          "clearance_basis": null,
+          "window_evidence_index": null,
+          "parts": [],
+          "date_comparisons": [
+            {
+              "from_date": "1949-07-31",
+              "to_date": "2026-07-31",
+              "claimed": "within",
+              "amount": 75,
+              "unit": "year"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "run": 3,
+    "variant": "SYN-005-control",
+    "verified_probe_counts": {
+      "qtcf_value": 0,
+      "buried_major_surgery": 0,
+      "biopsy_trap": 2,
+      "surgery_or_biopsy_date": 2,
+      "neuropathy_grade": 1,
+      "alopecia_exception": 1,
+      "serology": 4,
+      "creatinine": 1,
+      "weight": 0,
+      "scheduled_first_dose": 1
+    },
+    "extraction_gaps": [
+      {
+        "source_file": "ecg_report.pdf",
+        "source_page": 1,
+        "line_number": 7,
+        "sentence_number": 1,
+        "text": "Resting 12-lead ECG measurements",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "ecg_report.pdf",
+        "source_page": 1,
+        "line_number": 10,
+        "sentence_number": 2,
+        "text": "Heart rate 74 bpm PR interval 164 ms QRS duration 92 ms QT interval 411 ms QTcF (Fridericia) 441 ms",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "ecg_report.pdf",
+        "source_page": 1,
+        "line_number": 20,
+        "sentence_number": 3,
+        "text": "Interpretation: Normal sinus rhythm.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "ecg_report.pdf",
+        "source_page": 1,
+        "line_number": 20,
+        "sentence_number": 4,
+        "text": "QTcF within normal limits.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "hospital_discharge_summary.pdf",
+        "source_page": 1,
+        "line_number": 8,
+        "sentence_number": 1,
+        "text": "Ms.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "hospital_discharge_summary.pdf",
+        "source_page": 1,
+        "line_number": 8,
+        "sentence_number": 2,
+        "text": "Lee was seen in the interventional radiology suite on 2026-07-22 for an outpatient procedure to obtain fresh tumor tissue for molecular testing.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "hospital_discharge_summary.pdf",
+        "source_page": 1,
+        "line_number": 8,
+        "sentence_number": 3,
+        "text": "She tolerated it well and went home the same day.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "hospital_discharge_summary.pdf",
+        "source_page": 1,
+        "line_number": 10,
+        "sentence_number": 4,
+        "text": "Procedure details are on page 2.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "hospital_discharge_summary.pdf",
+        "source_page": 2,
+        "line_number": 9,
+        "sentence_number": 2,
+        "text": "Anesthesia: local anesthetic with moderate sedation.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "hospital_discharge_summary.pdf",
+        "source_page": 2,
+        "line_number": 10,
+        "sentence_number": 3,
+        "text": "Complications: none.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "hospital_discharge_summary.pdf",
+        "source_page": 2,
+        "line_number": 10,
+        "sentence_number": 4,
+        "text": "Discharged the same day.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "lab_report.pdf",
+        "source_page": 1,
+        "line_number": 16,
+        "sentence_number": 9,
+        "text": "No transfusion or growth-factor support in the past 14 days.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "oncology_note.pdf",
+        "source_page": 1,
+        "line_number": 7,
+        "sentence_number": 1,
+        "text": "Clinic visit",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "oncology_note.pdf",
+        "source_page": 1,
+        "line_number": 10,
+        "sentence_number": 4,
+        "text": "Weight: 52 kg",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "oncology_note.pdf",
+        "source_page": 1,
+        "line_number": 14,
+        "sentence_number": 8,
+        "text": "Plan: referred for clinical trial screening.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "serology_outside_lab.pdf",
+        "source_page": 1,
+        "line_number": 2,
+        "sentence_number": 1,
+        "text": "Outside laboratory: infectious serology",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "serology_outside_lab.pdf",
+        "source_page": 1,
+        "line_number": 7,
+        "sentence_number": 2,
+        "text": "Serology panel",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "serology_outside_lab.pdf",
+        "source_page": 1,
+        "line_number": 23,
+        "sentence_number": 7,
+        "text": "Specimen collected 2026-07-29.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "serology_outside_lab.pdf",
+        "source_page": 1,
+        "line_number": 23,
+        "sentence_number": 8,
+        "text": "Reported by an outside reference laboratory.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "toxicity_phone_note.pdf",
+        "source_page": 1,
+        "line_number": 2,
+        "sentence_number": 1,
+        "text": "Telephone encounter: toxicity assessment",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "toxicity_phone_note.pdf",
+        "source_page": 1,
+        "line_number": 8,
+        "sentence_number": 7,
+        "text": "She reports no diarrhea, mouth sores or fatigue limiting activity.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "toxicity_phone_note.pdf",
+        "source_page": 1,
+        "line_number": 8,
+        "sentence_number": 8,
+        "text": "All other treatment-related toxicities are grade 0 to 1.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "trial_screening_letter.pdf",
+        "source_page": 1,
+        "line_number": 8,
+        "sentence_number": 1,
+        "text": "The patient has been referred for clinical trial screening.",
+        "message": "Not captured by the tool, review manually"
+      },
+      {
+        "source_file": "trial_screening_letter.pdf",
+        "source_page": 1,
+        "line_number": 10,
+        "sentence_number": 3,
+        "text": "Final eligibility will be confirmed by the study team.",
+        "message": "Not captured by the tool, review manually"
+      }
+    ],
+    "misses": [
+      {
+        "method": "llm_assessor",
+        "trial": "NCT07559760",
+        "criterion_id": "EXC-09",
+        "probe": "qtcf_below_threshold",
+        "expected": "MEETS",
+        "also_acceptable": [
+          "UNKNOWN"
+        ],
+        "predicted": "UNKNOWN",
+        "match": false,
+        "acceptable": true,
+        "judgment_call": false,
+        "flags": [],
+        "explanation": "No evidence of any QTcF measurement on resting 12-lead ECG is provided. The exclusion criterion requires QTcF values (>=450 ms for men or >=470 ms for women) to determine if the exclusion applies. Since this specific ECG QTcF data is missing, the criterion cannot be assessed.",
+        "criterion_text": "QTcF ≥ 450 ms (men) or ≥ 470 ms (women) on resting 12-lead ECG.",
+        "patient_evidence": [],
+        "assessment_details": {
+          "criterion_id": "EXC-09",
+          "criterion_text": "QTcF ≥ 450 ms (men) or ≥ 470 ms (women) on resting 12-lead ECG.",
+          "criterion_type": "exclusion",
+          "status": "UNKNOWN",
+          "method": "llm",
+          "patient_evidence": [],
+          "explanation": "No evidence of any QTcF measurement on resting 12-lead ECG is provided. The exclusion criterion requires QTcF values (>=450 ms for men or >=470 ms for women) to determine if the exclusion applies. Since this specific ECG QTcF data is missing, the criterion cannot be assessed.",
+          "final_conclusion": "UNKNOWN",
+          "clearance_basis": null,
+          "window_evidence_index": null,
+          "parts": [],
+          "date_comparisons": []
+        }
+      },
+      {
+        "method": "llm_assessor",
+        "trial": "NCT07559760",
+        "criterion_id": "EXC-04",
+        "probe": "except_clause_alopecia",
+        "expected": "MEETS",
+        "also_acceptable": [
+          "UNKNOWN"
+        ],
+        "predicted": "UNKNOWN",
+        "match": false,
+        "acceptable": true,
+        "judgment_call": false,
+        "flags": [
+          "EXC-04: investigator-judgment criterion converted to UNKNOWN.",
+          "EXC-04: Exclusion clearance guard: narrower negation does not address the full prior-condition or exposure scope. Converted to UNKNOWN."
+        ],
+        "explanation": "This criterion depends on investigator judgment and cannot be settled from records; converted to UNKNOWN. Original reasoning: The patient has residual toxicities from prior therapy including peripheral sensory neuropathy grade 1 and alopecia grade 2. The neuropathy is grade 1 which meets the criterion requirement for resolved toxicities (grade ≤1). Alopecia is specifically exempted from this exclusion regardless of grade. There is no evidence of any other toxicities higher than grade 1 or unresolved toxicities that pose safety risk.",
+        "criterion_text": "Toxicities from prior therapy not resolved to CTCAE v5.0 Grade ≤ 1 (except alopecia or other toxicities deemed by the investigator to pose no safety risk).",
+        "patient_evidence": [
+          {
+            "category": "sex",
+            "value": "Ms. Lee",
+            "normalized_value": "female",
+            "date": "2026-07-28",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "toxicity_phone_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Telephone follow-up before trial screening. Ms. Lee reports that the numbness in her fingertips from oxaliplatin has improved; she can button clothing and write without difficulty.",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "prior_treatment",
+            "value": "oxaliplatin",
+            "normalized_value": null,
+            "date": "2026-07-28",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "toxicity_phone_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Ms. Lee reports that the numbness in her fingertips from oxaliplatin has improved; she can button clothing and write without difficulty.",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "comorbidity",
+            "value": "peripheral sensory neuropathy grade 1",
+            "normalized_value": null,
+            "date": "2026-07-28",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "toxicity_phone_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Assessed as peripheral sensory neuropathy grade 1.",
+            "quote_verified": true,
+            "source_kind": "other"
+          },
+          {
+            "category": "comorbidity",
+            "value": "alopecia grade 2",
+            "normalized_value": null,
+            "date": "2026-07-28",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "toxicity_phone_note.pdf",
+            "source_page": 1,
+            "evidence_text": "Hair thinning persists, alopecia grade 2.",
+            "quote_verified": true,
+            "source_kind": "other"
+          }
+        ],
+        "assessment_details": {
+          "criterion_id": "EXC-04",
+          "criterion_text": "Toxicities from prior therapy not resolved to CTCAE v5.0 Grade ≤ 1 (except alopecia or other toxicities deemed by the investigator to pose no safety risk).",
+          "criterion_type": "exclusion",
+          "status": "UNKNOWN",
+          "method": "llm",
+          "patient_evidence": [
+            {
+              "category": "sex",
+              "value": "Ms. Lee",
+              "normalized_value": "female",
+              "date": "2026-07-28",
+              "start_date": null,
+              "end_date": null,
+              "source_file": "toxicity_phone_note.pdf",
+              "source_page": 1,
+              "evidence_text": "Telephone follow-up before trial screening. Ms. Lee reports that the numbness in her fingertips from oxaliplatin has improved; she can button clothing and write without difficulty.",
+              "quote_verified": true,
+              "source_kind": "other"
+            },
+            {
+              "category": "prior_treatment",
+              "value": "oxaliplatin",
+              "normalized_value": null,
+              "date": "2026-07-28",
+              "start_date": null,
+              "end_date": null,
+              "source_file": "toxicity_phone_note.pdf",
+              "source_page": 1,
+              "evidence_text": "Ms. Lee reports that the numbness in her fingertips from oxaliplatin has improved; she can button clothing and write without difficulty.",
+              "quote_verified": true,
+              "source_kind": "other"
+            },
+            {
+              "category": "comorbidity",
+              "value": "peripheral sensory neuropathy grade 1",
+              "normalized_value": null,
+              "date": "2026-07-28",
+              "start_date": null,
+              "end_date": null,
+              "source_file": "toxicity_phone_note.pdf",
+              "source_page": 1,
+              "evidence_text": "Assessed as peripheral sensory neuropathy grade 1.",
+              "quote_verified": true,
+              "source_kind": "other"
+            },
+            {
+              "category": "comorbidity",
+              "value": "alopecia grade 2",
+              "normalized_value": null,
+              "date": "2026-07-28",
+              "start_date": null,
+              "end_date": null,
+              "source_file": "toxicity_phone_note.pdf",
+              "source_page": 1,
+              "evidence_text": "Hair thinning persists, alopecia grade 2.",
+              "quote_verified": true,
+              "source_kind": "other"
+            }
+          ],
+          "explanation": "This criterion depends on investigator judgment and cannot be settled from records; converted to UNKNOWN. Original reasoning: The patient has residual toxicities from prior therapy including peripheral sensory neuropathy grade 1 and alopecia grade 2. The neuropathy is grade 1 which meets the criterion requirement for resolved toxicities (grade ≤1). Alopecia is specifically exempted from this exclusion regardless of grade. There is no evidence of any other toxicities higher than grade 1 or unresolved toxicities that pose safety risk.",
+          "final_conclusion": "DOES_NOT_APPLY",
+          "clearance_basis": "explicit_negative",
+          "window_evidence_index": null,
+          "parts": [],
+          "date_comparisons": []
+        }
+      },
+      {
+        "method": "llm_assessor",
+        "trial": "NCT07559760",
+        "criterion_id": "INC-12",
+        "probe": "calculated_creatinine_clearance",
+        "expected": "DOES_NOT_MEET",
+        "also_acceptable": [
+          "UNKNOWN"
+        ],
+        "predicted": "UNKNOWN",
+        "match": false,
+        "acceptable": true,
+        "judgment_call": false,
+        "flags": [],
+        "explanation": "The inclusion criterion requires a renal function assessment expressed as creatinine clearance (Cockcroft-Gault) of at least 50 mL/min. The available evidence includes a creatinine lab value of 1.3 mg/dL but does not provide an estimated creatinine clearance or enough data (weight, exact age for calculation, and sex are available but clearance is not directly reported). Therefore, it is unknown if the patient meets this criterion based solely on the supplied evidence.",
+        "criterion_text": "Renal: Creatinine clearance ≥ 50 mL/min (Cockcroft-Gault).",
+        "patient_evidence": [
+          {
+            "category": "lab",
+            "value": "Creatinine: 1.3 mg/dL",
+            "normalized_value": "1.3 mg/dL",
+            "date": "2026-07-31",
+            "start_date": null,
+            "end_date": null,
+            "source_file": "lab_report.pdf",
+            "source_page": 1,
+            "evidence_text": "Creatinine: 1.3 mg/dL",
+            "quote_verified": true,
+            "source_kind": "other"
+          }
+        ],
+        "assessment_details": {
+          "criterion_id": "INC-12",
+          "criterion_text": "Renal: Creatinine clearance ≥ 50 mL/min (Cockcroft-Gault).",
+          "criterion_type": "inclusion",
+          "status": "UNKNOWN",
+          "method": "llm",
+          "patient_evidence": [
+            {
+              "category": "lab",
+              "value": "Creatinine: 1.3 mg/dL",
+              "normalized_value": "1.3 mg/dL",
+              "date": "2026-07-31",
+              "start_date": null,
+              "end_date": null,
+              "source_file": "lab_report.pdf",
+              "source_page": 1,
+              "evidence_text": "Creatinine: 1.3 mg/dL",
+              "quote_verified": true,
+              "source_kind": "other"
+            }
+          ],
+          "explanation": "The inclusion criterion requires a renal function assessment expressed as creatinine clearance (Cockcroft-Gault) of at least 50 mL/min. The available evidence includes a creatinine lab value of 1.3 mg/dL but does not provide an estimated creatinine clearance or enough data (weight, exact age for calculation, and sex are available but clearance is not directly reported). Therefore, it is unknown if the patient meets this criterion based solely on the supplied evidence.",
+          "final_conclusion": "UNKNOWN",
+          "clearance_basis": null,
+          "window_evidence_index": null,
+          "parts": [],
+          "date_comparisons": []
+        }
+      }
+    ]
+  }
+]

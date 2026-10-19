@@ -1,0 +1,22 @@
+
+== SYN-005: 8 documents, 9 pages
+   ecg_report.pdf p1 [PYMUPDF] 382 chars
+   hospital_discharge_summary.pdf p1 [PYMUPDF] 480 chars
+   hospital_discharge_summary.pdf p2 [PYMUPDF] 452 chars
+   lab_report.pdf p1 [PYMUPDF] 475 chars
+   oncology_note.pdf p1 [PYMUPDF] 465 chars
+   pathology_report.pdf p1 [PYMUPDF] 340 chars
+   serology_outside_lab.pdf p1 [PYMUPDF] 527 chars
+   toxicity_phone_note.pdf p1 [PYMUPDF] 719 chars
+   trial_screening_letter.pdf p1 [PYMUPDF] 411 chars
+
+== SYN-005-control: 8 documents, 9 pages
+   ecg_report.pdf p1 [PYMUPDF] 401 chars
+   hospital_discharge_summary.pdf p1 [PYMUPDF] 424 chars
+   hospital_discharge_summary.pdf p2 [PYMUPDF] 385 chars
+   lab_report.pdf p1 [PYMUPDF] 475 chars
+   oncology_note.pdf p1 [PYMUPDF] 465 chars
+   pathology_report.pdf p1 [PYMUPDF] 340 chars
+   serology_outside_lab.pdf p1 [PYMUPDF] 527 chars
+   toxicity_phone_note.pdf p1 [PYMUPDF] 629 chars
+   trial_screening_letter.pdf p1 [PYMUPDF] 411 chars
