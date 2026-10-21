@@ -58,7 +58,7 @@ Blind results (code frozen before the patient was written):
 | SYN-004 | lung history in a scanned fax; a steroid course; a mini-stroke (TIA) | round 2 fixes | 24/42 | 33/42 | **5** | 1 |
 | SYN-005 | prolonged QTc in an ECG table; major surgery on page 2; unresolved neuropathy | round 3 fixes | 26/48 | 42/48 | **0** | 3 |
 
-On SYN-005 the tool **decided correctly on 23 of 45** rows whose answer is MEETS or DOES_NOT_MEET; A rules-only baseline (no AI) on the same runs decided 6 of 45 correctly, also with 0 unsafe clearances.Most of the rest were UNKNOWN (safe, but left for a human). It caught the major surgery 3/3 with a
+On SYN-005 the tool **decided correctly on 23 of 45** rows whose answer is MEETS or DOES_NOT_MEET. A rules-only baseline (no AI) on the same runs decided 6 of 45 correctly, also with 0 unsafe clearances. Most of the rest were UNKNOWN (safe, but left for a human). It caught the major surgery 3/3 with a
 code-computed 19-day window and cleared negative HIV/hepatitis serologies 6/6. It missed the QTc value in
 5 of 6 runs (table layout), never calculated creatinine clearance (weight not extracted), and in all 3
 buried runs wrongly failed a recovery criterion whose exception explicitly allows oxaliplatin
